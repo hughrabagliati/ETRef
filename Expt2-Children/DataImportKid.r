@@ -90,31 +90,31 @@ sac.process = function(pathway = "./", Pop = "NA"){
 
 
 # Import and plot the data,
-kid.ref <- data_import("./")
+kid.ref <- data_import("./EyeData/")
 kid.ref.t <- kid.ref[kid.ref$type != "Filler",]
 kid.ref.t$type <- kid.ref.t$type[drop= TRUE]
 kid.ref.t$cond <- kid.ref.t$cond[drop= TRUE]
 kid.ref.t <- kid.ref.t[!is.na(kid.ref.t$cond),]
 
-Groups = read.delim("SubjNames.txt", header = T)
+Groups = read.delim("./EyeData/SubjNames.txt", header = T)
 merge(kid.ref.t,Groups, all = T) -> kid.ref.t
 kid.ref.t[is.na(kid.ref.t$AgeGroup),]$AgeGroup <- "Old"
 #kid.ref.t$Lang <- "Mon"
 
-kid.sac = sac.process("./","Kids")
+kid.sac = sac.process("./EyeData/","Kids")
 kid.ref.t <- merge(kid.ref.t, kid.sac, by = c("Subj", "trialnum","cond","Period"), all.x = TRUE)
 
 
 # If statements tidy up the importing of sound coded trials -- writes a file where sound trials can be imported into.
-if (file.exists("WriteNames-Times.txt") == TRUE){
-	names = read.delim("WriteNames-Times.txt")
+if (file.exists("./EyeData/WriteNames-Times.txt") == TRUE){
+	names = read.delim(./EyeData/"WriteNames-Times.txt")
 	if(length(names$FixCount > 0)){names$FixCount <- NULL}
 	kid.ref.t <- merge(kid.ref.t,names, by = c("Subj","trialnum"), all.x = TRUE)
 	prntout <- data.frame(summaryBy(Label+StartTime~Subj+trialnum, data = kid.ref.t, FUN = mean, na.rm=T, keep.names = T))
-	write.table(prntout[order(prntout$Subj),], file = "WriteNames-Times.txt", sep = "\t", row.names = F)
+	write.table(prntout[order(prntout$Subj),], file = "./EyeData/WriteNames-Times.txt", sep = "\t", row.names = F)
 	}else{
 			prntout <- data.frame(cbind(aggregate(FixCount~Subj+trialnum, data = kid.ref.t, sum),Label = NA,StartTime = NA))
-			write.table(prntout[order(prntout$Subj),], file = "WriteNames-Times.txt", sep = "\t", row.names = F)
+			write.table(prntout[order(prntout$Subj),], file = "./EyeData/WriteNames-Times.txt", sep = "\t", row.names = F)
 			}
 
 # Create a measure of difference in labeling

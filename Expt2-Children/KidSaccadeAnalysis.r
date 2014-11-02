@@ -2,6 +2,7 @@ require(lme4)
 require(doBy)
 require(plyr)
 require(longitudinalData)
+
 sac.process2 = function(pathway = "./", Pop = "NA"){
 	sac = c()
 	for (i in unique(Pop)){
@@ -38,18 +39,22 @@ sac.process2 = function(pathway = "./", Pop = "NA"){
 	sac <- sac[sac$type != "Filler",]
 	return(sac)
 }
+CreateNewDataFrame <- ginput("Press n to load the current dataset, or y to recreate the dataframe: ")
 
+if (CreateNewDataFrame == "y"){
 kid.sac <- sac.process2("./EyeData/","Kids")
-kid.sac$order <- 1:length(kid.sac$SacToTarg)
-names <- read.delim("./EyeData/WriteNames-Times.txt")
-Groups = read.delim("./EyeData/SubjNames.txt", header = T)
-merge(kid.sac,Groups, all = T) -> kid.sac
-#kid.sac[is.na(kid.sac$AgeGroup),]$AgeGroup <- "Old"
-kid.sac <- merge(kid.sac,names, by = c("Subj","trialnum"), all.x = TRUE)
-kid.sac<- kid.sac[order(kid.sac$order),]
-names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"
-kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))
-
+  kid.sac$order <- 1:length(kid.sac$SacToTarg)
+  names <- read.delim("./EyeData/WriteNames-Times.txt")
+  Groups = read.delim("./EyeData/SubjNames.txt", header = T)
+  merge(kid.sac,Groups, all = T) -> kid.sac
+  #kid.sac[is.na(kid.sac$AgeGroup),]$AgeGroup <- "Old"
+  kid.sac <- merge(kid.sac,names, by = c("Subj","trialnum"), all.x = TRUE)
+  kid.sac<- kid.sac[order(kid.sac$order),]
+  names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"
+  kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))
+  save(kid.sac,"kid.sac.RDATA")
+}
+load("kidsac.RDATA")
 
 # Create LabelCond variable; used for data analysis
 kid.sac$LabelCond <- NA
@@ -57,6 +62,11 @@ kid.sac[kid.sac$cond == "Control" & kid.sac$Label %in% c(1,0),]$LabelCond <- "Co
 kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(1),]$LabelCond <- "Test-Ambig"
 kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(0),]$LabelCond <- "Test-Unambig"
 kid.sac$LabelCond <- as.factor(kid.sac$LabelCond)
+
+# Exclude kids with no utterance data
+kid.sac <- kid.sac[!is.na(kid.sac$LabelCond),]
+kid.sac <- kid.sac[!kid.sac$AgeGroup == "Excl",]
+kid.sac <- kid.sac[!kid.sac$Lang == "Exc",]
 
 # Discern when the name was said.
  kid.sac$Start <- "Before"
@@ -66,16 +76,12 @@ kid.sac$LabelCond <- as.factor(kid.sac$LabelCond)
 	 summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~AgeGroup+Subj+trialnum+LabelCond+Period+Start, data = kid.sac, keep.names = T) -> Sac.sum
 	 na.omit(summaryBy(SacTarg +SacDist2 +SacDist1+SacFromTarg+SacToTarg ~AgeGroup+Period+Start+LabelCond, data = Sac.sum, keep.names = T))
 	 
-	 summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Pre")))
-	 	 summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Naming" & Start == "Before")))
-	 	 summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Naming" & Start == "After")))	 	 
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Pre")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Naming" & Start == "Before")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Naming" & Start == "After")))	 	 
 	
 	 
-	 
- 	 summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~AgeGroup+Subj+trialnum+LabelCond+Period+Start, data = kid.sac[kid.sac$SacSwitch ==1,], keep.names = T, FUN = c(sum)) -> Sac.sum2
- 	 Sac.sum2$SacProp <- Sac.sum2$SacTarg/(Sac.sum2$SacTarg + Sac.sum2$SacDist2)
-	 na.omit(summaryBy(SacTarg +SacDist2 +SacDist1+SacFromTarg+SacToTarg ~AgeGroup+Period+Start+LabelCond, data = Sac.sum2, keep.names = T))
-	 
+	 	 
 na.omit(summaryBy(SacTarg~Period+Start+LabelCond+Subj, data = Sac.sum[Sac.sum$Period != "Rew",], FUN = c(mean,sd), keep.names = T)) -> Sac.graph
 na.omit(summaryBy(SacTarg.mean~Period+Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
 Sac.graph$Period <- factor(Sac.graph$Period, levels = c("Pre","Naming"),labels = c("Pre","Naming"), ordered = T)
