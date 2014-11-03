@@ -95,4 +95,3 @@ summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum, AgeGr
 
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
