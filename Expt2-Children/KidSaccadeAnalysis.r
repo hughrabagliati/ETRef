@@ -96,7 +96,7 @@ Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post
 tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> o
 tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> se
 
-barplot(o, beside =T , ylim = c(0,0.25),col = "white",  border = NA, ylab = "Proportion actions using Instrument", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
+barplot(o, beside =T , ylim = c(0,0.25),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
 legend(1.2,0.10, legend = c("Control", "Ambiguous Description", "Unambiguous Description"), bty = "n", col = c("blue","grey","red"), pch = 20)
 points(c(1.5,6,10), o[,1], pch = 20, cex = 2, col = "blue")
 points(c(2.5,6.8,11), o[,2], pch = 20, cex = 2, col = "grey")
