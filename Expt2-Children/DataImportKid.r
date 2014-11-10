@@ -107,7 +107,7 @@ kid.ref.t <- merge(kid.ref.t, kid.sac, by = c("Subj", "trialnum","cond","Period"
 
 # If statements tidy up the importing of sound coded trials -- writes a file where sound trials can be imported into.
 if (file.exists("./EyeData/WriteNames-Times.txt") == TRUE){
-	names = read.delim(./EyeData/"WriteNames-Times.txt")
+	names = read.delim("./EyeData/WriteNames-Times.txt")
 	if(length(names$FixCount > 0)){names$FixCount <- NULL}
 	kid.ref.t <- merge(kid.ref.t,names, by = c("Subj","trialnum"), all.x = TRUE)
 	prntout <- data.frame(summaryBy(Label+StartTime~Subj+trialnum, data = kid.ref.t, FUN = mean, na.rm=T, keep.names = T))
