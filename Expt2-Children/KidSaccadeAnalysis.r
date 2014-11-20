@@ -52,7 +52,7 @@ kid.sac <- sac.process2("./EyeData/","Kids")
   kid.sac<- kid.sac[order(kid.sac$order),]
   names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"
   kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))
-  save(kid.sac,"kid.sac.RDATA")
+  save(kid.sac,file = "kid.sac.RDATA")
 }
 load("kidsac.RDATA")
 

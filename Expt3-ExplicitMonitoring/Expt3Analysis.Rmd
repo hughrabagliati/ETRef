@@ -1,0 +1,97 @@
+---
+title: "Analysis of Children's Data in Expt 3- Explicit Monitoring"
+author: "Hugh Rabagliati"
+date: "20 November 2014"
+output: html_document
+---
+
+```{r}
+require(lme4)
+require(doBy)
+require(plyr)
+require(doBy)
+load("kidmonitor.RDATA")
+
+```
+
+
+First, some data processing. Each child's utterance is coded for whether it is potentially ambiguous.
+```{r}
+# Create LabelCond variable; used for data analysis
+kid.sac$LabelCond <- NA
+kid.sac[kid.sac$cond == "Control" & kid.sac$Label %in% c(1,0),]$LabelCond <- "Control"
+kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(1),]$LabelCond <- "Test-1Hit"
+kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(0),]$LabelCond <- "Test-0Miss"
+kid.sac$LabelCond <- as.factor(kid.sac$LabelCond)
+# Exclude kids with no utterance data
+kid.sac <- kid.sac[!is.na(kid.sac$LabelCond),]
+```
+
+When we have naming times, we'll define time periods before/after onset of the utterance. Until then this is commented out.
+
+```{r}
+# Discern when the name was said.
+ #kid.sac$Start <- "Before"
+ #kid.sac[kid.sac$Period == "Pre",]$Start <- ifelse(kid.sac[kid.sac$Period == "Pre",]$SacTime < 2250 ,"Before","After")
+ #kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")
+  #kid.sac[kid.sac$Period == "Rew",]$Start <- "After"
+```
+
+
+Finally, we create our data frame for analysis
+```{r}
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Period, data = kid.sac, keep.names = T) -> Sac.sum
+na.omit(summaryBy(SacTarg +SacDist2 +SacDist1+SacFromTarg+SacToTarg ~Period+LabelCond, data = Sac.sum, keep.names = T))
+
+
+```
+
+**Demographics & Responses**
+
+We have `r length(unique(Sac.sum[!is.na(Sac.sum$LabelCond),]$Subj))` subjects.
+
+```{r}
+subj <- summaryBy(Label~Subj + trialnum + Lang + AgeGroup+ cond, data = kid.sac,keep.names = T, na.rm = T)
+subj <- summaryBy(Label~Subj + Lang + AgeGroup+ cond, data = kid.sac,keep.names = T, na.rm = T)
+summaryBy(Label~Lang + AgeGroup+ cond, data = subj, FUN = c(mean, length))
+```
+
+
+**Eye tracking analysis**
+
+Now, we plot saccades between the Target picture and its Foil for each time window, based on children's utterance.
+
+```{r, echo=FALSE}
+na.omit(summaryBy(SacTarg~Period+LabelCond+Subj, data = Sac.sum[Sac.sum$Period != "Rew",], FUN = c(mean,sd), keep.names = T)) -> Sac.graph
+na.omit(summaryBy(SacTarg.mean~Period+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
+Sac.graph$Period <- factor(Sac.graph$Period, levels = c("Pre","Naming"),labels = c("Pre","Naming"), ordered = T)
+Sac.graph$SE = Sac.graph$SacTarg.mean.sd/sqrt(length(unique(Sac.sum$Subj)))
+
+Sac.graph$Time = "Naming"
+Sac.graph[Sac.graph$Period == "Pre" , ]$Time = "Preview"
+Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Naming"),labels = c("Preview","Naming"), ordered = T)
+
+tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$LabelCond,Sac.graph$Time), FUN = mean) -> o
+tapply(Sac.graph$SE, list(Sac.graph$LabelCond,Sac.graph$Time), FUN = mean) -> se
+
+barplot(o, beside =T , ylim = c(0,0.40),col = "white",  border = NA, ylab = "Critical Saccades", names.arg = c("Preview", "Naming"))
+ legend(1.2,0.15, legend = c("Control", "Not Detecting Ambiguity", "Detecting Ambiguity"), bty = "n", col = c("blue","grey","red"), pch = 20)
+ points(c(1.5,6), o[1,], pch = 20, cex = 2, col = "blue")
+ points(c(2.5,6.8), o[2,], pch = 20, cex = 2, col = "grey")
+  points(c(3.5,7.6), o[3,], pch = 20, cex = 2, col = "red")
+ grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs = TRUE)
+abline(v = c(4.5,8.5), col = "grey", lty = "dashed")
+  arrows(c(1.5,2.5,3.5,6,6.8,7.6), (c(o) + c(se)+0.01), c(1.5,2.5,3.5,6,6.8,7.6), (c(o) - c(se)-0.01), code = 0)   
+```
+
+
+We use mixed effects models to analyze each time window. We'll need to add extra regressions once the naming time is coded.
+
+```{r}
+summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum, Period == "Pre")))
+summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum,  Period == "Naming")))
+#summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum,  Period == "Naming" & Start == "Before")))
+#summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum,  Period == "Naming" & Start == "After")))   	 
+
+```
+
