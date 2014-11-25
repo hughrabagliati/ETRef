@@ -1,0 +1,91 @@
+grep -r -l 'zj01' . | sort | uniq | xargs perl -e "s/zj01/KidSubjExpt2-1/" -pi 
+grep -r -l 'zd1815' . | sort | uniq | xargs perl -e "s/zd1815/KidSubjExpt2-2/" -pi 
+grep -r -l 'vn2845' . | sort | uniq | xargs perl -e "s/vn2845/KidSubjExpt2-3/" -pi 
+grep -r -l 'vh23edf' . | sort | uniq | xargs perl -e "s/vh23edf/KidSubjExpt2-4/" -pi 
+grep -r -l 'tp22' . | sort | uniq | xargs perl -e "s/tp22/KidSubjExpt2-5/" -pi 
+grep -r -l 'tl68' . | sort | uniq | xargs perl -e "s/tl68/KidSubjExpt2-6/" -pi 
+grep -r -l 'tc1820' . | sort | uniq | xargs perl -e "s/tc1820/KidSubjExpt2-7/" -pi 
+grep -r -l 'sm2284' . | sort | uniq | xargs perl -e "s/sm2284/KidSubjExpt2-8/" -pi 
+grep -r -l 'rs19' . | sort | uniq | xargs perl -e "s/rs19/KidSubjExpt2-9/" -pi 
+grep -r -l 'rm254' . | sort | uniq | xargs perl -e "s/rm254/KidSubjExpt2-10/" -pi 
+
+grep -r -l 'rm' . | sort | uniq | xargs perl -e "s/rm/KidSubjExpt2-11/" -pi 
+grep -r -l 'rh2537' . | sort | uniq | xargs perl -e "s/rh2537/KidSubjExpt2-12/" -pi 
+grep -r -l 'rc2844' . | sort | uniq | xargs perl -e "s/rc2844/KidSubjExpt2-13/" -pi 
+grep -r -l 'pp13' . | sort | uniq | xargs perl -e "s/pp13/KidSubjExpt2-14/" -pi 
+grep -r -l 'op2537' . | sort | uniq | xargs perl -e "s/op2537/KidSubjExpt2-15/" -pi 
+grep -r -l 'oh28' . | sort | uniq | xargs perl -e "s/oh28/KidSubjExpt2-16/" -pi 
+grep -r -l 'oh23' . | sort | uniq | xargs perl -e "s/oh23/KidSubjExpt2-17/" -pi 
+grep -r -l 'oc15' . | sort | uniq | xargs perl -e "s/oc15/KidSubjExpt2-18/" -pi 
+grep -r -l 'np28' . | sort | uniq | xargs perl -e "s/np28/KidSubjExpt2-19/" -pi 
+grep -r -l 'nl60' . | sort | uniq | xargs perl -e "s/nl60/KidSubjExpt2-20/" -pi 
+grep -r -l 'na3090' . | sort | uniq | xargs perl -e "s/na3090/KidSubjExpt2-21/" -pi 
+grep -r -l 'mg281' . | sort | uniq | xargs perl -e "s/mg281/KidSubjExpt2-22/" -pi 
+
+
+grep -r -l 'mg2136' . | sort | uniq | xargs perl -e "s/mg2136/KidSubjExpt2-23/" -pi 
+grep -r -l 'mf1063' . | sort | uniq | xargs perl -e "s/mf1063/KidSubjExpt2-24/" -pi 
+grep -r -l 'mc13' . | sort | uniq | xargs perl -e "s/mc13/KidSubjExpt2-25/" -pi 
+grep -r -l 'mb92' . | sort | uniq | xargs perl -e "s/mb92/KidSubjExpt2-26/" -pi 
+grep -r -l 'lj2221' . | sort | uniq | xargs perl -e "s/lj2221/KidSubjExpt2-27/" -pi 
+grep -r -l 'lj2136' . | sort | uniq | xargs perl -e "s/lj2136/KidSubjExpt2-28/" -pi 
+grep -r -l 'lf17367' . | sort | uniq | xargs perl -e "s/lf17367/KidSubjExpt2-29/" -pi 
+grep -r -l 'kt3332' . | sort | uniq | xargs perl -e "s/kt3332/KidSubjExpt2-30/" -pi 
+
+
+grep -r -l 'km2737' . | sort | uniq | xargs perl -e "s/km2737/KidSubjExpt2-31/" -pi 
+grep -r -l 'kb14208' . | sort | uniq | xargs perl -e "s/kb14208/KidSubjExpt2-32/" -pi 
+grep -r -l 'jt73489' . | sort | uniq | xargs perl -e "s/jt73489/KidSubjExpt2-33/" -pi 
+grep -r -l 'jt17' . | sort | uniq | xargs perl -e "s/jt17/KidSubjExpt2-34/" -pi 
+grep -r -l 'jt14' . | sort | uniq | xargs perl -e "s/jt14/KidSubjExpt2-35/" -pi 
+grep -r -l 'js2581' . | sort | uniq | xargs perl -e "s/js2581/KidSubjExpt2-36/" -pi 
+grep -r -l 'jp23' . | sort | uniq | xargs perl -e "s/jp23/KidSubjExpt2-37/" -pi 
+grep -r -l 'jm15' . | sort | uniq | xargs perl -e "s/jm15/KidSubjExpt2-38/" -pi 
+grep -r -l 'JLog' . | sort | uniq | xargs perl -e "s/JLog/KidSubjExpt2-39/" -pi 
+grep -r -l 'jg1629' . | sort | uniq | xargs perl -e "s/jg1629/KidSubjExpt2-40/" -pi 
+grep -r -l 'jd01' . | sort | uniq | xargs perl -e "s/jd01/KidSubjExpt2-41/" -pi 
+grep -r -l 'ir1850' . | sort | uniq | xargs perl -e "s/ir1850/KidSubjExpt2-42/" -pi 
+
+
+grep -r -l 'im8381' . | sort | uniq | xargs perl -e "s/im8381/KidSubjExpt2-43/" -pi 
+grep -r -l 'im1433' . | sort | uniq | xargs perl -e "s/im1433/KidSubjExpt2-44/" -pi 
+grep -r -l 'if148' . | sort | uniq | xargs perl -e "s/if148/KidSubjExpt2-45/" -pi 
+grep -r -l 'ie13' . | sort | uniq | xargs perl -e "s/ie13/KidSubjExpt2-46/" -pi 
+grep -r -l 'hx14' . | sort | uniq | xargs perl -e "s/hx14/KidSubjExpt2-47/" -pi 
+grep -r -l 'hc2619' . | sort | uniq | xargs perl -e "s/hc2619/KidSubjExpt2-48/" -pi 
+grep -r -l 'gs' . | sort | uniq | xargs perl -e "s/gs/KidSubjExpt2-49/" -pi 
+grep -r -l 'gk30' . | sort | uniq | xargs perl -e "s/gk30/KidSubjExpt2-50/" -pi 
+grep -r -l 'fw9287' . | sort | uniq | xargs perl -e "s/fw9287/KidSubjExpt2-51/" -pi 
+grep -r -l 'fw8380' . | sort | uniq | xargs perl -e "s/fw8380/KidSubjExpt2-52/" -pi 
+grep -r -l 'fs31' . | sort | uniq | xargs perl -e "s/fs31/KidSubjExpt2-53/" -pi 
+
+
+grep -r -l 'fm27' . | sort | uniq | xargs perl -e "s/fm27/KidSubjExpt2-54/" -pi 
+grep -r -l 'fl1114' . | sort | uniq | xargs perl -e "s/fl1114/KidSubjExpt2-55/" -pi 
+grep -r -l 'fg25' . | sort | uniq | xargs perl -e "s/fg25/KidSubjExpt2-56/" -pi 
+grep -r -l 'fc3067' . | sort | uniq | xargs perl -e "s/fc3067/KidSubjExpt2-57/" -pi 
+grep -r -l 'fa6876' . | sort | uniq | xargs perl -e "s/fa6876/KidSubjExpt2-58/" -pi 
+grep -r -l 'et30' . | sort | uniq | xargs perl -e "s/et30/KidSubjExpt2-59/" -pi 
+grep -r -l 'em' . | sort | uniq | xargs perl -e "s/em/KidSubjExpt2-60/" -pi 
+grep -r -l 'eg29' . | sort | uniq | xargs perl -e "s/eg29/KidSubjExpt2-61/" -pi 
+grep -r -l 'eb1318' . | sort | uniq | xargs perl -e "s/eb1318/KidSubjExpt2-62/" -pi 
+grep -r -l 'dv2807' . | sort | uniq | xargs perl -e "s/dv2807/KidSubjExpt2-63/" -pi 
+grep -r -l 'di10' . | sort | uniq | xargs perl -e "s/di10/KidSubjExpt2-64/" -pi 
+grep -r -l 'db2035' . | sort | uniq | xargs perl -e "s/db2035/KidSubjExpt2-65/" -pi 
+grep -r -l 'cm27021' . | sort | uniq | xargs perl -e "s/cm27021/KidSubjExpt2-66/" -pi 
+
+
+grep -r -l 'cm25' . | sort | uniq | xargs perl -e "s/cm25/KidSubjExpt2-67/" -pi 
+grep -r -l 'cm1764' . | sort | uniq | xargs perl -e "s/cm1764/KidSubjExpt2-68/" -pi 
+grep -r -l 'cl53' . | sort | uniq | xargs perl -e "s/cl53/KidSubjExpt2-69/" -pi 
+grep -r -l 'at43' . | sort | uniq | xargs perl -e "s/at43/KidSubjExpt2-70/" -pi 
+grep -r -l 'ar1027' . | sort | uniq | xargs perl -e "s/ar1027/KidSubjExpt2-71/" -pi 
+grep -r -l 'ap27' . | sort | uniq | xargs perl -e "s/ap27/KidSubjExpt2-72/" -pi 
+grep -r -l 'ap1054' . | sort | uniq | xargs perl -e "s/ap1054/KidSubjExpt2-73/" -pi 
+grep -r -l 'an12' . | sort | uniq | xargs perl -e "s/an12/KidSubjExpt2-74/" -pi 
+grep -r -l 'am25' . | sort | uniq | xargs perl -e "s/am25/KidSubjExpt2-75/" -pi 
+grep -r -l 'al68' . | sort | uniq | xargs perl -e "s/al68/KidSubjExpt2-76/" -pi 
+grep -r -l 'al2400' . | sort | uniq | xargs perl -e "s/al2400/KidSubjExpt2-77/" -pi 
+grep -r -l 'ak44' . | sort | uniq | xargs perl -e "s/ak44/KidSubjExpt2-78/" -pi 
+grep -r -l 'ak2233' . | sort | uniq | xargs perl -e "s/ak2233/KidSubjExpt2-79/" -pi 
+grep -r -l 'a205' . | sort | uniq | xargs perl -e "s/a205/KidSubjExpt2-80/" -pi 

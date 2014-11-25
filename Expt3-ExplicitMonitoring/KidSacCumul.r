@@ -18,7 +18,7 @@ sac.process2 = function(pathway = "./", Pop = "NA"){
 	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"
 	names(sac)[names(sac) == "CURRENT_SAC_END_TIME"] <- "SacEndTime"
 	
-	sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))
+	sac$Subj <- as.factor(paste(sac$Subj,"", sep = ""))
 	sac$Sac <- 1
 	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)
 	sac$SacToTarg <- 0
@@ -86,10 +86,10 @@ kid.sac.bin.naming$SacBin <- kid.sac.bin.naming$SacBin2
 kid.sac.bin.naming <- ddply(kid.sac.bin.naming, .(Subj,trialnum, Period), transform, CumTarg = CumTarg - min(CumTarg),CumD1 = CumD1 - min(CumD1),CumD2 = CumD2 - min(CumD2))
 
 # We don't have naming times currently
-summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum,  Period == "Pre")))
 	 
 summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Period, data = kid.sac, keep.names = T) -> Sac.sum
 na.omit(summaryBy(SacTarg +SacDist2 +SacDist1+SacFromTarg+SacToTarg ~Period+LabelCond, data = Sac.sum, keep.names = T))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum,  Period == "Pre")))
 
 
 na.omit(summaryBy(SacTarg~Period+LabelCond+Subj, data = Sac.sum[Sac.sum$Period != "Rew",], FUN = c(mean,sd), keep.names = T)) -> Sac.graph

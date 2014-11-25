@@ -61,7 +61,7 @@ sac.process = function(pathway = "./", Pop = "NA"){
 	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"
 	names(sac)[names(sac) == "CURRENT_SAC_START_INTEREST_AREA_LABEL"] <- "SacStart"
 	names(sac)[names(sac) == "CURRENT_SAC_END_INTEREST_AREA_LABEL"] <- "SacEnd"
-	sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))
+	#sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))
 	sac$Sac <- 1
 	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)
 	sac$SacTarg <- 0

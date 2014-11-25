@@ -135,17 +135,6 @@ TrialTime <- summaryBy(TRIAL_DWELL_TIME~SubjTrial, data = subset(kid.ref.t, subs
 kid.ref.t <- kid.ref.t[kid.ref.t$SubjTrial %in% TrialTime[TrialTime$TRIAL_DWELL_TIME > 1500,]$SubjTrial,]
 
 
-summary(lmer(PropDwell~LabelCond + (1+LabelCond|Subj)+(1|Item), data = subset(kid.ref.t, subset = Period == "Pre" & Picture == "Targ" & AgeGroup == "Young" & Lang == "Mon")))
-summary(lmer(PropDwell~LabelCond + (1+LabelCond|Subj)+(1|Item), data = subset(kid.ref.t, subset = Period == "Pre" & Picture == "Targ" & AgeGroup == "Old" & Lang == "Mon")))
-summary(lmer(PropDwell~LabelCond + (1+LabelCond|Subj)+(1|Item), data = subset(kid.ref.t, subset = Period == "Pre" & Picture == "Dist" & AgeGroup == "Young" & Lang == "Mon")))
-summary(lmer(PropDwell~LabelCond + (1+LabelCond|Subj)+(1|Item), data = subset(kid.ref.t, subset = Period == "Pre" & Picture == "Dist" & AgeGroup == "Old" & Lang == "Mon")))
-
-summary(glmer(Label~PropDwell + (1+PropDwell|Subj)+(1|Item), data = subset(kid.ref.t, subset = Period == "Pre" & Picture == "Targ" & cond == "Ambig" & AgeGroup == "Young" & Lang == "Mon") , family = "binomial"))
-summary(glmer(Label~PropDwell + (1+PropDwell|Subj)+(1|Item), data = subset(kid.ref.t, subset = Period == "Pre" & Picture == "Targ" & cond == "Ambig" & AgeGroup == "Old" & Lang == "Mon") , family = "binomial"))
-summary(glmer(Label~PropDwell + (1+PropDwell|Subj)+(1|Item), data = subset(kid.ref.t, subset = Period == "Pre" & Picture == "Dist" & cond == "Ambig" & AgeGroup == "Young" & Lang == "Mon") , family = "binomial"))
-summary(glmer(Label~PropDwell + (1+PropDwell|Subj)+(1|Item), data = subset(kid.ref.t, subset = Period == "Pre" & Picture == "Dist" & cond == "Ambig" & AgeGroup == "Old" & Lang == "Mon") , family = "binomial"))
-
-
 kid.ref.t.s <- kid.ref.t[kid.ref.t$Period == "Pre" & kid.ref.t$Picture == "Targ",]
 kid.ref.t.s$Label2 <- 1- kid.ref.t.s$Label
 
