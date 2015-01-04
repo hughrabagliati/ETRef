@@ -6,7 +6,7 @@ require(longitudinalData)
 sac.process2 = function(pathway = "./", Pop = "NA"){
 	sac = c()
 	for (i in unique(Pop)){
-		for (j in c("Pre","Targ","Rew")){# Something is off with the reward section ,"Rew")){
+		for (j in c("Pre","Targ","Rew")){
 		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))
 		sac.temp <- read.delim(file.list, header = T)
 		sac.temp$Period = ifelse(j == "Targ","Naming",j)
@@ -35,7 +35,6 @@ sac.process2 = function(pathway = "./", Pop = "NA"){
 	sac$SacDist2 <- 0
 	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1
 	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1
-	#sac <- summaryBy(SacTarg + SacSwitch + Sac + SacDist1 + SacDist2 ~ Subj + trialnum + cond+Period, data = sac, keep.names = T)
 	sac <- sac[sac$type != "Filler",]
 	return(sac)
 }
@@ -43,9 +42,6 @@ sac.process2 = function(pathway = "./", Pop = "NA"){
 kid.sac <- sac.process2("./Eyedata/","Kids")
 kid.sac$order <- 1:length(kid.sac$SacToTarg)
 names <- read.delim("./Eyedata/WriteNames-Times.txt")
-#Groups = read.delim("SubjNames.txt", header = T)
-#merge(kid.sac,Groups, all = T) -> kid.sac
-#kid.sac[is.na(kid.sac$AgeGroup),]$AgeGroup <- "Old"
 kid.sac <- merge(kid.sac,names, by = c("Subj","trialnum"), all.x = TRUE)
 kid.sac<- kid.sac[order(kid.sac$order),]
 names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"
@@ -84,31 +80,36 @@ kid.sac.bin$SacBin2 <- kid.sac.bin$SacBin - kid.sac.bin$StartTime
 kid.sac.bin.naming <- subset(kid.sac.bin, SacBin2 >= -10 & SacBin2 <= 50)
 kid.sac.bin.naming$SacBin <- kid.sac.bin.naming$SacBin2
 kid.sac.bin.naming <- ddply(kid.sac.bin.naming, .(Subj,trialnum, Period), transform, CumTarg = CumTarg - min(CumTarg),CumD1 = CumD1 - min(CumD1),CumD2 = CumD2 - min(CumD2))
-
-# We don't have naming times currently
 	 
-summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Period, data = kid.sac, keep.names = T) -> Sac.sum
-na.omit(summaryBy(SacTarg +SacDist2 +SacDist1+SacFromTarg+SacToTarg ~Period+LabelCond, data = Sac.sum, keep.names = T))
+# Discern when the name was said.
+kid.sac$Start <- "Before"
+kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")
+#kid.sac[kid.sac$Period == "Pre",]$Start <- ifelse(kid.sac[kid.sac$Period == "Pre",]$SacTime < 2250 ,"Before","After")
+kid.sac[kid.sac$Period == "Rew",]$Start <- "After"
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Period+Start, data = kid.sac, keep.names = T) -> Sac.sum
+na.omit(summaryBy(SacTarg +SacDist2 +SacDist1+SacFromTarg+SacToTarg ~Period+Start+LabelCond, data = Sac.sum, keep.names = T))
 summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum,  Period == "Pre")))
 
 
-na.omit(summaryBy(SacTarg~Period+LabelCond+Subj, data = Sac.sum[Sac.sum$Period != "Rew",], FUN = c(mean,sd), keep.names = T)) -> Sac.graph
-na.omit(summaryBy(SacTarg.mean~Period+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
+na.omit(summaryBy(SacTarg~Period+Start+LabelCond+Subj, data = Sac.sum[Sac.sum$Period != "Rew",], FUN = c(mean,sd), keep.names = T)) -> Sac.graph
+na.omit(summaryBy(SacTarg.mean~Period+Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
 Sac.graph$Period <- factor(Sac.graph$Period, levels = c("Pre","Naming"),labels = c("Pre","Naming"), ordered = T)
+Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Before","After"),labels = c("Before","After"), ordered = T)
 Sac.graph$SE = Sac.graph$SacTarg.mean.sd/sqrt(length(unique(Sac.sum$Subj)))
 
-Sac.graph$Time = "Naming"
+Sac.graph$Time = "Pre-Naming"
+Sac.graph[Sac.graph$Start == "After" , ]$Time = "Post-Naming"
 Sac.graph[Sac.graph$Period == "Pre" , ]$Time = "Preview"
-Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Naming"),labels = c("Preview","Naming"), ordered = T)
+Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post-Naming"),labels = c("Preview","Pre-Naming","Post-Naming"), ordered = T)
 
-tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$LabelCond,Sac.graph$Time), FUN = mean) -> o
-tapply(Sac.graph$SE, list(Sac.graph$LabelCond,Sac.graph$Time), FUN = mean) -> se
+tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> o
+tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> se
 
-barplot(o, beside =T , ylim = c(0,0.40),col = "white",  border = NA, ylab = "Critical Saccades", names.arg = c("Preview", "Naming"))
- legend(1.2,0.15, legend = c("Control", "Not Detecting Ambiguity", "Detecting Ambiguity"), bty = "n", col = c("blue","grey","red"), pch = 20)
- points(c(1.5,6), o[1,], pch = 20, cex = 2, col = "blue")
- points(c(2.5,6.8), o[2,], pch = 20, cex = 2, col = "grey")
-  points(c(3.5,7.6), o[3,], pch = 20, cex = 2, col = "red")
- grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs = TRUE)
+barplot(o, beside =T , ylim = c(0,0.35),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
+legend(1.2,0.10, legend = c("Control", "Ambiguous Description", "Unambiguous Description"), bty = "n", col = c("blue","grey","red"), pch = 20)
+points(c(1.5,6,10), o[,1], pch = 20, cex = 2, col = "blue")
+points(c(2.5,6.8,11), o[,2], pch = 20, cex = 2, col = "grey")
+points(c(3.5,7.6,12), o[,3], pch = 20, cex = 2, col = "red")
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs = TRUE)
 abline(v = c(4.5,8.5), col = "grey", lty = "dashed")
-  arrows(c(1.5,2.5,3.5,6,6.8,7.6), (c(o) + c(se)+0.01), c(1.5,2.5,3.5,6,6.8,7.6), (c(o) - c(se)-0.01), code = 0)	 
+arrows(c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) + c(se)+0.01), c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) - c(se)-0.01), code = 0)

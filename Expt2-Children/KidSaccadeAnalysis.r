@@ -6,7 +6,7 @@ require(longitudinalData)
 sac.process2 = function(pathway = "./", Pop = "NA"){
 	sac = c()
 	for (i in unique(Pop)){
-		for (j in c("Pre","Targ","Rew")){# Something is off with the reward section ,"Rew")){
+		for (j in c("Pre","Targ","Rew")){
 		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))
 		sac.temp <- read.delim(file.list, header = T)
 		sac.temp$Period = ifelse(j == "Targ","Naming",j)
@@ -35,7 +35,6 @@ sac.process2 = function(pathway = "./", Pop = "NA"){
 	sac$SacDist2 <- 0
 	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1
 	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1
-	#sac <- summaryBy(SacTarg + SacSwitch + Sac + SacDist1 + SacDist2 ~ Subj + trialnum + cond+Period, data = sac, keep.names = T)
 	sac <- sac[sac$type != "Filler",]
 	return(sac)
 }
@@ -47,7 +46,6 @@ kid.sac <- sac.process2("./EyeData/","Kids")
   names <- read.delim("./EyeData/WriteNames-Times.txt")
   Groups = read.delim("./EyeData/SubjNames.txt", header = T)
   merge(kid.sac,Groups, all = T) -> kid.sac
-  #kid.sac[is.na(kid.sac$AgeGroup),]$AgeGroup <- "Old"
   kid.sac <- merge(kid.sac,names, by = c("Subj","trialnum"), all.x = TRUE)
   kid.sac<- kid.sac[order(kid.sac$order),]
   names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"
@@ -79,7 +77,9 @@ kid.sac <- kid.sac[!kid.sac$Lang == "Exc",]
 summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Pre")))
 summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Naming" & Start == "Before")))
 summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Naming" & Start == "After")))	 	 
-	
+
+# It's interesting to note that there are no age effects here [Run the models above with AgeGroup as an interacting factor].
+# I think that that might be because there are so few trials in the Unambiguous condition for the younger groups.
 	 
 	 	 
 na.omit(summaryBy(SacTarg~Period+Start+LabelCond+Subj, data = Sac.sum[Sac.sum$Period != "Rew",], FUN = c(mean,sd), keep.names = T)) -> Sac.graph
