@@ -105,10 +105,15 @@ if (file.exists("./EyeData/AdultWriteNames.txt") == TRUE){
 
 adult.ref.t$Item <- as.factor(sapply(strsplit(as.character(adult.ref.t$targname),"[.12]"), "[", 1))
 
-summary(lmer(SacTarg~cond*type + (1|Subj)+(1|Item), data = subset(adult.ref.t, subset = Period == "Pre" & Picture == "Targ" & TRIAL_DWELL_TIME > 1500)))
-
-
+summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(adult.ref.t, subset = Period == "Pre" & Picture == "Targ")))
+ad.temp <- summaryBy(SacTarg~Subj+type+cond,data = subset(adult.ref.t, subset = Period == "Pre" & Picture == "Targ"),na.rm=T)
+summaryBy(SacTarg.mean~type+cond, data = ad.temp, FUN = c(mean, sd))
+                     
 adult.ref.t.s <- adult.ref.t[adult.ref.t$Period == "Pre" & adult.ref.t$Picture == "Targ",]
 adult.ref.t.s$Label2 <- 1 - adult.ref.t.s$Label
 BarPlotGaze(adult.ref.t.s, "SacTarg", "Proportion critical saccades")
 BarPlotGaze(adult.ref.t.s, "Label","Proportion ambiguous labels")
+
+ad.temp <- summaryBy(Label~Subj+type+cond, data = adult.ref.t, na.rm = T)
+summaryBy(Label.mean~type+cond, data = ad.temp, FUN = c(mean, sd))
+summary(lmer(Label~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(adult.ref.t, subset = Period == "Pre" & Picture == "Targ"), family = "binomial"))

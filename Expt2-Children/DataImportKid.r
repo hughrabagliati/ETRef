@@ -29,7 +29,7 @@ data_import <- function(path_name,type = "Kids"){
 	names(data.set)[names(data.set) == "IA_LABEL"] <- "Picture"
 	names(data.set)[names(data.set) == "IA_DWELL_TIME"] <- "DwellTime"
 	names(data.set)[names(data.set) == "IA_FIXATION_COUNT"] <- "FixCount"
-	names(data.set)[names(data.set) == "DATA_FILE"] <- "Subj"
+	names(data.set)[names(data.set) == "RECORDING_SESSION_LABEL"] <- "Subj"
 	names(data.set)[names(data.set) == "IA_FIXATION_."] <- "PropFix"
 	names(data.set)[names(data.set) == "IA_DWELL_TIME_."] <- "PropDwell"
 	data.set$PropFix = as.numeric(data.set$PropFix)
@@ -71,7 +71,7 @@ sac.process = function(pathway = "./", Pop = "NA"){
 	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"
 	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_START_INTEREST_AREA_LABEL"] <- "SacStart"
 	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"
-	sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))
+	#sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))
 	sac$Sac <- 1
 	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)
 	sac$SacTarg <- 0
@@ -105,20 +105,11 @@ kid.sac = sac.process("./EyeData/","Kids")
 kid.ref.t <- merge(kid.ref.t, kid.sac, by = c("Subj", "trialnum","cond","Period"), all.x = TRUE)
 
 
-# If statements tidy up the importing of sound coded trials -- writes a file where sound trials can be imported into.
-if (file.exists("./EyeData/WriteNames-Times.txt") == TRUE){
-	names = read.delim("./EyeData/WriteNames-Times.txt")
-	if(length(names$FixCount > 0)){names$FixCount <- NULL}
-	kid.ref.t <- merge(kid.ref.t,names, by = c("Subj","trialnum"), all.x = TRUE)
-	prntout <- data.frame(summaryBy(Label+StartTime~Subj+trialnum, data = kid.ref.t, FUN = mean, na.rm=T, keep.names = T))
-	write.table(prntout[order(prntout$Subj),], file = "./EyeData/WriteNames-Times.txt", sep = "\t", row.names = F)
-	}else{
-			prntout <- data.frame(cbind(aggregate(FixCount~Subj+trialnum, data = kid.ref.t, sum),Label = NA,StartTime = NA))
-			write.table(prntout[order(prntout$Subj),], file = "./EyeData/WriteNames-Times.txt", sep = "\t", row.names = F)
-			}
+names = read.delim("./EyeData/WriteNames-Times.txt")
+kid.ref.t <- merge(kid.ref.t,names, by = c("Subj","trialnum"), all.x = TRUE)
+
 
 # Create a measure of difference in labeling
-#kid.ref.t <- merge(kid.ref.t,data.frame(Subj = unique(kid.ref.t$Subj), Sub = (summaryBy(Label~Subj, data = subset(kid.ref.t, cond == "Control"),na.rm = T)$Label.mean  - summaryBy(Label~Subj, data = subset(kid.ref.t, cond == "Ambig"),na.rm = T)$Label.mean)))
 
 # Create LabelCond variable; used for data analysis
 kid.ref.t$LabelCond <- NA
@@ -139,3 +130,8 @@ kid.ref.t.s <- kid.ref.t[kid.ref.t$Period == "Pre" & kid.ref.t$Picture == "Targ"
 kid.ref.t.s$Label2 <- 1- kid.ref.t.s$Label
 
 BarPlotGaze(kid.ref.t.s, "PropDwell","PropDwell")
+
+kid.temp <- summaryBy(Label~Subj+cond, data = kid.ref.t, na.rm = T)
+summaryBy(Label.mean~cond, data = kid.temp, FUN = c(mean, sd),na.rm=T)
+summary(lmer(Label~cond + (1+cond|Subj)+(1+cond|Item), data = subset(kid.ref.t, subset = Period == "Pre" & Picture == "Targ"), family = "binomial"))
+

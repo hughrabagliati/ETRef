@@ -1,385 +1,1 @@
-"Subj"	"trialnum"	"Label"
-"AdSubjExpt1-3"	"Homoph_Ambig_lock1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Ambig_mouse1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Ambig_mussel1.jpg"	0
-"AdSubjExpt1-3"	"Homoph_Ambig_pie1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Ambig_pipe1.jpg"	0
-"AdSubjExpt1-3"	"Homoph_Ambig_razor1.jpg"	0
-"AdSubjExpt1-3"	"Homoph_Ambig_sale1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Ambig_sponge1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Control_bat1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Control_bow1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Control_button1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Control_cork1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Control_diamond1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Control_flour1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Control_glass1.jpg"	1
-"AdSubjExpt1-3"	"Homoph_Control_horn1.jpg"	0
-"AdSubjExpt1-4"	"Homoph_Ambig_lock1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Ambig_mouse1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Ambig_mussel1.jpg"	0
-"AdSubjExpt1-4"	"Homoph_Ambig_pie1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Ambig_pipe1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Ambig_razor1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Ambig_sale1.jpg"	0
-"AdSubjExpt1-4"	"Homoph_Ambig_sponge1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Control_bat1.jpg"	0
-"AdSubjExpt1-4"	"Homoph_Control_bow1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Control_button1.jpg"	0
-"AdSubjExpt1-4"	"Homoph_Control_cork1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Control_diamond1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Control_flour1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Control_glass1.jpg"	1
-"AdSubjExpt1-4"	"Homoph_Control_horn1.jpg"	1
-"AdSubjExpt1-1"	"Homoph_Ambig_bat1.jpg"	1
-"AdSubjExpt1-1"	"Homoph_Ambig_bow1.jpg"	0
-"AdSubjExpt1-1"	"Homoph_Ambig_button1.jpg"	0
-"AdSubjExpt1-1"	"Homoph_Ambig_cork1.jpg"	0
-"AdSubjExpt1-1"	"Homoph_Ambig_diamond1.jpg"	1
-"AdSubjExpt1-1"	"Homoph_Ambig_flour1.jpg"	1
-"AdSubjExpt1-1"	"Homoph_Ambig_glass1.jpg"	0
-"AdSubjExpt1-1"	"Homoph_Ambig_horn1.jpg"	1
-"AdSubjExpt1-1"	"Homoph_Control_lock1.jpg"	0
-"AdSubjExpt1-1"	"Homoph_Control_mouse1.jpg"	1
-"AdSubjExpt1-1"	"Homoph_Control_mussel1.jpg"	0
-"AdSubjExpt1-1"	"Homoph_Control_pie1.jpg"	1
-"AdSubjExpt1-1"	"Homoph_Control_pipe1.jpg"	1
-"AdSubjExpt1-1"	"Homoph_Control_razor1.jpg"	0
-"AdSubjExpt1-1"	"Homoph_Control_sale1.jpg"	0
-"AdSubjExpt1-1"	"Homoph_Control_sponge1.jpg"	0
-"AdSubjExpt1-5"	"Homoph_Ambig_bat2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Ambig_bow2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Ambig_button2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Ambig_cork2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Ambig_diamond2.jpg"	0
-"AdSubjExpt1-5"	"Homoph_Ambig_flour2.jpg"	0
-"AdSubjExpt1-5"	"Homoph_Ambig_glass2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Ambig_horn2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Control_lock2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Control_mouse2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Control_mussel2.jpg"	0
-"AdSubjExpt1-5"	"Homoph_Control_pie2.jpg"	0
-"AdSubjExpt1-5"	"Homoph_Control_pipe2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Control_razor2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Control_sale2.jpg"	1
-"AdSubjExpt1-5"	"Homoph_Control_sponge2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Ambig_lock2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Ambig_mouse2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Ambig_mussel2.jpg"	0
-"AdSubjExpt1-7"	"Homoph_Ambig_pie2.jpg"	0
-"AdSubjExpt1-7"	"Homoph_Ambig_pipe2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Ambig_razor2.jpg"	0
-"AdSubjExpt1-7"	"Homoph_Ambig_sale2.jpg"	0
-"AdSubjExpt1-7"	"Homoph_Ambig_sponge2.jpg"	0
-"AdSubjExpt1-7"	"Homoph_Control_bat2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Control_bow2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Control_button2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Control_cork2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Control_diamond2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Control_flour2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Control_glass2.jpg"	1
-"AdSubjExpt1-7"	"Homoph_Control_horn2.jpg"	1
-"AdSubjExpt1-6"	"Homoph_Ambig_bat2.jpg"	1
-"AdSubjExpt1-6"	"Homoph_Ambig_bow2.jpg"	1
-"AdSubjExpt1-6"	"Homoph_Ambig_button2.jpg"	1
-"AdSubjExpt1-6"	"Homoph_Ambig_cork2.jpg"	1
-"AdSubjExpt1-6"	"Homoph_Ambig_diamond2.jpg"	0
-"AdSubjExpt1-6"	"Homoph_Ambig_flour2.jpg"	1
-"AdSubjExpt1-6"	"Homoph_Ambig_glass2.jpg"	0
-"AdSubjExpt1-6"	"Homoph_Ambig_horn2.jpg"	0
-"AdSubjExpt1-6"	"Homoph_Control_lock2.jpg"	1
-"AdSubjExpt1-6"	"Homoph_Control_mouse2.jpg"	1
-"AdSubjExpt1-6"	"Homoph_Control_mussel2.jpg"	0
-"AdSubjExpt1-6"	"Homoph_Control_pie2.jpg"	1
-"AdSubjExpt1-6"	"Homoph_Control_pipe2.jpg"	1
-"AdSubjExpt1-6"	"Homoph_Control_razor2.jpg"	0
-"AdSubjExpt1-6"	"Homoph_Control_sale2.jpg"	0
-"AdSubjExpt1-6"	"Homoph_Control_sponge2.jpg"	0
-"AdSubjExpt1-11"	"Homoph_Ambig_bat2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Ambig_bow2.jpg"	NA
-"AdSubjExpt1-11"	"Homoph_Ambig_button2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Ambig_cork2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Ambig_diamond2.jpg"	0
-"AdSubjExpt1-11"	"Homoph_Ambig_flour2.jpg"	0
-"AdSubjExpt1-11"	"Homoph_Ambig_glass2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Ambig_horn2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Control_lock2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Control_mouse2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Control_mussel2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Control_pie2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Control_pipe2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Control_razor2.jpg"	0
-"AdSubjExpt1-11"	"Homoph_Control_sale2.jpg"	1
-"AdSubjExpt1-11"	"Homoph_Control_sponge2.jpg"	1
-"AdSubjExpt1-10"	"Homoph_Ambig_lock1.jpg"	0
-"AdSubjExpt1-10"	"Homoph_Ambig_mouse1.jpg"	1
-"AdSubjExpt1-10"	"Homoph_Ambig_mussel1.jpg"	1
-"AdSubjExpt1-10"	"Homoph_Ambig_pie1.jpg"	1
-"AdSubjExpt1-10"	"Homoph_Ambig_pipe1.jpg"	0
-"AdSubjExpt1-10"	"Homoph_Ambig_razor1.jpg"	0
-"AdSubjExpt1-10"	"Homoph_Ambig_sale1.jpg"	0
-"AdSubjExpt1-10"	"Homoph_Ambig_sponge1.jpg"	0
-"AdSubjExpt1-10"	"Homoph_Control_bat1.jpg"	0
-"AdSubjExpt1-10"	"Homoph_Control_bow1.jpg"	0
-"AdSubjExpt1-10"	"Homoph_Control_button1.jpg"	1
-"AdSubjExpt1-10"	"Homoph_Control_cork1.jpg"	1
-"AdSubjExpt1-10"	"Homoph_Control_diamond1.jpg"	1
-"AdSubjExpt1-10"	"Homoph_Control_flour1.jpg"	1
-"AdSubjExpt1-10"	"Homoph_Control_glass1.jpg"	0
-"AdSubjExpt1-10"	"Homoph_Control_horn1.jpg"	1
-"AdSubjExpt1-2"	"Homoph_Ambig_bat1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Ambig_bow1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Ambig_button1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Ambig_cork1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Ambig_diamond1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Ambig_flour1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Ambig_glass1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Ambig_horn1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Control_lock1.jpg"	1
-"AdSubjExpt1-2"	"Homoph_Control_mouse1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Control_mussel1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Control_pie1.jpg"	1
-"AdSubjExpt1-2"	"Homoph_Control_pipe1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Control_razor1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Control_sale1.jpg"	0
-"AdSubjExpt1-2"	"Homoph_Control_sponge1.jpg"	0
-"AdSubjExpt1-9"	"Homoph_Ambig_bat1.jpg"	0
-"AdSubjExpt1-9"	"Homoph_Ambig_bow1.jpg"	0
-"AdSubjExpt1-9"	"Homoph_Ambig_button1.jpg"	0
-"AdSubjExpt1-9"	"Homoph_Ambig_cork1.jpg"	0
-"AdSubjExpt1-9"	"Homoph_Ambig_diamond1.jpg"	1
-"AdSubjExpt1-9"	"Homoph_Ambig_flour1.jpg"	0
-"AdSubjExpt1-9"	"Homoph_Ambig_glass1.jpg"	0
-"AdSubjExpt1-9"	"Homoph_Ambig_horn1.jpg"	1
-"AdSubjExpt1-9"	"Homoph_Control_lock1.jpg"	1
-"AdSubjExpt1-9"	"Homoph_Control_mouse1.jpg"	0
-"AdSubjExpt1-9"	"Homoph_Control_mussel1.jpg"	0
-"AdSubjExpt1-9"	"Homoph_Control_pie1.jpg"	1
-"AdSubjExpt1-9"	"Homoph_Control_pipe1.jpg"	0
-"AdSubjExpt1-9"	"Homoph_Control_razor1.jpg"	1
-"AdSubjExpt1-9"	"Homoph_Control_sale1.jpg"	1
-"AdSubjExpt1-9"	"Homoph_Control_sponge1.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Ambig_lock2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Ambig_mouse2.jpg"	0
-"AdSubjExpt1-12"	"Homoph_Ambig_mussel2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Ambig_pie2.jpg"	0
-"AdSubjExpt1-12"	"Homoph_Ambig_pipe2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Ambig_razor2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Ambig_sale2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Ambig_sponge2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Control_bat2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Control_bow2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Control_button2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Control_cork2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Control_diamond2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Control_flour2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Control_glass2.jpg"	1
-"AdSubjExpt1-12"	"Homoph_Control_horn2.jpg"	0
-"AdSubjExpt1-8"	"Homoph_Ambig_lock2.jpg"	1
-"AdSubjExpt1-8"	"Homoph_Ambig_mouse2.jpg"	1
-"AdSubjExpt1-8"	"Homoph_Ambig_mussel2.jpg"	0
-"AdSubjExpt1-8"	"Homoph_Ambig_pie2.jpg"	1
-"AdSubjExpt1-8"	"Homoph_Ambig_pipe2.jpg"	1
-"AdSubjExpt1-8"	"Homoph_Ambig_razor2.jpg"	0
-"AdSubjExpt1-8"	"Homoph_Ambig_sale2.jpg"	0
-"AdSubjExpt1-8"	"Homoph_Ambig_sponge2.jpg"	0
-"AdSubjExpt1-8"	"Homoph_Control_bat2.jpg"	1
-"AdSubjExpt1-8"	"Homoph_Control_bow2.jpg"	1
-"AdSubjExpt1-8"	"Homoph_Control_button2.jpg"	1
-"AdSubjExpt1-8"	"Homoph_Control_cork2.jpg"	1
-"AdSubjExpt1-8"	"Homoph_Control_diamond2.jpg"	1
-"AdSubjExpt1-8"	"Homoph_Control_flour2.jpg"	1
-"AdSubjExpt1-8"	"Homoph_Control_glass2.jpg"	0
-"AdSubjExpt1-8"	"Homoph_Control_horn2.jpg"	1
-"AdSubjExpt1-18"	"Same_Ambig_bike1.jpg"	0
-"AdSubjExpt1-18"	"Same_Ambig_bird1.jpg"	0
-"AdSubjExpt1-18"	"Same_Ambig_book1.jpg"	0
-"AdSubjExpt1-18"	"Same_Ambig_bus1.jpg"	0
-"AdSubjExpt1-18"	"Same_Ambig_car1.jpg"	0
-"AdSubjExpt1-18"	"Same_Ambig_cat1.jpg"	0
-"AdSubjExpt1-18"	"Same_Ambig_chair1.jpg"	0
-"AdSubjExpt1-18"	"Same_Ambig_dog1.jpg"	0
-"AdSubjExpt1-18"	"Same_Control_fish1.jpg"	0
-"AdSubjExpt1-18"	"Same_Control_flower1.jpg"	1
-"AdSubjExpt1-18"	"Same_Control_leaf1.jpg"	1
-"AdSubjExpt1-18"	"Same_Control_penguin1.jpg"	1
-"AdSubjExpt1-18"	"Same_Control_shoe1.jpg"	1
-"AdSubjExpt1-18"	"Same_Control_spoon1.jpg"	1
-"AdSubjExpt1-18"	"Same_Control_toothbrush1.jpg"	1
-"AdSubjExpt1-18"	"Same_Control_tree1.jpg"	1
-"AdSubjExpt1-24"	"Same_Ambig_fish2.jpg"	1
-"AdSubjExpt1-24"	"Same_Ambig_flower2.jpg"	0
-"AdSubjExpt1-24"	"Same_Ambig_leaf2.jpg"	0
-"AdSubjExpt1-24"	"Same_Ambig_penguin2.jpg"	0
-"AdSubjExpt1-24"	"Same_Ambig_shoe2.jpg"	0
-"AdSubjExpt1-24"	"Same_Ambig_spoon2.jpg"	0
-"AdSubjExpt1-24"	"Same_Ambig_toothbrush2.jpg"	1
-"AdSubjExpt1-24"	"Same_Ambig_tree2.jpg"	0
-"AdSubjExpt1-24"	"Same_Control_bike2.jpg"	1
-"AdSubjExpt1-24"	"Same_Control_bird2.jpg"	1
-"AdSubjExpt1-24"	"Same_Control_book2.jpg"	0
-"AdSubjExpt1-24"	"Same_Control_bus2.jpg"	1
-"AdSubjExpt1-24"	"Same_Control_car2.jpg"	0
-"AdSubjExpt1-24"	"Same_Control_cat2.jpg"	1
-"AdSubjExpt1-24"	"Same_Control_chair2.jpg"	1
-"AdSubjExpt1-24"	"Same_Control_dog2.jpg"	1
-"AdSubjExpt1-22"	"Same_Ambig_bike2.jpg"	0
-"AdSubjExpt1-22"	"Same_Ambig_bird2.jpg"	0
-"AdSubjExpt1-22"	"Same_Ambig_book2.jpg"	0
-"AdSubjExpt1-22"	"Same_Ambig_bus2.jpg"	0
-"AdSubjExpt1-22"	"Same_Ambig_car2.jpg"	0
-"AdSubjExpt1-22"	"Same_Ambig_cat2.jpg"	0
-"AdSubjExpt1-22"	"Same_Ambig_chair2.jpg"	0
-"AdSubjExpt1-22"	"Same_Ambig_dog2.jpg"	0
-"AdSubjExpt1-22"	"Same_Control_fish2.jpg"	1
-"AdSubjExpt1-22"	"Same_Control_flower2.jpg"	1
-"AdSubjExpt1-22"	"Same_Control_leaf2.jpg"	1
-"AdSubjExpt1-22"	"Same_Control_penguin2.jpg"	1
-"AdSubjExpt1-22"	"Same_Control_shoe2.jpg"	1
-"AdSubjExpt1-22"	"Same_Control_spoon2.jpg"	1
-"AdSubjExpt1-22"	"Same_Control_toothbrush2.jpg"	0
-"AdSubjExpt1-22"	"Same_Control_tree2.jpg"	0
-"AdSubjExpt1-16"	"Same_Ambig_fish2.jpg"	0
-"AdSubjExpt1-16"	"Same_Ambig_flower2.jpg"	1
-"AdSubjExpt1-16"	"Same_Ambig_leaf2.jpg"	0
-"AdSubjExpt1-16"	"Same_Ambig_penguin2.jpg"	1
-"AdSubjExpt1-16"	"Same_Ambig_shoe2.jpg"	0
-"AdSubjExpt1-16"	"Same_Ambig_spoon2.jpg"	0
-"AdSubjExpt1-16"	"Same_Ambig_toothbrush2.jpg"	0
-"AdSubjExpt1-16"	"Same_Ambig_tree2.jpg"	0
-"AdSubjExpt1-16"	"Same_Control_bike2.jpg"	1
-"AdSubjExpt1-16"	"Same_Control_bird2.jpg"	1
-"AdSubjExpt1-16"	"Same_Control_book2.jpg"	1
-"AdSubjExpt1-16"	"Same_Control_bus2.jpg"	1
-"AdSubjExpt1-16"	"Same_Control_car2.jpg"	1
-"AdSubjExpt1-16"	"Same_Control_cat2.jpg"	1
-"AdSubjExpt1-16"	"Same_Control_chair2.jpg"	0
-"AdSubjExpt1-16"	"Same_Control_dog2.jpg"	1
-"AdSubjExpt1-15"	"Same_Ambig_bike2.jpg"	0
-"AdSubjExpt1-15"	"Same_Ambig_bird2.jpg"	1
-"AdSubjExpt1-15"	"Same_Ambig_book2.jpg"	1
-"AdSubjExpt1-15"	"Same_Ambig_bus2.jpg"	0
-"AdSubjExpt1-15"	"Same_Ambig_car2.jpg"	0
-"AdSubjExpt1-15"	"Same_Ambig_cat2.jpg"	0
-"AdSubjExpt1-15"	"Same_Ambig_chair2.jpg"	0
-"AdSubjExpt1-15"	"Same_Ambig_dog2.jpg"	1
-"AdSubjExpt1-15"	"Same_Control_fish2.jpg"	1
-"AdSubjExpt1-15"	"Same_Control_flower2.jpg"	1
-"AdSubjExpt1-15"	"Same_Control_leaf2.jpg"	1
-"AdSubjExpt1-15"	"Same_Control_penguin2.jpg"	1
-"AdSubjExpt1-15"	"Same_Control_shoe2.jpg"	1
-"AdSubjExpt1-15"	"Same_Control_spoon2.jpg"	1
-"AdSubjExpt1-15"	"Same_Control_toothbrush2.jpg"	1
-"AdSubjExpt1-15"	"Same_Control_tree2.jpg"	1
-"AdSubjExpt1-20"	"Same_Ambig_fish1.jpg"	0
-"AdSubjExpt1-20"	"Same_Ambig_flower1.jpg"	0
-"AdSubjExpt1-20"	"Same_Ambig_leaf1.jpg"	0
-"AdSubjExpt1-20"	"Same_Ambig_penguin1.jpg"	1
-"AdSubjExpt1-20"	"Same_Ambig_shoe1.jpg"	0
-"AdSubjExpt1-20"	"Same_Ambig_spoon1.jpg"	1
-"AdSubjExpt1-20"	"Same_Ambig_toothbrush1.jpg"	0
-"AdSubjExpt1-20"	"Same_Ambig_tree1.jpg"	0
-"AdSubjExpt1-20"	"Same_Control_bike1.jpg"	1
-"AdSubjExpt1-20"	"Same_Control_bird1.jpg"	1
-"AdSubjExpt1-20"	"Same_Control_book1.jpg"	1
-"AdSubjExpt1-20"	"Same_Control_bus1.jpg"	1
-"AdSubjExpt1-20"	"Same_Control_car1.jpg"	1
-"AdSubjExpt1-20"	"Same_Control_cat1.jpg"	1
-"AdSubjExpt1-20"	"Same_Control_chair1.jpg"	1
-"AdSubjExpt1-20"	"Same_Control_dog1.jpg"	1
-"AdSubjExpt1-13"	"Same_Ambig_bike1.jpg"	1
-"AdSubjExpt1-13"	"Same_Ambig_bird1.jpg"	1
-"AdSubjExpt1-13"	"Same_Ambig_book1.jpg"	1
-"AdSubjExpt1-13"	"Same_Ambig_bus1.jpg"	0
-"AdSubjExpt1-13"	"Same_Ambig_car1.jpg"	0
-"AdSubjExpt1-13"	"Same_Ambig_cat1.jpg"	1
-"AdSubjExpt1-13"	"Same_Ambig_chair1.jpg"	0
-"AdSubjExpt1-13"	"Same_Ambig_dog1.jpg"	0
-"AdSubjExpt1-13"	"Same_Control_fish1.jpg"	1
-"AdSubjExpt1-13"	"Same_Control_flower1.jpg"	0
-"AdSubjExpt1-13"	"Same_Control_leaf1.jpg"	1
-"AdSubjExpt1-13"	"Same_Control_penguin1.jpg"	1
-"AdSubjExpt1-13"	"Same_Control_shoe1.jpg"	1
-"AdSubjExpt1-13"	"Same_Control_spoon1.jpg"	1
-"AdSubjExpt1-13"	"Same_Control_toothbrush1.jpg"	1
-"AdSubjExpt1-13"	"Same_Control_tree1.jpg"	1
-"AdSubjExpt1-19"	"Same_Ambig_fish1.jpg"	0
-"AdSubjExpt1-19"	"Same_Ambig_flower1.jpg"	0
-"AdSubjExpt1-19"	"Same_Ambig_leaf1.jpg"	1
-"AdSubjExpt1-19"	"Same_Ambig_penguin1.jpg"	0
-"AdSubjExpt1-19"	"Same_Ambig_shoe1.jpg"	0
-"AdSubjExpt1-19"	"Same_Ambig_spoon1.jpg"	1
-"AdSubjExpt1-19"	"Same_Ambig_toothbrush1.jpg"	0
-"AdSubjExpt1-19"	"Same_Ambig_tree1.jpg"	0
-"AdSubjExpt1-19"	"Same_Control_bike1.jpg"	0
-"AdSubjExpt1-19"	"Same_Control_bird1.jpg"	1
-"AdSubjExpt1-19"	"Same_Control_book1.jpg"	0
-"AdSubjExpt1-19"	"Same_Control_bus1.jpg"	1
-"AdSubjExpt1-19"	"Same_Control_car1.jpg"	1
-"AdSubjExpt1-19"	"Same_Control_cat1.jpg"	1
-"AdSubjExpt1-19"	"Same_Control_chair1.jpg"	1
-"AdSubjExpt1-19"	"Same_Control_dog1.jpg"	1
-"AdSubjExpt1-21"	"Same_Ambig_bike2.jpg"	0
-"AdSubjExpt1-21"	"Same_Ambig_bird2.jpg"	0
-"AdSubjExpt1-21"	"Same_Ambig_book2.jpg"	0
-"AdSubjExpt1-21"	"Same_Ambig_bus2.jpg"	0
-"AdSubjExpt1-21"	"Same_Ambig_car2.jpg"	0
-"AdSubjExpt1-21"	"Same_Ambig_cat2.jpg"	0
-"AdSubjExpt1-21"	"Same_Ambig_chair2.jpg"	0
-"AdSubjExpt1-21"	"Same_Ambig_dog2.jpg"	0
-"AdSubjExpt1-21"	"Same_Control_fish2.jpg"	1
-"AdSubjExpt1-21"	"Same_Control_flower2.jpg"	1
-"AdSubjExpt1-21"	"Same_Control_leaf2.jpg"	1
-"AdSubjExpt1-21"	"Same_Control_penguin2.jpg"	1
-"AdSubjExpt1-21"	"Same_Control_shoe2.jpg"	1
-"AdSubjExpt1-21"	"Same_Control_spoon2.jpg"	1
-"AdSubjExpt1-21"	"Same_Control_toothbrush2.jpg"	1
-"AdSubjExpt1-21"	"Same_Control_tree2.jpg"	1
-"AdSubjExpt1-14"	"Same_Ambig_fish1.jpg"	0
-"AdSubjExpt1-14"	"Same_Ambig_flower1.jpg"	0
-"AdSubjExpt1-14"	"Same_Ambig_leaf1.jpg"	0
-"AdSubjExpt1-14"	"Same_Ambig_penguin1.jpg"	0
-"AdSubjExpt1-14"	"Same_Ambig_shoe1.jpg"	0
-"AdSubjExpt1-14"	"Same_Ambig_spoon1.jpg"	0
-"AdSubjExpt1-14"	"Same_Ambig_toothbrush1.jpg"	0
-"AdSubjExpt1-14"	"Same_Ambig_tree1.jpg"	0
-"AdSubjExpt1-14"	"Same_Control_bike1.jpg"	1
-"AdSubjExpt1-14"	"Same_Control_bird1.jpg"	1
-"AdSubjExpt1-14"	"Same_Control_book1.jpg"	1
-"AdSubjExpt1-14"	"Same_Control_bus1.jpg"	0
-"AdSubjExpt1-14"	"Same_Control_car1.jpg"	0
-"AdSubjExpt1-14"	"Same_Control_cat1.jpg"	1
-"AdSubjExpt1-14"	"Same_Control_chair1.jpg"	1
-"AdSubjExpt1-14"	"Same_Control_dog1.jpg"	1
-"AdSubjExpt1-23"	"Same_Ambig_fish2.jpg"	0
-"AdSubjExpt1-23"	"Same_Ambig_flower2.jpg"	0
-"AdSubjExpt1-23"	"Same_Ambig_leaf2.jpg"	1
-"AdSubjExpt1-23"	"Same_Ambig_penguin2.jpg"	0
-"AdSubjExpt1-23"	"Same_Ambig_shoe2.jpg"	0
-"AdSubjExpt1-23"	"Same_Ambig_spoon2.jpg"	0
-"AdSubjExpt1-23"	"Same_Ambig_toothbrush2.jpg"	0
-"AdSubjExpt1-23"	"Same_Ambig_tree2.jpg"	0
-"AdSubjExpt1-23"	"Same_Control_bike2.jpg"	1
-"AdSubjExpt1-23"	"Same_Control_bird2.jpg"	0
-"AdSubjExpt1-23"	"Same_Control_book2.jpg"	1
-"AdSubjExpt1-23"	"Same_Control_bus2.jpg"	1
-"AdSubjExpt1-23"	"Same_Control_car2.jpg"	0
-"AdSubjExpt1-23"	"Same_Control_cat2.jpg"	1
-"AdSubjExpt1-23"	"Same_Control_chair2.jpg"	1
-"AdSubjExpt1-23"	"Same_Control_dog2.jpg"	1
-"AdSubjExpt1-17"	"Same_Ambig_bike1.jpg"	0
-"AdSubjExpt1-17"	"Same_Ambig_bird1.jpg"	0
-"AdSubjExpt1-17"	"Same_Ambig_book1.jpg"	0
-"AdSubjExpt1-17"	"Same_Ambig_bus1.jpg"	0
-"AdSubjExpt1-17"	"Same_Ambig_car1.jpg"	0
-"AdSubjExpt1-17"	"Same_Ambig_cat1.jpg"	0
-"AdSubjExpt1-17"	"Same_Ambig_chair1.jpg"	0
-"AdSubjExpt1-17"	"Same_Ambig_dog1.jpg"	0
-"AdSubjExpt1-17"	"Same_Control_fish1.jpg"	1
-"AdSubjExpt1-17"	"Same_Control_flower1.jpg"	0
-"AdSubjExpt1-17"	"Same_Control_leaf1.jpg"	1
-"AdSubjExpt1-17"	"Same_Control_penguin1.jpg"	1
-"AdSubjExpt1-17"	"Same_Control_shoe1.jpg"	1
-"AdSubjExpt1-17"	"Same_Control_spoon1.jpg"	1
-"AdSubjExpt1-17"	"Same_Control_toothbrush1.jpg"	1
-"AdSubjExpt1-17"	"Same_Control_tree1.jpg"	1
+Subj	trialnum	Label	StartTimeAdSubjExpt1-3	Homoph_Ambig_lock1.jpg	1	846AdSubjExpt1-3	Homoph_Ambig_mouse1.jpg	1	661AdSubjExpt1-3	Homoph_Ambig_mussel1.jpg	0	841AdSubjExpt1-3	Homoph_Ambig_pie1.jpg	1	636AdSubjExpt1-3	Homoph_Ambig_pipe1.jpg	0	735AdSubjExpt1-3	Homoph_Ambig_razor1.jpg	0	1494AdSubjExpt1-3	Homoph_Ambig_sale1.jpg	1	590AdSubjExpt1-3	Homoph_Ambig_sponge1.jpg	1	2041AdSubjExpt1-3	Homoph_Control_bat1.jpg	1	915AdSubjExpt1-3	Homoph_Control_bow1.jpg	1	892AdSubjExpt1-3	Homoph_Control_button1.jpg	1	815AdSubjExpt1-3	Homoph_Control_cork1.jpg	1	805AdSubjExpt1-3	Homoph_Control_diamond1.jpg	1	703AdSubjExpt1-3	Homoph_Control_flour1.jpg	1	940AdSubjExpt1-3	Homoph_Control_glass1.jpg	1	876AdSubjExpt1-3	Homoph_Control_horn1.jpg	0	1053AdSubjExpt1-4	Homoph_Ambig_lock1.jpg	1	827AdSubjExpt1-4	Homoph_Ambig_mouse1.jpg	1	1004AdSubjExpt1-4	Homoph_Ambig_mussel1.jpg	0	1674AdSubjExpt1-4	Homoph_Ambig_pie1.jpg	1	895AdSubjExpt1-4	Homoph_Ambig_pipe1.jpg	1	1482AdSubjExpt1-4	Homoph_Ambig_razor1.jpg	1	890AdSubjExpt1-4	Homoph_Ambig_sale1.jpg	0	873AdSubjExpt1-4	Homoph_Ambig_sponge1.jpg	1	1112AdSubjExpt1-4	Homoph_Control_bat1.jpg	0	787AdSubjExpt1-4	Homoph_Control_bow1.jpg	1	1017AdSubjExpt1-4	Homoph_Control_button1.jpg	0	2555AdSubjExpt1-4	Homoph_Control_cork1.jpg	1	570AdSubjExpt1-4	Homoph_Control_diamond1.jpg	1	910AdSubjExpt1-4	Homoph_Control_flour1.jpg	1	1240AdSubjExpt1-4	Homoph_Control_glass1.jpg	1	653AdSubjExpt1-4	Homoph_Control_horn1.jpg	1	968AdSubjExpt1-1	Homoph_Ambig_bat1.jpg	1	837AdSubjExpt1-1	Homoph_Ambig_bow1.jpg	0	1111AdSubjExpt1-1	Homoph_Ambig_button1.jpg	0	4707AdSubjExpt1-1	Homoph_Ambig_cork1.jpg	0	1709AdSubjExpt1-1	Homoph_Ambig_diamond1.jpg	1	787AdSubjExpt1-1	Homoph_Ambig_flour1.jpg	1	864AdSubjExpt1-1	Homoph_Ambig_glass1.jpg	0	3052AdSubjExpt1-1	Homoph_Ambig_horn1.jpg	1	2134AdSubjExpt1-1	Homoph_Control_lock1.jpg	0	625AdSubjExpt1-1	Homoph_Control_mouse1.jpg	1	742AdSubjExpt1-1	Homoph_Control_mussel1.jpg	0	2071AdSubjExpt1-1	Homoph_Control_pie1.jpg	1	1303AdSubjExpt1-1	Homoph_Control_pipe1.jpg	1	1119AdSubjExpt1-1	Homoph_Control_razor1.jpg	0	1071AdSubjExpt1-1	Homoph_Control_sale1.jpg	0	1741AdSubjExpt1-1	Homoph_Control_sponge1.jpg	0	2125AdSubjExpt1-5	Homoph_Ambig_bat2.jpg	1	632AdSubjExpt1-5	Homoph_Ambig_bow2.jpg	1	1121AdSubjExpt1-5	Homoph_Ambig_button2.jpg	1	696AdSubjExpt1-5	Homoph_Ambig_cork2.jpg	1	454AdSubjExpt1-5	Homoph_Ambig_diamond2.jpg	0	1191AdSubjExpt1-5	Homoph_Ambig_flour2.jpg	0	626AdSubjExpt1-5	Homoph_Ambig_glass2.jpg	1	892AdSubjExpt1-5	Homoph_Ambig_horn2.jpg	1	1071AdSubjExpt1-5	Homoph_Control_lock2.jpg	1	435AdSubjExpt1-5	Homoph_Control_mouse2.jpg	1	738AdSubjExpt1-5	Homoph_Control_mussel2.jpg	0	1000AdSubjExpt1-5	Homoph_Control_pie2.jpg	0	525AdSubjExpt1-5	Homoph_Control_pipe2.jpg	1	550AdSubjExpt1-5	Homoph_Control_razor2.jpg	1	772AdSubjExpt1-5	Homoph_Control_sale2.jpg	1	879AdSubjExpt1-5	Homoph_Control_sponge2.jpg	1	459AdSubjExpt1-7	Homoph_Ambig_lock2.jpg	1	1016AdSubjExpt1-7	Homoph_Ambig_mouse2.jpg	1	2108AdSubjExpt1-7	Homoph_Ambig_mussel2.jpg	0	1047AdSubjExpt1-7	Homoph_Ambig_pie2.jpg	0	607AdSubjExpt1-7	Homoph_Ambig_pipe2.jpg	1	917AdSubjExpt1-7	Homoph_Ambig_razor2.jpg	0	805AdSubjExpt1-7	Homoph_Ambig_sale2.jpg	0	1318AdSubjExpt1-7	Homoph_Ambig_sponge2.jpg	0	632AdSubjExpt1-7	Homoph_Control_bat2.jpg	1	719AdSubjExpt1-7	Homoph_Control_bow2.jpg	1	957AdSubjExpt1-7	Homoph_Control_button2.jpg	1	694AdSubjExpt1-7	Homoph_Control_cork2.jpg	1	1034AdSubjExpt1-7	Homoph_Control_diamond2.jpg	1	778AdSubjExpt1-7	Homoph_Control_flour2.jpg	1	648AdSubjExpt1-7	Homoph_Control_glass2.jpg	1	1131AdSubjExpt1-7	Homoph_Control_horn2.jpg	1	2707AdSubjExpt1-6	Homoph_Ambig_bat2.jpg	1	980AdSubjExpt1-6	Homoph_Ambig_bow2.jpg	1	997AdSubjExpt1-6	Homoph_Ambig_button2.jpg	1	875AdSubjExpt1-6	Homoph_Ambig_cork2.jpg	1	1606AdSubjExpt1-6	Homoph_Ambig_diamond2.jpg	0	1853AdSubjExpt1-6	Homoph_Ambig_flour2.jpg	1	966AdSubjExpt1-6	Homoph_Ambig_glass2.jpg	0	1088AdSubjExpt1-6	Homoph_Ambig_horn2.jpg	0	2065AdSubjExpt1-6	Homoph_Control_lock2.jpg	1	1725AdSubjExpt1-6	Homoph_Control_mouse2.jpg	1	875AdSubjExpt1-6	Homoph_Control_mussel2.jpg	0	1172AdSubjExpt1-6	Homoph_Control_pie2.jpg	1	801AdSubjExpt1-6	Homoph_Control_pipe2.jpg	1	897AdSubjExpt1-6	Homoph_Control_razor2.jpg	0	1044AdSubjExpt1-6	Homoph_Control_sale2.jpg	0	1642AdSubjExpt1-6	Homoph_Control_sponge2.jpg	0	1239AdSubjExpt1-11	Homoph_Ambig_bat2.jpg	1	709AdSubjExpt1-11	Homoph_Ambig_bow2.jpg	NA	NAAdSubjExpt1-11	Homoph_Ambig_button2.jpg	1	981AdSubjExpt1-11	Homoph_Ambig_cork2.jpg	1	985AdSubjExpt1-11	Homoph_Ambig_diamond2.jpg	0	1694AdSubjExpt1-11	Homoph_Ambig_flour2.jpg	0	1296AdSubjExpt1-11	Homoph_Ambig_glass2.jpg	1	805AdSubjExpt1-11	Homoph_Ambig_horn2.jpg	1	1490AdSubjExpt1-11	Homoph_Control_lock2.jpg	1	757AdSubjExpt1-11	Homoph_Control_mouse2.jpg	1	730AdSubjExpt1-11	Homoph_Control_mussel2.jpg	1	1147AdSubjExpt1-11	Homoph_Control_pie2.jpg	1	969AdSubjExpt1-11	Homoph_Control_pipe2.jpg	1	1606AdSubjExpt1-11	Homoph_Control_razor2.jpg	0	946AdSubjExpt1-11	Homoph_Control_sale2.jpg	1	2458AdSubjExpt1-11	Homoph_Control_sponge2.jpg	1	986AdSubjExpt1-10	Homoph_Ambig_lock1.jpg	0	798AdSubjExpt1-10	Homoph_Ambig_mouse1.jpg	1	867AdSubjExpt1-10	Homoph_Ambig_mussel1.jpg	1	948AdSubjExpt1-10	Homoph_Ambig_pie1.jpg	1	723AdSubjExpt1-10	Homoph_Ambig_pipe1.jpg	0	1004AdSubjExpt1-10	Homoph_Ambig_razor1.jpg	0	661AdSubjExpt1-10	Homoph_Ambig_sale1.jpg	0	921AdSubjExpt1-10	Homoph_Ambig_sponge1.jpg	0	1421AdSubjExpt1-10	Homoph_Control_bat1.jpg	0	604AdSubjExpt1-10	Homoph_Control_bow1.jpg	0	1831AdSubjExpt1-10	Homoph_Control_button1.jpg	1	772AdSubjExpt1-10	Homoph_Control_cork1.jpg	1	1176AdSubjExpt1-10	Homoph_Control_diamond1.jpg	1	753AdSubjExpt1-10	Homoph_Control_flour1.jpg	1	978AdSubjExpt1-10	Homoph_Control_glass1.jpg	0	1278AdSubjExpt1-10	Homoph_Control_horn1.jpg	1	979AdSubjExpt1-2	Homoph_Ambig_bat1.jpg	0	792AdSubjExpt1-2	Homoph_Ambig_bow1.jpg	0	1045AdSubjExpt1-2	Homoph_Ambig_button1.jpg	0	915AdSubjExpt1-2	Homoph_Ambig_cork1.jpg	0	1365AdSubjExpt1-2	Homoph_Ambig_diamond1.jpg	0	934AdSubjExpt1-2	Homoph_Ambig_flour1.jpg	0	575AdSubjExpt1-2	Homoph_Ambig_glass1.jpg	0	766AdSubjExpt1-2	Homoph_Ambig_horn1.jpg	0	1228AdSubjExpt1-2	Homoph_Control_lock1.jpg	1	1270AdSubjExpt1-2	Homoph_Control_mouse1.jpg	0	1806AdSubjExpt1-2	Homoph_Control_mussel1.jpg	0	1371AdSubjExpt1-2	Homoph_Control_pie1.jpg	1	682AdSubjExpt1-2	Homoph_Control_pipe1.jpg	0	1025AdSubjExpt1-2	Homoph_Control_razor1.jpg	0	1351AdSubjExpt1-2	Homoph_Control_sale1.jpg	0	1027AdSubjExpt1-2	Homoph_Control_sponge1.jpg	0	2519AdSubjExpt1-9	Homoph_Ambig_bat1.jpg	0	565AdSubjExpt1-9	Homoph_Ambig_bow1.jpg	0	680AdSubjExpt1-9	Homoph_Ambig_button1.jpg	0	664AdSubjExpt1-9	Homoph_Ambig_cork1.jpg	0	729AdSubjExpt1-9	Homoph_Ambig_diamond1.jpg	1	647AdSubjExpt1-9	Homoph_Ambig_flour1.jpg	0	500AdSubjExpt1-9	Homoph_Ambig_glass1.jpg	0	1207AdSubjExpt1-9	Homoph_Ambig_horn1.jpg	1	951AdSubjExpt1-9	Homoph_Control_lock1.jpg	1	781AdSubjExpt1-9	Homoph_Control_mouse1.jpg	0	613AdSubjExpt1-9	Homoph_Control_mussel1.jpg	0	1296AdSubjExpt1-9	Homoph_Control_pie1.jpg	1	688AdSubjExpt1-9	Homoph_Control_pipe1.jpg	0	858AdSubjExpt1-9	Homoph_Control_razor1.jpg	1	564AdSubjExpt1-9	Homoph_Control_sale1.jpg	1	540AdSubjExpt1-9	Homoph_Control_sponge1.jpg	1	781AdSubjExpt1-12	Homoph_Ambig_lock2.jpg	1	557AdSubjExpt1-12	Homoph_Ambig_mouse2.jpg	0	561AdSubjExpt1-12	Homoph_Ambig_mussel2.jpg	1	1172AdSubjExpt1-12	Homoph_Ambig_pie2.jpg	0	764AdSubjExpt1-12	Homoph_Ambig_pipe2.jpg	1	877AdSubjExpt1-12	Homoph_Ambig_razor2.jpg	1	934AdSubjExpt1-12	Homoph_Ambig_sale2.jpg	1	1633AdSubjExpt1-12	Homoph_Ambig_sponge2.jpg	1	761AdSubjExpt1-12	Homoph_Control_bat2.jpg	1	878AdSubjExpt1-12	Homoph_Control_bow2.jpg	1	822AdSubjExpt1-12	Homoph_Control_button2.jpg	1	751AdSubjExpt1-12	Homoph_Control_cork2.jpg	1	929AdSubjExpt1-12	Homoph_Control_diamond2.jpg	1	1023AdSubjExpt1-12	Homoph_Control_flour2.jpg	1	760AdSubjExpt1-12	Homoph_Control_glass2.jpg	1	788AdSubjExpt1-12	Homoph_Control_horn2.jpg	0	856AdSubjExpt1-8	Homoph_Ambig_lock2.jpg	1	982AdSubjExpt1-8	Homoph_Ambig_mouse2.jpg	1	768AdSubjExpt1-8	Homoph_Ambig_mussel2.jpg	0	875AdSubjExpt1-8	Homoph_Ambig_pie2.jpg	1	758AdSubjExpt1-8	Homoph_Ambig_pipe2.jpg	1	805AdSubjExpt1-8	Homoph_Ambig_razor2.jpg	0	486AdSubjExpt1-8	Homoph_Ambig_sale2.jpg	0	643AdSubjExpt1-8	Homoph_Ambig_sponge2.jpg	0	983AdSubjExpt1-8	Homoph_Control_bat2.jpg	1	734AdSubjExpt1-8	Homoph_Control_bow2.jpg	1	952AdSubjExpt1-8	Homoph_Control_button2.jpg	1	605AdSubjExpt1-8	Homoph_Control_cork2.jpg	1	653AdSubjExpt1-8	Homoph_Control_diamond2.jpg	1	518AdSubjExpt1-8	Homoph_Control_flour2.jpg	1	685AdSubjExpt1-8	Homoph_Control_glass2.jpg	0	654AdSubjExpt1-8	Homoph_Control_horn2.jpg	1	687AdSubjExpt1-18	Same_Ambig_bike1.jpg	0	1309AdSubjExpt1-18	Same_Ambig_bird1.jpg	0	1656AdSubjExpt1-18	Same_Ambig_book1.jpg	0	1606AdSubjExpt1-18	Same_Ambig_bus1.jpg	0	1191AdSubjExpt1-18	Same_Ambig_car1.jpg	0	978AdSubjExpt1-18	Same_Ambig_cat1.jpg	0	2103AdSubjExpt1-18	Same_Ambig_chair1.jpg	0	2459AdSubjExpt1-18	Same_Ambig_dog1.jpg	0	938AdSubjExpt1-18	Same_Control_fish1.jpg	0	1022AdSubjExpt1-18	Same_Control_flower1.jpg	1	895AdSubjExpt1-18	Same_Control_leaf1.jpg	1	1123AdSubjExpt1-18	Same_Control_penguin1.jpg	1	817AdSubjExpt1-18	Same_Control_shoe1.jpg	1	1200AdSubjExpt1-18	Same_Control_spoon1.jpg	1	968AdSubjExpt1-18	Same_Control_toothbrush1.jpg	1	814AdSubjExpt1-18	Same_Control_tree1.jpg	1	758AdSubjExpt1-24	Same_Ambig_fish2.jpg	1	916AdSubjExpt1-24	Same_Ambig_flower2.jpg	0	798AdSubjExpt1-24	Same_Ambig_leaf2.jpg	0	1406AdSubjExpt1-24	Same_Ambig_penguin2.jpg	0	767AdSubjExpt1-24	Same_Ambig_shoe2.jpg	0	853AdSubjExpt1-24	Same_Ambig_spoon2.jpg	0	885AdSubjExpt1-24	Same_Ambig_toothbrush2.jpg	1	911AdSubjExpt1-24	Same_Ambig_tree2.jpg	0	965AdSubjExpt1-24	Same_Control_bike2.jpg	1	888AdSubjExpt1-24	Same_Control_bird2.jpg	1	987AdSubjExpt1-24	Same_Control_book2.jpg	0	810AdSubjExpt1-24	Same_Control_bus2.jpg	1	822AdSubjExpt1-24	Same_Control_car2.jpg	0	796AdSubjExpt1-24	Same_Control_cat2.jpg	1	929AdSubjExpt1-24	Same_Control_chair2.jpg	1	726AdSubjExpt1-24	Same_Control_dog2.jpg	1	578AdSubjExpt1-22	Same_Ambig_bike2.jpg	0	984AdSubjExpt1-22	Same_Ambig_bird2.jpg	0	1107AdSubjExpt1-22	Same_Ambig_book2.jpg	0	943AdSubjExpt1-22	Same_Ambig_bus2.jpg	0	888AdSubjExpt1-22	Same_Ambig_car2.jpg	0	1521AdSubjExpt1-22	Same_Ambig_cat2.jpg	0	869AdSubjExpt1-22	Same_Ambig_chair2.jpg	0	840AdSubjExpt1-22	Same_Ambig_dog2.jpg	0	767AdSubjExpt1-22	Same_Control_fish2.jpg	1	642AdSubjExpt1-22	Same_Control_flower2.jpg	1	837AdSubjExpt1-22	Same_Control_leaf2.jpg	1	784AdSubjExpt1-22	Same_Control_penguin2.jpg	1	899AdSubjExpt1-22	Same_Control_shoe2.jpg	1	557AdSubjExpt1-22	Same_Control_spoon2.jpg	1	811AdSubjExpt1-22	Same_Control_toothbrush2.jpg	0	1216AdSubjExpt1-22	Same_Control_tree2.jpg	0	1129AdSubjExpt1-16	Same_Ambig_fish2.jpg	0	1159AdSubjExpt1-16	Same_Ambig_flower2.jpg	1	729AdSubjExpt1-16	Same_Ambig_leaf2.jpg	0	1008AdSubjExpt1-16	Same_Ambig_penguin2.jpg	1	842AdSubjExpt1-16	Same_Ambig_shoe2.jpg	0	906AdSubjExpt1-16	Same_Ambig_spoon2.jpg	0	682AdSubjExpt1-16	Same_Ambig_toothbrush2.jpg	0	1836AdSubjExpt1-16	Same_Ambig_tree2.jpg	0	1444AdSubjExpt1-16	Same_Control_bike2.jpg	1	768AdSubjExpt1-16	Same_Control_bird2.jpg	1	683AdSubjExpt1-16	Same_Control_book2.jpg	1	732AdSubjExpt1-16	Same_Control_bus2.jpg	1	756AdSubjExpt1-16	Same_Control_car2.jpg	1	740AdSubjExpt1-16	Same_Control_cat2.jpg	1	784AdSubjExpt1-16	Same_Control_chair2.jpg	0	762AdSubjExpt1-16	Same_Control_dog2.jpg	1	729AdSubjExpt1-15	Same_Ambig_bike2.jpg	0	1180AdSubjExpt1-15	Same_Ambig_bird2.jpg	1	1034AdSubjExpt1-15	Same_Ambig_book2.jpg	1	916AdSubjExpt1-15	Same_Ambig_bus2.jpg	0	724AdSubjExpt1-15	Same_Ambig_car2.jpg	0	1030AdSubjExpt1-15	Same_Ambig_cat2.jpg	0	858AdSubjExpt1-15	Same_Ambig_chair2.jpg	0	857AdSubjExpt1-15	Same_Ambig_dog2.jpg	1	783AdSubjExpt1-15	Same_Control_fish2.jpg	1	1023AdSubjExpt1-15	Same_Control_flower2.jpg	1	854AdSubjExpt1-15	Same_Control_leaf2.jpg	1	632AdSubjExpt1-15	Same_Control_penguin2.jpg	1	830AdSubjExpt1-15	Same_Control_shoe2.jpg	1	735AdSubjExpt1-15	Same_Control_spoon2.jpg	1	891AdSubjExpt1-15	Same_Control_toothbrush2.jpg	1	824AdSubjExpt1-15	Same_Control_tree2.jpg	1	748AdSubjExpt1-20	Same_Ambig_fish1.jpg	0	1391AdSubjExpt1-20	Same_Ambig_flower1.jpg	0	1038AdSubjExpt1-20	Same_Ambig_leaf1.jpg	0	1055AdSubjExpt1-20	Same_Ambig_penguin1.jpg	1	1069AdSubjExpt1-20	Same_Ambig_shoe1.jpg	0	1212AdSubjExpt1-20	Same_Ambig_spoon1.jpg	1	1213AdSubjExpt1-20	Same_Ambig_toothbrush1.jpg	0	996AdSubjExpt1-20	Same_Ambig_tree1.jpg	0	1595AdSubjExpt1-20	Same_Control_bike1.jpg	1	997AdSubjExpt1-20	Same_Control_bird1.jpg	1	884AdSubjExpt1-20	Same_Control_book1.jpg	1	869AdSubjExpt1-20	Same_Control_bus1.jpg	1	1032AdSubjExpt1-20	Same_Control_car1.jpg	1	777AdSubjExpt1-20	Same_Control_cat1.jpg	1	707AdSubjExpt1-20	Same_Control_chair1.jpg	1	815AdSubjExpt1-20	Same_Control_dog1.jpg	1	1169AdSubjExpt1-13	Same_Ambig_bike1.jpg	1	1363AdSubjExpt1-13	Same_Ambig_bird1.jpg	1	1402AdSubjExpt1-13	Same_Ambig_book1.jpg	1	1495AdSubjExpt1-13	Same_Ambig_bus1.jpg	0	746AdSubjExpt1-13	Same_Ambig_car1.jpg	0	1121AdSubjExpt1-13	Same_Ambig_cat1.jpg	1	1302AdSubjExpt1-13	Same_Ambig_chair1.jpg	0	1091AdSubjExpt1-13	Same_Ambig_dog1.jpg	0	1159AdSubjExpt1-13	Same_Control_fish1.jpg	1	982AdSubjExpt1-13	Same_Control_flower1.jpg	0	1167AdSubjExpt1-13	Same_Control_leaf1.jpg	1	1116AdSubjExpt1-13	Same_Control_penguin1.jpg	1	1033AdSubjExpt1-13	Same_Control_shoe1.jpg	1	1328AdSubjExpt1-13	Same_Control_spoon1.jpg	1	751AdSubjExpt1-13	Same_Control_toothbrush1.jpg	1	689AdSubjExpt1-13	Same_Control_tree1.jpg	1	875AdSubjExpt1-19	Same_Ambig_fish1.jpg	0	1120AdSubjExpt1-19	Same_Ambig_flower1.jpg	0	424AdSubjExpt1-19	Same_Ambig_leaf1.jpg	0	2721AdSubjExpt1-19	Same_Ambig_penguin1.jpg	0	1688AdSubjExpt1-19	Same_Ambig_shoe1.jpg	0	1943AdSubjExpt1-19	Same_Ambig_spoon1.jpg	1	2075AdSubjExpt1-19	Same_Ambig_toothbrush1.jpg	0	2084AdSubjExpt1-19	Same_Ambig_tree1.jpg	0	1768AdSubjExpt1-19	Same_Control_bike1.jpg	0	1096AdSubjExpt1-19	Same_Control_bird1.jpg	1	1901AdSubjExpt1-19	Same_Control_book1.jpg	0	659AdSubjExpt1-19	Same_Control_bus1.jpg	1	1037AdSubjExpt1-19	Same_Control_car1.jpg	1	1090AdSubjExpt1-19	Same_Control_cat1.jpg	1	963AdSubjExpt1-19	Same_Control_chair1.jpg	1	1086AdSubjExpt1-19	Same_Control_dog1.jpg	1	2449AdSubjExpt1-21	Same_Ambig_bike2.jpg	0	2725AdSubjExpt1-21	Same_Ambig_bird2.jpg	0	1475AdSubjExpt1-21	Same_Ambig_book2.jpg	0	1355AdSubjExpt1-21	Same_Ambig_bus2.jpg	0	1859AdSubjExpt1-21	Same_Ambig_car2.jpg	0	1041AdSubjExpt1-21	Same_Ambig_cat2.jpg	0	1267AdSubjExpt1-21	Same_Ambig_chair2.jpg	0	1167AdSubjExpt1-21	Same_Ambig_dog2.jpg	0	5267AdSubjExpt1-21	Same_Control_fish2.jpg	1	801AdSubjExpt1-21	Same_Control_flower2.jpg	1	980AdSubjExpt1-21	Same_Control_leaf2.jpg	1	1111AdSubjExpt1-21	Same_Control_penguin2.jpg	1	1160AdSubjExpt1-21	Same_Control_shoe2.jpg	1	824AdSubjExpt1-21	Same_Control_spoon2.jpg	1	744AdSubjExpt1-21	Same_Control_toothbrush2.jpg	1	964AdSubjExpt1-21	Same_Control_tree2.jpg	1	665AdSubjExpt1-14	Same_Ambig_fish1.jpg	0	1311AdSubjExpt1-14	Same_Ambig_flower1.jpg	0	1337AdSubjExpt1-14	Same_Ambig_leaf1.jpg	0	1437AdSubjExpt1-14	Same_Ambig_penguin1.jpg	0	1248AdSubjExpt1-14	Same_Ambig_shoe1.jpg	0	1120AdSubjExpt1-14	Same_Ambig_spoon1.jpg	0	1061AdSubjExpt1-14	Same_Ambig_toothbrush1.jpg	0	1207AdSubjExpt1-14	Same_Ambig_tree1.jpg	0	1521AdSubjExpt1-14	Same_Control_bike1.jpg	1	1339AdSubjExpt1-14	Same_Control_bird1.jpg	1	991AdSubjExpt1-14	Same_Control_book1.jpg	1	857AdSubjExpt1-14	Same_Control_bus1.jpg	0	781AdSubjExpt1-14	Same_Control_car1.jpg	0	743AdSubjExpt1-14	Same_Control_cat1.jpg	1	1039AdSubjExpt1-14	Same_Control_chair1.jpg	1	762AdSubjExpt1-14	Same_Control_dog1.jpg	1	689AdSubjExpt1-23	Same_Ambig_fish2.jpg	0	722AdSubjExpt1-23	Same_Ambig_flower2.jpg	0	934AdSubjExpt1-23	Same_Ambig_leaf2.jpg	1	1081AdSubjExpt1-23	Same_Ambig_penguin2.jpg	0	923AdSubjExpt1-23	Same_Ambig_shoe2.jpg	0	490AdSubjExpt1-23	Same_Ambig_spoon2.jpg	0	702AdSubjExpt1-23	Same_Ambig_toothbrush2.jpg	0	1074AdSubjExpt1-23	Same_Ambig_tree2.jpg	0	1049AdSubjExpt1-23	Same_Control_bike2.jpg	1	736AdSubjExpt1-23	Same_Control_bird2.jpg	0	846AdSubjExpt1-23	Same_Control_book2.jpg	1	705AdSubjExpt1-23	Same_Control_bus2.jpg	1	752AdSubjExpt1-23	Same_Control_car2.jpg	0	1046AdSubjExpt1-23	Same_Control_cat2.jpg	1	694AdSubjExpt1-23	Same_Control_chair2.jpg	1	925AdSubjExpt1-23	Same_Control_dog2.jpg	1	903AdSubjExpt1-17	Same_Ambig_bike1.jpg	0	825AdSubjExpt1-17	Same_Ambig_bird1.jpg	0	985AdSubjExpt1-17	Same_Ambig_book1.jpg	0	988AdSubjExpt1-17	Same_Ambig_bus1.jpg	0	874AdSubjExpt1-17	Same_Ambig_car1.jpg	0	822AdSubjExpt1-17	Same_Ambig_cat1.jpg	0	1153AdSubjExpt1-17	Same_Ambig_chair1.jpg	0	820AdSubjExpt1-17	Same_Ambig_dog1.jpg	0	1184AdSubjExpt1-17	Same_Control_fish1.jpg	1	573AdSubjExpt1-17	Same_Control_flower1.jpg	0	1075AdSubjExpt1-17	Same_Control_leaf1.jpg	1	837AdSubjExpt1-17	Same_Control_penguin1.jpg	1	806AdSubjExpt1-17	Same_Control_shoe1.jpg	1	767AdSubjExpt1-17	Same_Control_spoon1.jpg	1	761AdSubjExpt1-17	Same_Control_toothbrush1.jpg	1	808AdSubjExpt1-17	Same_Control_tree1.jpg	1	569

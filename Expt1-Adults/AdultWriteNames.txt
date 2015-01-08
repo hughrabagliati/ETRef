@@ -289,7 +289,7 @@
 "AdSubjExpt1-18"	"Same_Control_tree1.jpg"	1
 "AdSubjExpt1-19"	"Same_Ambig_fish1.jpg"	0
 "AdSubjExpt1-19"	"Same_Ambig_flower1.jpg"	0
-"AdSubjExpt1-19"	"Same_Ambig_leaf1.jpg"	1
+"AdSubjExpt1-19"	"Same_Ambig_leaf1.jpg"	0
 "AdSubjExpt1-19"	"Same_Ambig_penguin1.jpg"	0
 "AdSubjExpt1-19"	"Same_Ambig_shoe1.jpg"	0
 "AdSubjExpt1-19"	"Same_Ambig_spoon1.jpg"	1
