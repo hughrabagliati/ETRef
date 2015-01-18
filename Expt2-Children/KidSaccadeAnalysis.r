@@ -67,37 +67,35 @@ kid.sac <- kid.sac[!kid.sac$AgeGroup == "Excl",]
 kid.sac <- kid.sac[!kid.sac$Lang == "Exc",]
 
 # Discern when the name was said.
- kid.sac$Start <- "Before"
+ kid.sac$Start <- "Preview"
  kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")
- #kid.sac[kid.sac$Period == "Pre",]$Start <- ifelse(kid.sac[kid.sac$Period == "Pre",]$SacTime < 2250 ,"Before","After")
-  kid.sac[kid.sac$Period == "Rew",]$Start <- "After"
-	 summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~AgeGroup+Subj+trialnum+LabelCond+Period+Start, data = kid.sac, keep.names = T) -> Sac.sum
-	 na.omit(summaryBy(SacTarg +SacDist2 +SacDist1+SacFromTarg+SacToTarg ~AgeGroup+Period+Start+LabelCond, data = Sac.sum, keep.names = T))
+ kid.sac[kid.sac$Period == "Rew",]$Start <- "After"
+	 summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum
+	 na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
 	 
-summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Pre")))
-summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Naming" & Start == "Before")))
-summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, AgeGroup !="Excl" & Period == "Naming" & Start == "After")))	 	 
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Before")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "After")))	 	 
 
 # It's interesting to note that there are no age effects here [Run the models above with AgeGroup as an interacting factor].
 # I think that that might be because there are so few trials in the Unambiguous condition for the younger groups.
 	 
 	 	 
-na.omit(summaryBy(SacTarg~Period+Start+LabelCond+Subj, data = Sac.sum, FUN = c(mean,sd), keep.names = T)) -> Sac.graph
-na.omit(summaryBy(SacTarg.mean~Period+Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
-Sac.graph$Period <- factor(Sac.graph$Period, levels = c("Pre","Naming","Rew"),labels = c("Pre","Naming","Rew"), ordered = T)
-Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Before","After"),labels = c("Before","After"), ordered = T)
+na.omit(summaryBy(SacTarg~Start+LabelCond+Subj, data = Sac.sum, FUN = c(mean,sd), keep.names = T)) -> Sac.graph
+na.omit(summaryBy(SacTarg.mean~Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
+Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Preview", "Before","After"),labels = c("Preview", "Before","After"), ordered = T)
 Sac.graph$SE = Sac.graph$SacTarg.mean.sd/sqrt(length(unique(Sac.sum$Subj)))
 
 Sac.graph$Time = "Pre-Naming"
 Sac.graph[Sac.graph$Start == "After" , ]$Time = "Post-Naming"
-Sac.graph[Sac.graph$Period == "Pre" , ]$Time = "Preview"
+Sac.graph[Sac.graph$Start == "Preview" , ]$Time = "Preview"
 Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post-Naming"),labels = c("Preview","Pre-Naming","Post-Naming"), ordered = T)
 
 tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> o
 tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> se
 
 barplot(o, beside =T , ylim = c(0,0.25),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
-legend(1.2,0.10, legend = c("Control", "Ambiguous Description", "Unambiguous Description"), bty = "n", col = c("blue","grey","red"), pch = 20)
+legend(1.2,0.10, legend = c("Control Trials", "Uninformative Trials", "Informative Trials"), bty = "n", col = c("blue","grey","red"), pch = 20)
 points(c(1.5,6,10), o[,1], pch = 20, cex = 2, col = "blue")
 points(c(2.5,6.8,11), o[,2], pch = 20, cex = 2, col = "grey")
 points(c(3.5,7.6,12), o[,3], pch = 20, cex = 2, col = "red")

@@ -34,6 +34,8 @@ sac.process2 = function(pathway = "./", Pop = "NA"){
 	sac <- sac[sac$type != "Filler",]
   sac$type <- factor(sac$type)
 	sac$cond <- factor(sac$cond)
+  contrasts(sac$cond)[1] <- -1
+	contrasts(sac$type)[1] <- -1
 	return(sac)
 }
 
@@ -54,27 +56,35 @@ ad.sac[ad.sac$cond == "Ambig" & ad.sac$Label %in% c(0),]$LabelCond <- "Test-Unam
 ad.sac$LabelCond <- as.factor(ad.sac$LabelCond)
 
 
-ad.sac$Start <- "Before"
+ad.sac$Start <- "Preview"
 ad.sac[ad.sac$Period == "Naming",]$Start <- ifelse(ad.sac[ad.sac$Period == "Naming",]$SacTime < ad.sac[ad.sac$Period == "Naming",]$StartTime,"Before","After")
 ad.sac[ad.sac$Period == "Rew",]$Start <- "After"
 
-summaryBy(SacDist1+SacDist2+SacTarg ~Subj+Item+cond+type+Period+Start, data = ad.sac, keep.names = T) -> Sac.sum
-na.omit(summaryBy(SacTarg +SacDist2 ~Period+Start+type+cond, data = Sac.sum, keep.names = T))
+summaryBy(SacDist1+SacDist2+SacTarg ~Subj+Item+cond+type+Start, data = ad.sac, keep.names = T) -> Sac.sum
+Sac.sum$SacOnTrial = ifelse(Sac.sum$SacTarg > 0,1,0)
+na.omit(summaryBy(SacTarg +SacDist2 + SacOnTrial~Start+type+cond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
 
-summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Period == "Pre")))
-summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Period == "Naming" & Start == "Before")))
-summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum, Period == "Naming" & Start == "After")))        
+summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "Preview")))
+summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,   Start == "Before")))
+summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "After")))        
+
+summary(lmer(SacTarg~cond + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "Preview" & type == "Homoph")))
+summary(lmer(SacTarg~cond + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "Preview" & type == "Same")))
+
+
+summary(lmer(SacOnTrial~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "Preview"), family = "binomial"))
+summary(lmer(SacOnTrial~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,   Start == "Before"), family = "binomial"))
+summary(lmer(SacOnTrial~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "After"), family = "binomial"))        
 
 
 SacGraph <- function(Sac.graph){
-  na.omit(summaryBy(SacTarg.mean~Period+Start+cond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
-  Sac.graph$Period <- factor(Sac.graph$Period, levels = c("Pre","Naming","Rew"),labels = c("Pre","Naming","Rew"), ordered = T)
-  Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Before","After"),labels = c("Before","After"), ordered = T)
+  na.omit(summaryBy(SacTarg.mean~Start+cond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
+  Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Preview","Before","After"),labels = c("Preview","Before","After"), ordered = T)
   Sac.graph$SE = Sac.graph$SacTarg.mean.sd/sqrt(length(unique(Sac.sum$Subj)))
   
   Sac.graph$Time = "Pre-Naming"
   Sac.graph[Sac.graph$Start == "After" , ]$Time = "Post-Naming"
-  Sac.graph[Sac.graph$Period == "Pre" , ]$Time = "Preview"
+  Sac.graph[Sac.graph$Start == "Preview" , ]$Time = "Preview"
   Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post-Naming"),labels = c("Preview","Pre-Naming","Post-Naming"), ordered = T)
   Sac.graph$cond <- factor(Sac.graph$cond, levels = c("Control","Ambig"),labels = c("Control","Ambig"), ordered = T)
   tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$cond,Sac.graph$Time), FUN = mean) -> o
@@ -90,6 +100,6 @@ SacGraph <- function(Sac.graph){
 }
 
 # Homophones
-SacGraph(na.omit(summaryBy(SacTarg~Period+Start+cond+Subj, data = Sac.sum[ Sac.sum$type == "Homoph",], FUN = c(mean,sd), keep.names = T)))
+SacGraph(na.omit(summaryBy(SacTarg~Start+cond+Subj, data = Sac.sum[ Sac.sum$type == "Homoph",], FUN = c(mean,sd), keep.names = T)))
 # Same Cat
-SacGraph(na.omit(summaryBy(SacTarg~Period+Start+cond+Subj, data = Sac.sum[ Sac.sum$type == "Same",], FUN = c(mean,sd), keep.names = T)))
+SacGraph(na.omit(summaryBy(SacTarg~Start+cond+Subj, data = Sac.sum[ Sac.sum$type == "Same",], FUN = c(mean,sd), keep.names = T)))

@@ -58,55 +58,33 @@ kid.sac$LabelCond <- as.factor(kid.sac$LabelCond)
 
 
 
-ddply(kid.sac, .(Subj,trialnum,cond,Period,targname,LabelCond,Label,StartTime), summarize, SacBin = c(0:181)) -> kid.sac.s
-ddply(kid.sac[kid.sac$SacBin <182,], .(Subj,trialnum,cond,Period,targname,LabelCond,Label,SacBin), summarize, CumTarg = mean(CumTarg),CumD1 = mean(CumD1),CumD2 = mean(CumD2)) -> kid.sac.sum
-kid.sac.bin <- merge(kid.sac.s, kid.sac.sum, all = TRUE)
-kid.sac.bin$CumTarg <- t(imputation(matrix(kid.sac.bin$CumTarg, nrow = 1),method = "locf"))
-kid.sac.bin$CumD1 <- t(imputation(matrix(kid.sac.bin$CumD1, nrow = 1),method = "locf"))
-kid.sac.bin$CumD2 <- t(imputation(matrix(kid.sac.bin$CumD2, nrow = 1),method = "locf"))
-kid.sac.bin$Item <- as.factor(sapply(strsplit(as.character(kid.sac.bin$targname),"[.12]"), "[", 1))
-
-kid.sac.bin$SubjTrial <- paste(kid.sac.bin$Subj,kid.sac.bin$Item, sep = "") 
-TrialTime <- summaryBy(TRIAL_DWELL_TIME~SubjTrial, data = subset(kid.ref.t, subset = Period == "Pre" & Picture == "Targ"), keep.names = T, na.rm = T)
-kid.sac.bin <- kid.sac.bin[kid.sac.bin$SubjTrial %in% TrialTime[TrialTime$TRIAL_DWELL_TIME > 1500,]$SubjTrial,]
-
-
-
-kid.sac.bin$StartTime <- kid.sac.bin$StartTime/100
-kid.sac.bin$StartTime <- round(kid.sac.bin$StartTime)
-kid.sac.bin$SacBin2 <- kid.sac.bin$SacBin - kid.sac.bin$StartTime
-#Change the SacBin2 above to SacBin to see this timelocked to naming onset.
-
-kid.sac.bin.naming <- subset(kid.sac.bin, SacBin2 >= -10 & SacBin2 <= 50)
-kid.sac.bin.naming$SacBin <- kid.sac.bin.naming$SacBin2
-kid.sac.bin.naming <- ddply(kid.sac.bin.naming, .(Subj,trialnum, Period), transform, CumTarg = CumTarg - min(CumTarg),CumD1 = CumD1 - min(CumD1),CumD2 = CumD2 - min(CumD2))
-	 
 # Discern when the name was said.
-kid.sac$Start <- "Before"
+kid.sac$Start <- "Preview"
 kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")
-#kid.sac[kid.sac$Period == "Pre",]$Start <- ifelse(kid.sac[kid.sac$Period == "Pre",]$SacTime < 2250 ,"Before","After")
 kid.sac[kid.sac$Period == "Rew",]$Start <- "After"
-summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Period+Start, data = kid.sac, keep.names = T) -> Sac.sum
-na.omit(summaryBy(SacTarg +SacDist2 +SacDist1+SacFromTarg+SacToTarg ~Period+Start+LabelCond, data = Sac.sum, keep.names = T))
-summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum,  Period == "Pre")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum,  Start == "Preview")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum,  Start == "Before")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum,  Start == "After")))
 
 
-na.omit(summaryBy(SacTarg~Period+Start+LabelCond+Subj, data = Sac.sum[Sac.sum$Period != "Rew",], FUN = c(mean,sd), keep.names = T)) -> Sac.graph
-na.omit(summaryBy(SacTarg.mean~Period+Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
-Sac.graph$Period <- factor(Sac.graph$Period, levels = c("Pre","Naming"),labels = c("Pre","Naming"), ordered = T)
-Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Before","After"),labels = c("Before","After"), ordered = T)
+na.omit(summaryBy(SacTarg~Start+LabelCond+Subj, data = Sac.sum, FUN = c(mean,sd), keep.names = T)) -> Sac.graph
+na.omit(summaryBy(SacTarg.mean~Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
+Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Preview","Before","After"),labels = c("Preview","Before","After"), ordered = T)
 Sac.graph$SE = Sac.graph$SacTarg.mean.sd/sqrt(length(unique(Sac.sum$Subj)))
 
 Sac.graph$Time = "Pre-Naming"
 Sac.graph[Sac.graph$Start == "After" , ]$Time = "Post-Naming"
-Sac.graph[Sac.graph$Period == "Pre" , ]$Time = "Preview"
+Sac.graph[Sac.graph$Start == "Preview" , ]$Time = "Preview"
 Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post-Naming"),labels = c("Preview","Pre-Naming","Post-Naming"), ordered = T)
 
 tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> o
 tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> se
 
 barplot(o, beside =T , ylim = c(0,0.35),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
-legend(1.2,0.10, legend = c("Control", "Ambiguous Description", "Unambiguous Description"), bty = "n", col = c("blue","grey","red"), pch = 20)
+legend(1.2,0.10, legend = c("Control Trials", "Incorrect Trials", "Correct Trials"), bty = "n", col = c("blue","grey","red"), pch = 20)
 points(c(1.5,6,10), o[,1], pch = 20, cex = 2, col = "blue")
 points(c(2.5,6.8,11), o[,2], pch = 20, cex = 2, col = "grey")
 points(c(3.5,7.6,12), o[,3], pch = 20, cex = 2, col = "red")
