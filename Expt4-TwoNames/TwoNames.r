@@ -1,4 +1,5 @@
-
+library(lme4)
+library(doBy)
 TwoNames <- read.csv("TwoNames.csv", header = T)
 summaryBy(Label+Age~Condition+Order, data = TwoNames)
 
