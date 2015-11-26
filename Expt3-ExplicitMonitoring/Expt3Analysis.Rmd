@@ -31,17 +31,16 @@ When we have naming times, we'll define time periods before/after onset of the u
 
 ```{r}
 # Discern when the name was said.
- #kid.sac$Start <- "Before"
- #kid.sac[kid.sac$Period == "Pre",]$Start <- ifelse(kid.sac[kid.sac$Period == "Pre",]$SacTime < 2250 ,"Before","After")
- #kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")
-  #kid.sac[kid.sac$Period == "Rew",]$Start <- "After"
+ kid.sac$Start <- "Preview"
+kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")
+kid.sac[kid.sac$Period == "Rew",]$Start <- "After"
 ```
 
 
 Finally, we create our data frame for analysis
 ```{r}
-summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Period, data = kid.sac, keep.names = T) -> Sac.sum
-na.omit(summaryBy(SacTarg +SacDist2 +SacDist1+SacFromTarg+SacToTarg ~Period+LabelCond, data = Sac.sum, keep.names = T))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
 
 
 ```
@@ -62,36 +61,36 @@ summaryBy(Label~Lang + AgeGroup+ cond, data = subj, FUN = c(mean, length))
 Now, we plot saccades between the Target picture and its Foil for each time window, based on children's utterance.
 
 ```{r, echo=FALSE}
-na.omit(summaryBy(SacTarg~Period+LabelCond+Subj, data = Sac.sum[Sac.sum$Period != "Rew",], FUN = c(mean,sd), keep.names = T)) -> Sac.graph
-na.omit(summaryBy(SacTarg.mean~Period+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
-Sac.graph$Period <- factor(Sac.graph$Period, levels = c("Pre","Naming"),labels = c("Pre","Naming"), ordered = T)
+na.omit(summaryBy(SacTarg~Start+LabelCond+Subj, data = Sac.sum, FUN = c(mean,sd), keep.names = T)) -> Sac.graph
+na.omit(summaryBy(SacTarg.mean~Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
+Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Preview","Before","After"),labels = c("Preview","Before","After"), ordered = T)
 Sac.graph$SE = Sac.graph$SacTarg.mean.sd/sqrt(length(unique(Sac.sum$Subj)))
 
-Sac.graph$Time = "Naming"
-Sac.graph[Sac.graph$Period == "Pre" , ]$Time = "Preview"
-Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Naming"),labels = c("Preview","Naming"), ordered = T)
+Sac.graph$Time = "Pre-Naming"
+Sac.graph[Sac.graph$Start == "After" , ]$Time = "Post-Naming"
+Sac.graph[Sac.graph$Start == "Preview" , ]$Time = "Preview"
+Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post-Naming"),labels = c("Preview","Pre-Naming","Post-Naming"), ordered = T)
 
-tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$LabelCond,Sac.graph$Time), FUN = mean) -> o
-tapply(Sac.graph$SE, list(Sac.graph$LabelCond,Sac.graph$Time), FUN = mean) -> se
+tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> o
+tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> se
 
-barplot(o, beside =T , ylim = c(0,0.40),col = "white",  border = NA, ylab = "Critical Saccades", names.arg = c("Preview", "Naming"))
- legend(1.2,0.15, legend = c("Control", "Not Detecting Ambiguity", "Detecting Ambiguity"), bty = "n", col = c("blue","grey","red"), pch = 20)
- points(c(1.5,6), o[1,], pch = 20, cex = 2, col = "blue")
- points(c(2.5,6.8), o[2,], pch = 20, cex = 2, col = "grey")
-  points(c(3.5,7.6), o[3,], pch = 20, cex = 2, col = "red")
- grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs = TRUE)
+barplot(o, beside =T , ylim = c(0,0.35),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
+legend(1.2,0.10, legend = c("Control Trials", "Incorrect Trials", "Correct Trials"), bty = "n", col = c("blue","grey","red"), pch = 20)
+points(c(1.5,6,10), o[,1], pch = 20, cex = 2, col = "blue")
+points(c(2.5,6.8,11), o[,2], pch = 20, cex = 2, col = "grey")
+points(c(3.5,7.6,12), o[,3], pch = 20, cex = 2, col = "red")
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs = TRUE)
 abline(v = c(4.5,8.5), col = "grey", lty = "dashed")
-  arrows(c(1.5,2.5,3.5,6,6.8,7.6), (c(o) + c(se)+0.01), c(1.5,2.5,3.5,6,6.8,7.6), (c(o) - c(se)-0.01), code = 0)   
+arrows(c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) + c(se)+0.01), c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) - c(se)-0.01), code = 0)
 ```
 
 
 We use mixed effects models to analyze each time window. We'll need to add extra regressions once the naming time is coded.
 
 ```{r}
-summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum, Period == "Pre")))
-summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum,  Period == "Naming")))
-#summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum,  Period == "Naming" & Start == "Before")))
-#summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum,  Period == "Naming" & Start == "After")))   	 
+summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum,  Start == "Preview")))
+summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum,  Start == "Before")))
+summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum,  Start == "After")))	 
 
 ```
 

@@ -9,7 +9,7 @@ data_import <- function(path_name,type = "Kids"){
 	data.set = c()
 	#Import Homoph data
 	for (i in c("Kids")){
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){
+		for (j in c("Pre","Targ","Rew")){# Something is off with the reward section ,"Rew")){
 		file.list <- list.files(path = path_name,full.names = T,pattern = paste(i,".*","Fix",j, sep = ""))
 		print(file.list)
 		data.temp = read.delim(file = file.list, header = T)
