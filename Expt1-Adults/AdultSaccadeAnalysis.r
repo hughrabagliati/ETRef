@@ -45,6 +45,13 @@ names <- read.delim("./EyeData/AdultWriteNames.txt")
 ad.sac <- merge(ad.sac,names, by = c("Subj","trialnum"), all.x = TRUE)
 ad.sac<- ad.sac[order(ad.sac$order),]
 
+ad.sac$dupic_sac <- NA
+for (i in unique(ad.sac$Subj)){
+  for (j in unique(subset(ad.sac, Subj == i)$trialnum)){
+    ad.sac[ad.sac$Subj == i & ad.sac$trialnum ==j,]$dupic_sac <- duplicated(subset(ad.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = TRUE)
+  }
+}
+ad.sac <- ad.sac[ad.sac$dupic_sac == FALSE,]
 ad.sac <- ddply(ad.sac, .(Subj,trialnum,Period), transform, CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))
 
 ad.sac$Item <- as.factor(sapply(strsplit(as.character(ad.sac$targname),"[.12]"), "[", 1))

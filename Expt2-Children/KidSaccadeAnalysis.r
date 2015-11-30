@@ -18,7 +18,7 @@ sac.process2 = function(pathway = "./", Pop = "NA"){
 	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"
 	names(sac)[names(sac) == "CURRENT_SAC_END_TIME"] <- "SacEndTime"
 	
-	sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))
+	#sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))
 	sac$Sac <- 1
 	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)
 	sac$SacToTarg <- 0
@@ -38,9 +38,6 @@ sac.process2 = function(pathway = "./", Pop = "NA"){
 	sac <- sac[sac$type != "Filler",]
 	return(sac)
 }
-CreateNewDataFrame <- ginput("Press n to load the current dataset, or y to recreate the dataframe: ")
-
-if (CreateNewDataFrame == "y"){
 kid.sac <- sac.process2("./EyeData/","Kids")
   kid.sac$order <- 1:length(kid.sac$SacToTarg)
   names <- read.delim("./EyeData/WriteNames-Times.txt")
@@ -49,10 +46,20 @@ kid.sac <- sac.process2("./EyeData/","Kids")
   kid.sac <- merge(kid.sac,names, by = c("Subj","trialnum"), all.x = TRUE)
   kid.sac<- kid.sac[order(kid.sac$order),]
   names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"
-  kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))
+  kid.sac <- kid.sac[!is.na(kid.sac$targname),]
+  kid.sac$dupic_sac <- NA
+  for (i in unique(kid.sac$Subj)){
+    for (j in unique(subset(kid.sac, Subj == i)$trialnum)){
+      if (length(kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac) > 0){
+        kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac <- duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = TRUE)
+      }
+      }
+  }
+  kid.sac <- kid.sac[kid.sac$dupic_sac == FALSE,]
+ kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))
   save(kid.sac,file = "kid.sac.RDATA")
-}
-load("kidsac.RDATA")
+
+#load("kidsac.RDATA")
 
 # Create LabelCond variable; used for data analysis
 kid.sac$LabelCond <- NA
