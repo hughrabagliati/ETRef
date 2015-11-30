@@ -51,11 +51,11 @@ kid.sac <- sac.process2("./EyeData/","Kids")
   for (i in unique(kid.sac$Subj)){
     for (j in unique(subset(kid.sac, Subj == i)$trialnum)){
       if (length(kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac) > 0){
-        kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac <- duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = TRUE)
+        kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac <- (duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)|duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = TRUE)) #duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)
       }
       }
   }
-  kid.sac <- kid.sac[kid.sac$dupic_sac == FALSE,]
+ # kid.sac <- kid.sac[kid.sac$dupic_sac == FALSE,]
  kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))
   save(kid.sac,file = "kid.sac.RDATA")
 
