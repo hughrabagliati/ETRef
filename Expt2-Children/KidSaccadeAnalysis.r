@@ -77,8 +77,6 @@ kid.sac <- kid.sac[!kid.sac$Lang == "Exc",]
  kid.sac$Start <- "Preview"
  kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")
  kid.sac[kid.sac$Period == "Rew",]$Start <- "After"
-	 summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum
-	 na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
 	 
 summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
 summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Before")))
@@ -86,8 +84,10 @@ summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "After
 
 # It's interesting to note that there are no age effects here [Run the models above with AgeGroup as an interacting factor].
 # I think that that might be because there are so few trials in the Unambiguous condition for the younger groups.
-	 
-	 	 
+
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+
 na.omit(summaryBy(SacTarg~Start+LabelCond+Subj, data = Sac.sum, FUN = c(mean,sd), keep.names = T)) -> Sac.graph
 na.omit(summaryBy(SacTarg.mean~Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
 Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Preview", "Before","After"),labels = c("Preview", "Before","After"), ordered = T)

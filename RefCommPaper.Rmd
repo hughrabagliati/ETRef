@@ -1,0 +1,38 @@
+---
+title: "Ref Comm Paper"
+author: "Hugh Rabagliati"
+date: "First Draft -- 1 December 2015"
+output: html_document
+---
+
+Language learning not only requires children to master structural features such as phonology and syntax,  but also demands that they learn to communicate their message in effective and informative ways. And while children's competence with structural language develops extremely quickly, their competentence at communcating informatively follows a much more protracted developmental profile. For example, preschool children (and even younger school-age children) frequently produce descriptions of the world that, while being phonologically and syntactically well-formed, are communicatively uninformative because they are referentially ambiguous. These children might, for instance, refer to a red square as "the square" even when there are other squares in their immediate visual context, suggesting that they are yet to develop an adult-like competence at formulating and producing informative messages.
+
+[Would another way to do this be to set the stage for a standard explanation -- kids need to learn to be informative, like adults -- but then switch to suggest that adults are perhaps not nearly as informative as we often give them credit for. In this paper, we suggest that understanding the ways in which adults fail to be informative can shed light on the developmental processes by which children become more informative.]
+
+#### Standard explanations for failure of referential communication.
+1. Egocentricity -- Piaget, Epley, etc.
+2. Developing knowledge about the rules of communication. <-- Might not want this...
+3. And both of these explanations might be mediated by failures of executive control.
+4. What about inhibitory accounts -- want to say the first word that comes to mind?
+
+#### However evidence from adult psycholinguistics suggests that the story is likely to be more complex than currently acknowledged by either of these approaches.
+* These approaches all assume that adults monitor for whether their utterance is informative (e.g., whether it is ambiguous) tout court.
+* But in fact, psycholinguistic evidence suggests that adults:
+    + Only monitor for whether their utterance is informative (i.e., ambiguous) in some ways but not others.
+    + Use multiple different strategies for monitoring for potential ambiguity, some of which are more effective, and some of which are less effective.
+    +Evidence for this comes from Ferreira's papers.
+
+  
+#### Ferreira's results suggest that there are multiple ways in which children could both fail and succeed at being informative. 
+* For example, children could fail to be informative because they neither proactively monitor for conceptual ambiguityproactively nor subsequently use produciton-based monitoring. 
+* Alternately, when children succeed at proactively monitoring they could also fail to use production-based monitoring, or vice versa.
+
+* This raises the possibility that 
+    + a) children must learn to monitor for utterance ambiguity *in particular ways*, rather than generally.
+    + b) children must learn multiple different strategies for monitoring for potential ambiguity.
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
