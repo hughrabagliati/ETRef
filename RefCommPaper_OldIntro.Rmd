@@ -1,0 +1,71 @@
+---
+title: "Ref Comm Paper"
+author: "Hugh Rabagliati"
+date: "First Draft -- 1 December 2015"
+output: html_document
+---
+
+Language learning not only requires children to master structural features such as phonology and syntax,  but also demands that they learn to communicate their message in effective ways. For instance, children must learn to produce descriptions that are appropriately informative and unambiguous: they should not refer to a red square as "the square" if it is the case that there are additional squares in the immediate context. It is well established that learning to generate appropriately informative utterances is a difficult task for young children. Surprisingly, however, it has proven similarly challenging to explain precisely why children have this difficulty, and how they eventually learn to communicate in an informative and adult-like way.
+
+[maybe I would put the "previous explanations" here, and then "But exactly how would skills such as EF affect referential communication?"" and segue to Ferreira]
+
+Perhaps one reason that it has proven difficult to explain how uninformative children learn to become informative adults lies in the common assumption that adults are indeed consistently informative. Whilst it is clear that adults are better communicators than children, and that they are much more likely to communicate informatively and avoid ambiguity, work in adult psycholinguistics has also demonstrated a number of situations in which adults consistently generate expressions that are ambiguous and uninformative. An examination of the differences between the situations in which adults tend to be informative and the situations in which they do not can therefore potentially shed light on which particular skills children must learn in order to communicate in a way that is adult-like, rather than informative tout court.
+
+Important work by Ferreira and his colleagues (refs) has suggested that adults have a particular difficulty avoiding what he has termed "linguistic" ambiguities. This difficulty can be easily seen in a simple referential communication task  (Ferreira et al, Rabagliati & Snedeker), in which participants had to name target pictures surrounded by foils. In the critical manipulation, the target picture and the foil picture shared a lexically ambiguous label, for instance the target may have been an animal bat, and the foil may have been a baseball bat. Adults were strikingly bad at noticing and avoiding ambiguity in this task: they frequently labeled the animal bat as *bat* even though it was placed next to a baseball bat, behavior that is strikingly similar to children's performance in referential communication tasks.
+
+Ferreira terms this as an example of *linguistic* ambiguity because while the linguistic (i.e., lexical) form is the same (*bat/bat*), the potential concepts that can be expressed by that linguistic form are extremely distinct. That is to say, the only overlap in the mental representations of *animal bat* and *baseball bat* comes at the linguistic level. He argues that adults consistently fail to monitor whether their utterances are ambiguous at the linguistic level, and has provided converging evidence for this specific failure from adults' frequent tendency to produce sentences which offer multiple distinct syntactic and semantic interpretations.
+
+By contrast, Ferreira and others have consistently found that while adults fail to account for linguistic ambiguity, the same is not true for so-called nonlinguistic ambiguity. For example, while adults do not notice the ambiguity caused by a baseball and an animal bat, they naturally notice and account for the ambiguity caused by two different animal bats i.e., in which there is overlap in both the conceptual and linguistic representation of *bat* (FN: Note that this matches the standard referential communication task used with children). Interestingly, and importantly, adults' tendency to monitor for and avoid potential conceptual ambiguity in their utterances does not seem to be dependent on the needs of a conversational partner, or indeed a partner's presence. Adults are as likely to avoid conceptual ambiguity when asked to describe pictures for an unsighted partner as when they are simply asked to describe pictures into a microphone. 
+
+The findings discussed so far suggest that, in order to produce informative utterances, adults proactively monitor for nonlinguistic ambiguity, while failing to proactively monitor for linguistic ambiguity. But this cannot be the entire story as, oftentimes, we do notice that the expression we have just produced is ambiguous. Ferreira's model therefore also includes a second process of production monitoring, by which ambiguity can be detected after the fact (cf. Levelt). Under this process, speakers listen to and comprehend their own utterance as it unfolds, and thereby notice if it happens to be ambiguous. Evidence for this idea comes from speakers' tendency to reduce the ambiguity of their expressions when given a second description: When asked to name an animal bat followed by a baseball bat (or vice versa), speakers may say *bat* for the first picture, but are likely to correct themselves and produce an unambiguous expression (*baseball bat*) for the second picture.
+
+* NEED TO ADD ABOUT PRODCUTION-MONITORING BEING A POTENTIAL LEARNING MECHANISM. NEED TO RECODE ADULT RECORDINGS TO CODE WHETHER OR NOT THEY MODIFY AFTER THE NOUN.
+* FOR DISCUSSION, WANT TO MAKE ARGUMENT THAT CHILDREN'S PROACTIVE MONITORING IS ENGAGED BY GREATER EXPERIENCE WITH PRODUCITON MONITORING.
+
+In summary, Ferreira's findings with adults suggest a more precise description of how referential skills develop, one in which children do not just move from being generally underinformative to being informative tout court, but one in which children gradually learn a very particular set of skills: a habitual and automatic tendency to monitor for potential conceptual ambiguity as they plan their utterances, and the ability to re-comprehend their own productions and match them against the world.
+
+Can these psycholinguistically-inspired ideas be integrated with our current understanding of why children fail to communicate informatively in referential communication tasks? Children's difficulties have typically been explained in one of three ways. The first explanation focuses on egocentricity: Because children have difficulty reasoning about the knowledge states of other people, they fail to take these states into account when communicating. This explanation is somewhat contradictory to the above description of adults, who communicate both informatively and egocentrically, i.e., without regard to the needs, or even presence, of an interlocutor. It is also somewhat contradictory to a growing literature on children's facility at accounting for others' mental states in non-linguistic tasks (ref). This can be clearly seen in the fact that 4-year-old children will typically pass a complex false belief task (ref) but will fail to communicate unambiguously in a referential communication task.
+
+The second explanation has focused on children's general cognitive limitations, and the possibility that referential difficulties might result from children's still-developing working memory or executive function capacities. Under these theories, children and adults are assumed to be similarly ego-centric, but differ in their ability to over-ride that egocentrism and act appropriately. For example, Nilsen and Graham (ref) have suggested that children rely on their executive functions to interpret other people's utterances without succombing to egocentric biases. It is this second type of explanation that most clearly jibes with our understanding of adults' ambiguity avoidance: Executive functions such as self-monitoring, inhibition, and working memory are all likely to proof useful in both pro-actively monitoring for ambiguity and subsequently re-interpreting produced utterances.
+
+#### The current experiments
+To what degree do children's difficuties with effective communication derive from twin difficulties proactively monitoring for conceptual ambiguity and re-interpreting their own utterances? In the experiments reported here, children and adults engaged in simple referential communication tasks while we tracked their pattern of gaze. The use of eye tracking allowed us to go beyond previous work on children's production of referring expressions, by generating a precise record of whether and how participants monitored for ambiguity.  
+
+
+
+
+[if we start with current explns and then move on to Ferreira, can finish the first sectio by saying "production monitoring may also be important for another reason..."]
+[does the nilen review say anything about prodution]
+[need to look at Nilsen JCL paper]
+[also Gillis & Nilsen]
+[Also need to add a bunch of abbott-smith learning stuff]
+
+[Would another way to do this be to set the stage for a standard explanation -- kids need to learn to be informative, like adults -- but then switch to suggest that adults are perhaps not nearly as informative as we often give them credit for. In this paper, we suggest that understanding the ways in which adults fail to be informative can shed light on the developmental processes by which children become more informative.]
+
+#### Standard explanations for failure of referential communication.
+1. Egocentricity -- Piaget, Epley, etc.
+2. Developing knowledge about the rules of communication. <-- Might not want this...
+3. And both of these explanations might be mediated by failures of executive control.
+4. What about inhibitory accounts -- want to say the first word that comes to mind?
+
+#### However evidence from adult psycholinguistics suggests that the story is likely to be more complex than currently acknowledged by either of these approaches.
+* These approaches all assume that adults monitor for whether their utterance is informative (e.g., whether it is ambiguous) tout court.
+* But in fact, psycholinguistic evidence suggests that adults:
+    + Only monitor for whether their utterance is informative (i.e., ambiguous) in some ways but not others.
+    + Use multiple different strategies for monitoring for potential ambiguity, some of which are more effective, and some of which are less effective.
+    +Evidence for this comes from Ferreira's papers.
+
+  
+#### Ferreira's results suggest that there are multiple ways in which children could both fail and succeed at being informative. 
+* For example, children could fail to be informative because they neither proactively monitor for conceptual ambiguityproactively nor subsequently use produciton-based monitoring. 
+* Alternately, when children succeed at proactively monitoring they could also fail to use production-based monitoring, or vice versa.
+
+* This raises the possibility that 
+    + a) children must learn to monitor for utterance ambiguity *in particular ways*, rather than generally.
+    + b) children must learn multiple different strategies for monitoring for potential ambiguity.
+
+```{r, echo=FALSE}
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

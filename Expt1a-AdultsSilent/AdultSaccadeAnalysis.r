@@ -1,3 +1,5 @@
+library(doBy)
+library(lme4)
 require(plyr)
 require(longitudinalData)
 sac.process2 = function(pathway = "./", Pop = "NA"){

@@ -73,17 +73,18 @@ summaryBy(SacDist1+SacDist2+SacTarg ~Subj+Item+cond+type+Start, data = ad.sac, k
 Sac.sum$SacOnTrial = ifelse(Sac.sum$SacTarg > 0,1,0)
 na.omit(summaryBy(SacTarg +SacDist2 + SacOnTrial~Start+type+cond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
 
-summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "Preview")))
-summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,   Start == "Before")))
-summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "After")))        
+summary(glmer(Label~cond*type + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,  Start == "Preview"), family = "binomial"))
+summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,  Start == "Preview")))
+summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,   Start == "Before")))
+summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,  Start == "After")))        
 
-summary(lmer(SacTarg~cond + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "Preview" & type == "Homoph")))
-summary(lmer(SacTarg~cond + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "Preview" & type == "Same")))
+summary(lmer(SacTarg~cond + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,  Start == "Preview" & type == "Homoph")))
+summary(lmer(SacTarg~cond + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,  Start == "Preview" & type == "Same")))
 
 
-summary(lmer(SacOnTrial~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "Preview"), family = "binomial"))
-summary(lmer(SacOnTrial~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,   Start == "Before"), family = "binomial"))
-summary(lmer(SacOnTrial~cond*type + (1+cond|Subj)+(1+cond|Item), data = subset(Sac.sum,  Start == "After"), family = "binomial"))        
+summary(lmer(SacOnTrial~cond*type + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,  Start == "Preview"), family = "binomial"))
+summary(lmer(SacOnTrial~cond*type + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,   Start == "Before"), family = "binomial"))
+summary(lmer(SacOnTrial~cond*type + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,  Start == "After"), family = "binomial"))        
 
 
 SacGraph <- function(Sac.graph){
