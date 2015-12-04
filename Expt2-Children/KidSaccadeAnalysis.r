@@ -48,13 +48,13 @@ kid.sac <- sac.process2("./EyeData/","Kids")
   names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"
   kid.sac <- kid.sac[!is.na(kid.sac$targname),]
   kid.sac$dupic_sac <- NA
-  for (i in unique(kid.sac$Subj)){
-    for (j in unique(subset(kid.sac, Subj == i)$trialnum)){
-      if (length(kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac) > 0){
-        kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac <- (duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)|duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = TRUE)) #duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)
-      }
-      }
-  }
+#   for (i in unique(kid.sac$Subj)){
+#     for (j in unique(subset(kid.sac, Subj == i)$trialnum)){
+#       if (length(kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac) > 0){
+#         kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac <- (duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)|duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = TRUE)) #duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)
+#       }
+#       }
+#   }
  # kid.sac <- kid.sac[kid.sac$dupic_sac == FALSE,]
  kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))
   save(kid.sac,file = "kid.sac.RDATA")
@@ -78,15 +78,17 @@ kid.sac <- kid.sac[!kid.sac$Lang == "Exc",]
  kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")
  kid.sac[kid.sac$Period == "Rew",]$Start <- "After"
 	 
-summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
-summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Before")))
-summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "After")))	 	 
 
 # It's interesting to note that there are no age effects here [Run the models above with AgeGroup as an interacting factor].
 # I think that that might be because there are so few trials in the Unambiguous condition for the younger groups.
 
 summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum
 na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Before")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "After")))	 	 
+
 
 na.omit(summaryBy(SacTarg~Start+LabelCond+Subj, data = Sac.sum, FUN = c(mean,sd), keep.names = T)) -> Sac.graph
 na.omit(summaryBy(SacTarg.mean~Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph

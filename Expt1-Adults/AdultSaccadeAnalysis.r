@@ -69,7 +69,7 @@ ad.sac$Start <- "Preview"
 ad.sac[ad.sac$Period == "Naming",]$Start <- ifelse(ad.sac[ad.sac$Period == "Naming",]$SacTime < ad.sac[ad.sac$Period == "Naming",]$StartTime,"Before","After")
 ad.sac[ad.sac$Period == "Rew",]$Start <- "After"
 
-summaryBy(SacDist1+SacDist2+SacTarg ~Subj+Item+cond+type+Start, data = ad.sac, keep.names = T) -> Sac.sum
+summaryBy(Label+SacDist1+SacDist2+SacTarg ~Subj+Item+cond+type+Start, data = ad.sac, keep.names = T) -> Sac.sum
 Sac.sum$SacOnTrial = ifelse(Sac.sum$SacTarg > 0,1,0)
 na.omit(summaryBy(SacTarg +SacDist2 + SacOnTrial~Start+type+cond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
 
