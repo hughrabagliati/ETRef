@@ -8,7 +8,17 @@ knitr::opts_chunk$set(cache=TRUE)
 title: "Ref Comm Paper"
 author: "Hugh Rabagliati"
 date: "First Draft -- 1 December 2015"
-output: html_document
+output:
+  html_document:
+    css: APAStyle.css
+    fig_caption: yes
+    highlight: zenburn
+    theme: null
+  pdf_document: default
+  word_document:
+    reference: APA.docx
+csl: apa.csl
+abstract: This is a brief introduction to R Markdown.
 bibliography: 
   - ETRefLibrary.bib
 references:
@@ -26,11 +36,11 @@ The key problem here is that our current understanding of the moment-by-moment m
 
 The adult psycholinguistics literature provides a potential alternative source of insight. Whilst it is clear that adults are much more informative communicators than children, work in adult psycholinguistics has also demonstrated a number of situations in which adults -- like children -- consistently generate expressions that are ambiguous and uninformative. An examination of the differences between the situations in which adults tend to be informative and the situations in which they do not can therefore potentially shed light on precisely which skills children must master in order to communicate in an adult-like way.
 
-In particular, Ferreira and his colleagues (refs) have suggested that adults have a particular difficulty avoiding what they have termed "linguistic" ambiguities. This difficulty can be easily seen in a simple referential communication task  (Ferreira et al, Rabagliati & Snedeker), in which participants had to name target pictures surrounded by multiple foils. In the critical manipulation, the target picture and one foil picture shared a lexically ambiguous label, for instance the target may have been an baseball bat, and the foil may have been an animal bat. Adults were strikingly bad at noticing and avoiding ambiguity in this task: they frequently labeled the baseball bat as *bat* even though this also described its foil, a behavior that is strikingly similar to children's performance in referential communication tasks.
+In particular, Ferreira and his colleagues [@ferreira_ambiguity_2008; @ferreira_how_2005] have suggested that adults have a particular difficulty avoiding what they have termed "linguistic" ambiguities. This difficulty can be easily seen in a simple referential communication task  [@ferreira_how_2005; @rabagliati2013truth], in which participants had to name target pictures surrounded by multiple foils. In the critical manipulation, the target picture and one foil picture shared a lexically ambiguous label, for instance if the target was a baseball bat then the foil would be an animal bat. Adults were strikingly bad at noticing and avoiding ambiguity in this task: they frequently labeled the baseball bat as *bat* even though this also described its foil, a behavior that is strikingly similar to children's performance in referential communication tasks.
 
-By contrast, adults have little difficulty avoiding non-linguistic ambiguities. The same adults who do not notice the ambiguity caused by a baseball and an animal bat, will naturally notice and account for the ambiguity caused by two different baseball bats. That is to say, adults do not notice ambiguity caused by overlap in linguistic representation alone (i.e., two different concepts with one label) but they do notice ambiguity caused by overlap in both conceptual and linguistic representations (i.e., two instances of one concept with one label).  **(Maybe FN: Note that this matches the standard referential communication task used with children).** Interestingly, and importantly, adults' tendency to monitor for and avoid potential nonlinguistic ambiguity in their utterances does not seem to be dependent on the needs of a conversational partner, or indeed a partner's presence. Adults are as likely to avoid conceptual ambiguity when asked to describe pictures for a partner as when they are simply asked to describe pictures into a microphone. 
+By contrast, adults have little difficulty avoiding non-linguistic ambiguities. The same adults who do not notice the ambiguity caused by a baseball and an animal bat, will naturally notice and account for the ambiguity caused by two different baseball bats. That is to say, adults do not notice ambiguity caused by overlap in linguistic representation alone (i.e., two different concepts with one label) but they do notice ambiguity caused by overlap in both conceptual and linguistic representations (i.e., two instances of one concept with one label).  **(Maybe FN: Note that this matches the standard referential communication task used with children).** Interestingly, and importantly, adults' tendency to monitor for and avoid potential nonlinguistic ambiguity in their utterances does not seem to be dependent on the needs of a conversational partner, or indeed a partner's presence: Ferrerira and colleagues found that adults are as likely to avoid conceptual ambiguity when asked to describe pictures for a partner as when they are simply asked to describe pictures into a microphone. 
 
-The findings discussed so far suggest that, when speaking, adults monitor for nonlinguistic ambiguity both proactively and automatically (i.e., without regard to the needs of their partner), while failing to proactively monitor for linguistic ambiguity. But this cannot be the entire story as, oftentimes, we do notice that the expression we have just produced is ambiguous. This suggests that monitoring does not only occur while we prepare an utterance, but also afterwards: speakers can re-comprehend their utterances and check for ambiguity or speech errors (cf. Levelt). This monitoring can also help speakers to avoid ambiguity in their subsequent productions: Ferreria et al found that when asked to name a baseball bat followed by an animal bat (or vice versa), speakers may say *bat* for the first picture, but are likely to correct themselves and produce an unambiguous expression (*baseball bat*) for the second picture.
+The findings discussed so far suggest that, when speaking, adults monitor for nonlinguistic ambiguity both proactively and automatically (i.e., without regard to the needs of their partner), while failing to proactively monitor for linguistic ambiguity. But this cannot be the entire story as, oftentimes, we do notice that the expression we have just produced is ambiguous. This suggests that monitoring does not only occur while we prepare an utterance, but also afterwards: speakers can re-comprehend their utterances and check for ambiguity or speech errors [cf. @levelt1983monitoring]. This monitoring can also help speakers to avoid ambiguity in their subsequent productions: Ferreria and colleagues [-@ferreira_how_2005] found that when asked to name a baseball bat followed by an animal bat (or vice versa), speakers may say *bat* for the first picture, but are likely to correct themselves and produce an unambiguous expression (*baseball bat*) for the second picture.
 
 * NEED TO ADD ABOUT PRODCUTION-MONITORING BEING A POTENTIAL LEARNING MECHANISM. NEED TO RECODE ADULT RECORDINGS TO CODE WHETHER OR NOT THEY MODIFY AFTER THE NOUN.
 * FOR DISCUSSION, WANT TO MAKE ARGUMENT THAT CHILDREN'S PROACTIVE MONITORING IS ENGAGED BY GREATER EXPERIENCE WITH PRODUCITON MONITORING.
@@ -41,6 +51,8 @@ To what degree do children's difficuties with effective communication derive fro
 
 Since previous work on adults' ambiguity avoidance has not used eye tracking, we first demonstrated that both proactive monitoring and production monitoring can indeed be measured with an eye tracker. To do so, COMPARED ADULTS PERFORMANCE ON REF COMM TASK WITH NON-LINGUISTIC VS LINGUISTIC AMBIGUITIES [TO CREATE ADULT ANALOGUE TO SUCCESSFUL VS UNSUCCESSFUL PERFORMANCE ON REF AMB TASK]. Our subsequent experiments, which only involved non-linguistic ambiguities, assessed whether proactive monitoring and production monitoring are operative in young children, and their relationship to children's tendency to produce either informative or uninformative utterances.
 
+[ Tenney Apthorp unpublished ms looking at wherher kids monitor cited in whitehurst paper in Dickson book]
+[same chapter -- lots of stuff about comparison as a skill]
 #### Experiment 1.
 ```{r, echo=FALSE, results='hide',message=FALSE}
 library(lme4)
@@ -125,7 +137,7 @@ Sac.sum$SacOnTrial = ifelse(Sac.sum$SacTarg > 0,1,0)
 *Materials*   
 Target-foil pairs consisted of sets of pictures depicting either two different things drawn from the same category (same-category ambiguity, e.g., two different cars) or two different things drawn from different categories, but having the same name (linguistic ambiguity, e.g., a baseball bat and an animal bat). There were 16 pairs of each type. Target and foil pictures were counterbalanced between subjects (i.e., the same car was a target for half the subjects, and foil for remainder).
 
-Adults received X trials overall (8 ambiguous trials, 8 unambiguous trials, and X filler trials). Ambiguity type was varied between subjects, so that half of the adults saw non-linguistic ambiguities, and half saw linguistic ambiguities. Trial type (ambiguous/unambiguous) was varied within subjects, using a Latin square design. 
+Adults received X trials overall (8 ambiguous trials, 8 unambiguous trials, and X filler trials that were also unambiguous). Ambiguity type was varied between subjects, so that half of the adults saw non-linguistic ambiguities, and half saw linguistic ambiguities. Trial type (ambiguous/unambiguous) was varied within subjects, using a Latin square design. 
 
 
 *Procedure*   
@@ -656,7 +668,7 @@ Experiment 2 was designed to assess whether children engage in, first, pro-activ
 
 Children also appeared to engage in comprehension-based monitoring: When the visual scene was ambiguous, they tended to saccade to the matched foil after generating a description, a behavior that did not seem to vary based on what type of description they had provided (the same was true of the adults in Experiment 1). This result might be considered surprising, because comprehension-based monitoring is typically assumed to be complex (as it requires speakers to engage both the production and comprehension systems simultaneously). But it is also somewhat hard to interpret: if children are engaging in comprehension-based monitoring, then why did they not make more corrections?  
 
-One possibility is that children did not correct because they were not truly motivated to: the trial ended straight after they responded, and their utterance had no obvious adverse effects on an interlocutor. But another possibility is that these subsequent eye movements do not reflect any active monitoring processes, but are instead the result of passive priming: Saying *Dog*, primes children to look to the other dog. 
+One possibility is that children did not correct because they were not truly motivated to: the trial ended straight after they responded, and their utterance had no obvious adverse effects on an interlocutor. But another possibility is that these subsequent eye movements do not reflect any active monitoring processes, but are instead the result of passive priming: Saying *Dog* simply primes children to look to the other dog, and does not reflect . 
 
 Experiment 3 tests whether children conduct effective comprehension monitoring. 
 
