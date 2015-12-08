@@ -26,18 +26,18 @@ references:
 ---
 
 
-Children learning a language are not only required to master its structural features, such as phonology and syntax, but must also learn to communicate their message in effective ways. In particular, children must learn to produce utterances that are appropriately informative and unambiguous. If a child owns both a red hat and a blue hat and wants to wear the red one, then it is uninformative to demand "I want my hat" (not to mention a little domineering). To be informative, the child needs to specify the appropriate hat. It is well established that learning to generate these appropriately informative utterances is a difficult task for young children: Preschoolers, and even young school-age children, who take part in referential communication tasks (an experimental analogue of the situation described above) frequently produce descriptions that are ambiguous and uninformative [@nilsen2009relations; @sonnenschein1984developing; @glucksberg1966referential; @glucksberg1967people]. But while children's difficulty with reference is well-established, exactly why this difficulty exists -- and why it persists so long -- remains something of a mystery.   
+Children learning a language are not only required to master its structural features, such as phonology and syntax, but must also learn to communicate their message in effective ways. In particular, children must learn to produce utterances that are appropriately informative and unambiguous. If a child owns both a red hat and a blue hat and wants to wear the red one, then it is uninformative to demand "I want my hat" (not to mention a little domineering). Rather, to be informative, the child needs to specify the appropriate hat. It is well established that learning to generate these appropriately informative utterances is a difficult task for young children: Preschoolers, and even young school-age children, who take part in referential communication tasks (an experimental analogue of the situation described above) frequently produce descriptions that are decidedly ambiguous and uninformative [@nilsen2009relations; @sonnenschein1984developing; @glucksberg1966referential; @glucksberg1967people]. But while children's difficulty with reference is well-established, exactly why this difficulty exists -- and why it persists so long -- remains something of a mystery.   
 
-The most historically prominent explanation for children's difficulties with referential communication has focused on egocentricity: Children are assumed to be somewhat blind to the mental states of other people, and so they fail to take these states into account when communicating [@piaget1959language; @glucksberg1966referential; @krauss1969development]. But this idea has fallen out of favour, as study after study has demonstrated that children who are too young to communicate informatively are nevertheless surprisingly adept at reasoning about the mental states of others [@glucksberg1975development;  @wimmer_beliefs_1983; @onishi200515]. Consistent with this, recent work has shown that older children with ASD, who have difficulty taking the perspective of others, still show age-appropriate success in completing referential communcication tasks [@fukumura2015development; see also Nadig CITE].
+The most historically prominent explanation for children's difficulties with referential communication has focused on egocentricity: Children are assumed to be somewhat blind to the mental states of other people, and so they fail to take these states into account when communicating [@piaget1959language; @glucksberg1966referential; @krauss1969development]. But this idea has fallen out of favour, as study after study has demonstrated that children who are too young to communicate informatively are nevertheless surprisingly adept at reasoning about the mental states of others [@glucksberg1975development;  @wimmer_beliefs_1983; @onishi200515]. Consistent with this, recent work has shown that older children with ASD, who have difficulty taking the perspective of others, still show age-appropriate success in completing referential communication tasks [@fukumura2015development; see also Nadig CITE].
 
 
-An alternative approach has been to ask whether children's more general cognitive limitations, such as their still-developing working memory or executive function capacities, might play a role in their referential communication abilities [@cat_underpinnings_2015; @nilsen2009relations; @epley_perspective_2004; @varghese2013incentives] [need more!]. Under these theories, children and adults are assumed to be similarly ego-centric (or at least, not particularly different), but they possess striking differences in their ability to over-ride that egocentrism and act in a communicatively appropriate fashion. For example, Nilsen [@nilsen2009relations; see also @brown2009role; @epley_perspective_2004] has suggested that, as adults, we rely on our executive functions to interpret other people's utterances without succombing to egocentric biases; consistent with this, she has found an increased use of egocentric biases in children who have relatively weak executive function skills [@nilsen2009relations; @nilsen2013communicative]. But while it seems plausible that skills like inhibition, monitoring, or working memory may play some roles in the processes by which children formulate utterances, exactly which roles is unclear. 
+An alternative approach has been to ask whether children's more general cognitive limitations, such as their still-developing working memory or executive function capacities, might play a role in their referential communication abilities [@cat_underpinnings_2015; @nilsen2009relations; @epley_perspective_2004; @varghese2013incentives]. Under these theories, children and adults are assumed to be similarly ego-centric (or at least, not particularly different), but they possess striking differences in their ability to over-ride that egocentrism and act in a communicatively appropriate fashion. For example, Nilsen [@nilsen2009relations] has suggested that, as adults, we rely on our executive functions to interpret other people's utterances without succombing to egocentric biases [see also @brown2009role; @epley_perspective_2004]; consistent with this, she has found an increased use of egocentric biases in children who have relatively weak executive function skills [@nilsen2009relations; @nilsen2013communicative; @nilsen2015children]. But while it seems plausible that skills like inhibition, monitoring, or working memory may play some roles in the processes by which children formulate utterances, exactly which roles is unclear. 
 
 Perhaps the major limiting factor for this analysis is that our current understanding of the moment-by-moment mechanisms involved in children's language production is too limited to offer much guidance. While we know an increasing amount about how children comprehend language online, we know much less about how they plan and structure their own utterances [although for recent examples of investigations using eye tracking, see @bunger2012relation; @norbury2014sources]. Previous work on children's referential communication has suggested strategies that children might learn to use, [@glucksberg1975development;@sonnenschein1984developing; @whitehurst1981development], but has not tied these strategies in to a specific processing model of children's language production.
 
 The adult psycholinguistics literature can provide some suggestions about what that processing model might look like. Recent work has suggested particular situations in which adults -- like children -- consistently generate expressions that are ambiguous and uninformative. An examination of the differences between the situations in which adults tend to be informative and the situations in which they do not can therefore potentially shed light on precisely which skills children must master in order to communicate in an adult-like way.
 
-In particular, Ferreira and his colleagues [@ferreira_ambiguity_2008; @ferreira_how_2005] have shown that adults have a surprising difficulty avoiding what they have termed "linguistic" ambiguities. This difficulty can be easily seen in a simple referential communication task  [@ferreira_how_2005; @rabagliati2013truth], in which participants had to name target pictures surrounded by multiple foils. In the critical manipulation, the target picture and one foil picture shared a lexically ambiguous label, for instance if the target was a baseball bat then the foil would be an animal bat. Adults were strikingly bad at noticing and avoiding ambiguity in this task: they frequently labeled the baseball bat as *bat* even though this also described its foil, a behavior that is strikingly similar to children's performance in referential communication tasks.
+In particular, Ferreira and his colleagues [@ferreira_ambiguity_2008; @ferreira_how_2005] have shown that adults have a surprising difficulty avoiding what they have termed "linguistic" ambiguities. This difficulty can be easily seen in a simple referential communication task, in which participants had to name target pictures surrounded by multiple foils. In the critical manipulation, the target picture and one foil picture shared a lexically ambiguous label, for instance if the target was a baseball bat then the foil would be an animal bat. Adults were strikingly bad at noticing and avoiding ambiguity in this task: they frequently labeled the baseball bat as *bat* even though this also described its foil, a behavior that is strikingly similar to children's performance in referential communication tasks [@ferreira_how_2005; @rabagliati2013truth].
 
 By contrast, adults have little difficulty avoiding non-linguistic ambiguities. The same adults who do not notice the ambiguity caused by a baseball and an animal bat, will naturally notice and account for the ambiguity caused by two different baseball bats. That is to say, adults do not notice ambiguity caused by overlap in linguistic representation alone (i.e., two different concepts with one label) but they do notice ambiguity caused by overlap in both conceptual and linguistic representations (i.e., two instances of one concept with one label). Interestingly, and importantly, adults' tendency to monitor for and avoid potential nonlinguistic ambiguity in their utterances does not seem to be dependent on the needs of a conversational partner, or indeed a partner's presence: Ferrerira and colleagues found that adults are as likely to avoid conceptual ambiguity when asked to describe pictures for a partner as when they are simply asked to describe pictures into a microphone. 
 
@@ -47,7 +47,7 @@ Ferreira's findings with adults suggest a more precise description of how refere
 
 To what degree do children's difficuties with effective communication derive from twin difficulties proactively monitoring for conceptual ambiguity and also re-interpreting their own utterances? In the experiments reported here, children and adults engaged in simple referential communication tasks while we tracked their pattern of gaze. The use of eye tracking allowed us to go beyond previous work by generating a precise record of whether and how children monitor for ambiguity, and how these monitoring processes relate to their production of informative referring expressions.
 
-Since previous work on adults' ambiguity avoidance has not used eye tracking, we first demonstrated that both proactive monitoring and subsequent monitoring can indeed be measured with an eye tracker. To do so, we compared adults' eye movements as they completed referential communication tasks that involved either non-linguistic ambiguities (which should reveal use of proactive monitoring) or linguistic ambiguities (which should only reveal subsequent monitoring). Because adults often fail to inform about linguistic ambiguities, we reasoned that this would provide an analogue to children's performance. Our subsequent experiments, which only involved non-linguistic ambiguities, assessed whether proactive monitoring and production monitoring are operative in young children, and their relationship to children's tendency to produce either informative or uninformative utterances.
+Since previous work on adults' ambiguity avoidance has not used eye tracking, we first demonstrated that both proactive monitoring and subsequent monitoring can indeed be measured with an eye tracker. To do this, in Experiment 1 we compared adults' eye movements as they completed referential communication tasks that involved either non-linguistic ambiguities (which should reveal use of proactive monitoring) or linguistic ambiguities (which should only reveal subsequent monitoring). Because adults often fail to inform about linguistic ambiguities, we reasoned that this would provide an analogue to children's performance. Our subsequent experiments, which only involved non-linguistic ambiguities, assessed whether proactive monitoring and production monitoring are operative in young children, and their relationship to children's tendency to produce either informative or uninformative utterances.
 
 [ Tenney Apthorp unpublished ms looking at wherher kids monitor cited in whitehurst paper in Dickson book]   
 
@@ -133,7 +133,7 @@ Sac.sum$SacOnTrial = ifelse(Sac.sum$SacTarg > 0,1,0)
 `r length(unique(Sac.sum$Subj))` undergraduates from the University of Edinburgh (X female NEED TO CHECK THIS). Sample size was determined in advance by...
 
 *Materials*   
-Target-foil pairs consisted of sets of pictures depicting either two different things drawn from the same category (same-category ambiguity, e.g., two different cars) or two different things drawn from different categories, but having the same name (linguistic ambiguity, e.g., a baseball bat and an animal bat). There were 16 pairs of each type. Target and foil pictures were counterbalanced between subjects (i.e., the same car was a target for half the subjects, and foil for remainder).
+Target-foil pairs consisted of sets of pictures depicting either two different things drawn from the same category (same-category ambiguity, e.g., two different cars) or two things drawn from different categories but sharing a name (linguistic ambiguity, e.g., a baseball bat and an animal bat). There were 16 pairs of each type. Target and foil pictures were counterbalanced between subjects (i.e., the same car was a target for half the subjects, and foil for remainder).
 
 Adults received X trials overall (8 ambiguous trials, 8 unambiguous trials, and X filler trials that were also unambiguous). Ambiguity type was varied between subjects, so that half of the adults saw non-linguistic ambiguities, and half saw linguistic ambiguities. Trial type (ambiguous/unambiguous) was varied within subjects, using a Latin square design. 
 
@@ -141,17 +141,23 @@ Adults received X trials overall (8 ambiguous trials, 8 unambiguous trials, and 
 *Procedure*   
 The task was conducted using an EyeLink 1000 Eyetracker in remote mode, attached to an LCD monitor. We sampled from the right eye at 500Hz. Subjects first completed a six point calibration routine, using a picture of Elmo’s face as a target.
 
-Each trial began with a preview, in which three pictures were displayed for 4250ms. Then, Elmo appeared next to one picture, and a pre-recorded instruction asked participants “Which picture does Elmo like?” After participants answered, the experimenter pushed a button to end the trial: Elmo disappeared, but the pictures remained onscreen for XXXs, after which participants received further positive feedback from Elmo. 
+Each trial (see Figure C) began with a Preview phase, in which three pictures were displayed for 4250ms. Then, Elmo appeared next to one picture (the Pre-Naming phase), and a pre-recorded instruction asked participants “Which picture does Elmo like?” After participants answered, the experimenter pushed a button to end the trial: Elmo disappeared, but the pictures remained onscreen for 750ms, after which participants received further positive feedback from Elmo (the Post-Naming phase). 
+
+![Figure C](Figures/Method.png)
+**Figure C. Schematic of a sample trial.**   
+
 
 *Analyses*   
-We analyzed participants’ descriptions and their gaze behavior over the trial. We first coded whether participants provided referentially specific descriptions of the targets. We used a liberal coding scheme, coding any description as specific if it could not have been applied to the target’s foil. For instance, *small dog*, *dog on the left*, and *Chihuahua* counted as specific, but *dog* or *hound* did not. We analyzed responses using a mixed effects logistic regression.
+We analyzed participants’ descriptions and their gaze behavior over the trial. We first coded whether participants provided referentially specific descriptions of the targets. We used a liberal coding scheme, coding any description as specific if it could not have been applied to the target’s foil. For instance, *small dog*, *dog on the left*, and *Chihuahua* counted as specific, but *dog* or *hound* did not. We analyzed responses using a mixed effects logistic regression; expressed using lmer syntax this regression had the form Label ~ 1 + Trial Type * Ambiguity Type + (1+Trial Type|Subject)+(1|Item)
 
-Our eye movement analysis focused on saccades around the scene over the different trial phases. We defined regions of interest [ROIs, SIZE] around each of the three pictures, and analyzed saccades between the target picture and foil picture ROIs as a proportion of all saccades. We analyzed the proportion of saccades using a mixed effects regression model.
+Our eye movement analysis focused on saccades around the scene over the different trial phases. We defined regions of interest [ROIs, SIZE] around each of the three pictures, and analyzed saccades between the target picture and foil picture ROIs as a proportion of all saccades. We analyzed the proportion of saccades using a mixed effects regression model, of the form Proportion of Saccades ~ 1+ Trial Type * Ambiguity Type + (1+Trial Type|Subject)+(1|Item)
  
 **Results**   
 *Verbal Descriptions*
 ```{r, echo=FALSE, results='hide',message=FALSE}
-Labels <- summaryBy(Label ~ trialnum+Subj + type + cond, data = ad.sac, keep.names = T,na.rm = T)
+ad.sac$InvLabel <- ifelse(ad.sac$Label == 1, 0, ifelse(ad.sac$Label == 0, 1,NA))
+Labels <- summaryBy(InvLabel ~ trialnum+Subj + type + cond, data = ad.sac, keep.names = T,na.rm = T)
+Labels$Label <- Labels$InvLabel
 Labels <- summaryBy(Label ~ Subj + type + cond, data = Labels, keep.names = T,na.rm = T)
 Labels <- summaryBy(Label ~ type + cond, data = Labels, FUN = c(mean,sd),na.rm = T)
 
@@ -163,7 +169,7 @@ format_coef <- function(lmer_model,row_no, SE = FALSE){
   stat <- paste(substr(colnames(lmer_coef_set)[3],1,1), " = ", abs(lmer_coef_set[row_no,3]),sep="")
   p <- ifelse(substr(colnames(lmer_coef_set)[3],1,1) == "z",lmer_coef_set[row_no,4],signif(2*pnorm(-abs(lmer_coef_set[row_no,3])),2))
   p <- ifelse(p<0.001,"p < .001",paste("p = ",p, sep =""))
-  output <- paste("(Beta = ",Beta,", ",SE, ", ", stat, ", ",p,")", sep ="")
+  output <- paste("(Beta = ",Beta,SE, ", ", stat, ", ",p,")", sep ="")
   
   return(output)
 }
@@ -171,7 +177,7 @@ format_coef <- function(lmer_model,row_no, SE = FALSE){
 Expt1.Verbal <- summary(glmer(Label~cond*type + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,  Start == "Preview"), family = "binomial"))
 
 ```
-Participants were more likely to produce referentially specific descriptions on ambiguous trials than unambiguous trials, but  this effect was much smaller when the ambiguity was linguistic (Mean<sub>ambiguous</sub>=`r round(subset(Labels, type == "Homoph" & cond == "Ambig")$Label.mean,2) ` (SD=`r round(subset(Labels, type == "Homoph" & cond == "Ambig")$Label.sd,2) `), Mean<sub>unambiguous</sub>=`r round(subset(Labels, type == "Homoph" & cond == "Control")$Label.mean,2) `(`r round(subset(Labels, type == "Homoph" & cond == "Control")$Label.sd,2) `)) than when it was non-linguistic (Mean<sub>ambiguous</sub>=`r round(subset(Labels, type == "Same" & cond == "Ambig")$Label.mean,2) `(`r round(subset(Labels, type == "Same" & cond == "Ambig")$Label.sd,2) `), Mean<sub>unambiguous</sub>=`r round(subset(Labels, type == "Same" & cond == "Control")$Label.mean,2) `(`r round(subset(Labels, type == "Same" & cond == "Control")$Label.sd,2) `)). Our mixed effects model analysis confirmed that there was a significant effect of trial type (`r format_coef(Expt1.Verbal, 2, SE = TRUE)`) and no effect of ambiguity type (`r format_coef(Expt1.Verbal, 3)`), but these were qualified by a reliable interaction between trial type and ambiguity type (`r format_coef(Expt1.Verbal, 4)`):  Participants were reliably more likely to avoid non-linguistic ambiguity than linguistic ambiguity.
+Participants were more likely to produce referentially specific descriptions on ambiguous trials than unambiguous trials, but  this effect was much smaller when the ambiguity was linguistic (Mean<sub>ambiguous</sub>=`r round(subset(Labels, type == "Homoph" & cond == "Ambig")$Label.mean,2) ` (SD=`r round(subset(Labels, type == "Homoph" & cond == "Ambig")$Label.sd,2) `), Mean<sub>unambiguous</sub>=`r round(subset(Labels, type == "Homoph" & cond == "Control")$Label.mean,2) `(`r round(subset(Labels, type == "Homoph" & cond == "Control")$Label.sd,2) `)) than when it was non-linguistic (Mean<sub>ambiguous</sub>=`r round(subset(Labels, type == "Same" & cond == "Ambig")$Label.mean,2) `(`r round(subset(Labels, type == "Same" & cond == "Ambig")$Label.sd,2) `), Mean<sub>unambiguous</sub>=`r round(subset(Labels, type == "Same" & cond == "Control")$Label.mean,2) `(`r round(subset(Labels, type == "Same" & cond == "Control")$Label.sd,2) `)). Our mixed effects model analysis confirmed that there was a significant effect of trial type `r format_coef(Expt1.Verbal, 2, SE = TRUE)` and no effect of ambiguity type `r format_coef(Expt1.Verbal, 3)`, but these were qualified by a reliable interaction between trial type and ambiguity type `r format_coef(Expt1.Verbal, 4)`:  Participants were reliably more likely to avoid non-linguistic ambiguity than linguistic ambiguity.
 
 *Eye Movements*   
 We divided the trial into three phases: 1) A Preview phase (before the to-be named picture was known), 2) A Pre-Naming phase (after Elmo appeared, but before the participant responded), and 3) A Post-Naming phase (from the participant’s response to the trial’s end). The time at which participants responded was coded offline from the recordings of their answers. Figure X shows the proportion of saccades between target and foil across phases of the trial for the linguistic ambiguity condition, and Figure Y shows the same for the non-linguistic ambiguity condition. 
@@ -225,7 +231,7 @@ Expt1.Preview.Ho <- summary(lmer(SacTarg~cond + (1+cond|Subj)+(1|Item), data = s
 Expt1.Preview.Same <- summary(lmer(SacTarg~cond + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,  Start == "Preview" & type == "Same")))
 
 ```
-Adults eye movements during the Preview phase suggested that they were indeed proactively monitoring for non-linguistic, but not linguistic, ambiguity. Even before Elmo identified which picture was the target, we saw reliably more saccades between target and foil when the ambiguity was non-linguistic 
+Adults' eye movements during the Preview phase suggested that they were proactively monitoring for non-linguistic ambiguity, much more so than for linguistic ambiguity. Even before Elmo identified which picture was the target, we saw reliably more saccades between target and foil when the ambiguity was non-linguistic 
 (Mean<sub>ambiguous</sub>=
 `r round(subset(Preview, type == "Same" & cond == "Ambig")$SacTarg.mean,2) ` 
  (
@@ -244,18 +250,17 @@ then when it was linguistic
  (`r round(subset(Preview, type == "Homoph" & cond == "Control")$SacTarg.sd,2) `
  )).
  This was confirmed by a reliable interaction between condition and ambiguity type 
- `r format_coef(Expt1.Preview, 4)` HOW AM I DEALING WITH P VALUES HERE?).
+ `r format_coef(Expt1.Preview, 4)`.
  This interaction qualified a reliable effect of ambiguity type, with more saccades overall when ambiguity was conceptual 
  `r format_coef(Expt1.Verbal, 3)`
 , and a main effect of condition indicating more critical saccades on ambiguous trials 
  `r format_coef(Expt1.Verbal, 2)`.   
 
-We followed up this interaction by separately regressing condition against saccades for the non-linguistic and linguistic ambiguity trials. As can be seen in Figure X, there was a robust effect for conceptual ambiguities 
- (`r format_coef(Expt1.Preview.Same, 2)`) 
+We followed up this interaction by separately testing for effects of trial type in the non-linguistic and linguistic ambiguity trials, confirming that there was a robust effect for conceptual ambiguities 
+ `r format_coef(Expt1.Preview.Same, 2)` 
  but not for linguistic ambiguities 
- (`r format_coef(Expt1.Preview.Ho, 2)`) 
- . The data therefore indicate that participants proactively monitored for potential conceptual ambiguity before they even knew what they had to name, but were much less likely to proactively monitor for linguistic ambiguity, if they did so at all.
-
+ `r format_coef(Expt1.Preview.Ho, 2)`.   
+ 
 *Pre-Naming Phase*   
 ```{r, echo=FALSE, results='hide',message=FALSE}
 Pre_N <- summaryBy(SacTarg ~ trialnum+Subj + type + cond, data = subset(ad.sac, Start == "Before"), keep.names = T,na.rm = T)
@@ -266,7 +271,7 @@ Expt1.Pre_N <- summary(lmer(SacTarg~cond*type + (1+cond|Subj)+(1|Item), data = s
 
 
 ```
-We expected that, on ambiguous trials, participants would also produce more critical saccades during the pre-naming phase, particularly for conceptual ambiguities. However, while our data trended in that direction, the expected effects were not reliable. We found a slightly higher proportion of critical saccades on ambiguous trials for both non-linguistic
+We expected that, on ambiguous trials, participants would also produce more critical saccades during the pre-naming phase, particularly for non-linguistic ambiguities. However, while our data trended in that direction, the expected effects were not reliable. We found a slightly higher proportion of critical saccades on ambiguous trials for both non-linguistic
 (Mean<sub>ambiguous</sub>=
 `r round(subset(Pre_N, type == "Same" & cond == "Ambig")$SacTarg.mean,2) ` 
  (
@@ -314,6 +319,7 @@ Finally, we looked to see if participants monitored what they were saying aloud 
  (`r round(subset(Post_N, type == "Same" & cond == "Control")$SacTarg.sd,2) `
  ))
 then the linguistic ambiguity condition 
+(Mean<sub>ambiguous</sub>=
 `r round(subset(Post_N, type == "Homoph" & cond == "Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Post_N, type == "Homoph" & cond == "Ambig")$SacTarg.sd,2) `
@@ -321,7 +327,7 @@ then the linguistic ambiguity condition
  `r round(subset(Post_N, type == "Homoph" & cond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Post_N, type == "Homoph" & cond == "Control")$SacTarg.sd,2) `
  ))
-, but this interaction was not reliable 
+, this interaction was not reliable 
  `r format_coef(Expt1.Post_N, 4)`
 . There was also no overall effect of condition 
  `r format_coef(Expt1.Post_N, 2)`
@@ -329,7 +335,8 @@ although there was again an effect of ambiguity type
  `r format_coef(Expt1.Post_N, 3)`
 .   
 
-Surprised by this null result, we looked closer at our data to see if our focus on overall proportions was masking another effect. Instead, we analyzed the proportion of trials that contained a critical saccade (using a mixed effects logistic regression). This data was consistent with production-based monitoring. Participants made critical saccades on more trials in the ambiguous condition, and this did not appear to depend on whether the ambiguity was non-linguistic
+Surprised by this null result, we looked closer at our data to see if our focus on overall proportions was masking another effect. Instead, we analyzed the proportion of trials that contained a critical saccade (using a mixed effects logistic regression). This data was consistent with subsequent monitoring. Participants made critical saccades on more trials in the ambiguous condition, and this did not appear to depend on whether the ambiguity was non-linguistic
+(Mean<sub>ambiguous</sub>=
 `r round(subset(Post_N, type == "Same" & cond == "Ambig")$SacOnTrial.mean,2) ` 
  (
  `r round(subset(Post_N, type == "Same" & cond == "Ambig")$SacOnTrial.sd,2) `
@@ -338,6 +345,7 @@ Surprised by this null result, we looked closer at our data to see if our focus 
  (`r round(subset(Post_N, type == "Same" & cond == "Control")$SacOnTrial.sd,2) `
  ))
  or linguistic 
+ (Mean<sub>ambiguous</sub>=
 `r round(subset(Post_N, type == "Homoph" & cond == "Ambig")$SacOnTrial.mean,2) ` 
  (
  `r round(subset(Post_N, type == "Homoph" & cond == "Ambig")$SacOnTrial.sd,2) `
@@ -355,9 +363,11 @@ and the interaction was not reliable
 
 
 **Discussion**   
-We found that participants were much more likely to avoid conceptual ambiguity than linguistic ambiguity when speaking. Consistent with Ferreira and colleagues’ proposals, our eye movement analysis found that participants pro-actively monitored for conceptual ambiguity before they began speaking, but did not monitor for linguistic ambiguity. Participants’ eye movements also indicated that they monitored the words that they ultimately produced for both conceptual and linguistic ambiguity.
-The main result of Experiment 1 – direct evidence that participants explicitly monitor for potential conceptual ambiguity before they begin speaking – is open to an alternative interpretation. In particular, it is possible that participants deduced the structure of the task and realized that, when a conceptual ambiguity was present, one of those two pictures was more likely to be mentioned. That is to say, our finding of differences in how participants gaze during the preview would not be indicative of how they prepare referentially specific phrases. 
-	We conducted a follow-up experiment to assess this possibility, using the same conceptual ambiguity stimuli as in Experiment 1. However, rather than ask participants to verbally describe the target picture, we instead asked them to simply point at it. Under our proposal, we would not expect to find the same gaze patterns as in Experiment 1, because points are unambiguous and do not need elaboration. But if the gaze patterns in Experiment 1 were due to task demands, we would still expect participants to saccade between target and foil when the display contains a conceptual ambiguity.
+Our results both replicate and provide new insight into why it is that participants are more likely to avoid non-linguistic ambiguity than linguistic ambiguity when speaking. We found that participants pro-actively monitored for conceptual ambiguity before they began speaking, but did not monitor for linguistic ambiguity. Participants’ eye movements also indicated that they monitored the words that they subsequently produced for both conceptual and linguistic ambiguity.   
+
+However, the main result of Experiment 1 – direct evidence that participants explicitly monitor for potential conceptual ambiguity before they begin speaking – is open to an alternative interpretation. In particular, it is possible that participants deduced the structure of the task and realized that, when a conceptual ambiguity was present, one of those two pictures was more likely to be mentioned.
+
+We conducted a follow-up experiment to assess this possibility, using the same non-linguistic ambiguity stimuli as in Experiment 1. However, rather than ask participants to verbally describe the target picture, we instead asked them to simply point at it. If participants' eye movements in the Preview phase of Experiment 1 were driven by pro-active monitoring, then we would not expect to find the same gaze patterns here, since points are unambiguous and do not need elaboration. But if the gaze patterns in Experiment 1 were due to task demands, we would still expect participants to saccade between target and foil in Experiment 1a.
 
 **Experiment 1a**   
 **Methods**   
@@ -448,26 +458,26 @@ If participants’ eye movements during the preview of Experiment 1 were due to 
 . This therefore indicates that the eye movements during Experiment 1’s preview phase were due to participants’ proactive monitoring for potential ambiguity.
 
 **Discussion**  
-Our analyses of eye movements in Experiments 1 and 1a provide direct evidence that, when speaking, adults proactively monitor for non-linguistic ambiguity, but not linguistic ambiguity. This confirms Ferreira et al's findings. In addition, we found more limited evidence that adults' eye movements reflect their monitoring of what they subsequently say, and their ability to detect both conceptual and linguistic ambiguity. Since Experiment 1 successfully showed how eye movement measures can reveal monitoring processes during and after production, we now assessed whether children show evidence of the same processes as they complete a referential communication tasl
+Our analyses of eye movements in Experiments 1 and 1a provide direct evidence that, when speaking, adults proactively monitor for non-linguistic ambiguity, but not linguistic ambiguity. In addition, we found more limited evidence that adults' eye movements reflect their monitoring of what they subsequently say, and their ability to detect both conceptual and linguistic ambiguity.   
 
 
 #### Experiment 2
 
-Children completed a similar referential communication task to the adults, but only testing non-linguistic ambiguities. This time, we examined how children eye movements varied between three types of trial: control (i.e., unambiguous) trials, ambiguous trials in which children produced uninformative responses, and ambiguous trials in which children produced informative responses.
+Since Experiment 1 successfully showed how eye movement measures can reveal monitoring processes during and after production, we now assessed whether children show evidence of the same processes as they complete a referential communication task. This time, testing only non-linguistic ambiguities, we examined how children eye movements varied between three types of trial: control (i.e., unambiguous) trials, ambiguous trials in which children produced uninformative responses, and ambiguous trials in which children produced informative responses. [SHOULD I CALL TRIAL SCENE?]
 
 **Methods**   
 *Participants*   
-62 3- to 5-year-olds children from the Edinburgh area (X female). We did not record detailed demographic information, but we estimate that most children were White, from middle-class families. 7 children were excluded due to a microphone malfunction.
+55 3- to 5-year-olds children from the Edinburgh area (X female). We did not record detailed demographic information, but we estimate that most children were White, from middle-class families. 7 further children were excluded due to a microphone malfunction.
 
 
 *Materials*   
-We used the test trials from the conceptual ambiguity condition of Experiment 1, with no filler trials. Children therefore received 16 trials, 8 ambiguous and 8 unambiguous. Children also received an additional warm-up session beforehand. They were shown three pictures on a piece of paper, and told that Elmo would appear next to his favorite, which they should name. The experimenter then put a counter picturing Elmo next to one picture, and encouraged the child to name it out loud. Children were given 4 warm up trials; on half the trials there were two versions of the same thing (e.g., two different colored umbrellas). Elmo appeared next to one of these. The first time that children produced an uninformative description on an ambiguous trial, the experimenter provided feedback, pointing out the ambiguity, and encouraging the child to produce an informative description. This was the only corrective feedback that children received during the study. Once the experimenter was satisfied that the child understood the task and was providing easily understood responses, the main experimental session began.
+We used the same 16 test trials (8 ambiguous scenes, 8 unambiguous) from the non-linguistic ambiguity condition of Experiment 1, with no filler trials. Children also received an additional warm-up session beforehand. They were shown three pictures on a piece of paper, and told that Elmo would appear next to his favorite, which they should name. The experimenter then put a counter depicting Elmo next to one picture, and encouraged the child to name it out loud. Children were given 4 warm up trials; on half the trials there were two versions of the same thing (e.g., two different colored umbrellas). Elmo appeared next to one of these. The first time that children produced an uninformative description on an ambiguous trial, the experimenter provided feedback, pointing out the ambiguity, and encouraging the child to produce an informative description. This was the only corrective feedback that children received during the study. Once the experimenter was satisfied that the child understood the task and was providing easily understood responses, the main experimental session began.
 
 *Procedure*   
 We used the same EyeLink 1000 Eyetracker as Experiment 1. Older subjects (4;6-5;6) completed a six point calibration routine, and younger subjects (3;6-4;6) completed a shorter three point calibration. The procedure was otherwise identical to Experiment 1, except that the experimenter offered frequent positive reinforcement.
 
 *Analysis*   
-We coded and analyzed children’s descriptions in the same way as Experiment 1, but out eye movement analysis was importantly different. [THIS NEEDS TO GO IN EXPT INTRO TOO] We again focused on critical saccades between the target and foil pictures, but this time we compared Control trials to Test trials on which participants provided an unspecific description of the target (Uninformative trials), and to Test trials on which participants provided a referentially specific description (Informative trials). 
+We coded and analyzed children’s descriptions in the same way as Experiment 1, using a mixed effects model of the form Label~Trial Type + (1|Subject). However our eye movement analysis was importantly different from Experiment 1. We again focused on critical saccades between the target and foil pictures, but this time we compared Control trials (i.e., unambiguous trials) to Test trials on which participants provided a non-specific description of the target (Uninformative trials), and to Test trials on which participants provided a referentially specific description (Informative trials), using a regression with the form Proportion of Saccades ~ Trial Type + (1|Subject)
 
 **Results**   
 ```{r, echo=FALSE, results='hide',message=FALSE}
@@ -560,7 +570,9 @@ na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN 
 ```
 *Descriptions*   
 ```{r, echo=FALSE, results='hide',message=FALSE}
-Labels.Expt2.1 <- summaryBy(Label ~ trialnum+Subj +  cond, data = kid.sac, keep.names = T,na.rm = T)
+kid.sac$InvLabel <- ifelse(kid.sac$Label == 0,1, ifelse(kid.sac$Label ==1, 0 , NA))
+Labels.Expt2.1 <- summaryBy(InvLabel ~ trialnum+Subj +  cond, data = kid.sac, keep.names = T,na.rm = T)
+Labels.Expt2.1$Label <- Labels.Expt2.1$InvLabel
 Labels.Expt2.1$cond <- factor(Labels.Expt2.1$cond, levels = c("Ambig","Control"))
 contrasts(Labels.Expt2.1$cond)[1] <- -1
 Labels.Expt2.2 <- summaryBy(Label ~ Subj  + cond, data = Labels.Expt2.1, keep.names = T,na.rm = T)
@@ -571,7 +583,6 @@ Expt2.Verbal.Intercept <- summary(glmer(Label~cond + (1|Subj), data = Labels.Exp
 Expt2.Verbal.Ttest <- t.test(Label~cond, data = Labels.Expt2.2, var.equal = T, paired = T)
 
 ```
-I NEED TO RE-DO THIS TO SHOW PROPORTION OF SPECIFIC DESCRIPTIONS, NOT AMBIGUOUS ONES.
 Children produced reliably fewer ambiguous descriptions on ambiguous trials but, as expected, they were not nearly as successful at this task as the adults were in Experiment 1 
 (Mean<sub>ambiguous</sub>=
 `r round(subset(Labels.Expt2, cond == "Ambig")$Label.mean,2) ` 
@@ -580,7 +591,8 @@ Children produced reliably fewer ambiguous descriptions on ambiguous trials but,
  ), Mean<sub>unambiguous</sub>=
  `r round(subset(Labels.Expt2, cond == "Control")$Label.mean,2) `
  (`r round(subset(Labels.Expt2, cond == "Control")$Label.sd,2) `
- ) `r format_coef(Expt2.Verbal.Intercept, 2)`. Note that there was significant individual variation in children's performance: When our mixed effects analysis included a random slope for condition, the effect of trial ambiguity was not reliable `r format_coef(Expt2.Verbal.FullFixed, 2)` because of high variance in that random slope (>4), although an additional analysis using a paired sample t-test did also find a reliable effect of trial ambiguity `r  paste("(t","(",Expt2.Verbal.Ttest$parameter,") = ",round(Expt2.Verbal.Ttest$statistic,2), ", p = ",signif(Expt2.Verbal.Ttest$p.value,2),")", sep = "")`. 
+ ) `r format_coef(Expt2.Verbal.Intercept, 2)`.   
+ Note that there was significant individual variation in children's performance: When our mixed effects analysis included a random slope for condition, the effect of trial ambiguity was not reliable `r format_coef(Expt2.Verbal.FullFixed, 2)` because of high variance in that random slope (>4), although an additional analysis using a paired sample t-test did also find a reliable effect of trial ambiguity `r  paste("(t","(",Expt2.Verbal.Ttest$parameter,") = ",round(Expt2.Verbal.Ttest$statistic,2), ", p = ",signif(Expt2.Verbal.Ttest$p.value,2),")", sep = "")`. 
 
 *Eye movements*   
 ```{r, echo=FALSE, results='hide',message=FALSE}
@@ -617,7 +629,7 @@ Preview.Expt2 <- summaryBy(SacTarg ~ LabelCond, data = Preview.Expt2, FUN = c(me
 Expt2.Preview <- summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
 
 ```
-In the Preview phase we found evidence that children’s frequent failure to provide referentially informative descriptions is driven by a failure to proactively monitor for potential ambiguity. In particular, we found that participants provided no evidence for proactive monitoring before they produced uninformative descriptions. In fact, participants were (reliably) slightly *less* likely to make critical saccades on trials where they were uninformative than on Control trials 
+The Preview phase provided evidence that children’s frequent failure to provide referentially informative descriptions may be driven by a failure to proactively monitor for potential ambiguity. In particular, we found that participants provided no evidence for proactive monitoring before they produced uninformative descriptions. In fact, participants were (reliably) slightly *less* likely to make critical saccades on trials where they were uninformative than on Control trials 
 (Mean<sub>uninformative</sub>=
 `r round(subset(Preview.Expt2, LabelCond == "Test-Ambig")$SacTarg.mean,2) ` 
  (
@@ -631,7 +643,7 @@ In the Preview phase we found evidence that children’s frequent failure to pro
 `r round(subset(Preview.Expt2, LabelCond == "Test-Unambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Preview.Expt2, LabelCond == "Test-Unambig")$SacTarg.sd,2) `
- `r format_coef(Expt2.Preview, 3)`). This data suggests that children frequently fail on referential communication tasks because they are not proactively monitoring for ambiguity.
+ `r format_coef(Expt2.Preview, 3)`).
 
 *Pre-Naming Phase*   
 ```{r, echo=FALSE, results='hide',message=FALSE}
@@ -642,7 +654,7 @@ Pre_N.Expt2 <- summaryBy(SacTarg ~ LabelCond, data = Pre_N.Expt2, FUN = c(mean,s
 Expt2.Pre_N <- summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Before")))
 
 ```
-We found a similar pattern during the Pre-Naming Phase. Again, we found no evidence that children realized the scene was potentially ambiguous before they produced uninformative descriptions 
+We found a similar pattern during the Pre-Naming Phase. Again, there was no evidence that children realized the scene was potentially ambiguous before they produced uninformative descriptions 
 
 (Mean<sub>uninformative</sub>=
 `r round(subset(Pre_N.Expt2, LabelCond == "Test-Ambig")$SacTarg.mean,2) ` 
@@ -669,7 +681,7 @@ Post_N.Expt2 <- summaryBy(SacTarg ~ LabelCond, data = Post_N.Expt2, FUN = c(mean
 Expt2.Post_N <- summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "After")))
 
 ```
-Finally, we looked to see whether children noticed the ambiguity once they had started talking. We found good evidence that children engage in production-based monitoring. They were much more likely to make critical saccades on ambiguous trials, no matter whether their utterance was uninformative 
+Finally, we looked to see whether children noticed the ambiguity once they had started talking. We found good evidence that children monitor what they say. They were much more likely to make critical saccades on ambiguous trials, no matter whether their utterance was uninformative 
 (Mean<sub>uninformative</sub>=
 `r round(subset(Post_N.Expt2, LabelCond == "Test-Ambig")$SacTarg.mean,2) ` 
  (
@@ -684,10 +696,10 @@ or informative
  (
  `r round(subset(Post_N.Expt2, LabelCond == "Test-Unambig")$SacTarg.sd,2) `)
  `r format_coef(Expt2.Post_N, 3)`)
-. That is to say, even the children who did not notive that their utterance had the potential to be ambiguous at first, appeared to notice that ambiguity on hearing their own precise words.
+. That is to say, even the children who produced uninformative descriptions appeared to subsequently notice the ambiguity of their expressions.
 
 **Discussion**   
-Experiment 2 was designed to assess whether children engage in, first, pro-active monitoring of the environment for potential ambiguity before they begin speaking and, subsequently, comprehension-based monitoring of their own just-made utterances. Our results suggested that, typically, children do not engage in pro-active monitoring: Unlike adults, they rarely disambiguated their utterances, and their eye movements in those cases did not provide any indication that they had noticted any ambiguity  in the scene. However, for those trials in which children did produce more informative descriptions, we found evidence that they had engaged in this sort of monitoring before they began speaking; indeed they appeared to notice the  ambiguity before they even knew which picture they needed to describe. This suggests that, typically, children do not monitor the world for potential ambiguity, the fact that children *did* provide more informative descriptions on those trials where they appeared to be engaging in monitoring, suggests that the absence of monitoring plays an important role in children's failure to succeed on referential communication tasks.
+Experiment 2 was designed to assess whether children engage in, first, pro-active monitoring for potential ambiguity in the environment and, subsequently, comprehension-based monitoring of their own just-made utterances. Our results suggested that, typically, children do not engage in pro-active monitoring: Unlike adults, they rarely disambiguated their utterances, and their eye movements in those cases did not provide any indication that they had noticted any ambiguity  in the scene. However, for those trials in which children did produce more informative descriptions, we found evidence that they had engaged in this sort of monitoring before they began speaking; indeed they appeared to notice the  ambiguity before they even knew which picture they needed to describe. This suggests that, typically, children do not monitor the world for potential ambiguity, the fact that children *did* provide more informative descriptions on those trials where they appeared to be engaging in monitoring, suggests that the absence of monitoring plays an important role in children's failure to succeed on referential communication tasks.
 
 Children also appeared to engage in comprehension-based monitoring: When the visual scene was ambiguous, they tended to saccade to the matched foil after generating a description, a behavior that did not seem to vary based on what type of description they had provided (the same was true of the adults in Experiment 1). This result might be considered surprising, because comprehension-based monitoring is typically assumed to be complex (as it requires speakers to engage both the production and comprehension systems simultaneously). But it is also somewhat hard to interpret: if children are engaging in comprehension-based monitoring, then why did they not make more corrections?  
 
