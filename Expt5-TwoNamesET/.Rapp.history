@@ -1,191 +1,3 @@
-y
-?control
-?Control
-y = 1
-while(y <5){ print( y<-y+1) }
-?t.test
-Marginal <- matrix(NA, nrow = 10000, ncol = 1)#
-perm = list(OneSample = OneSample,LargeSample = LargeSample, Marginal = Marginal)
-h = 1#
-while (h < 11){#
-a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
-if (t.test(a[,1],a[,2])$statistic < 1.96 & a[,1],a[,2])$statistic > 1.4) {#
-h <- h + 1#
-for (i in 1:20){#
-a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
-t <- t.test(a[,1],a[,2])$p.value#
-if(t < 0.05){#
-	break#
-	}#
-}#
-}#
-perm$Marginal[h] <- i#
-}
-h = 1#
-while (h < 11){#
-a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
-if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
-h <- h + 1#
-for (i in 1:20){#
-a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
-t <- t.test(a[,1],a[,2])$p.value#
-if(t < 0.05){#
-	break#
-	}#
-}#
-}#
-perm$Marginal[h] <- i#
-}
-perm$Marginal[1:13]
-h = 1#
-while (h < 11){#
-a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
-if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
-h <- h + 1#
-for (i in 1:20){#
-a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
-t <- t.test(a[,1],a[,2])$p.value#
-if(t < 0.05){#
-	break#
-	}#
-}#
-#
-perm$Marginal[h] <- i#
-}#
-}
-perm$Marginal[1:13]
-h = 1#
-while (h < 11){print("j")#
-a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
-if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
-h <- h + 1#
-for (i in 1:20){#
-a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
-t <- t.test(a[,1],a[,2])$p.value#
-if(t < 0.05){#
-	break#
-	}#
-}#
-#
-perm$Marginal[h] <- i#
-}#
-}
-h = 1#
-while (h < 10001){#
-a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
-if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
-h <- h + 1#
-for (i in 1:20){#
-a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
-t <- t.test(a[,1],a[,2])$p.value#
-if(t < 0.05){#
-	break#
-	}#
-}#
-#
-perm$Marginal[h] <- i#
-}#
-}
-seq(1,3,1)
-seq(100,10000,100)
-h = 1#
-while (h < 10001){#
-a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
-if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
-h <- h + 1#
-if ( h %in% seq(100,10000,100)){print(h)}#
-for (i in 1:20){#
-a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
-t <- t.test(a[,1],a[,2])$p.value#
-if(t < 0.05){#
-	break#
-	}#
-}#
-#
-perm$Marginal[h] <- i#
-}#
-}
-ls()
-hist(perm)
-summary(perm)
-hist(perm$Marginal)
-h = 1#
-while (h < 10001){#
-a <- cbind(matrix(rnorm(48,0,2),24,2),1)#
-if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
-h <- h + 1#
-if ( h %in% seq(100,10000,100)){print(h)}#
-for (i in 1:20){#
-a <- rbind(a, cbind(matrix(rnorm(48,0,2),24,2),1))#
-t <- t.test(a[,1],a[,2])$p.value#
-if(t < 0.05){#
-	break#
-	}#
-}#
-#
-perm$Marginal[h] <- i#
-}#
-}
-hist(perm$Marginal)
-h = 1#
-while (h < 10001){#
-a <- cbind(matrix(rnorm(100,0,2),50,2),1)#
-if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
-h <- h + 1#
-if ( h %in% seq(100,10000,100)){print(h)}#
-for (i in 1:20){#
-a <- rbind(a, cbind(matrix(rnorm(100,0,2),50,2),1))#
-t <- t.test(a[,1],a[,2])$p.value#
-if(t < 0.05){#
-	break#
-	}#
-}#
-#
-perm$Marginal[h] <- i#
-}#
-}
-hist(perm$Marginal)
-lines(density(perm$Marginal), col = "red", lwd = 2)
-density(perm$Marginal)[1:10]
-hist(perm$Marginal) -> k
-summary(k)
-line(k$breaks, k$counts)
-line(k$breaks -1, k$counts)
-line(k$breaks[1:19], k$counts)
-k$counts[1:10]
-lines(k$breaks[1:19], k$counts)
-hist(perm$Marginal, xlim = c(1:20)) -> k
-?hist
-hist(perm$Marginal, xlim = c(0:20)) -> k
-hist(perm$Marginal, xlim = c(20))
-hist(perm$Marginal, xlim = c(0,20))
-hist(perm$Marginal, xlim = c(1,20))
-hist(perm$Marginal, xlim = c(1,20), bty = "t")
-hist(perm$Marginal, xlim = c(1,20), bty = "o")
-hist(perm$Marginal, xlim = c(1,20), bty = "n")
-?barplot
-?plot
-hist(perm$Marginal, xlim = c(1,20), bty = "y")
-hist(perm$Marginal, xlim = c(1,20), bty = "]")
-plot(perm$Marginal, xlim = c(1,20), bty = "]")
-lines(k$breaks[1:19], k$counts)
-hist(perm$Marginal, xlim = c(1,20), bty = "]", border = NA)
-plot(1:20, k$counts)
-plot(1:19, k$counts)
-hist(perm$Marginal, xlim = c(1,20), breaks = 20,bty = "]", border = NA)
-hist(perm$Marginal, xlim = c(1,20), breaks = 20,bty = "]")
-summary(perm$Marginal)
-table(perm$Marginal)
-plot(table(perm$Marginal))
-lines(table(perm$Marginal))
-lines(1:20,table(perm$Marginal))
-plot(1:20,table(perm$Marginal))
-?plot
-plot(1:20,table(perm$Marginal), type = "n")
-plot(1:20,table(perm$Marginal))
-plot(table(perm$Marginal), type = "n")
-a = data.frame(c("a","b","c"),2,2)
-a
 a = data.frame(rep(c("a","b","c",2),2,3)
 a
 a = data.frame(rep(c("a","b","c",2),2,3))
@@ -2661,19 +2473,177 @@ grep("b",a)
 grep("b",a) -1
 a[(grep("b",a) -1)]
 library(plyr)#
+library(lme4)#
+library(doBy)#
+#
+emo.pop <- read.csv("all_data_with_pairIDs.csv")
+length(unique(emo.pop$Subj))
+library(plyr)#
 library(doBy)#
 library(lme4)#
+# How do saccades during Preview and 500ms ISI predict informative responses?  #
+# Note that we are now using an SMI system for data collection, and the data output is #
+# v different. #
+sac <- read.csv("./data/transition_data.csv")
+summary(sac)
+sac$Targ <- ifelse(sac$informative_target == "True", 1, ifelse(sac$informative_target == "False", 0, NA)
+)
+summary(sac)
+sac$Targ <- ifelse(sac$informative_target == "True", 1, ifelse(sac$informative_target == "False", 0, NA))#
+sac$Foil <- ifelse(sac$informative_foil == "True", 1, ifelse(sac$informative_foil == "False", 0, NA))
+summary(sac)
+# Initial anlyses -- how does informativity of response vary across response order and ambiguity condition?#
+resp <- read.csv("./data/responses_ambig_and_cont.csv")#
+resp <- reshape(resp, #
+  varying = c("informative_target", "informative_foil"), #
+  v.names = "Informative",#
+  timevar = "Response", #
+  times = c("target", "foil"),#
+  direction = "long")#
 #
-isi <- read.csv("./data/500ms_Ambig.csv")
-summary(isi)
+resp$Response <- as.factor(resp$Response)#
+contrasts(resp$Response)[1] <- -1#
+summaryBy(Informative ~ Response  + condition, data = resp, na.rm = T)#
+summary(glmer(Informative ~ condition * as.factor(Response) + (1+condition|Subject) + (1|Trial_ID), data = resp, family = "binomial"))
+sac$TotalSaccades <- sac$target_to_distractor + sac$target_to_foil + sac$distractor_to_target + sac$distractor_to_foil + sac$foil_to_target + sac$foil_to_distractor
+summary(sac)
+sac$TotalSaccades <- sac$target_to_distractor + sac$target_to_foil + sac$distractor_to_target + sac$distractor_to_foil + sac$foil_to_target + sac$foil_to_distractor#
+sac$CriticalSaccades <- sac$target_to_foil + sac$foil_to_target#
+sac$PropSac <- sac$CriticalSaccades/sac$TotalSaccades
+summary(sac)
+is.na(sac$PropSac) <- 0
+summary(sac)
+sac$PropSac[is.na(sac$PropSac)] <- 0
+summary(sac)
+summaryBy(PropSac ~ phase + condition + Targ, data = sac)
+summaryBy(target_to_foil ~ phase + condition + Targ, data = sac)
+# How do fixations during 500ms ISI predict informative responses?  #
+# Note that we are now using an SMI system for data collection, and the data output is #
+# v different. #
+fix <- read.csv("./data/all_fixation_durations.csv")#
+fix$Targ <- ifelse(fix$informative_target == "True", 1, ifelse(fix$informative_target == "False", 0, NA))#
+fix$Foil <- ifelse(fix$informative_foil == "True", 1, ifelse(fix$informative_foil == "False", 0, NA))#
+#
+fix$foil_duration_R <- (fix$foil_duration_R - mean(fix$foil_duration_R))/sd(fix$foil_duration_R)#
+fix$target_duration_R <- (fic$target_duration_R - mean(fix$target_duration_R))/sd(fix$target_duration_R)
+summary(fix)
+# v different. #
+fix <- read.csv("./data/all_fixation_durations.csv")#
+fix$Targ <- ifelse(fix$informative_target == "True", 1, ifelse(fix$informative_target == "False", 0, NA))#
+fix$Foil <- ifelse(fix$informative_foil == "True", 1, ifelse(fix$informative_foil == "False", 0, NA))#
+#
+fix$foil_duration_R <- (fix$foil_sum_duration_Right - mean(fix$foil_sum_duration_Right))/sd(fix$foil_sum_duration_Right)#
+fix$target_duration_R <- (fic$target_sum_duration_Right - mean(fix$target_sum_duration_Right))/sd(fix$target_sum_duration_Right)
+fix$foil_duration_R <- (fix$foil_sum_duration_Right - mean(fix$foil_sum_duration_Right))/sd(fix$foil_sum_duration_Right)#
+fix$target_duration_R <- (fix$target_sum_duration_Right - mean(fix$target_sum_duration_Right))/sd(fix$target_sum_duration_Right)
+summary(fix)
+fix$Targ <- ifelse(fix$informative_target == "TRUE", 1, ifelse(fix$informative_target == "FALSE", 0, NA))#
+fix$Foil <- ifelse(fix$informative_foil == "TRUE", 1, ifelse(fix$informative_foil == "FALSE", 0, NA))
+summary(fix)
+summary(glmer(informative_foil ~ foil_duration_R + (1|participant_number), data = subset(fix, phase == "500ms"), family = "binomial"))
+summary(glmer(informative_foil ~ foil_duration_R + (1|participant), data = subset(fix, phase == "500ms"), family = "binomial"))
+library(plyr)#
+library(doBy)#
+library(lme4)#
+# Initial anlyses -- does fixation duration during 500ms ISI predict informative response  #
+isi <- read.csv("./data/500ms_Ambig.csv")#
+#
+isi$foil_duration_R <- (isi$foil_duration_R - mean(isi$foil_duration_R))/sd(isi$foil_duration_R)#
+isi$target_duration_R <- (isi$target_duration_R - mean(isi$target_duration_R))/sd(isi$target_duration_R)#
+#
 summary(glmer(informative_foil ~ foil_duration_R + (1|participant_number), data = isi, family = "binomial"))
-isi$foil_duration_R <- (isi$foil_duration_R - mean(isi$foil_duration_R))/sd(isi$foil_duration_R)
-summary(isi)
-summary(glmer(informative_foil ~ foil_duration_R + (1|participant_number), data = isi, family = "binomial"))
-isi$foil_duration_R <- (isi$target_duration_R - mean(isi$target_duration_R))/sd(isi$target_duration_R)
-isi$target_duration_R <- (isi$target_duration_R - mean(isi$target_duration_R))/sd(isi$target_duration_R)
-summary(glmer(informative_foil ~ target_duration_R + (1|participant_number), data = isi, family = "binomial"))
-isi$foil_duration_L <- (isi$foil_duration_L - mean(isi$foil_duration_L))/sd(isi$foil_duration_L)
-summary(glmer(informative_foil ~ foil_duration_L + (1|participant_number), data = isi, family = "binomial"))
-summary(glmer(informative_foil ~ foil_duration_L + (1+foil_duration_L|participant_number), data = isi, family = "binomial"))
-summary(glmer(informative_foil ~ foil_duration_R + (1+foil_duration_R|participant_number), data = isi, family = "binomial"))
+library(plyr)#
+library(doBy)#
+library(lme4)#
+# Initial anlyses -- does fixation duration during 500ms ISI predict informative response  #
+isi <- read.csv("./data/500ms_Ambig.csv")#
+#
+isi$foil_duration_R <- (isi$foil_duration_R - mean(isi$foil_duration_R))/sd(isi$foil_duration_R)#
+isi$target_duration_R <- (isi$target_duration_R - mean(isi$target_duration_R))/sd(isi$target_duration_R)#
+#
+summary(glmer(Foil ~ foil_duration_R + (1|participant_number), data = isi, family = "binomial"))
+summary(glmer(Foil ~ foil_duration_R + (1|participant), data = subset(fix, phase == "500ms"), family = "binomial"))
+summary(glmer(Foil ~ foil_duration_R*condition + (1|participant), data = subset(fix, phase == "500ms"), family = "binomial"))
+summaryBy(target_duration_R + foil_duration_R ~ phase + condition + Targ, data = fix)
+summaryBy(target_duration_R + foil_duration_R ~ phase + condition + Targ, data = fix)
+summaryBy(target_duration_R + foil_duration_R ~ phase + condition + Foil, data = fix)
+summaryBy(target_duration_R + foil_duration_R ~ phase + condition + Target, data = fix)
+summaryBy(target_duration_R + foil_duration_R ~ phase + condition + Targ, data = fix)
+summaryBy(target_to_foil ~ phase + condition + Targ, data = sac)
+summary(sac)
+summaryBy(PropSac ~ phase + condition + Targ, data = sac)
+summaryBy(CriticalSaccades ~ phase + condition + Targ, data = sac)
+16*4
+summaryBy(CriticalSaccades ~ phase + condition , data = sac)
+summaryBy(foil_duration_R ~ phase + condition , data = fix)
+summaryBy(foil_duration_R ~ phase + condition + Foil , data = fix)
+summaryBy(foil_sum_duration_Right ~ phase + condition + Foil , data = fix)
+summaryBy(log(foil_sum_duration_Right) ~ phase + condition + Foil , data = fix)
+summaryBy(foil_sum_duration_Right ~ phase + condition + Foil , data = fix)
+hist(subset(fix, phase == "500ms")$foil_sum_duration_Right)
+hist(subset(fix, phase == "500ms" & condition == "ambig")$foil_sum_duration_Right)
+hist(subset(fix, phase == "500ms" & condition == "control")$foil_sum_duration_Right)
+summaryBy(foil_sum_duration_Right ~ phase + condition  , data = fix)
+summary(fix)
+summaryBy(distractor_sum_duration_Right ~ phase + condition  , data = fix)
+summaryBy(target_sum_duration_Right ~ phase + condition  , data = fix)
+summary(subset(fix, phase == "500ms" & condition == "control"))
+summary(subset(fix, phase == "500ms" & condition == "ambig"))
+fix$TargetLabelCond <- "Control"#
+subset(fix, condition == "ambig" & Targ == 1)$TargetLabelCond <- "Ambig - Informative"#
+subset(fix, condition == "ambig" & Targ == 0)$TargetLabelCond <- "Ambig - Uninformative"#
+fix$TargetLabelCond <- ordered(fix$TargetLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))
+fix[fix$condition == "ambig" & Targ == 1,]$TargetLabelCond <- "Ambig - Informative"
+fix[fix$condition == "ambig" & fix$Targ == 1,]$TargetLabelCond <- "Ambig - Informative"
+fix[fix$condition %in% "ambig" & fix$Targ %in% 1,]$TargetLabelCond <- "Ambig - Informative"
+fix$TargetLabelCond <- "Control"#
+fix[fix$condition %in% "ambig" & fix$Targ %in% 1,]$TargetLabelCond <- "Ambig - Informative"#
+fix[fix$condition %in% "ambig" & fix$Targ %in% 0,]$TargetLabelCond <- "Ambig - Uninformative"#
+fix$TargetLabelCond <- ordered(fix$TargetLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))
+summary(fix)
+fix$TargetLabelCond <- "Control"#
+fix[fix$condition %in% "ambig" & fix$Targ %in% 1,]$TargetLabelCond <- "Ambig - Informative"#
+fix[fix$condition %in% "ambig" & fix$Targ %in% 0,]$TargetLabelCond <- "Ambig - Uninformative"#
+fix$TargetLabelCond <- ordered(fix$TargetLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
+#
+fix$FoilLabelCond <- "Control"#
+fix[fix$condition %in% "ambig" & fix$Foil %in% 1,]$FoilLabelCond <- "Ambig - Informative"#
+fix[fix$condition %in% "ambig" & fix$Foil %in% 0,]$FoilLabelCond <- "Ambig - Uninformative"#
+fix$FoilLabelCond <- ordered(fix$FoilLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
+summaryBy(target_duration_R + foil_duration_R ~ phase + condition + TargetLabelCond, data = fix)#
+summaryBy(target_duration_R + foil_duration_R ~ phase + condition + FoilLabelCond, data = fix)
+fix$TargetLabelCond <- "Control"#
+fix[fix$condition %in% "ambig" & fix$Targ %in% 1,]$TargetLabelCond <- "Ambig - Informative"#
+fix[fix$condition %in% "ambig" & fix$Targ %in% 0,]$TargetLabelCond <- "Ambig - Uninformative"#
+fix$TargetLabelCond <- ordered(fix$TargetLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
+#
+fix$FoilLabelCond <- "Control"#
+fix[fix$condition %in% "ambig" & fix$Foil %in% 1,]$FoilLabelCond <- "Ambig - Informative"#
+fix[fix$condition %in% "ambig" & fix$Foil %in% 0,]$FoilLabelCond <- "Ambig - Uninformative"#
+fix$FoilLabelCond <- ordered(fix$FoilLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
+summaryBy(target_sum_duration_Right + foil_sum_duration_Right ~ phase + condition + TargetLabelCond, data = fix)#
+summaryBy(target_sum_duration_Right + foil_sum_duration_Right ~ phase + condition + FoilLabelCond, data = fix)
+fix$TargetLabelCond <- "Control"#
+fix[fix$condition %in% "ambig" & fix$Targ %in% NA,]$TargetLabelCond <- NA#
+fix[fix$condition %in% "ambig" & fix$Targ %in% 1,]$TargetLabelCond <- "Ambig - Informative"#
+fix[fix$condition %in% "ambig" & fix$Targ %in% 0,]$TargetLabelCond <- "Ambig - Uninformative"#
+fix$TargetLabelCond <- ordered(fix$TargetLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
+#
+fix$FoilLabelCond <- "Control"#
+fix[fix$condition %in% "ambig" & fix$Foil %in% NA,]$FoilLabelCond <- NA#
+fix[fix$condition %in% "ambig" & fix$Foil %in% 1,]$FoilLabelCond <- "Ambig - Informative"#
+fix[fix$condition %in% "ambig" & fix$Foil %in% 0,]$FoilLabelCond <- "Ambig - Uninformative"#
+fix$FoilLabelCond <- ordered(fix$FoilLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))
+summaryBy(target_sum_duration_Right + foil_sum_duration_Right ~ phase + condition + TargetLabelCond, data = fix)#
+summaryBy(target_sum_duration_Right + foil_sum_duration_Right ~ phase + condition + FoilLabelCond, data = fix)
+summary(subset(fix, phase == "500ms" & condition == "ambig"))
+summary(subset(fix, phase == "500ms" & condition == "control"))
+summary(subset(fix, phase == "elmo" & condition == "control"))
+summary(subset(fix, phase == "elmo" & condition == "ambig"))
+summary(subset(fix, phase == "start" & condition == "ambig"))
+summary(subset(fix, phase == "start" & condition == "control"))
+summary(subset(sac, phase == "start" & condition == "control"))
+ls()
+summary(sac)
+summary(subset(sac, phase == "start" & condition == "C"))
+summary(subset(sac, phase == "start" & condition == "A"))
