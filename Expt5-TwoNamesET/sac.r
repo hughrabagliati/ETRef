@@ -26,6 +26,7 @@ summary(glmer(Informative ~ condition * as.factor(Response) + (1+condition|Subje
 sac <- read.csv("./data/transition_data.csv")
 sac$Targ <- ifelse(sac$informative_target == "True", 1, ifelse(sac$informative_target == "False", 0, NA))
 sac$Foil <- ifelse(sac$informative_foil == "True", 1, ifelse(sac$informative_foil == "False", 0, NA))
+contrasts(sac$condition)[1] <- -1
 
 sac$TotalSaccades <- sac$target_to_distractor + sac$target_to_foil + sac$distractor_to_target + sac$distractor_to_foil + sac$foil_to_target + sac$foil_to_distractor
 sac$CriticalSaccades <- sac$target_to_foil + sac$foil_to_target
@@ -49,7 +50,24 @@ sac$FoilLabelCond <- ordered(sac$FoilLabelCond, levels = c("Control", "Ambig - U
 summaryBy(TotalSaccades + CriticalSaccades + PropSac ~ phase + condition + TargetLabelCond, data = subset(sac, TotalSaccades >0),na.rm = T)
 summaryBy(TotalSaccades + CriticalSaccades + PropSac ~ phase + condition + FoilLabelCond, data = subset(sac, TotalSaccades >0),na.rm = T)
 
-summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) + (1|trial_id), data = subset(sac, phase == "start")))
+sac$PropSac_c <- NA
+for (i in unique(sac$phase)){
+	sac[sac$phase == i,]$PropSac_c <- (sac[sac$phase == i,]$PropSac - mean(sac[sac$phase == i,]$PropSac, na.rm = T))/sd(sac[sac$phase == i,]$PropSac, na.rm = T)
+}
+summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) + (1|target), data = subset(sac, phase == "start")))
+summary(glmer(Foil ~ condition*PropSac_c + (1+PropSac_c|participant) , data = subset(sac, phase == "elmo"), family = "binomial"))
+
+
+ggplot( subset(sac, phase == "start"), aes(x= PropSac_c, y= Targ)) +
+    geom_point() +    # Use hollow circles
+    geom_smooth(   # Add linear regression line
+                )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Start gaze predicting target") + geom_jitter(width = 0.05, height = 0.02)+facet_grid(.~condition)
+
+ggplot( subset(sac, phase == "elmo"), aes(x= PropSac_c, y= Foil)) +
+    geom_point() +    # Use hollow circles
+    geom_smooth(   # Add linear regression line
+                )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Elmo Gaze predicting Foil") + geom_jitter(width = 0.05, height = 0.02)+facet_grid(.~condition)
+
 
 # How do fixations during 500ms ISI predict informative responses?  
 # Note that we are now using an SMI system for data collection, and the data output is 
@@ -73,6 +91,7 @@ fix[fix$condition %in% "ambig" & fix$Foil %in% 1,]$FoilLabelCond <- "Ambig - Inf
 fix[fix$condition %in% "ambig" & fix$Foil %in% 0,]$FoilLabelCond <- "Ambig - Uninformative"
 fix$FoilLabelCond <- ordered(fix$FoilLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))
 
+fix$total_duration_right <- fix$target_sum_duration_Right + fix$foil_sum_duration_Right + fix$distractor_sum_duration_Right
 
 summaryBy(target_duration_R + foil_duration_R + target_sum_duration_Right + foil_sum_duration_Right~ phase + condition + TargetLabelCond, data = fix)
 summaryBy(target_duration_R + foil_duration_R + target_sum_duration_Right + foil_sum_duration_Right~ phase + condition + FoilLabelCond, data = fix)
