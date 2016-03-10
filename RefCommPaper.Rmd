@@ -705,7 +705,9 @@ Children also appeared to monitor their own utterances. When the visual scene wa
 Unfortunately however, Experiment 2's evidence for comprehension monitoring leaves us with a question: if children are monitoring what they say, then why did they still produce so few informative utterances? One possibility is that children did not correct because they were not truly motivated to, as each trial in Experiment 2 ended straight after they responded, and their utterance had no obvious adverse effects on an interlocutor. But another possibility is that these subsequent eye movements do not reflect any active monitoring processes at all, but are instead the result of passive priming: Saying *Dog* simply primes the speaker to look to the other dog, and does not reflect an understanding that the speaker has said something ambiguous. Experiment 3 distinguishes these accounts, by having children name two pictures from a visual scene that was either ambiguous or not. If children are learning from their mistakes, then they should be relatively more informative when naming the second picture if the scene is ambiguous.
 
 #### Experiment 3
-Children in Experiment 3 were asked to name two out of three pictures from a scene. The task was similar to Experiment 2, except that having named the target picture (indicated as before by Elmo), children were then asked to name a foil picture, as indicated by the appearance of Peppa Pig. On half of the trials the target and foil depicted the same kind of thing, and on half of the trials they depicted different kinds of thing. 
+Children in Experiment 3 were asked to name two out of three pictures from a scene. The task was similar to Experiment 2, except that having named the target picture (indicated as before by Elmo) children were then asked to name a foil picture,  indicated by the appearance of Peppa Pig. On half of the trials the target and foil depicted the same kind of thing, and on half of the trials they depicted different kinds of thing. If children use comprehension monitoring, as suggested by Experiment 2, then they should produce informative descriptions more often for foil pictures, but only when the scene is ambiguous. 
+
+We also examined whether children's eye movements predicted whether they would produce informative descriptions. We did this by first replicating Experiment 2's findings on children's pro-active monitoring, and also by assessing whether children were more likely to produce informative descriptions of the foil if they had made eye-movements that were indicative of comprehension monitoring.
 
 
 **Methods**   
@@ -717,10 +719,10 @@ Children in Experiment 3 were asked to name two out of three pictures from a sce
 Each participant completed 16 test trials (8 ambiguous scenes, 8 unambiguous) using the same pictures as Experiment 2, with no filler trials. On ambiguous trials, children saw a triad of pictures, two of which depicted the same type of thing. On unambiguous trials, all three pictures depicted different things. To create unambiguous trials, we shuffled foil pictures (the pictures named second) between triads (e.g., so that a foil *shoe* picture was placed with a target *car* picture.). We used a Latin square design such that, across participants, all pictures appeated in both ambiguous and unambiguous trials and the same pictures appeared in both target and foil positions. Children received the same warm-up session as in Experiment 2.
 
 *Procedure*   
-The experiment was conducted using an SMI Red-n eye tracker, and programmed in Experiment Center. All subjects completed a four point calibration routine. Each trial began with a Preview phase, in which three pictures were displayed for 4250ms. Then, Elmo appeared next to the Target picture and a pre-recorded instruction asked participants “Which picture does Elmo like?” After participants answered, the experimenter pushed a button to begin the next phase of the trial: After a 500ms pause, Peppa Pig appeared next to the Foil picture and a pre-recorded instruction asked participants "And which picture does Peppa like?". Once the child answered, the pictures remained onscreen for 750ms, after which participants received further positive feedback from Elmo and Peppa.  
+The experiment was conducted using an SMI Red-n eye tracker. All subjects completed a four point calibration routine. Each trial began with a Preview phase, in which three pictures were displayed for 4250ms. Then, Elmo appeared next to the Target picture and a pre-recorded instruction asked participants “Which picture does Elmo like?” After participants answered, the experimenter pushed a button to begin the next phase of the trial: After a 500ms pause, Peppa Pig appeared next to the Foil picture and a pre-recorded instruction asked participants "And which picture does Peppa like?". Once the child answered, the pictures remained onscreen for 750ms, after which participants received further positive feedback from Elmo and Peppa.  
 
 *Analysis*   
-We coded and analyzed children’s descriptions similarly to Experiment 1 and 2, using a mixed effects model of the form Label~Trial Type*Picture Type [Target versus Foil] + (1+Trial Type|Subject). We analyzed eye movements in the same way as Experiment 2, aiming to 1) replicate the finding that children are more likely to monitor for ambiguity before producing an informative description of the Target picture, and 2) test whether children were more likely to have engaged in comprehension monitoring before producing an informative description of the Foil picture. To answer these questions we used regressions with the form Proportion of Saccades ~ Trial Type + (1|Subject)
+We coded and analyzed children’s descriptions similarly to Experiment 1 and 2, using a mixed effects logistic regression of the form Description~Trial Type*Picture Type [Target versus Foil] + (1+Trial Type|Subject). We analyzed eye movements in the same way as Experiment 2, with the aim of replicating the finding that children are more likely to monitor for ambiguity before producing an informative description of the Target picture, again using mixed effects models of the form Proportion of Saccades ~ Trial Type + (1|Subject). Finally, we anlyzed whether children were more likely to have engaged in comprehension monitoring before producing an informative description of the Foil picture, using a logistic regression of the form Label ~ Proportion of Saccades + (1|Subject).
 
 **Results**   
 ```{r, echo=FALSE, results='hide',message=FALSE}
@@ -803,6 +805,11 @@ sac[sac$condition %in% "ambig" & sac$Foil %in% 1,]$FoilLabelCond <- "Ambig - Inf
 sac[sac$condition %in% "ambig" & sac$Foil %in% 0,]$FoilLabelCond <- "Ambig - Uninformative"
 sac$FoilLabelCond <- ordered(sac$FoilLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))
 
+sac$PropSac_c <- NA
+for (i in unique(sac$phase)){
+	sac[sac$phase == i,]$PropSac_c <- (sac[sac$phase == i,]$PropSac - mean(sac[sac$phase == i,]$PropSac, na.rm = T))/sd(sac[sac$phase == i,]$PropSac, na.rm = T)
+}
+
 Preview.Expt3 <- summaryBy(TotalSaccades + CriticalSaccades + PropSac ~ phase + condition + TargetLabelCond + participant, data = subset(sac, TotalSaccades >0 & phase == "start"),na.rm = T, keep.names = T)
 Preview.Expt3 <- summaryBy(PropSac ~ phase + condition + TargetLabelCond , data = Preview.Expt3,na.rm = T, FUN = c(mean,sd))
 Expt3.Preview <- summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) , data = subset(sac, phase == "start")))
@@ -827,8 +834,14 @@ As in Experiment 2, children only showed a reliably increased tendency to monito
  `r format_coef(Expt3.Preview, 3)`.
 
 *Pre-Foil Gaze*
+```{r, echo=FALSE, results='hide',message=FALSE}
+Expt3.Foil <- summary(lmer(Foil ~  PropSac + (1|participant) + (1|target), data = subset(sac, phase == "elmo" & condition == "ambig" )))
 
-Next we tested whether 
+Expt3.Ambig <- summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) , data = subset(sac, phase == "elmo" )))
+
+```
+Finally, we tested whether children who provided greater evidence for production monitoring (i.e., made more critical saccades while Elmo was on-screen) were also more likely to produce informative descriptions of the foil. In fact, these was no relationship between children's critical saccades and their description of the foil `r format_coef(Expt3.Foil, 2)`. This was not because children failed to engage in production monitoring. Compared to the control condition, they were considerably more likely to make critical saccades after describing an ambiguous target, whether they had produced an informative `r format_coef(Expt3.Ambig,3)` or uninformative description `r format_coef(Expt3.Ambig,2)`. Rather....
+
 <br>
 <br>
 <br>
