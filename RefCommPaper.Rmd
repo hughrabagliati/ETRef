@@ -698,20 +698,141 @@ or informative
 . That is to say, even the children who produced uninformative descriptions appeared to subsequently notice the ambiguity of their expressions.
 
 **Discussion**   
-Experiment 2 was designed to assess whether children engage in, first, pro-active monitoring for potential ambiguity in the environment and, subsequently, comprehension-based monitoring of their own just-made utterances. Our results suggested that, typically, children do not engage in pro-active monitoring: Unlike adults, they rarely produced informative utterances, and their eye movements typically did not provide any indication that they had noticted any ambiguity. However, for those trials in which children did produce informative descriptions of ambiguous scenes, we found evidence that they had engaged in proactive monitoring before they began speaking; indeed they appeared to notice the  ambiguity before they even knew which picture they needed to describe. This suggests that, typically, children do not monitor the world for potential ambiguity, and the fact that children *did* provide more informative descriptions on those trials where they appeared to be engaging in monitoring, suggests that the absence of monitoring plays an important role in children's failure to succeed on referential communication tasks.
+Experiment 2 was designed to assess whether children engage in, first, pro-active monitoring for potential ambiguity in the environment and, subsequently, comprehension-based monitoring of their own just-made utterances. Our results suggested that, typically, children do not engage in pro-active monitoring: Unlike adults, they rarely produced informative utterances, and their eye movements typically did not provide any indication that they had noticted any ambiguity. However, for those trials in which children did produce informative descriptions of ambiguous scenes, their eye movements indicated that they had engaged in proactive monitoring before they began speaking, and indeed before they knew which picture they had to describe. This suggests that, typically, children do not monitor the world for potential ambiguity, while the fact that children *did* provide more informative descriptions on those trials where they had appeared to notice the ambiguity, suggests that the absence of monitoring plays an important role in children's failure to succeed on referential communication tasks.
 
-Children also appeared to engage in comprehension-based monitoring: When the visual scene was ambiguous, they tended to saccade to the matched foil after generating a description, a behavior that did not seem to vary based on what type of description they had provided (the same was true of the adults in Experiment 1). This result might be considered surprising, because comprehension-based monitoring is typically assumed to be complex (as it requires speakers to engage both the production and comprehension systems simultaneously). But it is also somewhat hard to interpret: if children are engaging in comprehension-based monitoring, then why did they not make more corrections?  
+Children also appeared to monitor their own utterances. When the visual scene was ambiguous, they tended to saccade to the matched foil after generating a description, a behavior that did not seem to vary based on what type of description they had provided (the same was true of the adults in Experiment 1). This result might be considered surprising, because comprehension-based monitoring is typically assumed to be complex (as it requires speakers to engage both the production and comprehension systems simultaneously). However, as discussed in the Introduction, this sort of monitoring may also serve a useful role as a learning mechanism: If children monitor the informativity of their utterances, they can begin to recognise those situations in which they tend to say uninformative or ambiguous things, and so develop strategies for avoiding ambiguity.
 
-One possibility is that children did not correct because they were not truly motivated to: the trial ended straight after they responded, and their utterance had no obvious adverse effects on an interlocutor. But another possibility is that these subsequent eye movements do not reflect any active monitoring processes, but are instead the result of passive priming: Saying *Dog* simply primes children to look to the other dog, and does not reflect . 
+Unfortunately however, Experiment 2's evidence for comprehension monitoring leaves us with a question: if children are monitoring what they say, then why did they still produce so few informative utterances? One possibility is that children did not correct because they were not truly motivated to, as each trial in Experiment 2 ended straight after they responded, and their utterance had no obvious adverse effects on an interlocutor. But another possibility is that these subsequent eye movements do not reflect any active monitoring processes at all, but are instead the result of passive priming: Saying *Dog* simply primes the speaker to look to the other dog, and does not reflect an understanding that the speaker has said something ambiguous. Experiment 3 distinguishes these accounts, by having children name two pictures from a visual scene that was either ambiguous or not. If children are learning from their mistakes, then they should be relatively more informative when naming the second picture if the scene is ambiguous.
 
-Experiment 3 tests whether children conduct effective comprehension monitoring. 
+#### Experiment 3
+Children in Experiment 3 were asked to name two out of three pictures from a scene. The task was similar to Experiment 2, except that having named the target picture (indicated as before by Elmo), children were then asked to name a foil picture, as indicated by the appearance of Peppa Pig. On half of the trials the target and foil depicted the same kind of thing, and on half of the trials they depicted different kinds of thing. 
 
 
+**Methods**   
+*Participants*   
+40 3- to 5-year-olds children from the Edinburgh area (X female). We did not record detailed demographic information, but we estimate that most children were White, from middle-class families. Children were tested in the Developmental Lab at the University of Edinburgh as well as in local pre-schools.
 
+
+*Materials*   
+Each participant completed 16 test trials (8 ambiguous scenes, 8 unambiguous) using the same pictures as Experiment 2, with no filler trials. On ambiguous trials, children saw a triad of pictures, two of which depicted the same type of thing. On unambiguous trials, all three pictures depicted different things. To create unambiguous trials, we shuffled foil pictures (the pictures named second) between triads (e.g., so that a foil *shoe* picture was placed with a target *car* picture.). We used a Latin square design such that, across participants, all pictures appeated in both ambiguous and unambiguous trials and the same pictures appeared in both target and foil positions. Children received the same warm-up session as in Experiment 2.
+
+*Procedure*   
+The experiment was conducted using an SMI Red-n eye tracker, and programmed in Experiment Center. All subjects completed a four point calibration routine. Each trial began with a Preview phase, in which three pictures were displayed for 4250ms. Then, Elmo appeared next to the Target picture and a pre-recorded instruction asked participants “Which picture does Elmo like?” After participants answered, the experimenter pushed a button to begin the next phase of the trial: After a 500ms pause, Peppa Pig appeared next to the Foil picture and a pre-recorded instruction asked participants "And which picture does Peppa like?". Once the child answered, the pictures remained onscreen for 750ms, after which participants received further positive feedback from Elmo and Peppa.  
+
+*Analysis*   
+We coded and analyzed children’s descriptions similarly to Experiment 1 and 2, using a mixed effects model of the form Label~Trial Type*Picture Type [Target versus Foil] + (1+Trial Type|Subject). We analyzed eye movements in the same way as Experiment 2, aiming to 1) replicate the finding that children are more likely to monitor for ambiguity before producing an informative description of the Target picture, and 2) test whether children were more likely to have engaged in comprehension monitoring before producing an informative description of the Foil picture. To answer these questions we used regressions with the form Proportion of Saccades ~ Trial Type + (1|Subject)
+
+**Results**   
+```{r, echo=FALSE, results='hide',message=FALSE}
+library(plyr)
+library(doBy)
+library(lme4)
+library(ggplot2)
+
+# Initial anlyses -- how does informativity of response vary across response order and ambiguity condition?
+resp <- read.csv("./Expt5-TwoNamesET/data/responses_ambig_and_cont.csv")
+resp <- reshape(resp, 
+  varying = c("informative_target", "informative_foil"), 
+  v.names = "Informative",
+  timevar = "Response", 
+  times = c("target", "foil"),
+  direction = "long")
+resp$InvLabel <- ifelse(resp$Informative == 0,1, ifelse(resp$Informative ==1, 0 , NA))
+resp$Response <- as.factor(resp$Response)
+contrasts(resp$Response)[1] <- -1
+contrasts(resp$condition)[1] <- -1
+Labels.Expt3.2 <- summaryBy(InvLabel ~ Response  + condition + Subject, data = resp, na.rm = T)
+Labels.Expt3.2$Label <- Labels.Expt3.2$InvLabel
+Labels.Expt3 <- summaryBy(Label ~ Response  + condition, data = Labels.Expt3.2, na.rm = T, FUN = c(mean,sd))
+
+Expt3.Verbal.Fixed <- summary(glmer(Informative ~ condition * Response + (1+condition|Subject) + (1+condition|Target), data = resp, family = "binomial"))
+```
+*Descriptions*   
+
+Children produced fewer ambiguous descriptions of the Target picture when the scene was ambiguous than when it was unambiguous
+(Mean<sub>ambiguous</sub>=
+`r round(subset(Labels.Expt3, condition == "ambiguous" & Response == "target")$Label.mean,2) ` 
+ (
+ `r round(subset(Labels.Expt3, condition == "ambiguous" & Response == "target")$Label.sd,2) `
+ ), Mean<sub>unambiguous</sub>=
+ `r round(subset(Labels.Expt3, condition == "control" & Response == "target")$Label.mean,2) `
+ (`r round(subset(Labels.Expt3, condition == "control" & Response == "target")$Label.sd,2) `
+ ),
+ and they produced even fewer ambiguous descriptions of the Foil picture when the scene was ambiguous
+ (Mean<sub>ambiguous</sub>=
+`r round(subset(Labels.Expt3, condition == "ambiguous" & Response == "foil")$Label.mean,2) ` 
+ (
+ `r round(subset(Labels.Expt3, condition == "ambiguous" & Response == "foil")$Label.sd,2) `
+ ), Mean<sub>unambiguous</sub>=
+ `r round(subset(Labels.Expt3, condition == "control" & Response == "foil")$Label.mean,2) `
+ (`r round(subset(Labels.Expt3, condition == "control" & Response == "foil")$Label.sd,2) `
+ ). Our regression analysis showed that participants were reliably less likely to produce ambiguous descriptions when the trial was ambiguous `r format_coef(Expt3.Verbal.Fixed, 2)`, and that this interacted with the type of picture being labeled, such that the effect of trial type was reliably larger for the foil picture `r format_coef(Expt3.Verbal.Fixed, 4)`.
+ 
+[FOOTNOTE: These effects also held when the data was analyzed using an ANOVA].
+
+<br>
+*Eye movements*   
+```{r, echo=FALSE, results='hide',message=FALSE}
+library(doBy)
+# How do saccades during Preview and 500ms ISI predict informative responses?  
+# Note that we are now using an SMI system for data collection, and the data output is 
+#v different. 
+# Note that there is a slight problem with the stimuli. In the unambiguous trials, book1 appeared more often as the target than it should have, and bird1 appeared less often.
+#Likewise, bird1 appeared more often as a foil than it should have, and book1 appeared less often.
+sac <- read.csv("./Expt5-TwoNamesET/data/transition_data.csv")
+sac$Targ <- ifelse(sac$informative_target == "True", 1, ifelse(sac$informative_target == "False", 0, NA))
+sac$Foil <- ifelse(sac$informative_foil == "True", 1, ifelse(sac$informative_foil == "False", 0, NA))
+contrasts(sac$condition)[1] <- -1
+
+sac$TotalSaccades <- sac$target_to_distractor + sac$target_to_foil + sac$distractor_to_target + sac$distractor_to_foil + sac$foil_to_target + sac$foil_to_distractor
+sac$CriticalSaccades <- sac$target_to_foil + sac$foil_to_target
+sac$PropSac <- sac$CriticalSaccades/sac$TotalSaccades
+sac$CS_Trial <- ifelse(sac$CriticalSaccades > 0,1,0)
+#sac$PropSac[is.na(sac$PropSac)] <- 0
+
+
+sac$TargetLabelCond <- "Control"
+sac[sac$condition %in% "ambig" & sac$Targ %in% NA,]$TargetLabelCond <- NA
+sac[sac$condition %in% "ambig" & sac$Targ %in% 1,]$TargetLabelCond <- "Ambig - Informative"
+sac[sac$condition %in% "ambig" & sac$Targ %in% 0,]$TargetLabelCond <- "Ambig - Uninformative"
+sac$TargetLabelCond <- ordered(sac$TargetLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))
+
+sac$FoilLabelCond <- "Control"
+sac[sac$condition %in% "ambig" & sac$Foil %in% NA,]$FoilLabelCond <- NA
+sac[sac$condition %in% "ambig" & sac$Foil %in% 1,]$FoilLabelCond <- "Ambig - Informative"
+sac[sac$condition %in% "ambig" & sac$Foil %in% 0,]$FoilLabelCond <- "Ambig - Uninformative"
+sac$FoilLabelCond <- ordered(sac$FoilLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))
+
+Preview.Expt3 <- summaryBy(TotalSaccades + CriticalSaccades + PropSac ~ phase + condition + TargetLabelCond + participant, data = subset(sac, TotalSaccades >0 & phase == "start"),na.rm = T, keep.names = T)
+Preview.Expt3 <- summaryBy(PropSac ~ phase + condition + TargetLabelCond , data = Preview.Expt3,na.rm = T, FUN = c(mean,sd))
+Expt3.Preview <- summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) , data = subset(sac, phase == "start")))
+
+```
+*Preview Phase*
+
+As in Experiment 2, children only showed a reliably increased tendency to monitor for ambiguity on those trials in which they subsequently produce an informative expression. Oarticipants  were not reliably more likely to make critical saccades on ambiguous trials where they produced an uninformative description than on control trials
+(although this time, they were marginally more likely to make such saccades Mean<sub>uninformative</sub>=
+`r round(subset(Preview.Expt3, TargetLabelCond == "Ambig - Uninformative")$PropSac.mean,2) ` 
+ (
+ `r round(subset(Preview.Expt3, TargetLabelCond == "Ambig - Uninformative")$PropSac.sd,2) `
+ ), Mean<sub>unambiguous</sub>=
+ `r round(subset(Preview.Expt3, TargetLabelCond == "Control")$PropSac.mean,2) `
+ (`r round(subset(Preview.Expt3, TargetLabelCond == "Control")$PropSac.sd,2) `
+ `r format_coef(Expt3.Preview, 2)`
+. By contrast, participants made reliably more critical saccades before they produced informative descriptions for ambiguous scenes
+(Mean<sub>informative</sub>=
+`r round(subset(Preview.Expt3, TargetLabelCond == "Ambig - Informative")$PropSac.mean,2) ` 
+ (
+ `r round(subset(Preview.Expt3, TargetLabelCond == "Ambig - Informative")$PropSac.sd,2) `)
+ `r format_coef(Expt3.Preview, 3)`.
+
+*Pre-Foil Gaze*
+
+Next we tested whether 
 <br>
 <br>
 <br>
-   
+<br>
    
    
    

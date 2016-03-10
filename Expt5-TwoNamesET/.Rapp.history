@@ -1,850 +1,2665 @@
 ?t.test
-p <- rep(NA,1000)#
-for (i in 1:length(p)){ #
-subj_c1 = rep(NA,30)#
-subj_c2 = rep(NA,30)#
-for (i in 1:30){#
-	subj_c1[i] <- mean(rlnorm(30,2,1))#
-	subj_c2[i] <- mean(rlnorm(30,2,1))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,30)#
-subj_c2 = rep(NA,30)#
-for (i in 1:30){#
-	subj_c1[i] <- mean(rlnorm(30,2,1))#
-	subj_c2[i] <- mean(rlnorm(30,2,1))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-hist(p)
-length(abs(p) > 1.96)
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,30)#
-subj_c2 = rep(NA,30)#
-for (i in 1:30){#
-	subj_c1[i] <- mean(rlnorm(30,2,1))#
-	subj_c2[i] <- mean(rlnorm(30,2,1))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$statistic#
-}
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,30)#
-subj_c2 = rep(NA,30)#
-for (i in 1:30){#
-	subj_c1[i] <- mean(rlnorm(30,2,2))#
-	subj_c2[i] <- mean(rlnorm(30,2,2))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,30)#
-subj_c2 = rep(NA,30)#
-for (i in 1:30){#
-	subj_c1[i] <- mean(rlnorm(30,2,3))#
-	subj_c2[i] <- mean(rlnorm(30,2,3))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,30)#
-subj_c2 = rep(NA,30)#
-for (i in 1:30){#
-	subj_c1[i] <- mean(rlnorm(30,2,0.5))#
-	subj_c2[i] <- mean(rlnorm(30,2,0.5))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) > 1.96])
-50/1000
-rlnorm(20,2,0.5)
-(rlnorm(20,2,0.5))
-mean(rlnorm(20,2,0.5))
-median(rlnorm(20,2,0.5))
-hist(rlnorm(1000,2,0.5))
-hist(rlnorm(1000,0.3,0.5))
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,30)#
-subj_c2 = rep(NA,30)#
-for (i in 1:30){#
-	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
-	subj_c2[i] <- mean(rlnorm(30,0.3,0.5))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,12)#
-subj_c2 = rep(NA,12)#
-for (i in 1:12){#
-	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
-	subj_c2[i] <- mean(rlnorm(30,0.3,0.5))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
+Marginal <- matrix(NA, nrow = 10000, ncol = 1)#
+perm = list(OneSample = OneSample,LargeSample = LargeSample, Marginal = Marginal)
+h = 1#
+while (h < 11){#
+a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
+if (t.test(a[,1],a[,2])$statistic < 1.96 & a[,1],a[,2])$statistic > 1.4) {#
+h <- h + 1#
 for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
-	subj_c2[i] <- mean(rlnorm(30,0.3,0.5))#
+a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
+t <- t.test(a[,1],a[,2])$p.value#
+if(t < 0.05){#
+	break#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,10)#
-subj_c2 = rep(NA,10)#
-for (i in 1:10){#
-	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
-	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+perm$Marginal[h] <- i#
 }
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,10)#
-subj_c2 = rep(NA,10)#
-for (i in 1:10){#
-	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
-	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
+h = 1#
+while (h < 11){#
+a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
+if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
+h <- h + 1#
 for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
-	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
+t <- t.test(a[,1],a[,2])$p.value#
+if(t < 0.05){#
+	break#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}#
+perm$Marginal[h] <- i#
 }
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
+perm$Marginal[1:13]
+h = 1#
+while (h < 11){#
+a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
+if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
+h <- h + 1#
 for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
-	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
+t <- t.test(a[,1],a[,2])$p.value#
+if(t < 0.05){#
+	break#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+#
+perm$Marginal[h] <- i#
+}#
 }
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
+perm$Marginal[1:13]
+h = 1#
+while (h < 11){print("j")#
+a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
+if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
+h <- h + 1#
 for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
-	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
+t <- t.test(a[,1],a[,2])$p.value#
+if(t < 0.05){#
+	break#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+#
+perm$Marginal[h] <- i#
+}#
 }
-length(p[abs(p) > 1.96])
-a <- rlnorm(1000,0.3,0.5)
-?qqplot
-qqnorm(a)
-a <- rlnorm(100000,0.3,0.5)
-qqnorm(a)
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
+h = 1#
+while (h < 10001){#
+a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
+if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
+h <- h + 1#
 for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
+a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
+t <- t.test(a[,1],a[,2])$p.value#
+if(t < 0.05){#
+	break#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+#
+perm$Marginal[h] <- i#
+}#
 }
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
+seq(1,3,1)
+seq(100,10000,100)
+h = 1#
+while (h < 10001){#
+a <- cbind(matrix(rnorm(24,0,2),12,2),1)#
+if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
+h <- h + 1#
+if ( h %in% seq(100,10000,100)){print(h)}#
 for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0.1,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
+a <- rbind(a, cbind(matrix(rnorm(24,0,2),12,2),1))#
+t <- t.test(a[,1],a[,2])$p.value#
+if(t < 0.05){#
+	break#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+#
+perm$Marginal[h] <- i#
+}#
 }
-length(p[abs(p) > 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
+ls()
+hist(perm)
+summary(perm)
+hist(perm$Marginal)
+h = 1#
+while (h < 10001){#
+a <- cbind(matrix(rnorm(48,0,2),24,2),1)#
+if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
+h <- h + 1#
+if ( h %in% seq(100,10000,100)){print(h)}#
 for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
+a <- rbind(a, cbind(matrix(rnorm(48,0,2),24,2),1))#
+t <- t.test(a[,1],a[,2])$p.value#
+if(t < 0.05){#
+	break#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+#
+perm$Marginal[h] <- i#
+}#
 }
-length(p[abs(p) > 1.96])
-length(p[abs(p) > 2])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
+hist(perm$Marginal)
+h = 1#
+while (h < 10001){#
+a <- cbind(matrix(rnorm(100,0,2),50,2),1)#
+if (t.test(a[,1],a[,2])$statistic < 1.96 & t.test(a[,1],a[,2])$statistic > 1.4) {#
+h <- h + 1#
+if ( h %in% seq(100,10000,100)){print(h)}#
 for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
+a <- rbind(a, cbind(matrix(rnorm(100,0,2),50,2),1))#
+t <- t.test(a[,1],a[,2])$p.value#
+if(t < 0.05){#
+	break#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) > 2])
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
+#
+perm$Marginal[h] <- i#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
 }
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
+hist(perm$Marginal)
+lines(density(perm$Marginal), col = "red", lwd = 2)
+density(perm$Marginal)[1:10]
+hist(perm$Marginal) -> k
+summary(k)
+line(k$breaks, k$counts)
+line(k$breaks -1, k$counts)
+line(k$breaks[1:19], k$counts)
+k$counts[1:10]
+lines(k$breaks[1:19], k$counts)
+hist(perm$Marginal, xlim = c(1:20)) -> k
+?hist
+hist(perm$Marginal, xlim = c(0:20)) -> k
+hist(perm$Marginal, xlim = c(20))
+hist(perm$Marginal, xlim = c(0,20))
+hist(perm$Marginal, xlim = c(1,20))
+hist(perm$Marginal, xlim = c(1,20), bty = "t")
+hist(perm$Marginal, xlim = c(1,20), bty = "o")
+hist(perm$Marginal, xlim = c(1,20), bty = "n")
+?barplot
+?plot
+hist(perm$Marginal, xlim = c(1,20), bty = "y")
+hist(perm$Marginal, xlim = c(1,20), bty = "]")
+plot(perm$Marginal, xlim = c(1,20), bty = "]")
+lines(k$breaks[1:19], k$counts)
+hist(perm$Marginal, xlim = c(1,20), bty = "]", border = NA)
+plot(1:20, k$counts)
+plot(1:19, k$counts)
+hist(perm$Marginal, xlim = c(1,20), breaks = 20,bty = "]", border = NA)
+hist(perm$Marginal, xlim = c(1,20), breaks = 20,bty = "]")
+summary(perm$Marginal)
+table(perm$Marginal)
+plot(table(perm$Marginal))
+lines(table(perm$Marginal))
+lines(1:20,table(perm$Marginal))
+plot(1:20,table(perm$Marginal))
+?plot
+plot(1:20,table(perm$Marginal), type = "n")
+plot(1:20,table(perm$Marginal))
+plot(table(perm$Marginal), type = "n")
+a = data.frame(c("a","b","c"),2,2)
+a
+a = data.frame(rep(c("a","b","c",2),2,3)
+a
+a = data.frame(rep(c("a","b","c",2),2,3))
+a
+a = matrix(rep(c("a","b","c",2),2,3))
+a
+?matrix
+a = matrix(rep(c("a","b","c"),2),2,3)
+a
+a = matrix(rep(c("a","b","c"),2),3,2)
+a
+a = matrix(rep(c("a","b","c","a","b"),2),5,2)
+a
+a[a[1,] == a,]
+a[a[1,] == a]
+a[,a[1,] == a]
+a[,a[,1] == a]
+a[a[,1] == a,]
+a[,1] == a
+?Data.frame
+?data.frame
+a = data.frame(a)
+a
+a[a$X1 == "a",]
+a[a$X1 == "a",1]
+a[a$X1 == "b",1]
+a = data.frame(rep(c("a","b","c","a","b"),2),5,2)
+a
+a = data.frame(matrix(rep(c("a","b","c","a","b"),2),5,2))
+a
+a$Test = 0
+a[a$X1 == "b",1]
+a
+a[a$X1 == "b",]
+a[a$X1 == "b",1]
+a[a$X1 == "b",1]$Test
+a[a$X1 == "b",][1,]
+print(a)
+a[a$X1 == "b",][1,]$Test
+a[a$X1 == "b",][1,]$Test <- a[a$X1 == "b",][1,]$X2
+a
+a[a$X1 == "b",][1,]$Test <- as.character(a[a$X1 == "b",][1,]$X2)
+a
+library(pwer)
+library(pwr)
+pwr.t.test(d = 0.3, sig.level = 0.01, power = 0.8)
+pwr.t.test(d = 0.3, sig.level = 0.05, power = 0.8)
+pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.8)
+5.357543e+300
+2^999
+a = data.frame(c(a,b,a,a))
+a = data.frame(c(1,2,1,1))
+a
+a = data.frame(d1 = c(1,2,1),d2 = c(2,1,1),d3 = c(1,1,1))
+a
+which(a==2)
+a[which(a==2)]
+a[which(a==2),]
+which(a==2, arr.ind = T)
+a[which(a==2, arr.ind = T),]
+a[arrayInd(a==2),]
+a[arrayInd(a==2)]
+arrayInd(a==2)
+arrayInd(a,2)
+which(a==2, arr.ind = T)
+which(a>2, arr.ind = T)
+which(a12, arr.ind = T)
+which(a>1, arr.ind = T)
+which(a>1, arr.ind = T) -> k
+a[k]
+a[!k]
+Data Analysis Scripts for analysis of population alone#
+			calculate.statistics.within = function(data_file,StartTime,EndTime,StepSize){#
+			#Load the relevant libraries#
+			#Load the relevant libraries#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)#
+			#Start the multicore machine!#
+#
+			#Split the data frame into a list for each timepoint#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,]$Time)#
+			#Parallel application of lmer and coefficient extraction, outputs another list as above#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength + (1+Cond*Strength|Subj) , data = x)))[2:4,1:3]) -> a.co#
+			# Evaluate the list to see whether t value meets a threshold (hard coded)#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			# plyr that list into a dataframe#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","CondU:Strengthweak"))#
+			#Split that dataframe into a list based on the regression coefficients#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+#
+			}#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample.within = function(data_file,StartTime,EndTime,StepSize){#
+#
+				summaryBy(Trial~Subj+Trial+Cond+Strength, data = data_file ) -> Trials#
+				shuf.fnc <- function(x){#
+				NewCond <- x$Cond[sample.int(length(x$Cond))]#
+				NewStrength <- x$Strength[sample.int(length(x$Strength))]#
+				return(data.frame(x,NewCond,NewStrength))#
+					}#
+				Trials = ddply(Trials, .(Subj), shuf.fnc)#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics.within(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}#
+			StartTime = 0#
+			EndTime = 1500#
+			StepSize = 100#
+			# Get the relevant stats for your data file.#
+			registerDoMC();#
+			stats.sample = calculate.statistics.within(ET,StartTime,EndTime,StepSize)#
+			sample.cluster1 = find.clusters(stats.sample[[1]]$pval,stats.sample[[1]]$Stat,stats.sample[[1]]$Time,cluster.size = 1)#
+			sample.cluster2 = find.clusters(stats.sample[[2]]$pval,stats.sample[[2]]$Stat,stats.sample[[2]]$Time,cluster.size = 1)#
+			sample.cluster3 = find.clusters(stats.sample[[3]]$pval,stats.sample[[3]]$Stat,stats.sample[[3]]$Time,cluster.size = 1)#
+			#do the resampling#
+			Resamples_N = 2500 # Number of samples (it will take 5-10 minutes to do 1000, so set this to 10 your first time to make sure the script works)#
+			resample1.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample2.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample3.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			for (i in 1:Resamples_N){#
+				print(i)#
+			stats.resample = resample.within(ET,StartTime,EndTime,StepSize)#
+			recluster1 = find.clusters(stats.resample[[1]]$pval,stats.resample[[1]]$Stat,stats.resample[[1]]$Time,cluster.size = 1)#
+			recluster2 = find.clusters(stats.resample[[2]]$pval,stats.resample[[2]]$Stat,stats.resample[[2]]$Time,cluster.size = 1)#
+			recluster3 = find.clusters(stats.resample[[3]]$pval,stats.resample[[3]]$Stat,stats.resample[[3]]$Time,cluster.size = 1)#
+			resample1.max = ifelse(is.numeric(recluster1$cluster.stat),max(recluster1$cluster.stat),0)#
+			resample2.max = ifelse(is.numeric(recluster2$cluster.stat),max(recluster2$cluster.stat),0)#
+			resample3.max = ifelse(is.numeric(recluster3$cluster.stat),max(recluster3$cluster.stat),0)#
+#
+			 #Find the largest cluster (this is what you will be comparing against - is your cluster > 95% of largest clusters)#
+			print(resample1.max)#
+			print(resample3.max)#
+			resample1.large.cluster[i] = ifelse(resample1.max>0,resample1.max,0)#
+			resample2.large.cluster[i] = ifelse(resample2.max>0,resample2.max,0)#
+			resample3.large.cluster[i] = ifelse(resample3.max>0,resample3.max,0)#
+			}#
+#
+			sample.cluster1 = pval(sample.cluster1,resample1.large.cluster)#
+			sample.cluster2 = pval(sample.cluster2,resample2.large.cluster)#
+			sample.cluster3 = pval(sample.cluster3,resample3.large.cluster)#
+			Within.Resamples = list(resample1.large.cluster,resample2.large.cluster,resample3.large.cluster, paste(Resamples_N, "Samples on date ", date()))#
+			Within.Clusters = list(sample.cluster1,sample.cluster2,sample.cluster3)#
+			save(Within.Clusters,within.Resamples,file =paste("WithinStats",substr(date(),5,7),substr(date(),22,23),".RDATA", sep = ""))
+library(doBy)
+Data Analysis Scripts for analysis of population alone#
+			calculate.statistics.within = function(data_file,StartTime,EndTime,StepSize){#
+			#Load the relevant libraries#
+			#Load the relevant libraries#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)#
+			#Start the multicore machine!#
+#
+			#Split the data frame into a list for each timepoint#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,]$Time)#
+			#Parallel application of lmer and coefficient extraction, outputs another list as above#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength + (1+Cond*Strength|Subj) , data = x)))[2:4,1:3]) -> a.co#
+			# Evaluate the list to see whether t value meets a threshold (hard coded)#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			# plyr that list into a dataframe#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","CondU:Strengthweak"))#
+			#Split that dataframe into a list based on the regression coefficients#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+#
+			}#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample.within = function(data_file,StartTime,EndTime,StepSize){#
+#
+				summaryBy(Trial~Subj+Trial+Cond+Strength, data = data_file ) -> Trials#
+				shuf.fnc <- function(x){#
+				NewCond <- x$Cond[sample.int(length(x$Cond))]#
+				NewStrength <- x$Strength[sample.int(length(x$Strength))]#
+				return(data.frame(x,NewCond,NewStrength))#
+					}#
+				Trials = ddply(Trials, .(Subj), shuf.fnc)#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics.within(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}#
+			StartTime = 0#
+			EndTime = 1500#
+			StepSize = 100#
+			# Get the relevant stats for your data file.#
+			registerDoMC();#
+			stats.sample = calculate.statistics.within(ET,StartTime,EndTime,StepSize)#
+			sample.cluster1 = find.clusters(stats.sample[[1]]$pval,stats.sample[[1]]$Stat,stats.sample[[1]]$Time,cluster.size = 1)#
+			sample.cluster2 = find.clusters(stats.sample[[2]]$pval,stats.sample[[2]]$Stat,stats.sample[[2]]$Time,cluster.size = 1)#
+			sample.cluster3 = find.clusters(stats.sample[[3]]$pval,stats.sample[[3]]$Stat,stats.sample[[3]]$Time,cluster.size = 1)#
+			#do the resampling#
+			Resamples_N = 2500 # Number of samples (it will take 5-10 minutes to do 1000, so set this to 10 your first time to make sure the script works)#
+			resample1.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample2.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample3.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			for (i in 1:Resamples_N){#
+				print(i)#
+			stats.resample = resample.within(ET,StartTime,EndTime,StepSize)#
+			recluster1 = find.clusters(stats.resample[[1]]$pval,stats.resample[[1]]$Stat,stats.resample[[1]]$Time,cluster.size = 1)#
+			recluster2 = find.clusters(stats.resample[[2]]$pval,stats.resample[[2]]$Stat,stats.resample[[2]]$Time,cluster.size = 1)#
+			recluster3 = find.clusters(stats.resample[[3]]$pval,stats.resample[[3]]$Stat,stats.resample[[3]]$Time,cluster.size = 1)#
+			resample1.max = ifelse(is.numeric(recluster1$cluster.stat),max(recluster1$cluster.stat),0)#
+			resample2.max = ifelse(is.numeric(recluster2$cluster.stat),max(recluster2$cluster.stat),0)#
+			resample3.max = ifelse(is.numeric(recluster3$cluster.stat),max(recluster3$cluster.stat),0)#
+#
+			 #Find the largest cluster (this is what you will be comparing against - is your cluster > 95% of largest clusters)#
+			print(resample1.max)#
+			print(resample3.max)#
+			resample1.large.cluster[i] = ifelse(resample1.max>0,resample1.max,0)#
+			resample2.large.cluster[i] = ifelse(resample2.max>0,resample2.max,0)#
+			resample3.large.cluster[i] = ifelse(resample3.max>0,resample3.max,0)#
+			}#
+#
+			sample.cluster1 = pval(sample.cluster1,resample1.large.cluster)#
+			sample.cluster2 = pval(sample.cluster2,resample2.large.cluster)#
+			sample.cluster3 = pval(sample.cluster3,resample3.large.cluster)#
+			Within.Resamples = list(resample1.large.cluster,resample2.large.cluster,resample3.large.cluster, paste(Resamples_N, "Samples on date ", date()))#
+			Within.Clusters = list(sample.cluster1,sample.cluster2,sample.cluster3)#
+			save(Within.Clusters,within.Resamples,file =paste("WithinStats",substr(date(),5,7),substr(date(),22,23),".RDATA", sep = ""))
+sample.cluster3
+sample.cluster1
+Data Analysis Scripts for analysis of population alone#
+			calculate.statistics.within = function(data_file,StartTime,EndTime,StepSize){#
+			#Load the relevant libraries#
+			#Load the relevant libraries#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)#
+			#Start the multicore machine!#
+#
+			#Split the data frame into a list for each timepoint#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,]$Time)#
+			#Parallel application of lmer and coefficient extraction, outputs another list as above#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength + (1+Cond*Strength|Subj) , data = x)))[2:4,1:3]) -> a.co#
+			# Evaluate the list to see whether t value meets a threshold (hard coded)#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			# plyr that list into a dataframe#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","CondU:Strengthweak"))#
+			#Split that dataframe into a list based on the regression coefficients#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+#
+			}#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample.within = function(data_file,StartTime,EndTime,StepSize){#
+#
+				summaryBy(Trial~Subj+Trial+Cond+Strength, data = data_file ) -> Trials#
+				shuf.fnc <- function(x){#
+				NewCond <- x$Cond[sample.int(length(x$Cond))]#
+				NewStrength <- x$Strength[sample.int(length(x$Strength))]#
+				return(data.frame(x,NewCond,NewStrength))#
+					}#
+				Trials = ddply(Trials, .(Subj), shuf.fnc)#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics.within(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}#
+			StartTime = 0#
+			EndTime = 1500#
+			StepSize = 100#
+			# Get the relevant stats for your data file.#
+			registerDoMC();#
+			stats.sample = calculate.statistics.within(ET,StartTime,EndTime,StepSize)#
+			sample.cluster1 = find.clusters(stats.sample[[1]]$pval,stats.sample[[1]]$Stat,stats.sample[[1]]$Time,cluster.size = 1)#
+			sample.cluster2 = find.clusters(stats.sample[[2]]$pval,stats.sample[[2]]$Stat,stats.sample[[2]]$Time,cluster.size = 1)#
+			sample.cluster3 = find.clusters(stats.sample[[3]]$pval,stats.sample[[3]]$Stat,stats.sample[[3]]$Time,cluster.size = 1)#
+			#do the resampling#
+			Resamples_N = 250 # Number of samples (it will take 5-10 minutes to do 1000, so set this to 10 your first time to make sure the script works)#
+			resample1.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample2.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample3.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			for (i in 1:Resamples_N){#
+				print(i)#
+			stats.resample = resample.within(ET,StartTime,EndTime,StepSize)#
+			recluster1 = find.clusters(stats.resample[[1]]$pval,stats.resample[[1]]$Stat,stats.resample[[1]]$Time,cluster.size = 1)#
+			recluster2 = find.clusters(stats.resample[[2]]$pval,stats.resample[[2]]$Stat,stats.resample[[2]]$Time,cluster.size = 1)#
+			recluster3 = find.clusters(stats.resample[[3]]$pval,stats.resample[[3]]$Stat,stats.resample[[3]]$Time,cluster.size = 1)#
+			resample1.max = ifelse(is.numeric(recluster1$cluster.stat),max(recluster1$cluster.stat),0)#
+			resample2.max = ifelse(is.numeric(recluster2$cluster.stat),max(recluster2$cluster.stat),0)#
+			resample3.max = ifelse(is.numeric(recluster3$cluster.stat),max(recluster3$cluster.stat),0)#
+#
+			 #Find the largest cluster (this is what you will be comparing against - is your cluster > 95% of largest clusters)#
+			print(resample1.max)#
+			print(resample3.max)#
+			resample1.large.cluster[i] = ifelse(resample1.max>0,resample1.max,0)#
+			resample2.large.cluster[i] = ifelse(resample2.max>0,resample2.max,0)#
+			resample3.large.cluster[i] = ifelse(resample3.max>0,resample3.max,0)#
+			}#
+#
+			sample.cluster1 = pval(sample.cluster1,resample1.large.cluster)#
+			sample.cluster2 = pval(sample.cluster2,resample2.large.cluster)#
+			sample.cluster3 = pval(sample.cluster3,resample3.large.cluster)#
+			Within.Resamples = list(resample1.large.cluster,resample2.large.cluster,resample3.large.cluster, paste(Resamples_N, "Samples on date ", date()))#
+			Within.Clusters = list(sample.cluster1,sample.cluster2,sample.cluster3)#
+			save(Within.Clusters,within.Resamples,file =paste("WithinStats",substr(date(),5,7),substr(date(),22,23),".RDATA", sep = ""))
+library(lme4)
+summary(lmer(Score~Cond*Strength*Pop +(1+Cond*Strength|Subj) , data = subset(ET, Time == 400)))
+summary(lmer(Score~Cond*Strength*Pop +(1+Cond*Strength|Subj) , data = subset(ET, Time == 500)))
+summary(lmer(Score~Cond*Strength*Pop +(1+Cond*Strength|Subj) , data = subset(ET, Time == 900)))
+summary(lmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = subset(ET, Time == 900)))
+summary(subset(ET, Time == 900)
+)
+summary(subset(ET, Time == 800))
+ET$Score <- ifelse(ET$Score <= -3.66, 0,1)
+summary(lmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = subset(ET, Time == 900), family = "binomial"))
+Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample = function(data_file,StartTime,EndTime,StepSize){#
+#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				shuf.fnc <- function(x){#
+				NewCond <- x$Cond[sample.int(length(x$Cond))]#
+				NewStrength <- x$Strength[sample.int(length(x$Strength))]#
+				return(data.frame(x,NewCond,NewStrength))#
+					}#
+				Trials = ddply(Trials, .(Subj), shuf.fnc)#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				contrasts(data_file$Pop)[2] <- 1#
+				contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}#
+# Cluster finding function and pval finding function#
+			# Cluster finding script (written by Jon Brennan )#
+			find.clusters <- function(pval.vector, tval.vector, latencies, alpha=.05, cluster.size=5,signed =FALSE, sign = "pos") {#
+				binary.stat <- as.numeric(pval.vector < alpha)#
+				tval.stat <- rep(0,length(binary.stat))#
+				tval.stat[2:length(binary.stat)] = ((tval.vector[2:length(binary.stat)] * tval.vector[1:(length(binary.stat)-1)]) <0)#
+				cluster.start <- c()#
+				cluster.end <- c()#
+				cluster.stat <- c()#
+				in.cluster <- 0#
+				found.clusters <- 0#
+				new.end <- 0#
+				new.start <- 0#
+				end.cluster <- 0#
+				for (n in 1:length(binary.stat)) {#
+					if (signed == FALSE){#
+						if (in.cluster == 0 && binary.stat[n] == 1 ) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+					if (sign == "pos"){#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] >= 0) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] <= 0) {#
+							new.start = n#
+							in.cluster = 1#
+								}#
+					if (in.cluster == 1 && binary.stat[n] == 0) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}#
+					if (in.cluster == 1 && tval.stat[n] == 1) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}				#
+					# in case we reach the end and we are still "in" a cluster...#
+					if (in.cluster == 1 && binary.stat[n] == 1 && n == length(binary.stat)) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 1#
+						}		#
+					if (end.cluster) {	#
+						if ((new.end - new.start) >= cluster.size) {#
+							found.clusters <- found.clusters + 1#
+							cluster.start<- c(cluster.start, latencies[new.start])#
+							cluster.end <- c(cluster.end, latencies[new.end])#
+							cluster.stat <- c(cluster.stat, sum(abs(tval.vector[new.start:(new.end-1)])))#
+							}#
+						end.cluster = 0#
+						}#
+					}#
+				cluster.out <- data.frame(start = cluster.start, end = cluster.end, cluster.stat = cluster.stat)#
+				return(cluster.out)	#
+				}#
+			# Script for assigning pvals to clusters	#
+			pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics = function(data_file,StartTime,EndTime,StepSize){#
+			#Load the relevant libraries#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)#
+			#Start the multicore machine!#
+#
+			#Split the data frame into a list for each timepoint#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,]$Time)#
+			#Parallel application of lmer and coefficient extraction, outputs another list as above#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength*Pop +(1+Cond*Strength|Subj) , data = x, family = "binomial")))[2:8,1:3]) -> a.co#
+			# Evaluate the list to see whether t value meets a threshold (hard coded)#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			# plyr that list into a dataframe#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","PopControl","CondU:Strengthweak","CondU:PopControl","Strengthweak:PopControl", "CondU:Strengthweak:PopControl"))#
+			#Split that dataframe into a list based on the regression coefficients#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics.nopop = function(data_file,StartTime,EndTime,StepSize){#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)			#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= 0 & data_file$Time <= 1500,]$Time)#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength +(1+Cond+Strength|Subj) + (1+Cond+Strength|Trial), data = x)))[2:4,1:3]) -> a.co#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","CondU:Strengthweak"))#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+#
+# Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample.nopop = function(data_file,StartTime,EndTime,StepSize){#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				Trials$Order = NA#
+                                Trials$NewCond = Trials$Cond#
+                                Trials$NewStrength = Trials$Strength#
+                                Trials$NewPop = Trials$Pop#
+			for (i in unique(Trials$Subj)){#
+				Trials[Trials$Subj == i,]$Order = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewCond = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Cond#
+                                #Trials[Trials$Subj == i,]$NewOrder = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewStrength = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Strength                                #
+			}#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				#contrasts(data_file$Pop)[2] <- 1#
+				#contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics.nopop(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}
+StartTime = 0#
+			EndTime = 1500#
+			StepSize = 100#
+			# Get the relevant stats for your data file.#
+			registerDoMC();#
+#
+			stats.sample = calculate.statistics(ET,StartTime,EndTime,StepSize)
+stats.sample
+Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample = function(data_file,StartTime,EndTime,StepSize){#
+#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				shuf.fnc <- function(x){#
+				NewCond <- x$Cond[sample.int(length(x$Cond))]#
+				NewStrength <- x$Strength[sample.int(length(x$Strength))]#
+				return(data.frame(x,NewCond,NewStrength))#
+					}#
+				Trials = ddply(Trials, .(Subj), shuf.fnc)#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				contrasts(data_file$Pop)[2] <- 1#
+				contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}#
+# Cluster finding function and pval finding function#
+			# Cluster finding script (written by Jon Brennan )#
+			find.clusters <- function(pval.vector, tval.vector, latencies, alpha=.05, cluster.size=5,signed =FALSE, sign = "pos") {#
+				binary.stat <- as.numeric(pval.vector < alpha)#
+				tval.stat <- rep(0,length(binary.stat))#
+				tval.stat[2:length(binary.stat)] = ((tval.vector[2:length(binary.stat)] * tval.vector[1:(length(binary.stat)-1)]) <0)#
+				cluster.start <- c()#
+				cluster.end <- c()#
+				cluster.stat <- c()#
+				in.cluster <- 0#
+				found.clusters <- 0#
+				new.end <- 0#
+				new.start <- 0#
+				end.cluster <- 0#
+				for (n in 1:length(binary.stat)) {#
+					if (signed == FALSE){#
+						if (in.cluster == 0 && binary.stat[n] == 1 ) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+					if (sign == "pos"){#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] >= 0) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] <= 0) {#
+							new.start = n#
+							in.cluster = 1#
+								}#
+					if (in.cluster == 1 && binary.stat[n] == 0) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}#
+					if (in.cluster == 1 && tval.stat[n] == 1) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}				#
+					# in case we reach the end and we are still "in" a cluster...#
+					if (in.cluster == 1 && binary.stat[n] == 1 && n == length(binary.stat)) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 1#
+						}		#
+					if (end.cluster) {	#
+						if ((new.end - new.start) >= cluster.size) {#
+							found.clusters <- found.clusters + 1#
+							cluster.start<- c(cluster.start, latencies[new.start])#
+							cluster.end <- c(cluster.end, latencies[new.end])#
+							cluster.stat <- c(cluster.stat, sum(abs(tval.vector[new.start:(new.end-1)])))#
+							}#
+						end.cluster = 0#
+						}#
+					}#
+				cluster.out <- data.frame(start = cluster.start, end = cluster.end, cluster.stat = cluster.stat)#
+				return(cluster.out)	#
+				}#
+			# Script for assigning pvals to clusters	#
+			pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics = function(data_file,StartTime,EndTime,StepSize){#
+			#Load the relevant libraries#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)#
+			#Start the multicore machine!#
+#
+			#Split the data frame into a list for each timepoint#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,]$Time)#
+			#Parallel application of lmer and coefficient extraction, outputs another list as above#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = x, family = "binomial")))[2:8,1:3]) -> a.co#
+			# Evaluate the list to see whether t value meets a threshold (hard coded)#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			# plyr that list into a dataframe#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","PopControl","CondU:Strengthweak","CondU:PopControl","Strengthweak:PopControl", "CondU:Strengthweak:PopControl"))#
+			#Split that dataframe into a list based on the regression coefficients#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics.nopop = function(data_file,StartTime,EndTime,StepSize){#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)			#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= 0 & data_file$Time <= 1500,]$Time)#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength +(1+Cond+Strength|Subj) + (1+Cond+Strength|Trial), data = x)))[2:4,1:3]) -> a.co#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","CondU:Strengthweak"))#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+#
+# Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample.nopop = function(data_file,StartTime,EndTime,StepSize){#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				Trials$Order = NA#
+                                Trials$NewCond = Trials$Cond#
+                                Trials$NewStrength = Trials$Strength#
+                                Trials$NewPop = Trials$Pop#
+			for (i in unique(Trials$Subj)){#
+				Trials[Trials$Subj == i,]$Order = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewCond = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Cond#
+                                #Trials[Trials$Subj == i,]$NewOrder = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewStrength = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Strength                                #
+			}#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				#contrasts(data_file$Pop)[2] <- 1#
+				#contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics.nopop(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}
+StartTime = 0#
+			EndTime = 1500#
+			StepSize = 100#
+			# Get the relevant stats for your data file.#
+			registerDoMC();#
+#
+			stats.sample = calculate.statistics(ET,StartTime,EndTime,StepSize)
+stats.sample
+Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample = function(data_file,StartTime,EndTime,StepSize){#
+#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				shuf.fnc <- function(x){#
+				NewCond <- x$Cond[sample.int(length(x$Cond))]#
+				NewStrength <- x$Strength[sample.int(length(x$Strength))]#
+				return(data.frame(x,NewCond,NewStrength))#
+					}#
+				Trials = ddply(Trials, .(Subj), shuf.fnc)#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				contrasts(data_file$Pop)[2] <- 1#
+				contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}#
+# Cluster finding function and pval finding function#
+			# Cluster finding script (written by Jon Brennan )#
+			find.clusters <- function(pval.vector, tval.vector, latencies, alpha=.05, cluster.size=5,signed =FALSE, sign = "pos") {#
+				binary.stat <- as.numeric(pval.vector < alpha)#
+				tval.stat <- rep(0,length(binary.stat))#
+				tval.stat[2:length(binary.stat)] = ((tval.vector[2:length(binary.stat)] * tval.vector[1:(length(binary.stat)-1)]) <0)#
+				cluster.start <- c()#
+				cluster.end <- c()#
+				cluster.stat <- c()#
+				in.cluster <- 0#
+				found.clusters <- 0#
+				new.end <- 0#
+				new.start <- 0#
+				end.cluster <- 0#
+				for (n in 1:length(binary.stat)) {#
+					if (signed == FALSE){#
+						if (in.cluster == 0 && binary.stat[n] == 1 ) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+					if (sign == "pos"){#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] >= 0) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] <= 0) {#
+							new.start = n#
+							in.cluster = 1#
+								}#
+					if (in.cluster == 1 && binary.stat[n] == 0) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}#
+					if (in.cluster == 1 && tval.stat[n] == 1) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}				#
+					# in case we reach the end and we are still "in" a cluster...#
+					if (in.cluster == 1 && binary.stat[n] == 1 && n == length(binary.stat)) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 1#
+						}		#
+					if (end.cluster) {	#
+						if ((new.end - new.start) >= cluster.size) {#
+							found.clusters <- found.clusters + 1#
+							cluster.start<- c(cluster.start, latencies[new.start])#
+							cluster.end <- c(cluster.end, latencies[new.end])#
+							cluster.stat <- c(cluster.stat, sum(abs(tval.vector[new.start:(new.end-1)])))#
+							}#
+						end.cluster = 0#
+						}#
+					}#
+				cluster.out <- data.frame(start = cluster.start, end = cluster.end, cluster.stat = cluster.stat)#
+				return(cluster.out)	#
+				}#
+			# Script for assigning pvals to clusters	#
+			pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics = function(data_file,StartTime,EndTime,StepSize){#
+			#Load the relevant libraries#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)#
+			#Start the multicore machine!#
+#
+			#Split the data frame into a list for each timepoint#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,]$Time)#
+			#Parallel application of lmer and coefficient extraction, outputs another list as above#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength*Pop +(1+Cond*Strength|Subj) , data = x, family = "binomial")))[2:8,1:3]) -> a.co#
+			# Evaluate the list to see whether t value meets a threshold (hard coded)#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			# plyr that list into a dataframe#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","PopControl","CondU:Strengthweak","CondU:PopControl","Strengthweak:PopControl", "CondU:Strengthweak:PopControl"))#
+			#Split that dataframe into a list based on the regression coefficients#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics.nopop = function(data_file,StartTime,EndTime,StepSize){#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)			#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= 0 & data_file$Time <= 1500,]$Time)#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength +(1+Cond+Strength|Subj) + (1+Cond+Strength|Trial), data = x)))[2:4,1:3]) -> a.co#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","CondU:Strengthweak"))#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+#
+# Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample.nopop = function(data_file,StartTime,EndTime,StepSize){#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				Trials$Order = NA#
+                                Trials$NewCond = Trials$Cond#
+                                Trials$NewStrength = Trials$Strength#
+                                Trials$NewPop = Trials$Pop#
+			for (i in unique(Trials$Subj)){#
+				Trials[Trials$Subj == i,]$Order = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewCond = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Cond#
+                                #Trials[Trials$Subj == i,]$NewOrder = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewStrength = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Strength                                #
+			}#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				#contrasts(data_file$Pop)[2] <- 1#
+				#contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics.nopop(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}
+StartTime = 0#
+			EndTime = 1500#
+			StepSize = 100#
+			# Get the relevant stats for your data file.#
+			registerDoMC();#
+#
+			stats.sample = calculate.statistics(ET,StartTime,EndTime,StepSize)#
+			sample.cluster1 = find.clusters(stats.sample[[1]]$pval,stats.sample[[1]]$Stat,stats.sample[[1]]$Time,cluster.size = 1)#
+			sample.cluster2 = find.clusters(stats.sample[[2]]$pval,stats.sample[[2]]$Stat,stats.sample[[2]]$Time,cluster.size = 1)#
+			sample.cluster3 = find.clusters(stats.sample[[3]]$pval,stats.sample[[3]]$Stat,stats.sample[[3]]$Time,cluster.size = 1)#
+			sample.cluster4 = find.clusters(stats.sample[[4]]$pval,stats.sample[[4]]$Stat,stats.sample[[4]]$Time,cluster.size = 1)#
+			sample.cluster5 = find.clusters(stats.sample[[5]]$pval,stats.sample[[5]]$Stat,stats.sample[[5]]$Time,cluster.size = 1)#
+			sample.cluster6 = find.clusters(stats.sample[[6]]$pval,stats.sample[[6]]$Stat,stats.sample[[6]]$Time,cluster.size = 1)#
+			sample.cluster7 = find.clusters(stats.sample[[7]]$pval,stats.sample[[7]]$Stat,stats.sample[[7]]$Time,cluster.size = 1)#
+			#do the resampling#
+			Resamples_N = 25 # Number of samples (it will take a long time to do 1000, so set this to 10 your first time to make sure the script works)#
+			resample1.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample2.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample3.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample4.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample5.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample6.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample7.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			for (i in 1:Resamples_N){#
+				print(i)#
+			stats.resample = resample(ET,StartTime,EndTime,StepSize)#
+			recluster1 = find.clusters(stats.resample[[1]]$pval,stats.resample[[1]]$Stat,stats.resample[[1]]$Time,cluster.size = 1)#
+			recluster2 = find.clusters(stats.resample[[2]]$pval,stats.resample[[2]]$Stat,stats.resample[[2]]$Time,cluster.size = 1)#
+			recluster3 = find.clusters(stats.resample[[3]]$pval,stats.resample[[3]]$Stat,stats.resample[[3]]$Time,cluster.size = 1)#
+			recluster4 = find.clusters(stats.resample[[4]]$pval,stats.resample[[4]]$Stat,stats.resample[[4]]$Time,cluster.size = 1)#
+			recluster5 = find.clusters(stats.resample[[5]]$pval,stats.resample[[5]]$Stat,stats.resample[[5]]$Time,cluster.size = 1)#
+			recluster6 = find.clusters(stats.resample[[6]]$pval,stats.resample[[6]]$Stat,stats.resample[[6]]$Time,cluster.size = 1)#
+			recluster7 = find.clusters(stats.resample[[7]]$pval,stats.resample[[7]]$Stat,stats.resample[[7]]$Time,cluster.size = 1)#
+			resample1.max = ifelse(is.numeric(recluster1$cluster.stat),max(recluster1$cluster.stat),0)#
+			resample2.max = ifelse(is.numeric(recluster2$cluster.stat),max(recluster2$cluster.stat),0)#
+			resample3.max = ifelse(is.numeric(recluster3$cluster.stat),max(recluster3$cluster.stat),0)#
+			resample4.max = ifelse(is.numeric(recluster4$cluster.stat),max(recluster4$cluster.stat),0)#
+			resample5.max = ifelse(is.numeric(recluster5$cluster.stat),max(recluster5$cluster.stat),0)#
+			resample6.max = ifelse(is.numeric(recluster6$cluster.stat),max(recluster6$cluster.stat),0)#
+			resample7.max = ifelse(is.numeric(recluster7$cluster.stat),max(recluster7$cluster.stat),0)#
+			 #Find the largest cluster (this is what you will be comparing against - is your cluster > 95% of largest clusters)#
+			print(resample1.max)#
+			print(resample3.max)#
+		#	print(recluster1[recluster1$cluster.stat == max(recluster1$cluster.stat),]$start)#
+		#	print(recluster3[recluster3$cluster.stat == max(recluster3$cluster.stat),]$start )#
+			resample1.large.cluster[i] = ifelse(resample1.max>0,resample1.max,0)#
+			resample2.large.cluster[i] = ifelse(resample2.max>0,resample2.max,0)#
+			print(resample3.max)#
+			resample3.large.cluster[i] = ifelse(resample3.max>0,resample3.max,0)#
+			resample4.large.cluster[i] = ifelse(resample4.max>0,resample3.max,0)#
+			resample5.large.cluster[i] = ifelse(resample5.max>0,resample3.max,0)#
+			resample6.large.cluster[i] = ifelse(resample6.max>0,resample3.max,0)#
+			resample7.large.cluster[i] = ifelse(resample7.max>0,resample3.max,0)#
+#
+			}#
+#
+			sample.cluster1 = pval(sample.cluster1,resample1.large.cluster)#
+			sample.cluster2 = pval(sample.cluster2,resample2.large.cluster)#
+			sample.cluster3 = pval(sample.cluster3,resample3.large.cluster)#
+			sample.cluster4 = pval(sample.cluster4,resample4.large.cluster)#
+			sample.cluster5 = pval(sample.cluster5,resample5.large.cluster)#
+			sample.cluster6 = pval(sample.cluster6,resample6.large.cluster)#
+			sample.cluster7 = pval(sample.cluster7,resample7.large.cluster)
+library(doBy)
+Resamples_N = 25 # Number of samples (it will take a long time to do 1000, so set this to 10 your first time to make sure the script works)#
+			resample1.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample2.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample3.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample4.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample5.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample6.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample7.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			for (i in 1:Resamples_N){#
+				print(i)#
+			stats.resample = resample(ET,StartTime,EndTime,StepSize)#
+			recluster1 = find.clusters(stats.resample[[1]]$pval,stats.resample[[1]]$Stat,stats.resample[[1]]$Time,cluster.size = 1)#
+			recluster2 = find.clusters(stats.resample[[2]]$pval,stats.resample[[2]]$Stat,stats.resample[[2]]$Time,cluster.size = 1)#
+			recluster3 = find.clusters(stats.resample[[3]]$pval,stats.resample[[3]]$Stat,stats.resample[[3]]$Time,cluster.size = 1)#
+			recluster4 = find.clusters(stats.resample[[4]]$pval,stats.resample[[4]]$Stat,stats.resample[[4]]$Time,cluster.size = 1)#
+			recluster5 = find.clusters(stats.resample[[5]]$pval,stats.resample[[5]]$Stat,stats.resample[[5]]$Time,cluster.size = 1)#
+			recluster6 = find.clusters(stats.resample[[6]]$pval,stats.resample[[6]]$Stat,stats.resample[[6]]$Time,cluster.size = 1)#
+			recluster7 = find.clusters(stats.resample[[7]]$pval,stats.resample[[7]]$Stat,stats.resample[[7]]$Time,cluster.size = 1)#
+			resample1.max = ifelse(is.numeric(recluster1$cluster.stat),max(recluster1$cluster.stat),0)#
+			resample2.max = ifelse(is.numeric(recluster2$cluster.stat),max(recluster2$cluster.stat),0)#
+			resample3.max = ifelse(is.numeric(recluster3$cluster.stat),max(recluster3$cluster.stat),0)#
+			resample4.max = ifelse(is.numeric(recluster4$cluster.stat),max(recluster4$cluster.stat),0)#
+			resample5.max = ifelse(is.numeric(recluster5$cluster.stat),max(recluster5$cluster.stat),0)#
+			resample6.max = ifelse(is.numeric(recluster6$cluster.stat),max(recluster6$cluster.stat),0)#
+			resample7.max = ifelse(is.numeric(recluster7$cluster.stat),max(recluster7$cluster.stat),0)#
+			 #Find the largest cluster (this is what you will be comparing against - is your cluster > 95% of largest clusters)#
+			print(resample1.max)#
+			print(resample3.max)#
+		#	print(recluster1[recluster1$cluster.stat == max(recluster1$cluster.stat),]$start)#
+		#	print(recluster3[recluster3$cluster.stat == max(recluster3$cluster.stat),]$start )#
+			resample1.large.cluster[i] = ifelse(resample1.max>0,resample1.max,0)#
+			resample2.large.cluster[i] = ifelse(resample2.max>0,resample2.max,0)#
+			print(resample3.max)#
+			resample3.large.cluster[i] = ifelse(resample3.max>0,resample3.max,0)#
+			resample4.large.cluster[i] = ifelse(resample4.max>0,resample3.max,0)#
+			resample5.large.cluster[i] = ifelse(resample5.max>0,resample3.max,0)#
+			resample6.large.cluster[i] = ifelse(resample6.max>0,resample3.max,0)#
+			resample7.large.cluster[i] = ifelse(resample7.max>0,resample3.max,0)#
+#
+			}#
+#
+			sample.cluster1 = pval(sample.cluster1,resample1.large.cluster)#
+			sample.cluster2 = pval(sample.cluster2,resample2.large.cluster)#
+			sample.cluster3 = pval(sample.cluster3,resample3.large.cluster)#
+			sample.cluster4 = pval(sample.cluster4,resample4.large.cluster)#
+			sample.cluster5 = pval(sample.cluster5,resample5.large.cluster)#
+			sample.cluster6 = pval(sample.cluster6,resample6.large.cluster)#
+			sample.cluster7 = pval(sample.cluster7,resample7.large.cluster)
+sample.cluster7
+sample.cluster4
+Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample = function(data_file,StartTime,EndTime,StepSize){#
+#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				shuf.fnc <- function(x){#
+				NewCond <- x$Cond[sample.int(length(x$Cond))]#
+				NewStrength <- x$Strength[sample.int(length(x$Strength))]#
+				return(data.frame(x,NewCond,NewStrength))#
+					}#
+				Trials = ddply(Trials, .(Subj), shuf.fnc)#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				contrasts(data_file$Pop)[2] <- 1#
+				contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}#
+# Cluster finding function and pval finding function#
+			# Cluster finding script (written by Jon Brennan )#
+			find.clusters <- function(pval.vector, tval.vector, latencies, alpha=.05, cluster.size=5,signed =FALSE, sign = "pos") {#
+				binary.stat <- as.numeric(pval.vector < alpha)#
+				tval.stat <- rep(0,length(binary.stat))#
+				tval.stat[2:length(binary.stat)] = ((tval.vector[2:length(binary.stat)] * tval.vector[1:(length(binary.stat)-1)]) <0)#
+				cluster.start <- c()#
+				cluster.end <- c()#
+				cluster.stat <- c()#
+				in.cluster <- 0#
+				found.clusters <- 0#
+				new.end <- 0#
+				new.start <- 0#
+				end.cluster <- 0#
+				for (n in 1:length(binary.stat)) {#
+					if (signed == FALSE){#
+						if (in.cluster == 0 && binary.stat[n] == 1 ) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+					if (sign == "pos"){#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] >= 0) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] <= 0) {#
+							new.start = n#
+							in.cluster = 1#
+								}#
+					if (in.cluster == 1 && binary.stat[n] == 0) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}#
+					if (in.cluster == 1 && tval.stat[n] == 1) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}				#
+					# in case we reach the end and we are still "in" a cluster...#
+					if (in.cluster == 1 && binary.stat[n] == 1 && n == length(binary.stat)) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 1#
+						}		#
+					if (end.cluster) {	#
+						if ((new.end - new.start) >= cluster.size) {#
+							found.clusters <- found.clusters + 1#
+							cluster.start<- c(cluster.start, latencies[new.start])#
+							cluster.end <- c(cluster.end, latencies[new.end])#
+							cluster.stat <- c(cluster.stat, sum(abs(tval.vector[new.start:(new.end-1)])))#
+							}#
+						end.cluster = 0#
+						}#
+					}#
+				cluster.out <- data.frame(start = cluster.start, end = cluster.end, cluster.stat = cluster.stat)#
+				return(cluster.out)	#
+				}#
+			# Script for assigning pvals to clusters	#
+			pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics = function(data_file,StartTime,EndTime,StepSize){#
+			#Load the relevant libraries#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)#
+			#Start the multicore machine!#
+#
+			#Split the data frame into a list for each timepoint#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,]$Time)#
+			#Parallel application of lmer and coefficient extraction, outputs another list as above#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = x, family = "binomial")))[2:8,1:3]) -> a.co#
+			# Evaluate the list to see whether t value meets a threshold (hard coded)#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			# plyr that list into a dataframe#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","PopControl","CondU:Strengthweak","CondU:PopControl","Strengthweak:PopControl", "CondU:Strengthweak:PopControl"))#
+			#Split that dataframe into a list based on the regression coefficients#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics.nopop = function(data_file,StartTime,EndTime,StepSize){#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)			#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= 0 & data_file$Time <= 1500,]$Time)#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength +(1+Cond+Strength|Subj) + (1+Cond+Strength|Trial), data = x)))[2:4,1:3]) -> a.co#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","CondU:Strengthweak"))#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+#
+# Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample.nopop = function(data_file,StartTime,EndTime,StepSize){#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				Trials$Order = NA#
+                                Trials$NewCond = Trials$Cond#
+                                Trials$NewStrength = Trials$Strength#
+                                Trials$NewPop = Trials$Pop#
+			for (i in unique(Trials$Subj)){#
+				Trials[Trials$Subj == i,]$Order = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewCond = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Cond#
+                                #Trials[Trials$Subj == i,]$NewOrder = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewStrength = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Strength                                #
+			}#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				#contrasts(data_file$Pop)[2] <- 1#
+				#contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics.nopop(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}
+Resamples_N = 25 # Number of samples (it will take a long time to do 1000, so set this to 10 your first time to make sure the script works)#
+			resample1.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample2.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample3.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample4.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample5.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample6.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			resample7.large.cluster = rep(NA,Resamples_N) #Preallocate your resample datafile #
+			for (i in 1:Resamples_N){#
+				print(i)#
+			stats.resample = resample(ET,StartTime,EndTime,StepSize)#
+			recluster1 = find.clusters(stats.resample[[1]]$pval,stats.resample[[1]]$Stat,stats.resample[[1]]$Time,cluster.size = 1)#
+			recluster2 = find.clusters(stats.resample[[2]]$pval,stats.resample[[2]]$Stat,stats.resample[[2]]$Time,cluster.size = 1)#
+			recluster3 = find.clusters(stats.resample[[3]]$pval,stats.resample[[3]]$Stat,stats.resample[[3]]$Time,cluster.size = 1)#
+			recluster4 = find.clusters(stats.resample[[4]]$pval,stats.resample[[4]]$Stat,stats.resample[[4]]$Time,cluster.size = 1)#
+			recluster5 = find.clusters(stats.resample[[5]]$pval,stats.resample[[5]]$Stat,stats.resample[[5]]$Time,cluster.size = 1)#
+			recluster6 = find.clusters(stats.resample[[6]]$pval,stats.resample[[6]]$Stat,stats.resample[[6]]$Time,cluster.size = 1)#
+			recluster7 = find.clusters(stats.resample[[7]]$pval,stats.resample[[7]]$Stat,stats.resample[[7]]$Time,cluster.size = 1)#
+			resample1.max = ifelse(is.numeric(recluster1$cluster.stat),max(recluster1$cluster.stat),0)#
+			resample2.max = ifelse(is.numeric(recluster2$cluster.stat),max(recluster2$cluster.stat),0)#
+			resample3.max = ifelse(is.numeric(recluster3$cluster.stat),max(recluster3$cluster.stat),0)#
+			resample4.max = ifelse(is.numeric(recluster4$cluster.stat),max(recluster4$cluster.stat),0)#
+			resample5.max = ifelse(is.numeric(recluster5$cluster.stat),max(recluster5$cluster.stat),0)#
+			resample6.max = ifelse(is.numeric(recluster6$cluster.stat),max(recluster6$cluster.stat),0)#
+			resample7.max = ifelse(is.numeric(recluster7$cluster.stat),max(recluster7$cluster.stat),0)#
+			 #Find the largest cluster (this is what you will be comparing against - is your cluster > 95% of largest clusters)#
+			print(resample1.max)#
+			print(resample3.max)#
+		#	print(recluster1[recluster1$cluster.stat == max(recluster1$cluster.stat),]$start)#
+		#	print(recluster3[recluster3$cluster.stat == max(recluster3$cluster.stat),]$start )#
+			resample1.large.cluster[i] = ifelse(resample1.max>0,resample1.max,0)#
+			resample2.large.cluster[i] = ifelse(resample2.max>0,resample2.max,0)#
+			print(resample3.max)#
+			resample3.large.cluster[i] = ifelse(resample3.max>0,resample3.max,0)#
+			resample4.large.cluster[i] = ifelse(resample4.max>0,resample3.max,0)#
+			resample5.large.cluster[i] = ifelse(resample5.max>0,resample3.max,0)#
+			resample6.large.cluster[i] = ifelse(resample6.max>0,resample3.max,0)#
+			resample7.large.cluster[i] = ifelse(resample7.max>0,resample3.max,0)#
+#
+			}#
+#
+			sample.cluster1 = pval(sample.cluster1,resample1.large.cluster)#
+			sample.cluster2 = pval(sample.cluster2,resample2.large.cluster)#
+			sample.cluster3 = pval(sample.cluster3,resample3.large.cluster)#
+			sample.cluster4 = pval(sample.cluster4,resample4.large.cluster)#
+			sample.cluster5 = pval(sample.cluster5,resample5.large.cluster)#
+			sample.cluster6 = pval(sample.cluster6,resample6.large.cluster)#
+			sample.cluster7 = pval(sample.cluster7,resample7.large.cluster)
+sample.cluster1
+sample.cluster4
+StartTime = 0#
+			EndTime = 1500#
+			StepSize = 100#
+			# Get the relevant stats for your data file.#
+			registerDoMC();#
+#
+			stats.sample = calculate.statistics(ET,StartTime,EndTime,StepSize)#
+			sample.cluster1 = find.clusters(stats.sample[[1]]$pval,stats.sample[[1]]$Stat,stats.sample[[1]]$Time,cluster.size = 1)#
+			sample.cluster2 = find.clusters(stats.sample[[2]]$pval,stats.sample[[2]]$Stat,stats.sample[[2]]$Time,cluster.size = 1)#
+			sample.cluster3 = find.clusters(stats.sample[[3]]$pval,stats.sample[[3]]$Stat,stats.sample[[3]]$Time,cluster.size = 1)#
+			sample.cluster4 = find.clusters(stats.sample[[4]]$pval,stats.sample[[4]]$Stat,stats.sample[[4]]$Time,cluster.size = 1)#
+			sample.cluster5 = find.clusters(stats.sample[[5]]$pval,stats.sample[[5]]$Stat,stats.sample[[5]]$Time,cluster.size = 1)#
+			sample.cluster6 = find.clusters(stats.sample[[6]]$pval,stats.sample[[6]]$Stat,stats.sample[[6]]$Time,cluster.size = 1)#
+			sample.cluster7 = find.clusters(stats.sample[[7]]$pval,stats.sample[[7]]$Stat,stats.sample[[7]]$Time,cluster.size = 1)
+summary(ET)
+ET$Score <- ifelse(ET$Score <= -3.66, 0,1)
+StartTime = 0#
+			EndTime = 1500#
+			StepSize = 100#
+			# Get the relevant stats for your data file.#
+			registerDoMC();#
+#
+			stats.sample = calculate.statistics(ET,StartTime,EndTime,StepSize)#
+			sample.cluster1 = find.clusters(stats.sample[[1]]$pval,stats.sample[[1]]$Stat,stats.sample[[1]]$Time,cluster.size = 1)#
+			sample.cluster2 = find.clusters(stats.sample[[2]]$pval,stats.sample[[2]]$Stat,stats.sample[[2]]$Time,cluster.size = 1)#
+			sample.cluster3 = find.clusters(stats.sample[[3]]$pval,stats.sample[[3]]$Stat,stats.sample[[3]]$Time,cluster.size = 1)#
+			sample.cluster4 = find.clusters(stats.sample[[4]]$pval,stats.sample[[4]]$Stat,stats.sample[[4]]$Time,cluster.size = 1)#
+			sample.cluster5 = find.clusters(stats.sample[[5]]$pval,stats.sample[[5]]$Stat,stats.sample[[5]]$Time,cluster.size = 1)#
+			sample.cluster6 = find.clusters(stats.sample[[6]]$pval,stats.sample[[6]]$Stat,stats.sample[[6]]$Time,cluster.size = 1)#
+			sample.cluster7 = find.clusters(stats.sample[[7]]$pval,stats.sample[[7]]$Stat,stats.sample[[7]]$Time,cluster.size = 1)
+warnings()
+summary(ET)
+summary(lmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = subset(ET, Time == 900), family = "binomial"))
+summary(lmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = subset(ET, Time == 100), family = "binomial"))
+summary(lmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = subset(ET, Time == 200), family = "binomial"))
+summary(lmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = subset(ET, Time == 1400), family = "binomial"))
+summary(glmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = subset(ET, Time == 1400), family = "binomial"))
+Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample = function(data_file,StartTime,EndTime,StepSize){#
+#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				shuf.fnc <- function(x){#
+				NewCond <- x$Cond[sample.int(length(x$Cond))]#
+				NewStrength <- x$Strength[sample.int(length(x$Strength))]#
+				return(data.frame(x,NewCond,NewStrength))#
+					}#
+				Trials = ddply(Trials, .(Subj), shuf.fnc)#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				contrasts(data_file$Pop)[2] <- 1#
+				contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}#
+# Cluster finding function and pval finding function#
+			# Cluster finding script (written by Jon Brennan )#
+			find.clusters <- function(pval.vector, tval.vector, latencies, alpha=.05, cluster.size=5,signed =FALSE, sign = "pos") {#
+				binary.stat <- as.numeric(pval.vector < alpha)#
+				tval.stat <- rep(0,length(binary.stat))#
+				tval.stat[2:length(binary.stat)] = ((tval.vector[2:length(binary.stat)] * tval.vector[1:(length(binary.stat)-1)]) <0)#
+				cluster.start <- c()#
+				cluster.end <- c()#
+				cluster.stat <- c()#
+				in.cluster <- 0#
+				found.clusters <- 0#
+				new.end <- 0#
+				new.start <- 0#
+				end.cluster <- 0#
+				for (n in 1:length(binary.stat)) {#
+					if (signed == FALSE){#
+						if (in.cluster == 0 && binary.stat[n] == 1 ) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+					if (sign == "pos"){#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] >= 0) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] <= 0) {#
+							new.start = n#
+							in.cluster = 1#
+								}#
+					if (in.cluster == 1 && binary.stat[n] == 0) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}#
+					if (in.cluster == 1 && tval.stat[n] == 1) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}				#
+					# in case we reach the end and we are still "in" a cluster...#
+					if (in.cluster == 1 && binary.stat[n] == 1 && n == length(binary.stat)) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 1#
+						}		#
+					if (end.cluster) {	#
+						if ((new.end - new.start) >= cluster.size) {#
+							found.clusters <- found.clusters + 1#
+							cluster.start<- c(cluster.start, latencies[new.start])#
+							cluster.end <- c(cluster.end, latencies[new.end])#
+							cluster.stat <- c(cluster.stat, sum(abs(tval.vector[new.start:(new.end-1)])))#
+							}#
+						end.cluster = 0#
+						}#
+					}#
+				cluster.out <- data.frame(start = cluster.start, end = cluster.end, cluster.stat = cluster.stat)#
+				return(cluster.out)	#
+				}#
+			# Script for assigning pvals to clusters	#
+			pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics = function(data_file,StartTime,EndTime,StepSize){#
+			#Load the relevant libraries#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)#
+			#Start the multicore machine!#
+#
+			#Split the data frame into a list for each timepoint#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,]$Time)#
+			#Parallel application of lmer and coefficient extraction, outputs another list as above#
+			mclapply(a,function(x) coef(summary(glmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = x, family = "binomial")))[2:8,1:3]) -> a.co#
+			# Evaluate the list to see whether t value meets a threshold (hard coded)#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			# plyr that list into a dataframe#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","PopControl","CondU:Strengthweak","CondU:PopControl","Strengthweak:PopControl", "CondU:Strengthweak:PopControl"))#
+			#Split that dataframe into a list based on the regression coefficients#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics.nopop = function(data_file,StartTime,EndTime,StepSize){#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)			#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= 0 & data_file$Time <= 1500,]$Time)#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength +(1+Cond+Strength|Subj) + (1+Cond+Strength|Trial), data = x)))[2:4,1:3]) -> a.co#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","CondU:Strengthweak"))#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+#
+# Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample.nopop = function(data_file,StartTime,EndTime,StepSize){#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				Trials$Order = NA#
+                                Trials$NewCond = Trials$Cond#
+                                Trials$NewStrength = Trials$Strength#
+                                Trials$NewPop = Trials$Pop#
+			for (i in unique(Trials$Subj)){#
+				Trials[Trials$Subj == i,]$Order = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewCond = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Cond#
+                                #Trials[Trials$Subj == i,]$NewOrder = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewStrength = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Strength                                #
+			}#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				#contrasts(data_file$Pop)[2] <- 1#
+				#contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics.nopop(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}
+StartTime = 0#
+			EndTime = 1500#
+			StepSize = 100#
+			# Get the relevant stats for your data file.#
+			registerDoMC();#
+#
+			stats.sample = calculate.statistics(ET,StartTime,EndTime,StepSize)#
+			sample.cluster1 = find.clusters(stats.sample[[1]]$pval,stats.sample[[1]]$Stat,stats.sample[[1]]$Time,cluster.size = 1)#
+			sample.cluster2 = find.clusters(stats.sample[[2]]$pval,stats.sample[[2]]$Stat,stats.sample[[2]]$Time,cluster.size = 1)#
+			sample.cluster3 = find.clusters(stats.sample[[3]]$pval,stats.sample[[3]]$Stat,stats.sample[[3]]$Time,cluster.size = 1)#
+			sample.cluster4 = find.clusters(stats.sample[[4]]$pval,stats.sample[[4]]$Stat,stats.sample[[4]]$Time,cluster.size = 1)#
+			sample.cluster5 = find.clusters(stats.sample[[5]]$pval,stats.sample[[5]]$Stat,stats.sample[[5]]$Time,cluster.size = 1)#
+			sample.cluster6 = find.clusters(stats.sample[[6]]$pval,stats.sample[[6]]$Stat,stats.sample[[6]]$Time,cluster.size = 1)#
+			sample.cluster7 = find.clusters(stats.sample[[7]]$pval,stats.sample[[7]]$Stat,stats.sample[[7]]$Time,cluster.size = 1)
+sample.cluster1 = pval(sample.cluster1,resample1.large.cluster)#
+			sample.cluster2 = pval(sample.cluster2,resample2.large.cluster)#
+			sample.cluster3 = pval(sample.cluster3,resample3.large.cluster)#
+			sample.cluster4 = pval(sample.cluster4,resample4.large.cluster)#
+			sample.cluster5 = pval(sample.cluster5,resample5.large.cluster)#
+			sample.cluster6 = pval(sample.cluster6,resample6.large.cluster)#
+			sample.cluster7 = pval(sample.cluster7,resample7.large.cluster)
+sample.cluster1
+sample.cluster3
+sample.cluster4
+Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample = function(data_file,StartTime,EndTime,StepSize){#
+#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				shuf.fnc <- function(x){#
+				NewCond <- x$Cond[sample.int(length(x$Cond))]#
+				NewStrength <- x$Strength[sample.int(length(x$Strength))]#
+				return(data.frame(x,NewCond,NewStrength))#
+					}#
+				Trials = ddply(Trials, .(Subj), shuf.fnc)#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				contrasts(data_file$Pop)[2] <- 1#
+				contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}#
+# Cluster finding function and pval finding function#
+			# Cluster finding script (written by Jon Brennan )#
+			find.clusters <- function(pval.vector, tval.vector, latencies, alpha=.05, cluster.size=5,signed =FALSE, sign = "pos") {#
+				binary.stat <- as.numeric(pval.vector < alpha)#
+				tval.stat <- rep(0,length(binary.stat))#
+				tval.stat[2:length(binary.stat)] = ((tval.vector[2:length(binary.stat)] * tval.vector[1:(length(binary.stat)-1)]) <0)#
+				cluster.start <- c()#
+				cluster.end <- c()#
+				cluster.stat <- c()#
+				in.cluster <- 0#
+				found.clusters <- 0#
+				new.end <- 0#
+				new.start <- 0#
+				end.cluster <- 0#
+				for (n in 1:length(binary.stat)) {#
+					if (signed == FALSE){#
+						if (in.cluster == 0 && binary.stat[n] == 1 ) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+					if (sign == "pos"){#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] >= 0) {#
+							new.start = n#
+							in.cluster = 1#
+							}#
+					}else#
+						if (in.cluster == 0 && binary.stat[n] == 1 && tval.vector[n] <= 0) {#
+							new.start = n#
+							in.cluster = 1#
+								}#
+					if (in.cluster == 1 && binary.stat[n] == 0) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}#
+					if (in.cluster == 1 && tval.stat[n] == 1) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 0			#
+						}				#
+					# in case we reach the end and we are still "in" a cluster...#
+					if (in.cluster == 1 && binary.stat[n] == 1 && n == length(binary.stat)) {#
+						new.end = n#
+						end.cluster = 1#
+						in.cluster = 1#
+						}		#
+					if (end.cluster) {	#
+						if ((new.end - new.start) >= cluster.size) {#
+							found.clusters <- found.clusters + 1#
+							cluster.start<- c(cluster.start, latencies[new.start])#
+							cluster.end <- c(cluster.end, latencies[new.end])#
+							cluster.stat <- c(cluster.stat, sum(abs(tval.vector[new.start:(new.end-1)])))#
+							}#
+						end.cluster = 0#
+						}#
+					}#
+				cluster.out <- data.frame(start = cluster.start, end = cluster.end, cluster.stat = cluster.stat)#
+				return(cluster.out)	#
+				}#
+			# Script for assigning pvals to clusters	#
+			pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics = function(data_file,StartTime,EndTime,StepSize){#
+			#Load the relevant libraries#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)#
+			#Start the multicore machine!#
+#
+			#Split the data frame into a list for each timepoint#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,]$Time)#
+			#Parallel application of lmer and coefficient extraction, outputs another list as above#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength*Pop +(1+Cond+Strength|Subj) , data = x)))[2:8,1:3]) -> a.co#
+			# Evaluate the list to see whether t value meets a threshold (hard coded)#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			# plyr that list into a dataframe#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","PopControl","CondU:Strengthweak","CondU:PopControl","Strengthweak:PopControl", "CondU:Strengthweak:PopControl"))#
+			#Split that dataframe into a list based on the regression coefficients#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+# What analysis will we be doing at each time point?#
+#
+			calculate.statistics.nopop = function(data_file,StartTime,EndTime,StepSize){#
+			require("lme4") #
+			require(multicore)#
+			require(doMC)#
+			require(foreach)#
+			require(plyr)			#
+			a = split(data_file[data_file$Time >= StartTime & data_file$Time <= EndTime,],data_file[data_file$Time >= 0 & data_file$Time <= 1500,]$Time)#
+			mclapply(a,function(x) coef(summary(lmer(Score~Cond*Strength +(1+Cond+Strength|Subj) + (1+Cond+Strength|Trial), data = x)))[2:4,1:3]) -> a.co#
+			lapply(a.co,function(x) data.frame(x,pv = ifelse(abs(x[,3]) > 1.6,0.04,0.06), co = rownames(x))) -> k#
+			k.df = ldply(k)#
+			k.df$.id = as.numeric(k.df$.id)#
+			colnames(k.df) <- c("Time", "Estimate","SE", "Stat", "pval","Coef")#
+			k.df$Coef = ordered(k.df$Coef,levels = c("CondU","Strengthweak","CondU:Strengthweak"))#
+			stats.sample = split(k.df,k.df$Coef)#
+			return(stats.sample)#
+			}#
+pval = function(sample.cluster,resample.large.cluster){#
+			sample.cluster$pval = 1#
+			for (i in 1:length(sample.cluster$cluster.stat)){#
+				print(i)#
+				sample.cluster$pval[i] = 1 - sum(as.numeric(sample.cluster$cluster.stat[i]>resample.large.cluster)/Resamples_N)#
+					}#
+					return(sample.cluster)#
+			}#
+#
+# Data Analysis Scripts#
+#
+# Function to shuffle condition labels assuming that we hold groups of trials constant. i.e., does the same as shuffling averaged data.#
+			# Function to shuffle the condition label then compute the same stats as above#
+			# This does the resampling on your data.#
+			resample.nopop = function(data_file,StartTime,EndTime,StepSize){#
+				summaryBy(Trial~Subj+Trial+Cond+Strength+Pop, data = data_file ) -> Trials#
+				Trials$Order = NA#
+                                Trials$NewCond = Trials$Cond#
+                                Trials$NewStrength = Trials$Strength#
+                                Trials$NewPop = Trials$Pop#
+			for (i in unique(Trials$Subj)){#
+				Trials[Trials$Subj == i,]$Order = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewCond = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Cond#
+                                #Trials[Trials$Subj == i,]$NewOrder = sample.int(length(Trials[Trials$Subj == i,]$Cond),length(Trials[Trials$Subj == i,]$Cond))	#
+				Trials[Trials$Subj == i,]$NewStrength = Trials[ order(Trials[Trials$Subj == i,]$Order),]$Strength                                #
+			}#
+				for (i in unique(data_file$Subj)){#
+					data_file_S = data_file[data_file$Subj == i,]#
+                                        data_file_S.prac = data_file_S#
+					for (j in unique(data_file_S.prac$Trial)){#
+                                           data_file_S[ data_file_S.prac$Trial == j,]$Cond =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewCond),length(data_file_S[ data_file_S.prac$Trial == j,]$Cond))#
+                                          data_file_S[ data_file_S.prac$Trial == j,]$Strength =  rep(as.character(Trials[Trials$Subj == i & Trials$Trial == j,]$NewStrength),length(data_file_S[ data_file_S.prac$Trial == j,]$Strength))#
+                                        }#
+					data_file[data_file$Subj == i,] = data_file_S#
+                                      }#
+                                Trials <- summaryBy(Subj~Subj+Pop, data = Trials)#
+                                Trials$Order = NA#
+                                Trials$Order = sample.int(length(Trials$Order),length(Trials$Order))#
+                                Trials$Pop = Trials[order(Trials$Order),]$Pop#
+                                #print(Trials$Pop)#
+#
+                                for (i in unique(data_file$Subj)){ #
+                                data_file[data_file$Subj == i,]$Pop = Trials[Trials$Subj == i,]$Pop#
+                              }#
+				data_file$Cond = as.factor(data_file$Cond)#
+				data_file$Strength = as.factor(data_file$Strength)#
+                                data_file$Pop = as.factor(data_file$Pop)#
+				contrasts(data_file$Cond)[1] <- -1#
+				contrasts(data_file$Cond)[2] <- 1#
+				contrasts(data_file$Strength)[2] <- 1#
+				contrasts(data_file$Strength)[1] <- -1#
+				#contrasts(data_file$Pop)[2] <- 1#
+				#contrasts(data_file$Pop)[1] <- -1#
+			#	print(data_file[data_file$Subj == i,]$Pop[1:30])#
+                        #       print(data_file[data_file$Subj == i,]$Trial[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Cond[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Strength[seq(300,1000, by = 25)])#
+                       #        print(data_file[data_file$Subj == i,]$Score[seq(300,1000, by = 25)])#
+				stats.resample = calculate.statistics.nopop(data_file,StartTime,EndTime,StepSize)#
+				return(stats.resample)#
+				}
+StartTime = 0#
+			EndTime = 1500#
+			StepSize = 100#
+			# Get the relevant stats for your data file.#
+			registerDoMC();#
+#
+			stats.sample = calculate.statistics(ET,StartTime,EndTime,StepSize)#
+			sample.cluster1 = find.clusters(stats.sample[[1]]$pval,stats.sample[[1]]$Stat,stats.sample[[1]]$Time,cluster.size = 1)#
+			sample.cluster2 = find.clusters(stats.sample[[2]]$pval,stats.sample[[2]]$Stat,stats.sample[[2]]$Time,cluster.size = 1)#
+			sample.cluster3 = find.clusters(stats.sample[[3]]$pval,stats.sample[[3]]$Stat,stats.sample[[3]]$Time,cluster.size = 1)#
+			sample.cluster4 = find.clusters(stats.sample[[4]]$pval,stats.sample[[4]]$Stat,stats.sample[[4]]$Time,cluster.size = 1)#
+			sample.cluster5 = find.clusters(stats.sample[[5]]$pval,stats.sample[[5]]$Stat,stats.sample[[5]]$Time,cluster.size = 1)#
+			sample.cluster6 = find.clusters(stats.sample[[6]]$pval,stats.sample[[6]]$Stat,stats.sample[[6]]$Time,cluster.size = 1)#
+			sample.cluster7 = find.clusters(stats.sample[[7]]$pval,stats.sample[[7]]$Stat,stats.sample[[7]]$Time,cluster.size = 1)
+sample.cluster4
+stats.sample[[4]]
+stats.sample[[1]]
+dat<- data.frame(t=seq(0, 2*pi, by=0.1) )#
+ xhrt <- function(t) 16*sin(t)^3#
+ yhrt <- function(t) 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t)#
+ dat$y=yhrt(dat$t)#
+ dat$x=xhrt(dat$t)#
+ with(dat, plot(x,y, type="l"))
+with(dat, polygon(x,y, col="hotpink"))
+points(c(10,-10, -15, 15), c(-10, -10, 10, 10), pch=169, font=5)
+#values used for longdiff#
+# s_n<-24 #how many subjects#
+# switch_baseline<-.25 #probability of switching to target at baseline#
+# switch_on<-.5 #probability of switching to target when effect is in effect#
+# switch_off<-.1 #probability of switching off target when effect is in effect#
+# items_n<-5 #how many items per condition? 2-condition experiment. items appear in both conditions, within subject#
+# bins_n<-20 #how many bins?#
+# first_bin<-7 #on average, what is the first bin to show an effect in condition with early effect?#
+# time_diff<-2.5 #how many bins earlier is there an effect in condition 1 than condition 2?#
+# noise<-2 #trial noise sd#
+# sub_speeds<-rnorm(s_n,0,1) #how much faster or slower than typical is the subject?#
+# sub_s_sd<-1 #sd for sub speed error#
+# sub_effects<-rnorm(s_n,0,1.5) #degree to which effect size is larger or smaller for that subject#
+# sub_e_sd<-1 #sd for sub effect error#
+# item_effects<-rnorm(items_n,0,.5) #degree to which effect size is larger or smaller than typical for that item#
+# item_sd<-1 #sd for item effect error#
+#
+#values used for shortdiff#
+s_n<-24 #how many subjects#
+switch_baseline<-.25 #probability of switching to target at baseline#
+switch_on<-.9 #probability of switching to target when effect is in effect#
+switch_off<-.2 #probability of switching off target when effect is in effect#
+items_n<-5 #how many items per condition? 2-condition experiment. items appear in both conditions, within subject#
+bins_n<-20 #how many bins?#
+first_bin<-7 #on average, what is the first bin to show an effect in condition with early effect?#
+time_diff<-0 #how many bins earlier is there an effect in condition 1 than condition 2?#
+noise<-.25 #trial noise sd#
+sub_speeds<-rnorm(s_n,0,.25) #how much faster or slower than typical is the subject?#
+sub_s_sd<-.5 #sd for sub speed error#
+sub_effects<-rnorm(s_n,0,2) #degree to which effect size is larger or smaller for that subject#
+sub_e_sd<-.25 #sd for sub effect error#
+item_effects<-rnorm(items_n,0,2) #degree to which effect size is larger or smaller than typical for that item#
+item_sd<-.25 #sd for item effect error
+#what's alpha?#
+1-.95^(1/bins_n)#
+#
+mydata<-data.frame(subject=c(NA),condition=c(NA),item=c(NA),bin=c(NA),fixtarg=c(NA))#
+for (sub in c(1:s_n)){#
+	for (item in c(1:items_n)){#
+		#do a item for each condition simultaneously (saves time)#
+		#draw a bin for an effect#
+		con1_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)#
+		con2_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)#
+			current_1<-rbinom(1,1,.5) #where am I looking in first bin for condition 1?#
+			current_2<-rbinom(1,1,.5) #where am I looking in first bin for condition 2?#
+			mydata<-rbind(mydata,c(sub,1,item,1,current_1))#
+			mydata<-rbind(mydata,c(sub,2,item,1,current_2))#
+			for (bin in c(2:bins_n)){#
+				if (bin<con1_bin){#
+						if (rbinom(1,1,switch_baseline)){current_1<-(1-current_1)}#
+					}else{#
+						if (current_1){#
+							if (rbinom(1,1,switch_off)){current_1<-(1-current_1)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_1<-(1-current_1)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,1,item,bin,current_1))#
+				if (bin<con2_bin){#
+						if (rbinom(1,1,switch_baseline)){current_2<-(1-current_2)}#
+					}else{#
+						if (current_2){#
+							if (rbinom(1,1,switch_off)){current_2<-(1-current_2)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_2<-(1-current_2)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,2,item,bin,current_2))#
+			}#
+	}#
+}
+summary(mydata)
+#what's alpha?#
+1-.95^(1/bins_n)#
+#
+mydata<-data.frame(subject=c(NA),condition=c(NA),item=c(NA),bin=c(NA),fixtarg=c(NA))#
+for (sub in c(1:s_n)){#
+	for (item in c(1:items_n)){#
+		#do a item for each condition simultaneously (saves time)#
+		#draw a bin for an effect#
+		con1_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)#
+		con2_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)#
+			current_1<-rbinom(1,1,.5) #where am I looking in first bin for condition 1?#
+			current_2<-rbinom(1,1,.5) #where am I looking in first bin for condition 2?#
+			mydata<-rbind(mydata,c(sub,1,item,1,current_1))#
+			mydata<-rbind(mydata,c(sub,2,item,1,current_2))#
+			for (bin in c(2:bins_n)){#
+				if (bin<con1_bin){#
+						if (rbinom(1,1,switch_baseline)){current_1<-(1-current_1)}#
+					}else{#
+						if (current_1){#
+							if (rbinom(1,1,switch_off)){current_1<-(1-current_1)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_1<-(1-current_1)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,1,item,bin,current_1))#
+				if (bin<con2_bin){#
+						if (rbinom(1,1,switch_baseline)){current_2<-(1-current_2)}#
+					}else{#
+						if (current_2){#
+							if (rbinom(1,1,switch_off)){current_2<-(1-current_2)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_2<-(1-current_2)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,2,item,bin,current_2))#
+			}#
+	}#
+}
+summary(mydata)
+#what's alpha?#
+1-.95^(1/bins_n)#
+#
+mydata<-data.frame(subject=c(NA),condition=c(NA),item=c(NA),bin=c(NA),fixtarg=c(NA))#
+for (sub in c(1:s_n)){#
+	for (item in c(1:items_n)){#
+		#do a item for each condition simultaneously (saves time)#
+		#draw a bin for an effect#
+		con1_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)#
+		con2_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)#
+			current_1<-rbinom(1,1,.5) #where am I looking in first bin for condition 1?#
+			current_2<-rbinom(1,1,.5) #where am I looking in first bin for condition 2?#
+			mydata<-rbind(mydata,c(sub,1,item,1,current_1))#
+			mydata<-rbind(mydata,c(sub,2,item,1,current_2))#
+			for (bin in c(2:bins_n)){#
+				if (bin<con1_bin){#
+						if (rbinom(1,1,switch_baseline)){current_1<-(1-current_1)}#
+					}else{#
+						if (current_1){#
+							if (rbinom(1,1,switch_off)){current_1<-(1-current_1)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_1<-(1-current_1)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,1,item,bin,current_1))#
+				if (bin<con2_bin){#
+						if (rbinom(1,1,switch_baseline)){current_2<-(1-current_2)}#
+					}else{#
+						if (current_2){#
+							if (rbinom(1,1,switch_off)){current_2<-(1-current_2)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_2<-(1-current_2)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,2,item,bin,current_2))#
+			}#
+	}#
+}
+createdata <- function(){#
+mydata<-data.frame(subject=c(NA),condition=c(NA),item=c(NA),bin=c(NA),fixtarg=c(NA))#
+for (sub in c(1:s_n)){#
+	for (item in c(1:items_n)){#
+		#do a item for each condition simultaneously (saves time)#
+		#draw a bin for an effect#
+		con1_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)#
+		con2_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)+time_diff+rnorm(1,sub_effects[sub],sub_e_sd)+rnorm(1,item_effects[item],item_sd)#
+			current_1<-rbinom(1,1,.5) #where am I looking in first bin for condition 1?#
+			current_2<-rbinom(1,1,.5) #where am I looking in first bin for condition 2?#
+			mydata<-rbind(mydata,c(sub,1,item,1,current_1))#
+			mydata<-rbind(mydata,c(sub,2,item,1,current_2))#
+			for (bin in c(2:bins_n)){#
+				if (bin<con1_bin){#
+						if (rbinom(1,1,switch_baseline)){current_1<-(1-current_1)}#
+					}else{#
+						if (current_1){#
+							if (rbinom(1,1,switch_off)){current_1<-(1-current_1)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_1<-(1-current_1)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,1,item,bin,current_1))#
+				if (bin<con2_bin){#
+						if (rbinom(1,1,switch_baseline)){current_2<-(1-current_2)}#
+					}else{#
+						if (current_2){#
+							if (rbinom(1,1,switch_off)){current_2<-(1-current_2)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_2<-(1-current_2)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,2,item,bin,current_2))#
+			}#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+mydata<-mydata[is.na(mydata$subject)==FALSE,]#
 }
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
+createdata <- function(){#
+mydata<-data.frame(subject=c(NA),condition=c(NA),item=c(NA),bin=c(NA),fixtarg=c(NA))#
+for (sub in c(1:s_n)){#
+	for (item in c(1:items_n)){#
+		#do a item for each condition simultaneously (saves time)#
+		#draw a bin for an effect#
+		con1_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)#
+		con2_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)+time_diff+rnorm(1,sub_effects[sub],sub_e_sd)+rnorm(1,item_effects[item],item_sd)#
+			current_1<-rbinom(1,1,.5) #where am I looking in first bin for condition 1?#
+			current_2<-rbinom(1,1,.5) #where am I looking in first bin for condition 2?#
+			mydata<-rbind(mydata,c(sub,1,item,1,current_1))#
+			mydata<-rbind(mydata,c(sub,2,item,1,current_2))#
+			for (bin in c(2:bins_n)){#
+				if (bin<con1_bin){#
+						if (rbinom(1,1,switch_baseline)){current_1<-(1-current_1)}#
+					}else{#
+						if (current_1){#
+							if (rbinom(1,1,switch_off)){current_1<-(1-current_1)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_1<-(1-current_1)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,1,item,bin,current_1))#
+				if (bin<con2_bin){#
+						if (rbinom(1,1,switch_baseline)){current_2<-(1-current_2)}#
+					}else{#
+						if (current_2){#
+							if (rbinom(1,1,switch_off)){current_2<-(1-current_2)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_2<-(1-current_2)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,2,item,bin,current_2))#
+			}#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+return(mydata<-mydata[is.na(mydata$subject)==FALSE,])#
 }
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
+a<- createdata()
+summary(a)
+#analyze with mixed effects model#
+library(lme4)#
+get_stats = function(thedata){#
+	#assumes data is in the format of the actual data above. Easy to adjust for other datasets.#
+	#returns a dataframe, where each row is c(bin#, z-score, p-value)#
+	sigs_me<-data.frame(bin=c(1:bins_n),z=rep(0,bins_n),p=rep(0,bins_n))#
+	for (bin in c(1:bins_n)){#
+		#since our subjects and items aren't different from one another, no need for maximal random effects#
+		m<-glmer(fixtarg~condition+(1|subject)+(1|item),data=thedata[thedata$bin==bin,],family="binomial") #
+		sigs_me[sigs_me$bin==bin,]<-c(bin,coef(summary(m))[2,3],coef(summary(m))[2,4])#
+	}#
+	return(sigs_me)#
+}
+threshold=1.5 #cutoff (t value) for inclusion in a cluster. Lower thresholds get longer, weaker clusters. Choice doesn't effect on false positive rate ... unless you keep trying different thresholds until something "works"#
+#
+#define some useful functions#
+cluster = function(somedata,cutoff){#
+	#somedata is a vector of test statistics (not p-values)#
+	#cutoff is a threshold for for those statistics. Anything below threshold won't be considered part of a cluster#
+	#returns a vector of the same length, where 0 marks a value that is not part of a cluster, and counting numbers mark clusters. #
+	#Every value with same # is in same cluster.#
+	somedata<-abs(somedata) #will cause problems if there is a sudden, significant switch in sign. Unlikely in practice for eyetracking data.#
+	clusters=c()#
+	current_cluster=0#
+	in_cluster=FALSE#
+	for (i in c(1:length(somedata))){#
+		if (somedata[i]>cutoff){#
+			if (in_cluster){#
+				clusters<-c(clusters,current_cluster)#
+			}else{#
+				in_cluster=TRUE#
+				current_cluster<-current_cluster+1#
+				clusters<-c(clusters,current_cluster)#
+			}#
+		}else{#
+			clusters<-c(clusters,0)	#
+			in_cluster=FALSE#
+		}#
+	}#
+	return(clusters)#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
+#
+score_clusters = function(somedata,someclusters){#
+	#somedata is a vector of test statistics (not p-values)#
+	#someclusters is the output of cluster()#
+	#returns dataframe with the size (sum of test stats) of each cluster#
+	c<-data.frame(stat=somedata,cluster=someclusters)#
+	scores<-c()#
+	for (cluster in c(1:max(someclusters))){#
+		scores<-c(scores,sum(abs(c$stat[c$cluster==cluster])))#
+	}#
+	return(data.frame(cluster=c(1:length(scores)),score=scores))	#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+#
+resample_data = function(thedata){#
+	#This function assumes data is structured like the data above, but should be easy to adapt.#
+	##
+	#The design of this study is fully crossed (every subject gets every item in every condition)#
+	#So all we need to do is shuffle the condition codes for each item for each subject. #
+	#If there were also a between-subjects condition, we would have to shuffle subjects between conditions. Etc.#
+	#Note: Do NOT shuffle bins and do NOT shuffle condition codes independently for each bin. #
+	#That would assume the data in each bin of a trial is independent of the data in the other bins, which it is not.#
+	for (sub in c(1:s_n)){#
+		for (item in c(1:items_n)){#
+			#random coin flip. If heads, switch condition codes. If tails, don't.#
+			#if (rbinom(1,1,.5)){#
+				#heads. switch codes.#
+				# I'm not sure that your analysis does a random partition, Josh. Rather, all the trials that were previously #
+				# in one bin, are now assigned to another.#
+				#thedata$condition[thedata$subject==sub & thedata$item==item & thedata$condition==1]<-3#
+				#thedata$condition[thedata$subject==sub & thedata$item==item & thedata$condition==2]<-1#
+				#thedata$condition[thedata$subject==sub & thedata$item==item & thedata$condition==3]<-2#
+				#Making the partition random#
+				new_cond <- sample(c(rep(c(1,2))),items_n, replace = TRUE)#
+				thedata$condition[thedata$subject==sub & thedata$item==item & thedata$condition==1] <- 3#
+				thedata$condition[thedata$subject==sub & thedata$item==item & thedata$condition==2] <- 4#
+				thedata$condition[thedata$subject==sub & thedata$item==item & thedata$condition==3]<- new_cond[item]#
+				#thedata$condition[thedata$subject==sub & thedata$item==item & thedata$condition==4]<- new_cond[item+items_n]#
+				thedata$condition[thedata$subject==sub & thedata$item==item & thedata$condition==4] <- ifelse(new_cond[item] ==1,2,1)#
+			#}else{#
+				#tails. do nothing.#
+			#}#
+		}#
+	}#
+	return(thedata)#
 }
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
+sample_cluster = function(thedata,threshold){#
+	#This function does not assume any particular structure to the data, but it calls resample_data and get_stats which do#
+	##
+	#thedata = the data that you want to resample#
+	#print(thedata[1:3,])#
+	print(1)#
+	sampled_data<-resample_data(thedata)#
+	#print(sampled_data[1:3,])#
+	sigs_me<-get_stats(sampled_data)#
+	sampled_clusters<-cluster(sigs_me$z,threshold)#
+	sampled_cluster_scores<-score_clusters(sigs_me$z,sampled_clusters)#
+	return(max(sampled_cluster_scores$score))#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+#
+sample_clusters = function(thedata,n,multi,threshold){#
+	#This function does not assume any particular structure to the data, but it calls resample_data and get_stats (via sample_cluster), which do#
+	##
+	#thedata = the data that you want to resample#
+	#n = number of times to resample#
+	#if multi==TRUE, use multiple processors (will need to have loaded the appropriate libraries)#
+#
+	require(multicore)#
+	require(doMC)#
+	require(foreach)#
+#
+	if (multi){#
+		registerDoMC(cores=3) #how many processes to spawn?	was written for a computer with 4 processors. This keeps 1 free for other uses.#
+		clusters<-foreach(i=iter(c(1:n)),.combine=rbind) %dopar% sample_cluster(thedata,threshold)#
+	}else{#
+		clusters<-foreach(i=iter(c(1:n)),.combine=rbind) %do% sample_cluster(thedata,threshold)#
+	}#
+	return(clusters)#
 }
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- median(rlnorm(30,0,1))#
-	subj_c2[i] <- media(rlnorm(30,0,1))#
+# This R script uses JoshH's scripts to create a set of fake datasets, and then analyzes#
+# those datasets using three different threshold.#
+# j is number of simulations#
+#
+threshold = c(1.6,2.0,2.4)#
+real_score = matrix(NA,1,3)#
+pval <- matrix(NA,1000,3)#
+#
+#cluster the data#
+for (j in c(1:1000)){#
+print(j)#
+mydata <- createdata()#
+sigs_me<-get_stats(mydata)#
+#
+for (k in c(1:length(threshold))){ # k is number of thresholds#
+actual_clusters<-cluster(sigs_me$z,threshold[k]) #cluster the actual data#
+actual_cluster_scores<-score_clusters(sigs_me$z,actual_clusters) #find the scores for the clusters in the actual data#
+real_score[1,k] <- max(actual_cluster_scores$score)#
+sampled_maxes<-sample_clusters(mydata,1000,TRUE,threshold[k])#
+pval[j,k] = 1 - sum(as.numeric(max(actual_cluster_scores$score) > c(max(actual_cluster_scores$score),sampled_maxes[,1])))/(length(sampled_maxes[,1])+1)#
+#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- median(rlnorm(30,0,1))#
-	subj_c2[i] <- median(rlnorm(30,0,1))#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- median(rlnorm(30,0,1))#
-	subj_c2[i] <- median(rlnorm(30,0,1))#
+#for (k in c(1:length(threshold))){ # k is number of thresholds#
+#	sampled_maxes<-sample_clusters(mydata,1000,TRUE,threshold[k])#
+#	pval[j,k] = 1 - sum(as.numeric(max(actual_cluster_scores$score) > c(max(actual_cluster_scores$score),sampled_maxes[,1])))/(length(sampled_maxes[,1])+1)#
+#	#
+#	}#
+#}
+logit(0)
+library(arm)
+logit(0)
+invlogit(0)
+?setwd
+#values used for longdiff#
+# s_n<-24 #how many subjects#
+# switch_baseline<-.25 #probability of switching to target at baseline#
+# switch_on<-.5 #probability of switching to target when effect is in effect#
+# switch_off<-.1 #probability of switching off target when effect is in effect#
+# items_n<-5 #how many items per condition? 2-condition experiment. items appear in both conditions, within subject#
+# bins_n<-20 #how many bins?#
+# first_bin<-7 #on average, what is the first bin to show an effect in condition with early effect?#
+# time_diff<-2.5 #how many bins earlier is there an effect in condition 1 than condition 2?#
+# noise<-2 #trial noise sd#
+# sub_speeds<-rnorm(s_n,0,1) #how much faster or slower than typical is the subject?#
+# sub_s_sd<-1 #sd for sub speed error#
+# sub_effects<-rnorm(s_n,0,1.5) #degree to which effect size is larger or smaller for that subject#
+# sub_e_sd<-1 #sd for sub effect error#
+# item_effects<-rnorm(items_n,0,.5) #degree to which effect size is larger or smaller than typical for that item#
+# item_sd<-1 #sd for item effect error#
+#
+#values used for shortdiff#
+s_n<-24 #how many subjects#
+switch_baseline<-.25 #probability of switching to target at baseline#
+switch_on<-.9 #probability of switching to target when effect is in effect#
+switch_off<-.2 #probability of switching off target when effect is in effect#
+items_n<-5 #how many items per condition? 2-condition experiment. items appear in both conditions, within subject#
+bins_n<-20 #how many bins?#
+first_bin<-7 #on average, what is the first bin to show an effect in condition with early effect?#
+time_diff<-0 #how many bins earlier is there an effect in condition 1 than condition 2?#
+noise<-.25 #trial noise sd#
+sub_speeds<-rnorm(s_n,0,.25) #how much faster or slower than typical is the subject?#
+sub_s_sd<-.5 #sd for sub speed error#
+sub_effects<-rnorm(s_n,0,2) #degree to which effect size is larger or smaller for that subject#
+sub_e_sd<-.25 #sd for sub effect error#
+item_effects<-rnorm(items_n,0,2) #degree to which effect size is larger or smaller than typical for that item#
+item_sd<-.25 #sd for item effect error#
+#what's alpha?#
+1-.95^(1/bins_n)#
+#
+createdata <- function(){#
+mydata<-data.frame(subject=c(NA),condition=c(NA),item=c(NA),bin=c(NA),fixtarg=c(NA))#
+for (sub in c(1:s_n)){#
+	for (item in c(1:items_n)){#
+		#do a item for each condition simultaneously (saves time)#
+		#draw a bin for an effect#
+		con1_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise)#
+		con2_bin<-first_bin+rnorm(1,sub_speeds[sub],sub_s_sd)+rnorm(1,0,noise) #+time_diff+rnorm(1,sub_effects[sub],sub_e_sd)+rnorm(1,item_effects[item],item_sd)#
+			current_1<-rbinom(1,1,.5) #where am I looking in first bin for condition 1?#
+			current_2<-rbinom(1,1,.5) #where am I looking in first bin for condition 2?#
+			mydata<-rbind(mydata,c(sub,1,item,1,current_1))#
+			mydata<-rbind(mydata,c(sub,2,item,1,current_2))#
+			for (bin in c(2:bins_n)){#
+				if (bin<con1_bin){#
+						if (rbinom(1,1,switch_baseline)){current_1<-(1-current_1)}#
+					}else{#
+						if (current_1){#
+							if (rbinom(1,1,switch_off)){current_1<-(1-current_1)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_1<-(1-current_1)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,1,item,bin,current_1))#
+				if (bin<con2_bin){#
+						if (rbinom(1,1,switch_baseline)){current_2<-(1-current_2)}#
+					}else{#
+						if (current_2){#
+							if (rbinom(1,1,switch_off)){current_2<-(1-current_2)}						#
+						}else{#
+							if (rbinom(1,1,switch_on)){current_2<-(1-current_2)}													#
+						}#
+				}#
+				mydata<-rbind(mydata,c(sub,2,item,bin,current_2))#
+			}#
+	}#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- median(rlnorm(30,0,1))#
-	subj_c2[i] <- median(rlnorm(30,0,1))#
+return(mydata<-mydata[is.na(mydata$subject)==FALSE,])#
 }#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- median(rlnorm(30,0,1))#
-	subj_c2[i] <- median(rlnorm(30,0,1))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- median(rlnorm(30,0,1))#
-	subj_c2[i] <- median(rlnorm(30,0,1))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(rlnorm(30,0,1))#
-	subj_c2[i] <- mean(rlnorm(30,0,1))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-length(p[abs(p) >= 1.96])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
-}
-p
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
-	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(30,0,1)))#
-	subj_c2[i] <- mean((rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(30,0,1)))#
-	subj_c2[i] <- mean((rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(30,0,1)))#
-	subj_c2[i] <- mean((rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(30,0,1)))#
-	subj_c2[i] <- mean((rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(30,0,1)))#
-	subj_c2[i] <- mean((rlnorm(30,0,1)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-hist(rlnorm(20,0,1))
-hist(rlnorm(30,0,1))
-hist(rlnorm(30,0,1.2))
-hist(rlnorm(30,0,1.02))
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(30,0,1.02)))#
-	subj_c2[i] <- mean((rlnorm(30,0,1.02)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(30,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(30,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-p <- rep(NA,100000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:20){#
-	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])
-length(p[abs(p) <= 0.05])/100000
-p <- rep(NA,10000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])/10000
-p <- rep(NA,10000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(30,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(30,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])/10000
-length(p[abs(p) > 0.05])/10000
-p <- rep(NA,10000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(5,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(5,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) > 0.05])/10000
-p <- rep(NA,10000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(1,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(1,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) > 0.05])/10000
-p <- rep(NA,10000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(100,0,1.2)))#
-	subj_c2[i] <- mean((rlnorm(100,0,1.2)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) > 0.05])/10000
-subj_c1
-subj_c2
-?rlnorm
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(30,0,0.5)))#
-	subj_c2[i] <- mean((rlnorm(30,0,0,5)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(30,0,0.5)))#
-	subj_c2[i] <- mean((rlnorm(30,0,0.5)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) > 0.05])/1000
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(30,0,0.5)))#
-	subj_c2[i] <- mean((rlnorm(30,0,0.5)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) > 0.05])/1000
-hist(subj_c1)
-hist(subj_c2)
-p[j]
-t.test(subj_c1,subj_c2, paired = T, var.equal = T)
-t.test(subj_c1,subj_c2, paired = F, var.equal = F)
-hist(rlnorm(100,1,0.5))
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(100,1,0.5)))#
-	subj_c2[i] <- mean((rlnorm(100,1,0.5)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) > 0.05])/1000
-length(p[abs(p) <= 0.05])/1000
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
-	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])/1000
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
-	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])/1000
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
-	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])/1000
-p <- rep(NA,1000)#
-for (j in 1:length(p)){ #
-subj_c1 = rep(NA,20)#
-subj_c2 = rep(NA,20)#
-for (i in 1:30){#
-	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
-	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
-}#
-p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
-}
-length(p[abs(p) <= 0.05])/1000
+mydata <- createdata()#
+#
+#calculate means#
+submeans<-aggregate(mydata$fixtarg,by=list(mydata$subject,mydata$condition,mydata$bin),FUN=mean)#
+colnames(submeans)<-c("subject","condition","bin","fixtarg")#
+means<-aggregate(submeans$fixtarg,by=list(submeans$condition,submeans$bin),FUN=mean)#
+colnames(means)<-c("condition","bin","fixtarg")#
+temp<-aggregate(submeans$fixtarg,by=list(submeans$condition,submeans$bin),FUN=sd)#
+means$se<-temp[,3]/(s_n^.5)
+summary(mydata)
+0.05/20
+logit(1)
+log((1/0))
+log((0.95/0.05))
+?names
+load("/Users/hrabagli/Documents/Studies/Sense Resolution/3_Online_ET/ETAutismData/FullStats_April1.RDATA")
+ls()
+Full.Clusters
+3*12
+36+7
+43/2
+36+8
+/2
+44/22
+?grepl
+a = ("aa","bb","ss","ba")
+a = c("aa","bb","ss","ba")
+a
+grep(a,"b")
+grep("b",a)
+grep("b",a) -1
+a[(grep("b",a) -1)]
 library(plyr)#
 library(doBy)#
 library(lme4)#
+library(ggplot2)#
+#
 # Initial anlyses -- how does informativity of response vary across response order and ambiguity condition?#
 resp <- read.csv("./data/responses_ambig_and_cont.csv")#
 resp <- reshape(resp, #
@@ -857,7 +2672,32 @@ resp <- reshape(resp, #
 resp$Response <- as.factor(resp$Response)#
 contrasts(resp$Response)[1] <- -1#
 summaryBy(Informative ~ Response  + condition, data = resp, na.rm = T)#
-summary(glmer(Informative ~ condition * as.factor(Response) + (1+condition|Subject) + (1|Trial_ID), data = resp, family = "binomial"))#
+summary(glmer(Informative ~ condition * Response + (1+condition|Subject) + (1+condition|Target), data = resp, family = "binomial"))
+library(plyr)#
+library(doBy)#
+library(lme4)#
+library(ggplot2)#
+#
+# Initial anlyses -- how does informativity of response vary across response order and ambiguity condition?#
+resp <- read.csv("./data/responses_ambig_and_cont.csv")#
+resp <- reshape(resp, #
+  varying = c("informative_target", "informative_foil"), #
+  v.names = "Informative",#
+  timevar = "Response", #
+  times = c("target", "foil"),#
+  direction = "long")#
+#
+resp$Response <- as.factor(resp$Response)#
+contrasts(resp$Response)[1] <- -1#
+summaryBy(Informative ~ Response  + condition, data = resp, na.rm = T)#
+summary(glmer(Informative ~ condition * Response + (1+condition|Subject) , data = resp, family = "binomial"))
+summary(glmer(Informative ~ condition * Response + (1|Subject) , data = resp, family = "binomial"))
+contrasts(resp$condition)
+contrasts(resp$condition)[1] <- -1
+contrasts(resp$Response)
+summary(glmer(Informative ~ condition * Response + (1|Subject) , data = resp, family = "binomial"))
+summary(glmer(Informative ~ condition * Response + (1+condition|Subject) , data = resp, family = "binomial"))
+summary(glmer(Informative ~ condition * Response + (1+condition + Response|Subject) , data = resp, family = "binomial"))
 # How do saccades during Preview and 500ms ISI predict informative responses?  #
 # Note that we are now using an SMI system for data collection, and the data output is #
 # v different. #
@@ -892,196 +2732,12 @@ sac$PropSac_c <- NA#
 for (i in unique(sac$phase)){#
 	sac[sac$phase == i,]$PropSac_c <- (sac[sac$phase == i,]$PropSac - mean(sac[sac$phase == i,]$PropSac, na.rm = T))/sd(sac[sac$phase == i,]$PropSac, na.rm = T)#
 }#
-summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) + (1|target), data = subset(sac, phase == "start")))#
-summary(glmer(Foil ~ condition*PropSac_c + (1+PropSac_c|participant) , data = subset(sac, phase == "elmo"), family = "binomial"))#
-ggplot( subset(sac, phase == "start"), aes(x= PropSac_c, y= Targ)) +#
-    geom_point() +    # Use hollow circles#
-    geom_smooth(   # Add linear regression line#
-                )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Start gaze predicting target") + geom_jitter(width = 0.05, height = 0.02)+facet_grid(.~condition)#
-#
-ggplot( subset(sac, phase == "elmo"), aes(x= PropSac_c, y= Foil)) +#
-    geom_point() +    # Use hollow circles#
-    geom_smooth(   # Add linear regression line#
-                )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Elmo Gaze predicting Foil") + geom_jitter(width = 0.05, height = 0.02)+facet_grid(.~condition)#
-# How do fixations during 500ms ISI predict informative responses?  #
-# Note that we are now using an SMI system for data collection, and the data output is #
-# v different. #
-fix <- read.csv("./data/all_fixation_durations.csv")#
-fix$Targ <- ifelse(fix$informative_target == "True", 1, ifelse(fix$informative_target == "False", 0, NA))#
-fix$Foil <- ifelse(fix$informative_foil == "True", 1, ifelse(fix$informative_foil == "False", 0, NA))#
-#
-fix$foil_duration_R <- (fix$foil_sum_duration_Right - mean(fix$foil_sum_duration_Right))/sd(fix$foil_sum_duration_Right)#
-fix$target_duration_R <- (fix$target_sum_duration_Right - mean(fix$target_sum_duration_Right))/sd(fix$target_sum_duration_Right)#
-#
-fix$TargetLabelCond <- "Control"#
-fix[fix$condition %in% "ambig" & fix$Targ %in% NA,]$TargetLabelCond <- NA#
-fix[fix$condition %in% "ambig" & fix$Targ %in% 1,]$TargetLabelCond <- "Ambig - Informative"#
-fix[fix$condition %in% "ambig" & fix$Targ %in% 0,]$TargetLabelCond <- "Ambig - Uninformative"#
-fix$TargetLabelCond <- ordered(fix$TargetLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
-#
-fix$FoilLabelCond <- "Control"#
-fix[fix$condition %in% "ambig" & fix$Foil %in% NA,]$FoilLabelCond <- NA#
-fix[fix$condition %in% "ambig" & fix$Foil %in% 1,]$FoilLabelCond <- "Ambig - Informative"#
-fix[fix$condition %in% "ambig" & fix$Foil %in% 0,]$FoilLabelCond <- "Ambig - Uninformative"#
-fix$FoilLabelCond <- ordered(fix$FoilLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
-#
-fix$total_duration_right <- fix$target_sum_duration_Right + fix$foil_sum_duration_Right + fix$distractor_sum_duration_Right#
-#
-summaryBy(target_duration_R + foil_duration_R + target_sum_duration_Right + foil_sum_duration_Right~ phase + condition + TargetLabelCond, data = fix)#
-summaryBy(target_duration_R + foil_duration_R + target_sum_duration_Right + foil_sum_duration_Right~ phase + condition + FoilLabelCond, data = fix)
-summary(glmer(Informative ~ condition * as.factor(Response) + (1+condition* as.factor(Response)|Subject) + (1|Trial_ID), data = resp, family = "binomial"))
-summary(glmer(Informative ~ condition * as.factor(Response) + (1+condition+ as.factor(Response)|Subject) + (1|Trial_ID), data = resp, family = "binomial"))
+summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) + (1|target), data = subset(sac, phase == "start")))
+summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) + (1|target), data = subset(sac, phase == "elmo")))
+summary(lmer(PropSac ~  C(FoilLabelCond, contr.treatment) + (1|participant) + (1|target), data = subset(sac, phase == "elmo")))
+summary(lmer(PropSac ~  C(FoilLabelCond, contr.treatment) + (1|participant) , data = subset(sac, phase == "elmo")))
+library(ez)
+ezANOVA(resp, Informative, wid = .(subject), within = .(condition, Response))
 summary(resp)
-summary(glmer(Informative ~ condition * as.factor(Response) + (1+condition|Subject) + (1|Target), data = resp, family = "binomial"))
-summary(glmer(Informative ~ condition * as.factor(Response) + (1+condition|Subject) , data = resp, family = "binomial"))
-summary(glmer(Informative ~ condition * as.factor(Response) + (1+condition|Subject) + (1+condition|Target), data = resp, family = "binomial"))
-summary(glmer(Informative ~ condition * as.factor(Response) + (1+condition|Subject) + (1+condition+as.factor(Response)|Target), data = resp, family = "binomial"))
-unique(resp$Target)
-summary(glmer(Informative ~ condition * as.factor(Response) + (1+condition+as.factor(Response)|Subject) + (1+condition|Target), data = resp, family = "binomial"))
-resp$Response
-summary(glmer(Informative ~ condition * Response + (1+condition+Response|Subject) + (1+condition|Target), data = resp, family = "binomial"))
-summary(glmer(Informative ~ condition * Response + (1+condition|Subject) + (1+condition|Target), data = resp, family = "binomial"))
-summary(glmer(Informative ~ condition * Response + (1+condition|Subject) + (1+condition||Target), data = resp, family = "binomial"))
-summary(glmer(Informative ~ condition * Response + (1+condition|Subject) + (1|Target), data = resp, family = "binomial"))
-summary(glmer(Informative ~ condition * Response + (1|Subject) + (1|Target), data = resp, family = "binomial"))
-summary(glmer(Informative ~ condition * Response + (1+Response|Subject) + (1|Target), data = resp, family = "binomial"))
-summary(resp)
-summary(glmer(Informative ~ condition * Response + (1|Subject) + (1+condition|Target), data = resp, family = "binomial"))
-summary(glmer(Informative ~ condition * Response + (1+condition|Subject) + (1+condition|Target), data = resp, family = "binomial"))
-# How do saccades during Preview and 500ms ISI predict informative responses?  #
-# Note that we are now using an SMI system for data collection, and the data output is #
-# v different. #
-# Note that there is a slight problem with the stimuli. In the unambiguous trials, book1 appeared more often as the target than it should have, and bird1 appeared less often.#
-# Likewise, bird1 appeared more often as a foil than it should have, and book1 appeared less often.#
-sac <- read.csv("./data/transition_data.csv")#
-sac$Targ <- ifelse(sac$informative_target == "True", 1, ifelse(sac$informative_target == "False", 0, NA))#
-sac$Foil <- ifelse(sac$informative_foil == "True", 1, ifelse(sac$informative_foil == "False", 0, NA))#
-contrasts(sac$condition)[1] <- -1#
-#
-sac$TotalSaccades <- sac$target_to_distractor + sac$target_to_foil + sac$distractor_to_target + sac$distractor_to_foil + sac$foil_to_target + sac$foil_to_distractor#
-sac$CriticalSaccades <- sac$target_to_foil + sac$foil_to_target#
-sac$PropSac <- sac$CriticalSaccades/sac$TotalSaccades#
-sac$CS_Trial <- ifelse(sac$CriticalSaccades > 0,1,0)#
-#sac$PropSac[is.na(sac$PropSac)] <- 0#
-sac$TargetLabelCond <- "Control"#
-sac[sac$condition %in% "ambig" & sac$Targ %in% NA,]$TargetLabelCond <- NA#
-sac[sac$condition %in% "ambig" & sac$Targ %in% 1,]$TargetLabelCond <- "Ambig - Informative"#
-sac[sac$condition %in% "ambig" & sac$Targ %in% 0,]$TargetLabelCond <- "Ambig - Uninformative"#
-sac$TargetLabelCond <- ordered(sac$TargetLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
-#
-sac$FoilLabelCond <- "Control"#
-sac[sac$condition %in% "ambig" & sac$Foil %in% NA,]$FoilLabelCond <- NA#
-sac[sac$condition %in% "ambig" & sac$Foil %in% 1,]$FoilLabelCond <- "Ambig - Informative"#
-sac[sac$condition %in% "ambig" & sac$Foil %in% 0,]$FoilLabelCond <- "Ambig - Uninformative"#
-sac$FoilLabelCond <- ordered(sac$FoilLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
-#
-summaryBy(TotalSaccades + CriticalSaccades + PropSac ~ phase + condition + TargetLabelCond, data = subset(sac, TotalSaccades >0),na.rm = T)#
-summaryBy(TotalSaccades + CriticalSaccades + PropSac ~ phase + condition + FoilLabelCond, data = subset(sac, TotalSaccades >0),na.rm = T)
-sac$PropSac_c <- NA#
-for (i in unique(sac$phase)){#
-	sac[sac$phase == i,]$PropSac_c <- (sac[sac$phase == i,]$PropSac - mean(sac[sac$phase == i,]$PropSac, na.rm = T))/sd(sac[sac$phase == i,]$PropSac, na.rm = T)#
-}#
-summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) + (1|target), data = subset(sac, phase == "start")))#
-summary(glmer(Foil ~ condition*PropSac_c + (1+PropSac_c|participant) , data = subset(sac, phase == "elmo"), family = "binomial"))
-summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) + (1|target), data = subset(sac, phase == "start")))#
-summary(glmer(Foil ~ condition*PropSac_c + (1+PropSac_c|participant) + (1|target), data = subset(sac, phase == "elmo"), family = "binomial"))
-contrasts(sac$conditition)
-contrasts(sac$condition)
-ggplot( subset(sac, phase == "elmo"), aes(x= PropSac_c, y= Foil)) +#
-    geom_point() +    # Use hollow circles#
-    geom_smooth(   # Add linear regression line#
-                )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Elmo Gaze predicting Foil") + geom_jitter(width = 0.05, height = 0.02)+facet_grid(.~condition)
-library(ggplot2)
-ggplot( subset(sac, phase == "start"), aes(x= PropSac_c, y= Targ)) +#
-    geom_point() +    # Use hollow circles#
-    geom_smooth(   # Add linear regression line#
-                )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Start gaze predicting target") + geom_jitter(width = 0.05, height = 0.02)+facet_grid(.~condition)#
-#
-ggplot( subset(sac, phase == "elmo"), aes(x= PropSac_c, y= Foil)) +#
-    geom_point() +    # Use hollow circles#
-    geom_smooth(   # Add linear regression line#
-                )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Elmo Gaze predicting Foil") + geom_jitter(width = 0.05, height = 0.02)+facet_grid(.~condition)
-summary(glmer(Foil ~ PropSac_c + (1+PropSac_c|participant) + (1|target), data = subset(sac, phase == "elmo" & condition == "control"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "elmo" & condition == "control"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "elmo" & condition == "ambig"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "dora" & condition == "ambig"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "peppa" & condition == "ambig"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "500ms pause" & condition == "ambig"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "500ms pause" & condition == "control"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "500ms pause" & condition == "peppa"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "peppa" & condition == "control"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "start" & condition == "control"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "start" & condition == "ambig"), family = "binomial"))
-summary(glmer(Targ ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "start" & condition == "ambig"), family = "binomial"))
-summary(glmer(Targ ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "elmo" & condition == "ambig"), family = "binomial"))
-summary(glmer(Peppa ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "elmo" & condition == "ambig"), family = "binomial"))
-summary(glmer(Foil ~ PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "elmo" & condition == "ambig"), family = "binomial"))
-summary(glmer(Targ ~ condition*PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "elmo"), family = "binomial"))
-summary(glmer(Foil ~ condition*PropSac_c + (1|participant) + (1|target), data = subset(sac, phase == "elmo"), family = "binomial"))
-summary(glmer(Foil ~ condition*PropSac_c + (1+PropSac_c|participant) + (1|target), data = subset(sac, phase == "elmo"), family = "binomial"))
-summary(glmer(Foil ~ condition*PropSac_c + (1+condition*PropSac_c|participant) + (1|target), data = subset(sac, phase == "elmo"), family = "binomial"))
-summary(glmer(Foil ~ condition*PropSac_c + (1+condition+PropSac_c|participant) + (1|target), data = subset(sac, phase == "elmo"), family = "binomial"))
-summary(glmer(Foil ~ condition*PropSac_c + (1+PropSac_c|participant) + (1+PropSac_c|target), data = subset(sac, phase == "elmo"), family = "binomial"))
-summary(glmer(Foil ~ condition*PropSac_c + (1+PropSac_c|participant) + (1+condition|target), data = subset(sac, phase == "elmo"), family = "binomial"))
-summary(glmer(Foil ~ condition*PropSac_c + (1+PropSac_c|participant) + (1|target), data = subset(sac, phase == "elmo"), family = "binomial"))
-sd(subset(sac, phase == "elmo" & condition == "control")$PropSac)
-sd(subset(sac, phase == "elmo" & condition == "control")$PropSac, na.rm = T)
-sd(subset(sac, phase == "elmo" & condition == "ambig")$PropSac, na.rm = T)
-ggplot( subset(sac, phase == "elmo"), aes(x= PropSac_c, y= Foil, col = condition)) +#
-    geom_point() +    # Use hollow circles#
-    geom_smooth(   # Add linear regression line#
-                )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Elmo Gaze predicting Foil") + geom_jitter(width = 0.05, height = 0.02)+facet_grid(.~condition)
-ggplot( subset(sac, phase == "elmo"), aes(x= PropSac_c, y= Foil, col = condition)) +#
-    geom_point() +    # Use hollow circles#
-    geom_smooth(   # Add linear regression line#
-                )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Elmo Gaze predicting Foil") + geom_jitter(width = 0.05, height = 0.02)
-?geom_smooth
-ggplot( subset(sac, phase == "elmo"), aes(x= PropSac_c, y= Foil, col = condition)) +#
-    geom_point() +    # Use hollow circles#
-    geom_smooth( method = lm  # Add linear regression line#
-                )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Elmo Gaze predicting Foil") + geom_jitter(width = 0.05, height = 0.02)
-# How do fixations during 500ms ISI predict informative responses?  #
-# Note that we are now using an SMI system for data collection, and the data output is #
-# v different. #
-fix <- read.csv("./data/all_fixation_durations.csv")#
-fix$Targ <- ifelse(fix$informative_target == "True", 1, ifelse(fix$informative_target == "False", 0, NA))#
-fix$Foil <- ifelse(fix$informative_foil == "True", 1, ifelse(fix$informative_foil == "False", 0, NA))#
-#
-fix$foil_duration_R <- (fix$foil_sum_duration_Right - mean(fix$foil_sum_duration_Right))/sd(fix$foil_sum_duration_Right)#
-fix$target_duration_R <- (fix$target_sum_duration_Right - mean(fix$target_sum_duration_Right))/sd(fix$target_sum_duration_Right)#
-#
-fix$TargetLabelCond <- "Control"#
-fix[fix$condition %in% "ambig" & fix$Targ %in% NA,]$TargetLabelCond <- NA#
-fix[fix$condition %in% "ambig" & fix$Targ %in% 1,]$TargetLabelCond <- "Ambig - Informative"#
-fix[fix$condition %in% "ambig" & fix$Targ %in% 0,]$TargetLabelCond <- "Ambig - Uninformative"#
-fix$TargetLabelCond <- ordered(fix$TargetLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
-#
-fix$FoilLabelCond <- "Control"#
-fix[fix$condition %in% "ambig" & fix$Foil %in% NA,]$FoilLabelCond <- NA#
-fix[fix$condition %in% "ambig" & fix$Foil %in% 1,]$FoilLabelCond <- "Ambig - Informative"#
-fix[fix$condition %in% "ambig" & fix$Foil %in% 0,]$FoilLabelCond <- "Ambig - Uninformative"#
-fix$FoilLabelCond <- ordered(fix$FoilLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))#
-#
-fix$total_duration_right <- fix$target_sum_duration_Right + fix$foil_sum_duration_Right + fix$distractor_sum_duration_Right#
-#
-summaryBy(target_duration_R + foil_duration_R + target_sum_duration_Right + foil_sum_duration_Right~ phase + condition + TargetLabelCond, data = fix)#
-summaryBy(target_duration_R + foil_duration_R + target_sum_duration_Right + foil_sum_duration_Right~ phase + condition + FoilLabelCond, data = fix)
-fix$foil_duration_R <- NA#
-fix$target_duration_R <- NA#
-for (i in unique(fix$phase)){#
-fix[fix$phase == i,]$foil_duration_R <- (fix[fix$phase == i,]$foil_sum_duration_Right - mean(fix[fix$phase == i,]$foil_sum_duration_Right))/sd(fix[fix$phase == i,]$foil_sum_duration_Right)#
-fix[fix$phase == i,]$target_duration_R <- (fix[fix$phase == i,]$target_sum_duration_Right - mean(fix[fix$phase == i,]$target_sum_duration_Right))/sd(fix[fix$phase == i,]$target_sum_duration_Right)#
-}
-summaryBy(target_duration_R + foil_duration_R + target_sum_duration_Right + foil_sum_duration_Right~ phase + condition + TargetLabelCond, data = fix)#
-summaryBy(target_duration_R + foil_duration_R + target_sum_duration_Right + foil_sum_duration_Right~ phase + condition + FoilLabelCond, data = fix)
-summary(glmer(Foil ~ condition* foil_duration_R + (1+ foil_duration_R |participant) + (1|target), data = subset(sac, phase == "elmo"), family = "binomial"))
-summary(glmer(Foil ~ condition* foil_duration_R + (1+ foil_duration_R |participant) + (1|target), data = subset(fix, phase == "elmo"), family = "binomial"))
-summary(glmer(Target ~ condition* foil_duration_R + (1+ foil_duration_R |participant) + (1|target), data = subset(fix, phase == "elmo"), family = "binomial"))
-summary(glmer(Targ ~ condition* foil_duration_R + (1+ foil_duration_R |participant) + (1|target), data = subset(fix, phase == "elmo"), family = "binomial"))
-contrasts(fix$condition)
-contrasts(fix$condition)[1] <- -1
-summary(glmer(Targ ~ condition* foil_duration_R + (1+ foil_duration_R |participant) + (1|target), data = subset(fix, phase == "elmo"), family = "binomial"))
-summary(glmer(Targ ~ condition* foil_duration_R + (1 |participant) + (1|target), data = subset(fix, phase == "elmo"), family = "binomial"))
-summary(glmer(Targ ~ condition* foil_duration_R + (1 |participant) + (1|target), data = subset(fix, phase == "preview"), family = "binomial"))
-summary(glmer(Targ ~ condition* foil_duration_R + (1 |participant) + (1|target), data = subset(fix, phase == "start"), family = "binomial"))
-summary(glmer(Targ ~ condition* target_duration_R + (1 |participant) + (1|target), data = subset(fix, phase == "start"), family = "binomial"))
+ezANOVA(resp, Informative, wid = .(Subject), within = .(condition, Response))
+ezANOVA(resp[resp$Informative %in% c(1,0),], Informative, wid = .(Subject), within = .(condition, Response))

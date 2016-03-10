@@ -14,7 +14,9 @@ resp <- reshape(resp,
 
 resp$Response <- as.factor(resp$Response)
 contrasts(resp$Response)[1] <- -1
-summaryBy(Informative ~ Response  + condition, data = resp, na.rm = T)
+contrasts(resp$condition)[1] <- -1
+Labels.Expt3.2 <- summaryBy(Informative ~ Response  + condition + Subject, data = resp, na.rm = T)
+Labels.Expt3 <- summaryBy(Informative ~ Response  + condition, data = resp, na.rm = T, FUN = c(mean,sd))
 summary(glmer(Informative ~ condition * Response + (1+condition|Subject) + (1+condition|Target), data = resp, family = "binomial"))
 
 
@@ -58,6 +60,33 @@ summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) + 
 summary(glmer(Foil ~ condition*PropSac_c + (1+PropSac_c|participant) + (1|target), data = subset(sac, phase == "elmo"), family = "binomial"))
 
 
+
+na.omit(summaryBy(PropSac~phase+LabelCond+Subj, data = subset(sac, phase %in% ("start")), FUN = c(mean,sd), keep.names = T)) -> Sac.graph
+na.omit(summaryBy(PropSac.mean~Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
+Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Preview", "Before","After"),labels = c("Preview", "Before","After"), ordered = T)
+Sac.graph$SE = Sac.graph$PropSac.mean.sd/sqrt(length(unique(Sac.sum$Subj)))
+
+Sac.graph$Time = "Pre-Naming"
+Sac.graph[Sac.graph$Start == "After" , ]$Time = "Post-Naming"
+Sac.graph[Sac.graph$Start == "Preview" , ]$Time = "Preview"
+Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post-Naming"),labels = c("Preview","Pre-Naming","Post-Naming"), ordered = T)
+
+tapply(Sac.graph$PropSac.mean.mean, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> o
+tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> se
+
+barplot(o, beside =T , ylim = c(0,0.25),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
+legend(1.2,0.10, legend = c("Control Trials", "Uninformative Trials", "Informative Trials"), bty = "n", col = c("blue","grey","red"), pch = 20)
+points(c(1.5,6,10), o[,1], pch = 20, cex = 2, col = "blue")
+points(c(2.5,6.8,11), o[,2], pch = 20, cex = 2, col = "grey")
+points(c(3.5,7.6,12), o[,3], pch = 20, cex = 2, col = "red")
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs = TRUE)
+abline(v = c(4.5,8.5), col = "grey", lty = "dashed")
+arrows(c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) + c(se)+0.01), c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) - c(se)-0.01), code = 0)
+
+
+
+
+
 ggplot( subset(sac, phase == "start"), aes(x= PropSac_c, y= Targ)) +
     geom_point() +    # Use hollow circles
     geom_smooth(   # Add linear regression line
@@ -72,6 +101,14 @@ ggplot( subset(sac, phase == "elmo"), aes(x= PropSac_c, y= Foil, col = condition
     geom_point() +    # Use hollow circles
     geom_smooth( method = lm  # Add linear regression line
                 )  + labs(y = "Informativeness of Response", x = "Standardized Gaze Time to Foil", main = "Elmo Gaze predicting Foil") + geom_jitter(width = 0.05, height = 0.02)
+
+
+
+
+
+
+
+
 
 # How do fixations during 500ms ISI predict informative responses?  
 # Note that we are now using an SMI system for data collection, and the data output is 
