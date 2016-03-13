@@ -1,499 +1,1205 @@
-library(httr)#
-library(ggplot2)#
-add_cat <- function(width = 400, height = 400){#
-  r <- GET(paste("http://theoldreader.com/kittens", width, height, sep = "/"))#
-  stop_for_status(r)#
-  img <- content(r)#
-  bw <- 0.2989*img[,,1] + 0.5870*img[,,2] + 0.1140*img[,,3]#
-  lighter <- bw + (0.7 * (1-bw))#
-  annotation_raster(lighter, xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf)#
+sigma = 0.5#
+mu = 2#
+x = seq(-10, 60, length.out = 500)#
+Z = dlnorm(x, mu, sigma)#
+plot(x, Z, type = "l")
+sigma = 1#
+mu = 2#
+x = seq(-10, 60, length.out = 500)#
+Z = dlnorm(x, mu, sigma)#
+plot(x, Z, type = "l")
+sd(Z)
+a <- rlnorm(1000,2,1)
+sd(a)
+?t.test
+p <- rep(NA,1000)#
+for (i in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,1))#
+	subj_c2[i] <- mean(rlnorm(30,2,1))#
 }#
-ggplot(mpg, aes(cty, hwy)) +#
-  add_cat() +#
-  geom_point()
-http://www.theguardian.com/stage/2014/aug/01/edinburgh-festival-diary-israeli-theatre-group-venue-hunt
-library(httr)#
-library(ggplot2)#
-add_cat <- function(width = 400, height = 400){#
-  r <- GET(paste("http://theoldreader.com/kittens", width, height, sep = "/"))#
-  stop_for_status(r)#
-  img <- content(r)#
-  bw <- 0.2989*img[,,1] + 0.5870*img[,,2] + 0.1140*img[,,3]#
-  lighter <- bw + (0.7 * (1-bw))#
-  annotation_raster(lighter, xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf)#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,1))#
+	subj_c2[i] <- mean(rlnorm(30,2,1))#
 }#
-ggplot(mpg, aes(cty, hwy)) +#
-  add_cat() +#
-  geom_point()
-?power.t.test
-power.t.test(delta = 0.5, sd = 1, sig.level = 0.05, power = 0.8)
-power.t.test(delta = 0.5, sd = 1, sig.level = 0.05, power = 0.8, type = "paired")
-power.t.test(delta = 0.4, sd = 1, sig.level = 0.05, power = 0.8, type = "paired")
-power.t.test(delta = 0.3, sd = 1, sig.level = 0.05, power = 0.8, type = "paired")
-power.t.test(delta = 0.45, sd = 1, sig.level = 0.05, power = 0.8, type = "paired")
-power.t.test(delta = 0.43, sd = 1, sig.level = 0.05, power = 0.8, type = "paired")
-power.t.test(delta = 0.4, sd = 1, sig.level = 0.05, power = 0.8, type = "paired")
-require(doBy)#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+hist(p)
+length(abs(p) > 1.96)
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,1))#
+	subj_c2[i] <- mean(rlnorm(30,2,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,2))#
+	subj_c2[i] <- mean(rlnorm(30,2,2))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,3))#
+	subj_c2[i] <- mean(rlnorm(30,2,3))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,0.5))#
+	subj_c2[i] <- mean(rlnorm(30,2,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+50/1000
+rlnorm(20,2,0.5)
+(rlnorm(20,2,0.5))
+mean(rlnorm(20,2,0.5))
+median(rlnorm(20,2,0.5))
+hist(rlnorm(1000,2,0.5))
+hist(rlnorm(1000,0.3,0.5))
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(30,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,12)#
+subj_c2 = rep(NA,12)#
+for (i in 1:12){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(30,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(30,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,10)#
+subj_c2 = rep(NA,10)#
+for (i in 1:10){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,10)#
+subj_c2 = rep(NA,10)#
+for (i in 1:10){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+a <- rlnorm(1000,0.3,0.5)
+?qqplot
+qqnorm(a)
+a <- rlnorm(100000,0.3,0.5)
+qqnorm(a)
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.1,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+length(p[abs(p) > 2])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 2])
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- media(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- median(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- median(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- median(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- median(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- median(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+p
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+hist(rlnorm(20,0,1))
+hist(rlnorm(30,0,1))
+hist(rlnorm(30,0,1.2))
+hist(rlnorm(30,0,1.02))
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1.02)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1.02)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,100000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+length(p[abs(p) <= 0.05])/100000
+p <- rep(NA,10000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/10000
+p <- rep(NA,10000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(30,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/10000
+length(p[abs(p) > 0.05])/10000
+p <- rep(NA,10000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(5,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(5,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/10000
+p <- rep(NA,10000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(1,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(1,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/10000
+p <- rep(NA,10000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(100,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(100,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/10000
+subj_c1
+subj_c2
+?rlnorm
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(30,0,0.5)))#
+	subj_c2[i] <- mean((rlnorm(30,0,0,5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(30,0,0.5)))#
+	subj_c2[i] <- mean((rlnorm(30,0,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/1000
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(30,0,0.5)))#
+	subj_c2[i] <- mean((rlnorm(30,0,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/1000
+hist(subj_c1)
+hist(subj_c2)
+p[j]
+t.test(subj_c1,subj_c2, paired = T, var.equal = T)
+t.test(subj_c1,subj_c2, paired = F, var.equal = F)
+hist(rlnorm(100,1,0.5))
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(100,1,0.5)))#
+	subj_c2[i] <- mean((rlnorm(100,1,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/1000
+length(p[abs(p) <= 0.05])/1000
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
+	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/1000
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
+	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/1000
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
+	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/1000
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
+	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/1000
 require(lme4)#
-require(boot)#
+require(doBy)#
+require(plyr)#
+require(longitudinalData)#
 #
-# Import the data and tidy up the column names etc#
-data_import <- function(path_name,type = "Homoph"){ #
-	print(paste("Importing", type))#
-	data.set = c()#
-	#Import Homoph data#
-	for (i in c("Homoph","AdSame")){#
-		for (j in c("Pre","Targ","Rew")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = path_name,full.names = T,pattern = paste(i,".*","Fix",j, sep = ""))#
-		print(file.list)#
-		data.temp = read.delim(file = file.list, header = T)#
-		data.temp$Period = ifelse(j == "Targ","Naming",j)#
-		data.set = rbind(data.set,data.temp)#
-		}#
-	}#
-	data.set$Period = ordered(data.set$Period, levels = c("Pre", "Naming","Rew"))	#
-	data.set$cond = ordered(data.set$cond, levels = c("Control", "Ambig"))	#
-#
-	names(data.set)[names(data.set) == "IA_LABEL"] <- "Picture"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME"] <- "DwellTime"#
-	names(data.set)[names(data.set) == "IA_FIXATION_COUNT"] <- "FixCount"#
-	names(data.set)[names(data.set) == "DATA_FILE"] <- "Subj"#
-	names(data.set)[names(data.set) == "IA_FIXATION_."] <- "PropFix"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME_."] <- "PropDwell"#
-	data.set$PropFix = as.numeric(data.set$PropFix)#
-	data.set$PropDwell = as.numeric(data.set$PropDwell)#
-	levels(data.set$Picture) <- list(Foil="Pre_D1 ", Dist="Pre_D2 ", Targ="Pre_Targ ")#
-	return(data.set)#
-	}#
-#
-# Plot the data#
-BarPlotGaze <- function(solo_sum,IV,ylabel){#
-tapply(solo_sum[,IV],list(solo_sum$cond,solo_sum$type),mean, na.rm = T) -> solo_plot#
-#
-tapply(solo_sum[,IV], solo_sum[,c("cond","type")], FUN = boot, statistic = boot.mean, R = 10000) -> b.solo#
-sapply(lapply(b.solo,boot.ci),"[[","normal")[2:3,] -> b.ci#
-#
-print(solo_plot)#
-barplot(solo_plot, beside = T, col = "white",border = NA, ylim = c(0, max(b.ci)+0.1),ylab = ylabel, legend = F,xlab = "Ambiguity Type") -> solo_bplot#
-legend(3.5,0.25, legend = c("Unambig", "Ambig"), bty = "n", fill = c("blue","red"))#
-grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",#
-     lwd = par("lwd"), equilogs = TRUE)#
-points(solo_bplot, solo_plot, pch = 15, cex = 5, col = c("blue","red"))#
-arrows(solo_bplot,(b.ci[1,]),solo_bplot,(b.ci[2,]),code = 0, length = 0.1, angle = 90)#
-}#
-#
-# For bootstrap#
-boot.mean <- function(x, ind){mean(x[ind],na.rm = T, trim =0)}#
-#
-# Process saccades#
-sac.process = function(pathway = "./", Pop = "NA"){#
+sac.process2 = function(pathway = "./", Pop = "NA"){#
 	sac = c()#
 	for (i in unique(Pop)){#
-		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","SacPre", sep = ""))#
+		for (j in c("Pre","Targ","Rew")){#
+		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))#
 		sac.temp <- read.delim(file.list, header = T)#
+		sac.temp$Period = ifelse(j == "Targ","Naming",j)#
 		sac <- rbind(sac, sac.temp)	#
+		}#
+	}#
+	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"#
+	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_START_INTEREST_AREA_LABEL"] <- "SacStart"#
+	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"#
+	names(sac)[names(sac) == "CURRENT_SAC_END_TIME"] <- "SacEndTime"#
+	#sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))#
+	sac$Sac <- 1#
+	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)#
+	sac$SacToTarg <- 0#
+	sac$SacFromTarg <- 0#
+	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacFromTarg <- 1#
+	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacToTarg <- 1#
+	sac$SacTarg <- 0#
+	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacTarg <- 1#
+	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacTarg <- 1#
+#
+	sac$SacDist1 <- 0#
+	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_D2 ",]$SacDist1 <- 1#
+	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_D1 ",]$SacDist1 <- 1#
+	sac$SacDist2 <- 0#
+	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1#
+	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1#
+	sac <- sac[sac$type != "Filler",]#
+	return(sac)#
+}#
+kid.sac <- sac.process2("./EyeData/","Kids")#
+  kid.sac$order <- 1:length(kid.sac$SacToTarg)#
+  names <- read.delim("./EyeData/WriteNames-Times.txt")#
+  Groups = read.delim("./EyeData/SubjNames.txt", header = T)#
+  merge(kid.sac,Groups, all = T) -> kid.sac#
+  kid.sac <- merge(kid.sac,names, by = c("Subj","trialnum"), all.x = TRUE)#
+  kid.sac<- kid.sac[order(kid.sac$order),]#
+  names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"#
+  kid.sac <- kid.sac[!is.na(kid.sac$targname),]#
+  kid.sac$dupic_sac <- NA#
+#   for (i in unique(kid.sac$Subj)){#
+#     for (j in unique(subset(kid.sac, Subj == i)$trialnum)){#
+#       if (length(kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac) > 0){#
+#         kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac <- (duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)|duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = TRUE)) #duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)#
+#       }#
+#       }#
+#   }#
+ # kid.sac <- kid.sac[kid.sac$dupic_sac == FALSE,]#
+ kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))#
+  save(kid.sac,file = "kid.sac.RDATA")#
+#
+#load("kidsac.RDATA")#
+#
+# Create LabelCond variable; used for data analysis#
+kid.sac$LabelCond <- NA#
+kid.sac[kid.sac$cond == "Control" & kid.sac$Label %in% c(1,0),]$LabelCond <- "Control"#
+kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(1),]$LabelCond <- "Test-Ambig"#
+kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(0),]$LabelCond <- "Test-Unambig"#
+kid.sac$LabelCond <- as.factor(kid.sac$LabelCond)#
+#
+# Exclude kids with no utterance data#
+kid.sac <- kid.sac[!is.na(kid.sac$LabelCond),]#
+kid.sac <- kid.sac[!kid.sac$AgeGroup == "Excl",]#
+kid.sac <- kid.sac[!kid.sac$Lang == "Exc",]#
+#
+# Discern when the name was said.#
+ kid.sac$Start <- "Preview"#
+ kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")#
+ kid.sac[kid.sac$Period == "Rew",]$Start <- "After"#
+# It's interesting to note that there are no age effects here [Run the models above with AgeGroup as an interacting factor].#
+# I think that that might be because there are so few trials in the Unambiguous condition for the younger groups.#
+#
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))#
+#
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))#
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Before")))#
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "After")))	 	 #
+na.omit(summaryBy(SacTarg~Start+LabelCond+Subj, data = Sac.sum, FUN = c(mean,sd), keep.names = T)) -> Sac.graph#
+na.omit(summaryBy(SacTarg.mean~Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph#
+Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Preview", "Before","After"),labels = c("Preview", "Before","After"), ordered = T)#
+Sac.graph$SE = Sac.graph$SacTarg.mean.sd/sqrt(length(unique(Sac.sum$Subj)))#
+#
+Sac.graph$Time = "Pre-Naming"#
+Sac.graph[Sac.graph$Start == "After" , ]$Time = "Post-Naming"#
+Sac.graph[Sac.graph$Start == "Preview" , ]$Time = "Preview"#
+Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post-Naming"),labels = c("Preview","Pre-Naming","Post-Naming"), ordered = T)#
+#
+tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> o#
+tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> se#
+#
+barplot(o, beside =T , ylim = c(0,0.25),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))#
+legend(1.2,0.10, legend = c("Control Trials", "Uninformative Trials", "Informative Trials"), bty = "n", col = c("blue","grey","red"), pch = 20)#
+points(c(1.5,6,10), o[,1], pch = 20, cex = 2, col = "blue")#
+points(c(2.5,6.8,11), o[,2], pch = 20, cex = 2, col = "grey")#
+points(c(3.5,7.6,12), o[,3], pch = 20, cex = 2, col = "red")#
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs = TRUE)#
+abline(v = c(4.5,8.5), col = "grey", lty = "dashed")#
+arrows(c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) + c(se)+0.01), c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) - c(se)-0.01), code = 0)
+summary(kid.sac)
+kid.sac[1:10,]
+require(lme4)#
+require(doBy)#
+require(plyr)#
+require(longitudinalData)#
+#
+sac.process2 = function(pathway = "./", Pop = "NA"){#
+	sac = c()#
+	for (i in unique(Pop)){#
+		for (j in c("Pre","Targ","Rew")){#
+		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))#
+		sac.temp <- read.delim(file.list, header = T)#
+		sac.temp$Period = ifelse(j == "Targ","Naming",j)#
+		sac <- rbind(sac, sac.temp)	#
+		}#
+	}#
+	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"#
+	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_START_INTEREST_AREA_LABEL"] <- "SacStart"#
+	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"#
+	names(sac)[names(sac) == "CURRENT_SAC_END_TIME"] <- "SacEndTime"#
+	#sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))#
+	sac$Sac <- 1#
+	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)#
+	sac$SacToTarg <- 0#
+	sac$SacFromTarg <- 0#
+	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacFromTarg <- 1#
+	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacToTarg <- 1#
+	sac$SacTarg <- 0#
+	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacTarg <- 1#
+	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacTarg <- 1#
+#
+	sac$SacDist1 <- 0#
+	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_D2 ",]$SacDist1 <- 1#
+	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_D1 ",]$SacDist1 <- 1#
+	sac$SacDist2 <- 0#
+	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1#
+	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1#
+	sac <- sac[sac$type != "Filler",]#
+	return(sac)#
+}#
+kid.sac <- sac.process2("./EyeData/","Kids")#
+  kid.sac$order <- 1:length(kid.sac$SacToTarg)#
+  names <- read.delim("./EyeData/WriteNames-Times.txt")#
+  Groups = read.delim("./EyeData/SubjNames.txt", header = T)#
+  merge(kid.sac,Groups, all = T) -> kid.sac#
+  kid.sac <- merge(kid.sac,names, by = c("Subj","trialnum"), all.x = TRUE)#
+  kid.sac<- kid.sac[order(kid.sac$order),]#
+  names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"#
+  kid.sac <- kid.sac[!is.na(kid.sac$targname),]#
+  kid.sac$dupic_sac <- NA#
+#   for (i in unique(kid.sac$Subj)){#
+#     for (j in unique(subset(kid.sac, Subj == i)$trialnum)){#
+#       if (length(kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac) > 0){#
+#         kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac <- (duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)|duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = TRUE)) #duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)#
+#       }#
+#       }#
+#   }#
+ # kid.sac <- kid.sac[kid.sac$dupic_sac == FALSE,]#
+ kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))#
+  save(kid.sac,file = "kid.sac.RDATA")#
+#
+#load("kidsac.RDATA")#
+#
+# Create LabelCond variable; used for data analysis#
+kid.sac$LabelCond <- NA#
+kid.sac[kid.sac$cond == "Control" & kid.sac$Label %in% c(1,0),]$LabelCond <- "Control"#
+kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(1),]$LabelCond <- "Test-Ambig"#
+kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(0),]$LabelCond <- "Test-Unambig"#
+kid.sac$LabelCond <- as.factor(kid.sac$LabelCond)#
+#
+# Exclude kids with no utterance data#
+kid.sac <- kid.sac[!is.na(kid.sac$LabelCond),]#
+kid.sac <- kid.sac[!kid.sac$AgeGroup == "Excl",]#
+kid.sac <- kid.sac[!kid.sac$Lang == "Exc",]#
+#
+# Discern when the name was said.#
+ kid.sac$Start <- "Preview"#
+ kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")#
+ kid.sac[kid.sac$Period == "Rew",]$Start <- "After"#
+# It's interesting to note that there are no age effects here [Run the models above with AgeGroup as an interacting factor].#
+# I think that that might be because there are so few trials in the Unambiguous condition for the younger groups.#
+#
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$SacSwitch ==1 & kid.sac$SacStart != "." & kid.sac$SacEnd != ".",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Before")))
+summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum, Start == "Before")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$SacSwitch ==1,], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum, Start == "Before")))
+summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum, Start == "Preview")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum, Start == "Preview")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[ kid.sac$SacStart != "." & kid.sac$SacEnd != ".",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1+LabelCond|Subj), data = subset(Sac.sum, Start == "Preview")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[ kid.sac$SacStart != "." & kid.sac$SacEnd != ".",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$SacSwitch ==1 & kid.sac$SacStart != "." & kid.sac$SacEnd != ".",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summary(kid.sac)
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[ kid.sac$SacStart != "." & kid.sac$SacEnd != ".",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$SacSwitch ==1,], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+kid.sac[1:10,]
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$SacSwitch ==1 & AgeGroup == "Old",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$SacSwitch ==1 & kid.sac$AgeGroup == "Old",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$SacSwitch ==1 & kid.sac$AgeGroup == "Young",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$AgeGroup == "Young",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$AgeGroup == "Old",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$SacSwitch ==1,], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+require(lme4)#
+require(doBy)#
+require(plyr)#
+require(longitudinalData)#
+#
+sac.process2 = function(pathway = "./", Pop = "NA"){#
+	sac = c()#
+	for (i in unique(Pop)){#
+		for (j in c("Pre","Targ","Rew")){#
+		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))#
+		sac.temp <- read.delim(file.list, header = T)#
+		sac.temp$Period = ifelse(j == "Targ","Naming",j)#
+		sac <- rbind(sac, sac.temp)	#
+		}#
 	}#
 	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"#
 	names(sac)[names(sac) == "CURRENT_SAC_START_INTEREST_AREA_LABEL"] <- "SacStart"#
 	names(sac)[names(sac) == "CURRENT_SAC_END_INTEREST_AREA_LABEL"] <- "SacEnd"#
-	sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))#
-	sac$Sac <- 1#
-	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)#
-	sac$SacTarg <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacTarg <- 1#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacTarg <- 1#
-	sac$SacDist1 <- 0#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_D2 ",]$SacDist1 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_D1 ",]$SacDist1 <- 1#
-	sac$SacDist2 <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1#
-	sac <- summaryBy(SacTarg + SacSwitch + Sac + SacDist1 + SacDist2 ~ Subj + trialnum + cond, data = sac, keep.names = T)#
-	return(sac)#
-}#
-# Import and plot the data,#
-adult.ref <- data_import("./EyeData/")#
-adult.ref.t <- adult.ref[adult.ref$type != "Filler",]#
-adult.ref.t$type <- adult.ref.t$type[drop= TRUE]#
-adult.ref.t$cond <- adult.ref.t$cond[drop= TRUE]#
-#
-adult.sac = sac.process("./EyeData/",Pop = c("AdSame","Homoph"))#
-adult.ref.t <- merge(adult.ref.t, adult.sac, by = c("Subj", "trialnum","cond"), all.x = TRUE)#
-#
-# If statements tidy up the importing of sound coded trials -- writes a file where sound trials can be imported into.#
-if (file.exists("./EyeData/AdultWriteNames.txt") == TRUE){#
-	names = read.delim("./EyeData/AdultWriteNames.txt")#
-	if(length(names$FixCount > 0)){names$FixCount <- NULL}#
-	adult.ref.t <- merge(adult.ref.t,names, by = c("Subj","trialnum"), all.x = TRUE)#
-	prntout <- data.frame(aggregate(Label~Subj+trialnum, data = adult.ref.t, mean, na.action = na.pass))#
-	write.table(prntout[order(prntout$Subj),], file = "AdultWriteNames.txt", sep = "\t", row.names = F)#
-	}else{#
-			prntout <- data.frame(cbind(aggregate(FixCount~Subj+trialnum, data = adult.ref.t, sum),Label = NA))#
-			write.table(prntout[order(prntout$Subj),], file = "AdultWriteNames.txt", sep = "\t", row.names = F)#
-			}
-summary(adult.ref)
-unique(adult.ref$RECORDING_SESSION_LABEL)
-unique(adult.ref$Subj)
-fileConn<-file("output.txt")#
-writeLines(c("Hello","World"), fileConn)#
-close(fileConn)
-a = c("hugh u")
-append(a, "hugh n")
-i = "sss"
-paste("$ grep -r -l '",i,"' . | sort | uniq | xargs perl -e "s/",i"/replacetext/" -pi",sep = "")
-paste("$ grep -r -l '",i,"' . | sort | uniq | xargs perl -e "s/",i"/replacetext/" -pi""",sep = "")
-paste("a number", unique(adult.ref$Subj), sep = "")
-paste("$ grep -r -l 'searchtext' . | sort | uniq | xargs perl -e ","s/matchtext/replacetext/"," -pi", sep ="")
-?paste
-$ grep -r -l 'searchtext' . | sort | uniq | xargs perl -e "s/matchtext/replacetext/" -pi
-"$ grep -r -l 'searchtext' . | sort | uniq | xargs perl -e \"s/matchtext/replacetext/" -pi"
-"$ grep -r -l 'searchtext' . | sort | uniq | xargs perl -e \"s/matchtext/replacetext/\" -pi"
-\
-paste("$ grep -r -l '",unique(adult.ref$Subj),"' . | sort | uniq | xargs perl -e \"s/matchtext/replacetext/\" -pi", sep = "")
-paste("$ grep -r -l '",unique(adult.ref$Subj),"' . | sort | uniq | xargs perl -e \"s/matchtext/",1:4,"replacetext/\" -pi", sep = "")
-paste("$ grep -r -l '",unique(adult.ref$Subj),"' . | sort | uniq | xargs perl -e \"s/",unique(adult.ref$Subj),"/AdSubjExpt1-",1:length(unique(adult.ref$Subj)),"/\" -pi", sep = "")
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
-#
-anon <- function(Names){#
-		commands <- paste("$ grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/AdSubjExpt1-",1:length(unique(Names)),"/\" -pi", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}#
-	close(fileConn)#
-}
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
-#
-anon <- function(Names){#
-		commands <- paste("$ grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/AdSubjExpt1-",1:length(unique(Names)),"/\" -pi", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}#
-}
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
-#
-anon <- function(Names){#
-		commands <- paste("$ grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/AdSubjExpt1-",1:length(unique(Names)),"/\" -pi", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}
-anon(adult.ref$Subj)
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
-#
-anon <- function(Names){#
-		commands <- paste("grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/AdSubjExpt1-",1:length(unique(Names)),"/\" -pi", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}
-anon(adult.ref$RECORDING_SESSION_LABEL)
-summary(adult.ref)
-require(doBy)#
-require(lme4)#
-require(boot)#
-# Import the data and tidy up the column names etc#
-data_import <- function(path_name,type = "Kids"){ #
-	print(paste("Importing", type))#
-	data.set = c()#
-	#Import Homoph data#
-	for (i in c("Kids")){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = path_name,full.names = T,pattern = paste(i,".*","Fix",j, sep = ""))#
-		print(file.list)#
-		data.temp = read.delim(file = file.list, header = T)#
-		data.temp$Period = ifelse(j == "Targ","Naming",j)#
-		data.set = rbind(data.set,data.temp)#
-		}#
-	}#
-	data.set$Period = ordered(data.set$Period, levels = c("Pre", "Naming","Rew"))	#
-	data.set$cond = ordered(data.set$cond, levels = c("Control", "Ambig"))	#
-	data.set$IA_FIXATION_.[data.set$IA_FIXATION_. == "."] <- NA#
-	data.set$IA_DWELL_TIME_.[data.set$IA_DWELL_TIME_. == "."] <- NA#
-#
-	data.set$IA_FIXATION_. <- as.numeric(as.character(data.set$IA_FIXATION_.))#
-	data.set$IA_DWELL_TIME_. <- as.numeric(as.character(data.set$IA_DWELL_TIME_.))#
-	names(data.set)[names(data.set) == "IA_LABEL"] <- "Picture"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME"] <- "DwellTime"#
-	names(data.set)[names(data.set) == "IA_FIXATION_COUNT"] <- "FixCount"#
-	names(data.set)[names(data.set) == "DATA_FILE"] <- "Subj"#
-	names(data.set)[names(data.set) == "IA_FIXATION_."] <- "PropFix"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME_."] <- "PropDwell"#
-	data.set$PropFix = as.numeric(data.set$PropFix)#
-	data.set$PropDwell = as.numeric(data.set$PropDwell)#
-	levels(data.set$Picture) <- list(Foil="Pre_D1 ", Dist="Pre_D2 ", Targ="Pre_Targ ")#
-	return(data.set)#
-	}#
-#
-#Plot the data#
-BarPlotGaze <- function(solo_sum,IV, ylabel){#
-tapply(solo_sum[,IV],list(solo_sum$LabelCond),mean,na.rm = T) -> solo_plot#
-#
-tapply(solo_sum[,IV], solo_sum[,c("LabelCond")], FUN = boot, statistic = boot.mean, R = 10000) -> b.solo#
-sapply(lapply(b.solo,boot.ci),"[[","normal")[2:3,] -> b.ci#
-#
-print(solo_plot)#
-barplot(solo_plot, beside = T, col = "white",border = NA, ylim = c(0, max(b.ci)+0.05),ylab = ylabel, legend = F,args.legend = list(x = 1.5, bty = "n"),xlab = "Ambiguity Type") -> solo_bplot#
-grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",#
-     lwd = par("lwd"), equilogs = TRUE)#
-points(solo_bplot, solo_plot, pch = 15, cex = 5, col = c("red","blue","blue"))#
-arrows(solo_bplot,(b.ci[1,]),solo_bplot,(b.ci[2,]),code = 0, length = 0.1, angle = 90)#
-}#
-#
-# For bootstrap#
-boot.mean <- function(x, ind){mean(x[ind],na.rm = T, trim =0)}#
-#
-# Process saccades#
-sac.process = function(pathway = "./", Pop = "NA"){#
-	sac = c()#
-	for (i in unique(Pop)){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))#
-		print(file.list)#
-		sac.temp <- read.delim(file.list, header = T)#
-		sac.temp$Period = ifelse(j == "Targ","Naming",j)#
-		sac <- rbind(sac, sac.temp)	#
-		}#
-	}#
-	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_START_INTEREST_AREA_LABEL"] <- "SacStart"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"#
-	sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))#
-	sac$Sac <- 1#
-	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)#
-	sac$SacTarg <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacTarg <- 1#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacTarg <- 1#
-	sac$SacDist1 <- 0#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_D2 ",]$SacDist1 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_D1 ",]$SacDist1 <- 1#
-	sac$SacDist2 <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1#
-	sac <- summaryBy(SacTarg + SacSwitch + Sac + SacDist1 + SacDist2 ~ Subj + trialnum + cond+Period, data = sac, keep.names = T)#
-	return(sac)#
-}#
-# Import and plot the data,#
-kid.ref <- data_import("./EyeData/")#
-kid.ref.t <- kid.ref[kid.ref$type != "Filler",]#
-kid.ref.t$type <- kid.ref.t$type[drop= TRUE]#
-kid.ref.t$cond <- kid.ref.t$cond[drop= TRUE]#
-kid.ref.t <- kid.ref.t[!is.na(kid.ref.t$cond),]
-summary(kid.ref)
-anon(adult.ref$RECORDING_SESSION_LABEL)
-anon(kid.ref$RECORDING_SESSION_LABEL)
-anon(kid.ref$Subj)
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
-#
-anon <- function(Names){#
-		commands <- paste("grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/KidSubjExpt2-",1:length(unique(Names)),"/\" -pi", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}
-Groups = read.delim("./EyeData/SubjNames.txt", header = T)
-summary(Groups)
-anon(Groups$Subj)
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
-#
-anon <- function(Names){#
-		commands <- paste("grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/KidSubjExpt2-",1:length(unique(Names)),"/\" -pi", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}
-anon(Groups$Subj)
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
-#
-anon <- function(Names){#
-		commands <- paste("grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/KidSubjExpt2-",1:length(unique(Names)),"/\" -pi;", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}
-anon(Groups$Subj)
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
-#
-anon <- function(Names){#
-		commands <- paste("grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/KidSubjExpt2-",1:length(unique(Names)),"/\" -pi &&", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}
-anon(Groups$Subj)
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
-#
-anon <- function(Names){#
-		commands <- paste("grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/KidSubjExpt2-",1:length(unique(Names)),"/\" -pi ", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}
-anon(Groups$Subj)
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
-#
-anon <- function(Names){#
-		commands <- paste("grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/KidSubjExpt2-",1:length(unique(Names)),"/\" -pi ", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}
-anon(Groups$Subj)
-anon(Groups$Subj)
-Groups = read.delim("./EyeData/SubjNames.txt", header = T)
-anon(Groups$Subj)
-require(doBy)#
-require(lme4)#
-require(boot)#
-# Import the data and tidy up the column names etc#
-data_import <- function(path_name,type = "Kids"){ #
-	print(paste("Importing", type))#
-	data.set = c()#
-	#Import Homoph data#
-	for (i in c("Kids")){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = path_name,full.names = T,pattern = paste(i,".*","Fix",j, sep = ""))#
-		print(file.list)#
-		data.temp = read.delim(file = file.list, header = T)#
-		data.temp$Period = ifelse(j == "Targ","Naming",j)#
-		data.set = rbind(data.set,data.temp)#
-		}#
-	}#
-	data.set$Period = ordered(data.set$Period, levels = c("Pre", "Naming","Rew"))	#
-	data.set$cond = ordered(data.set$cond, levels = c("Control", "Ambig"))	#
-	data.set$IA_FIXATION_.[data.set$IA_FIXATION_. == "."] <- NA#
-	data.set$IA_DWELL_TIME_.[data.set$IA_DWELL_TIME_. == "."] <- NA#
-#
-	data.set$IA_FIXATION_. <- as.numeric(as.character(data.set$IA_FIXATION_.))#
-	data.set$IA_DWELL_TIME_. <- as.numeric(as.character(data.set$IA_DWELL_TIME_.))#
-	names(data.set)[names(data.set) == "IA_LABEL"] <- "Picture"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME"] <- "DwellTime"#
-	names(data.set)[names(data.set) == "IA_FIXATION_COUNT"] <- "FixCount"#
-	names(data.set)[names(data.set) == "DATA_FILE"] <- "Subj"#
-	names(data.set)[names(data.set) == "IA_FIXATION_."] <- "PropFix"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME_."] <- "PropDwell"#
-	data.set$PropFix = as.numeric(data.set$PropFix)#
-	data.set$PropDwell = as.numeric(data.set$PropDwell)#
-	levels(data.set$Picture) <- list(Foil="Pre_D1 ", Dist="Pre_D2 ", Targ="Pre_Targ ")#
-	return(data.set)#
-	}#
-#
-#Plot the data#
-BarPlotGaze <- function(solo_sum,IV, ylabel){#
-tapply(solo_sum[,IV],list(solo_sum$LabelCond),mean,na.rm = T) -> solo_plot#
-#
-tapply(solo_sum[,IV], solo_sum[,c("LabelCond")], FUN = boot, statistic = boot.mean, R = 10000) -> b.solo#
-sapply(lapply(b.solo,boot.ci),"[[","normal")[2:3,] -> b.ci#
-#
-print(solo_plot)#
-barplot(solo_plot, beside = T, col = "white",border = NA, ylim = c(0, max(b.ci)+0.05),ylab = ylabel, legend = F,args.legend = list(x = 1.5, bty = "n"),xlab = "Ambiguity Type") -> solo_bplot#
-grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",#
-     lwd = par("lwd"), equilogs = TRUE)#
-points(solo_bplot, solo_plot, pch = 15, cex = 5, col = c("red","blue","blue"))#
-arrows(solo_bplot,(b.ci[1,]),solo_bplot,(b.ci[2,]),code = 0, length = 0.1, angle = 90)#
-}#
-#
-# For bootstrap#
-boot.mean <- function(x, ind){mean(x[ind],na.rm = T, trim =0)}#
-#
-# Process saccades#
-sac.process = function(pathway = "./", Pop = "NA"){#
-	sac = c()#
-	for (i in unique(Pop)){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))#
-		print(file.list)#
-		sac.temp <- read.delim(file.list, header = T)#
-		sac.temp$Period = ifelse(j == "Targ","Naming",j)#
-		sac <- rbind(sac, sac.temp)	#
-		}#
-	}#
-	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_START_INTEREST_AREA_LABEL"] <- "SacStart"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"#
+	names(sac)[names(sac) == "CURRENT_SAC_END_TIME"] <- "SacEndTime"#
 	#sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))#
 	sac$Sac <- 1#
 	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)#
+	sac$SacToTarg <- 0#
+	sac$SacFromTarg <- 0#
+	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacFromTarg <- 1#
+	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacToTarg <- 1#
 	sac$SacTarg <- 0#
 	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacTarg <- 1#
 	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacTarg <- 1#
+#
 	sac$SacDist1 <- 0#
 	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_D2 ",]$SacDist1 <- 1#
 	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_D1 ",]$SacDist1 <- 1#
 	sac$SacDist2 <- 0#
 	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1#
 	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1#
-	sac <- summaryBy(SacTarg + SacSwitch + Sac + SacDist1 + SacDist2 ~ Subj + trialnum + cond+Period, data = sac, keep.names = T)#
+	sac <- sac[sac$type != "Filler",]#
 	return(sac)#
 }#
-# Import and plot the data,#
-kid.ref <- data_import("./Eyedata/")#
-kid.ref.t <- kid.ref[kid.ref$type != "Filler",]#
-kid.ref.t$type <- kid.ref.t$type[drop= TRUE]#
-kid.ref.t$cond <- kid.ref.t$cond[drop= TRUE]
-anon(Kid.ref$Subj)
-require(doBy)#
+kid.sac <- sac.process2("./EyeData/","Kids")#
+  kid.sac$order <- 1:length(kid.sac$SacToTarg)#
+  names <- read.delim("./EyeData/WriteNames-Times.txt")#
+  Groups = read.delim("./EyeData/SubjNames.txt", header = T)#
+  merge(kid.sac,Groups, all = T) -> kid.sac#
+  kid.sac <- merge(kid.sac,names, by = c("Subj","trialnum"), all.x = TRUE)#
+  kid.sac<- kid.sac[order(kid.sac$order),]#
+  names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"#
+  kid.sac <- kid.sac[!is.na(kid.sac$targname),]#
+  kid.sac$dupic_sac <- NA#
+#   for (i in unique(kid.sac$Subj)){#
+#     for (j in unique(subset(kid.sac, Subj == i)$trialnum)){#
+#       if (length(kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac) > 0){#
+#         kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac <- (duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)|duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = TRUE)) #duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)#
+#       }#
+#       }#
+#   }#
+ # kid.sac <- kid.sac[kid.sac$dupic_sac == FALSE,]#
+ kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))#
+  save(kid.sac,file = "kid.sac.RDATA")#
+#
+#load("kidsac.RDATA")#
+#
+# Create LabelCond variable; used for data analysis#
+kid.sac$LabelCond <- NA#
+kid.sac[kid.sac$cond == "Control" & kid.sac$Label %in% c(1,0),]$LabelCond <- "Control"#
+kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(1),]$LabelCond <- "Test-Ambig"#
+kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(0),]$LabelCond <- "Test-Unambig"#
+kid.sac$LabelCond <- as.factor(kid.sac$LabelCond)#
+#
+# Exclude kids with no utterance data#
+kid.sac <- kid.sac[!is.na(kid.sac$LabelCond),]#
+kid.sac <- kid.sac[!kid.sac$AgeGroup == "Excl",]#
+kid.sac <- kid.sac[!kid.sac$Lang == "Exc",]#
+#
+# Discern when the name was said.#
+ kid.sac$Start <- "Preview"#
+ kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")#
+ kid.sac[kid.sac$Period == "Rew",]$Start <- "After"#
+# It's interesting to note that there are no age effects here [Run the models above with AgeGroup as an interacting factor].#
+# I think that that might be because there are so few trials in the Unambiguous condition for the younger groups.#
+#
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))#
+#
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$SacSwitch ==1 & kid.sac$AgeGroup == "Young",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[kid.sac$SacSwitch ==1 ,], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[ kid.sac$SacStart != "." & kid.sac$SacEnd != ".",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[ kid.sac$SacSwitch == 1 & kid.sac$SacStart != "." & kid.sac$SacEnd != ".",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac[ kid.sac$SacSwitch == 1 & kid.sac$SacStart != "." & kid.sac$SacEnd != "." & kid.sac$AgeGroup == "Old",], keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Before")))
 require(lme4)#
-require(boot)#
-# Import the data and tidy up the column names etc#
-data_import <- function(path_name,type = "Kids"){ #
-	print(paste("Importing", type))#
-	data.set = c()#
-	#Import Homoph data#
-	for (i in c("Kids")){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = path_name,full.names = T,pattern = paste(i,".*","Fix",j, sep = ""))#
-		print(file.list)#
-		data.temp = read.delim(file = file.list, header = T)#
-		data.temp$Period = ifelse(j == "Targ","Naming",j)#
-		data.set = rbind(data.set,data.temp)#
-		}#
-	}#
-	data.set$Period = ordered(data.set$Period, levels = c("Pre", "Naming","Rew"))	#
-	data.set$cond = ordered(data.set$cond, levels = c("Control", "Ambig"))	#
-	data.set$IA_FIXATION_.[data.set$IA_FIXATION_. == "."] <- NA#
-	data.set$IA_DWELL_TIME_.[data.set$IA_DWELL_TIME_. == "."] <- NA#
+require(doBy)#
+require(plyr)#
+require(longitudinalData)#
 #
-	data.set$IA_FIXATION_. <- as.numeric(as.character(data.set$IA_FIXATION_.))#
-	data.set$IA_DWELL_TIME_. <- as.numeric(as.character(data.set$IA_DWELL_TIME_.))#
-	names(data.set)[names(data.set) == "IA_LABEL"] <- "Picture"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME"] <- "DwellTime"#
-	names(data.set)[names(data.set) == "IA_FIXATION_COUNT"] <- "FixCount"#
-	names(data.set)[names(data.set) == "DATA_FILE"] <- "Subj"#
-	names(data.set)[names(data.set) == "IA_FIXATION_."] <- "PropFix"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME_."] <- "PropDwell"#
-	data.set$PropFix = as.numeric(data.set$PropFix)#
-	data.set$PropDwell = as.numeric(data.set$PropDwell)#
-	levels(data.set$Picture) <- list(Foil="Pre_D1 ", Dist="Pre_D2 ", Targ="Pre_Targ ")#
-	return(data.set)#
-	}#
-#
-#Plot the data#
-BarPlotGaze <- function(solo_sum,IV, ylabel){#
-tapply(solo_sum[,IV],list(solo_sum$LabelCond),mean,na.rm = T) -> solo_plot#
-#
-tapply(solo_sum[,IV], solo_sum[,c("LabelCond")], FUN = boot, statistic = boot.mean, R = 10000) -> b.solo#
-sapply(lapply(b.solo,boot.ci),"[[","normal")[2:3,] -> b.ci#
-#
-print(solo_plot)#
-barplot(solo_plot, beside = T, col = "white",border = NA, ylim = c(0, max(b.ci)+0.05),ylab = ylabel, legend = F,args.legend = list(x = 1.5, bty = "n"),xlab = "Ambiguity Type") -> solo_bplot#
-grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",#
-     lwd = par("lwd"), equilogs = TRUE)#
-points(solo_bplot, solo_plot, pch = 15, cex = 5, col = c("red","blue","blue"))#
-arrows(solo_bplot,(b.ci[1,]),solo_bplot,(b.ci[2,]),code = 0, length = 0.1, angle = 90)#
-}#
-#
-# For bootstrap#
-boot.mean <- function(x, ind){mean(x[ind],na.rm = T, trim =0)}#
-#
-# Process saccades#
-sac.process = function(pathway = "./", Pop = "NA"){#
+sac.process2 = function(pathway = "./", Pop = "NA"){#
 	sac = c()#
 	for (i in unique(Pop)){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
+		for (j in c("Pre","Targ","Rew")){#
 		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))#
-		print(file.list)#
 		sac.temp <- read.delim(file.list, header = T)#
 		sac.temp$Period = ifelse(j == "Targ","Naming",j)#
 		sac <- rbind(sac, sac.temp)	#
@@ -502,403 +1208,103 @@ sac.process = function(pathway = "./", Pop = "NA"){#
 	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"#
 	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_START_INTEREST_AREA_LABEL"] <- "SacStart"#
 	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"#
+	names(sac)[names(sac) == "CURRENT_SAC_END_TIME"] <- "SacEndTime"#
 	#sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))#
 	sac$Sac <- 1#
 	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)#
+	sac$SacToTarg <- 0#
+	sac$SacFromTarg <- 0#
+	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacFromTarg <- 1#
+	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacToTarg <- 1#
 	sac$SacTarg <- 0#
 	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacTarg <- 1#
 	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacTarg <- 1#
+#
 	sac$SacDist1 <- 0#
 	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_D2 ",]$SacDist1 <- 1#
 	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_D1 ",]$SacDist1 <- 1#
 	sac$SacDist2 <- 0#
 	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1#
 	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1#
-	sac <- summaryBy(SacTarg + SacSwitch + Sac + SacDist1 + SacDist2 ~ Subj + trialnum + cond+Period, data = sac, keep.names = T)#
+	sac <- sac[sac$type != "Filler",]#
 	return(sac)#
 }#
-# Import and plot the data,#
-kid.ref <- data_import("./Eyedata/")#
-kid.ref.t <- kid.ref[kid.ref$type != "Filler",]#
-kid.ref.t$type <- kid.ref.t$type[drop= TRUE]#
-kid.ref.t$cond <- kid.ref.t$cond[drop= TRUE]
-anon(kid.ref$Subj)
-# Anonymizing function, takes a list of subject names and #
-# creates a set of grep commands that can be fed into the terminal#
-# to replace those names with anonymized replacements#
+kid.sac <- sac.process2("./EyeData/","Kids")#
+  kid.sac$order <- 1:length(kid.sac$SacToTarg)#
+  names <- read.delim("./EyeData/WriteNames-Times.txt")#
+  Groups = read.delim("./EyeData/SubjNames.txt", header = T)#
+  merge(kid.sac,Groups, all = T) -> kid.sac#
+  kid.sac <- merge(kid.sac,names, by = c("Subj","trialnum"), all.x = TRUE)#
+  kid.sac<- kid.sac[order(kid.sac$order),]#
+  names(kid.sac)[names(kid.sac) == "StartTime..ms."] <- "StartTime"#
+  kid.sac <- kid.sac[!is.na(kid.sac$targname),]#
+  kid.sac$dupic_sac <- NA#
+#   for (i in unique(kid.sac$Subj)){#
+#     for (j in unique(subset(kid.sac, Subj == i)$trialnum)){#
+#       if (length(kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac) > 0){#
+#         kid.sac[kid.sac$Subj == i & kid.sac$trialnum ==j,]$dupic_sac <- (duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)|duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = TRUE)) #duplicated(subset(kid.sac, Subj == i & trialnum ==j)$SacEndTime,fromLast = FALSE)#
+#       }#
+#       }#
+#   }#
+ # kid.sac <- kid.sac[kid.sac$dupic_sac == FALSE,]#
+ kid.sac <- ddply(kid.sac, .(Subj,trialnum,Period), transform, CumFromTarg = cumsum(SacFromTarg),CumToTarg = cumsum(SacToTarg),CumTarg = cumsum(SacTarg),CumD1 = cumsum(SacDist1),CumD2 = cumsum(SacDist2), SacTime = SacEndTime - min(SacEndTime), SacBin = round((SacEndTime - min(SacEndTime))/100))#
+  save(kid.sac,file = "kid.sac.RDATA")#
 #
-anon <- function(Names){#
-		commands <- paste("grep -r -l '",unique(Names),"' . | sort | uniq | xargs perl -e \"s/",unique(Names),"/KidSubjExpt3-",1:length(unique(Names)),"/\" -pi ", sep = "")#
-		writeLines(commands, "AnonCommands.txt")#
-		}
-require(doBy)#
-require(lme4)#
-require(boot)#
-# Import the data and tidy up the column names etc#
-data_import <- function(path_name,type = "Kids"){ #
-	print(paste("Importing", type))#
-	data.set = c()#
-	#Import Homoph data#
-	for (i in c("Kids")){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = path_name,full.names = T,pattern = paste(i,".*","Fix",j, sep = ""))#
-		print(file.list)#
-		data.temp = read.delim(file = file.list, header = T)#
-		data.temp$Period = ifelse(j == "Targ","Naming",j)#
-		data.set = rbind(data.set,data.temp)#
-		}#
-	}#
-	data.set$Period = ordered(data.set$Period, levels = c("Pre", "Naming","Rew"))	#
-	data.set$cond = ordered(data.set$cond, levels = c("Control", "Ambig"))	#
-	data.set$IA_FIXATION_.[data.set$IA_FIXATION_. == "."] <- NA#
-	data.set$IA_DWELL_TIME_.[data.set$IA_DWELL_TIME_. == "."] <- NA#
+#load("kidsac.RDATA")#
 #
-	data.set$IA_FIXATION_. <- as.numeric(as.character(data.set$IA_FIXATION_.))#
-	data.set$IA_DWELL_TIME_. <- as.numeric(as.character(data.set$IA_DWELL_TIME_.))#
-	names(data.set)[names(data.set) == "IA_LABEL"] <- "Picture"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME"] <- "DwellTime"#
-	names(data.set)[names(data.set) == "IA_FIXATION_COUNT"] <- "FixCount"#
-	names(data.set)[names(data.set) == "DATA_FILE"] <- "Subj"#
-	names(data.set)[names(data.set) == "IA_FIXATION_."] <- "PropFix"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME_."] <- "PropDwell"#
-	data.set$PropFix = as.numeric(data.set$PropFix)#
-	data.set$PropDwell = as.numeric(data.set$PropDwell)#
-	levels(data.set$Picture) <- list(Foil="Pre_D1 ", Dist="Pre_D2 ", Targ="Pre_Targ ")#
-	return(data.set)#
-	}#
+# Create LabelCond variable; used for data analysis#
+kid.sac$LabelCond <- NA#
+kid.sac[kid.sac$cond == "Control" & kid.sac$Label %in% c(1,0),]$LabelCond <- "Control"#
+kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(1),]$LabelCond <- "Test-Ambig"#
+kid.sac[kid.sac$cond == "Ambig" & kid.sac$Label %in% c(0),]$LabelCond <- "Test-Unambig"#
+kid.sac$LabelCond <- as.factor(kid.sac$LabelCond)#
 #
-#Plot the data#
-BarPlotGaze <- function(solo_sum,IV, ylabel){#
-tapply(solo_sum[,IV],list(solo_sum$LabelCond),mean,na.rm = T) -> solo_plot#
+# Exclude kids with no utterance data#
+kid.sac <- kid.sac[!is.na(kid.sac$LabelCond),]#
+kid.sac <- kid.sac[!kid.sac$AgeGroup == "Excl",]#
+kid.sac <- kid.sac[!kid.sac$Lang == "Exc",]#
 #
-tapply(solo_sum[,IV], solo_sum[,c("LabelCond")], FUN = boot, statistic = boot.mean, R = 10000) -> b.solo#
-sapply(lapply(b.solo,boot.ci),"[[","normal")[2:3,] -> b.ci#
+# Discern when the name was said.#
+ kid.sac$Start <- "Preview"#
+ kid.sac[kid.sac$Period == "Naming",]$Start <- ifelse(kid.sac[kid.sac$Period == "Naming",]$SacTime < kid.sac[kid.sac$Period == "Naming",]$StartTime,"Before","After")#
+ kid.sac[kid.sac$Period == "Rew",]$Start <- "After"#
+# It's interesting to note that there are no age effects here [Run the models above with AgeGroup as an interacting factor].#
+# I think that that might be because there are so few trials in the Unambiguous condition for the younger groups.#
 #
-print(solo_plot)#
-barplot(solo_plot, beside = T, col = "white",border = NA, ylim = c(0, max(b.ci)+0.05),ylab = ylabel, legend = F,args.legend = list(x = 1.5, bty = "n"),xlab = "Ambiguity Type") -> solo_bplot#
-grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",#
-     lwd = par("lwd"), equilogs = TRUE)#
-points(solo_bplot, solo_plot, pch = 15, cex = 5, col = c("red","blue","blue"))#
-arrows(solo_bplot,(b.ci[1,]),solo_bplot,(b.ci[2,]),code = 0, length = 0.1, angle = 90)#
-}#
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = subset(kid.sac, SacSwitch == 1), keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))#
 #
-# For bootstrap#
-boot.mean <- function(x, ind){mean(x[ind],na.rm = T, trim =0)}#
-#
-# Process saccades#
-sac.process = function(pathway = "./", Pop = "NA"){#
-	sac = c()#
-	for (i in unique(Pop)){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))#
-		print(file.list)#
-		sac.temp <- read.delim(file.list, header = T)#
-		sac.temp$Period = ifelse(j == "Targ","Naming",j)#
-		sac <- rbind(sac, sac.temp)	#
-		}#
-	}#
-	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_START_INTEREST_AREA_LABEL"] <- "SacStart"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"#
-	#sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))#
-	sac$Sac <- 1#
-	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)#
-	sac$SacTarg <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacTarg <- 1#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacTarg <- 1#
-	sac$SacDist1 <- 0#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_D2 ",]$SacDist1 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_D1 ",]$SacDist1 <- 1#
-	sac$SacDist2 <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1#
-	sac <- summaryBy(SacTarg + SacSwitch + Sac + SacDist1 + SacDist2 ~ Subj + trialnum + cond+Period, data = sac, keep.names = T)#
-	return(sac)#
-}#
-# Import and plot the data,#
-kid.ref <- data_import("./Eyedata/")#
-kid.ref.t <- kid.ref[kid.ref$type != "Filler",]#
-kid.ref.t$type <- kid.ref.t$type[drop= TRUE]#
-kid.ref.t$cond <- kid.ref.t$cond[drop= TRUE]
-anon(kid.ref$Subj)
-require(doBy)#
-require(lme4)#
-require(boot)#
-# Import the data and tidy up the column names etc#
-data_import <- function(path_name,type = "Kids"){ #
-	print(paste("Importing", type))#
-	data.set = c()#
-	#Import Homoph data#
-	for (i in c("Kids")){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = path_name,full.names = T,pattern = paste(i,".*","Fix",j, sep = ""))#
-		print(file.list)#
-		data.temp = read.delim(file = file.list, header = T)#
-		data.temp$Period = ifelse(j == "Targ","Naming",j)#
-		data.set = rbind(data.set,data.temp)#
-		}#
-	}#
-	data.set$Period = ordered(data.set$Period, levels = c("Pre", "Naming","Rew"))	#
-	data.set$cond = ordered(data.set$cond, levels = c("Control", "Ambig"))	#
-	data.set$IA_FIXATION_.[data.set$IA_FIXATION_. == "."] <- NA#
-	data.set$IA_DWELL_TIME_.[data.set$IA_DWELL_TIME_. == "."] <- NA#
-#
-	data.set$IA_FIXATION_. <- as.numeric(as.character(data.set$IA_FIXATION_.))#
-	data.set$IA_DWELL_TIME_. <- as.numeric(as.character(data.set$IA_DWELL_TIME_.))#
-	names(data.set)[names(data.set) == "IA_LABEL"] <- "Picture"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME"] <- "DwellTime"#
-	names(data.set)[names(data.set) == "IA_FIXATION_COUNT"] <- "FixCount"#
-	names(data.set)[names(data.set) == "DATA_FILE"] <- "Subj"#
-	names(data.set)[names(data.set) == "IA_FIXATION_."] <- "PropFix"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME_."] <- "PropDwell"#
-	data.set$PropFix = as.numeric(data.set$PropFix)#
-	data.set$PropDwell = as.numeric(data.set$PropDwell)#
-	levels(data.set$Picture) <- list(Foil="Pre_D1 ", Dist="Pre_D2 ", Targ="Pre_Targ ")#
-	return(data.set)#
-	}#
-#
-#Plot the data#
-BarPlotGaze <- function(solo_sum,IV, ylabel){#
-tapply(solo_sum[,IV],list(solo_sum$LabelCond),mean,na.rm = T) -> solo_plot#
-#
-tapply(solo_sum[,IV], solo_sum[,c("LabelCond")], FUN = boot, statistic = boot.mean, R = 10000) -> b.solo#
-sapply(lapply(b.solo,boot.ci),"[[","normal")[2:3,] -> b.ci#
-#
-print(solo_plot)#
-barplot(solo_plot, beside = T, col = "white",border = NA, ylim = c(0, max(b.ci)+0.05),ylab = ylabel, legend = F,args.legend = list(x = 1.5, bty = "n"),xlab = "Ambiguity Type") -> solo_bplot#
-grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",#
-     lwd = par("lwd"), equilogs = TRUE)#
-points(solo_bplot, solo_plot, pch = 15, cex = 5, col = c("red","blue","blue"))#
-arrows(solo_bplot,(b.ci[1,]),solo_bplot,(b.ci[2,]),code = 0, length = 0.1, angle = 90)#
-}#
-#
-# For bootstrap#
-boot.mean <- function(x, ind){mean(x[ind],na.rm = T, trim =0)}#
-#
-# Process saccades#
-sac.process = function(pathway = "./", Pop = "NA"){#
-	sac = c()#
-	for (i in unique(Pop)){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))#
-		print(file.list)#
-		sac.temp <- read.delim(file.list, header = T)#
-		sac.temp$Period = ifelse(j == "Targ","Naming",j)#
-		sac <- rbind(sac, sac.temp)	#
-		}#
-	}#
-	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_START_INTEREST_AREA_LABEL"] <- "SacStart"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"#
-	sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))#
-	sac$Sac <- 1#
-	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)#
-	sac$SacTarg <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacTarg <- 1#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacTarg <- 1#
-	sac$SacDist1 <- 0#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_D2 ",]$SacDist1 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_D1 ",]$SacDist1 <- 1#
-	sac$SacDist2 <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1#
-	sac <- summaryBy(SacTarg + SacSwitch + Sac + SacDist1 + SacDist2 ~ Subj + trialnum + cond+Period, data = sac, keep.names = T)#
-	return(sac)#
-}#
-# Import and plot the data,#
-kid.ref <- data_import("./EyeData/")#
-kid.ref.t <- kid.ref[kid.ref$type != "Filler",]#
-kid.ref.t$type <- kid.ref.t$type[drop= TRUE]#
-kid.ref.t$cond <- kid.ref.t$cond[drop= TRUE]#
-kid.ref.t <- kid.ref.t[!is.na(kid.ref.t$cond),]#
-#
-Groups = read.delim("./EyeData/SubjNames.txt", header = T)
-require(doBy)#
-require(lme4)#
-require(boot)#
-# Import the data and tidy up the column names etc#
-data_import <- function(path_name,type = "Kids"){ #
-	print(paste("Importing", type))#
-	data.set = c()#
-	#Import Homoph data#
-	for (i in c("Kids")){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = path_name,full.names = T,pattern = paste(i,".*","Fix",j, sep = ""))#
-		print(file.list)#
-		data.temp = read.delim(file = file.list, header = T)#
-		data.temp$Period = ifelse(j == "Targ","Naming",j)#
-		data.set = rbind(data.set,data.temp)#
-		}#
-	}#
-	data.set$Period = ordered(data.set$Period, levels = c("Pre", "Naming","Rew"))	#
-	data.set$cond = ordered(data.set$cond, levels = c("Control", "Ambig"))	#
-	data.set$IA_FIXATION_.[data.set$IA_FIXATION_. == "."] <- NA#
-	data.set$IA_DWELL_TIME_.[data.set$IA_DWELL_TIME_. == "."] <- NA#
-#
-	data.set$IA_FIXATION_. <- as.numeric(as.character(data.set$IA_FIXATION_.))#
-	data.set$IA_DWELL_TIME_. <- as.numeric(as.character(data.set$IA_DWELL_TIME_.))#
-	names(data.set)[names(data.set) == "IA_LABEL"] <- "Picture"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME"] <- "DwellTime"#
-	names(data.set)[names(data.set) == "IA_FIXATION_COUNT"] <- "FixCount"#
-	names(data.set)[names(data.set) == "DATA_FILE"] <- "Subj"#
-	names(data.set)[names(data.set) == "IA_FIXATION_."] <- "PropFix"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME_."] <- "PropDwell"#
-	data.set$PropFix = as.numeric(data.set$PropFix)#
-	data.set$PropDwell = as.numeric(data.set$PropDwell)#
-	levels(data.set$Picture) <- list(Foil="Pre_D1 ", Dist="Pre_D2 ", Targ="Pre_Targ ")#
-	return(data.set)#
-	}#
-#
-#Plot the data#
-BarPlotGaze <- function(solo_sum,IV, ylabel){#
-tapply(solo_sum[,IV],list(solo_sum$LabelCond),mean,na.rm = T) -> solo_plot#
-#
-tapply(solo_sum[,IV], solo_sum[,c("LabelCond")], FUN = boot, statistic = boot.mean, R = 10000) -> b.solo#
-sapply(lapply(b.solo,boot.ci),"[[","normal")[2:3,] -> b.ci#
-#
-print(solo_plot)#
-barplot(solo_plot, beside = T, col = "white",border = NA, ylim = c(0, max(b.ci)+0.05),ylab = ylabel, legend = F,args.legend = list(x = 1.5, bty = "n"),xlab = "Ambiguity Type") -> solo_bplot#
-grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",#
-     lwd = par("lwd"), equilogs = TRUE)#
-points(solo_bplot, solo_plot, pch = 15, cex = 5, col = c("red","blue","blue"))#
-arrows(solo_bplot,(b.ci[1,]),solo_bplot,(b.ci[2,]),code = 0, length = 0.1, angle = 90)#
-}#
-#
-# For bootstrap#
-boot.mean <- function(x, ind){mean(x[ind],na.rm = T, trim =0)}#
-#
-# Process saccades#
-sac.process = function(pathway = "./", Pop = "NA"){#
-	sac = c()#
-	for (i in unique(Pop)){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))#
-		print(file.list)#
-		sac.temp <- read.delim(file.list, header = T)#
-		sac.temp$Period = ifelse(j == "Targ","Naming",j)#
-		sac <- rbind(sac, sac.temp)	#
-		}#
-	}#
-	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_START_INTEREST_AREA_LABEL"] <- "SacStart"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"#
-	sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))#
-	sac$Sac <- 1#
-	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)#
-	sac$SacTarg <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacTarg <- 1#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacTarg <- 1#
-	sac$SacDist1 <- 0#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_D2 ",]$SacDist1 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_D1 ",]$SacDist1 <- 1#
-	sac$SacDist2 <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1#
-	sac <- summaryBy(SacTarg + SacSwitch + Sac + SacDist1 + SacDist2 ~ Subj + trialnum + cond+Period, data = sac, keep.names = T)#
-	return(sac)#
-}#
-# Import and plot the data,#
-kid.ref <- data_import("./EyeData/")#
-kid.ref.t <- kid.ref[kid.ref$type != "Filler",]#
-kid.ref.t$type <- kid.ref.t$type[drop= TRUE]#
-kid.ref.t$cond <- kid.ref.t$cond[drop= TRUE]#
-kid.ref.t <- kid.ref.t[!is.na(kid.ref.t$cond),]#
-#
-Groups = read.delim("./EyeData/SubjNames.txt", header = T)
-anon(Groups$Subj)
-require(doBy)#
-require(lme4)#
-require(boot)#
-# Import the data and tidy up the column names etc#
-data_import <- function(path_name,type = "Kids"){ #
-	print(paste("Importing", type))#
-	data.set = c()#
-	#Import Homoph data#
-	for (i in c("Kids")){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = path_name,full.names = T,pattern = paste(i,".*","Fix",j, sep = ""))#
-		print(file.list)#
-		data.temp = read.delim(file = file.list, header = T)#
-		data.temp$Period = ifelse(j == "Targ","Naming",j)#
-		data.set = rbind(data.set,data.temp)#
-		}#
-	}#
-	data.set$Period = ordered(data.set$Period, levels = c("Pre", "Naming","Rew"))	#
-	data.set$cond = ordered(data.set$cond, levels = c("Control", "Ambig"))	#
-	data.set$IA_FIXATION_.[data.set$IA_FIXATION_. == "."] <- NA#
-	data.set$IA_DWELL_TIME_.[data.set$IA_DWELL_TIME_. == "."] <- NA#
-#
-	data.set$IA_FIXATION_. <- as.numeric(as.character(data.set$IA_FIXATION_.))#
-	data.set$IA_DWELL_TIME_. <- as.numeric(as.character(data.set$IA_DWELL_TIME_.))#
-	names(data.set)[names(data.set) == "IA_LABEL"] <- "Picture"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME"] <- "DwellTime"#
-	names(data.set)[names(data.set) == "IA_FIXATION_COUNT"] <- "FixCount"#
-	names(data.set)[names(data.set) == "DATA_FILE"] <- "Subj"#
-	names(data.set)[names(data.set) == "IA_FIXATION_."] <- "PropFix"#
-	names(data.set)[names(data.set) == "IA_DWELL_TIME_."] <- "PropDwell"#
-	data.set$PropFix = as.numeric(data.set$PropFix)#
-	data.set$PropDwell = as.numeric(data.set$PropDwell)#
-	levels(data.set$Picture) <- list(Foil="Pre_D1 ", Dist="Pre_D2 ", Targ="Pre_Targ ")#
-	return(data.set)#
-	}#
-#
-#Plot the data#
-BarPlotGaze <- function(solo_sum,IV, ylabel){#
-tapply(solo_sum[,IV],list(solo_sum$LabelCond),mean,na.rm = T) -> solo_plot#
-#
-tapply(solo_sum[,IV], solo_sum[,c("LabelCond")], FUN = boot, statistic = boot.mean, R = 10000) -> b.solo#
-sapply(lapply(b.solo,boot.ci),"[[","normal")[2:3,] -> b.ci#
-#
-print(solo_plot)#
-barplot(solo_plot, beside = T, col = "white",border = NA, ylim = c(0, max(b.ci)+0.05),ylab = ylabel, legend = F,args.legend = list(x = 1.5, bty = "n"),xlab = "Ambiguity Type") -> solo_bplot#
-grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",#
-     lwd = par("lwd"), equilogs = TRUE)#
-points(solo_bplot, solo_plot, pch = 15, cex = 5, col = c("red","blue","blue"))#
-arrows(solo_bplot,(b.ci[1,]),solo_bplot,(b.ci[2,]),code = 0, length = 0.1, angle = 90)#
-}#
-#
-# For bootstrap#
-boot.mean <- function(x, ind){mean(x[ind],na.rm = T, trim =0)}#
-#
-# Process saccades#
-sac.process = function(pathway = "./", Pop = "NA"){#
-	sac = c()#
-	for (i in unique(Pop)){#
-		for (j in c("Pre","Targ")){# Something is off with the reward section ,"Rew")){#
-		file.list <- list.files(path = pathway,full.names = T,pattern = paste(i,".*","Sac",j, sep = ""))#
-		print(file.list)#
-		sac.temp <- read.delim(file.list, header = T)#
-		sac.temp$Period = ifelse(j == "Targ","Naming",j)#
-		sac <- rbind(sac, sac.temp)	#
-		}#
-	}#
-	names(sac)[names(sac) == "RECORDING_SESSION_LABEL"] <- "Subj"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_START_INTEREST_AREA_LABEL"] <- "SacStart"#
-	names(sac)[names(sac) == "CURRENT_SAC_NEAREST_END_INTEREST_AREA_LABEL"] <- "SacEnd"#
-	sac$Subj <- as.factor(paste(sac$Subj,".edf", sep = ""))#
-	sac$Sac <- 1#
-	sac$SacSwitch <- ifelse(sac$SacStart == sac$SacEnd,0,1)#
-	sac$SacTarg <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D1 ",]$SacTarg <- 1#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_Targ ",]$SacTarg <- 1#
-	sac$SacDist1 <- 0#
-	sac[sac$SacStart == "Pre_D1 " & sac$SacEnd == "Pre_D2 ",]$SacDist1 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_D1 ",]$SacDist1 <- 1#
-	sac$SacDist2 <- 0#
-	sac[sac$SacStart == "Pre_Targ " & sac$SacEnd == "Pre_D2 ",]$SacDist2 <- 1#
-	sac[sac$SacStart == "Pre_D2 " & sac$SacEnd == "Pre_Targ ",]$SacDist2 <- 1#
-	sac <- summaryBy(SacTarg + SacSwitch + Sac + SacDist1 + SacDist2 ~ Subj + trialnum + cond+Period, data = sac, keep.names = T)#
-	return(sac)#
-}#
-# Import and plot the data,#
-kid.ref <- data_import("./EyeData/")#
-kid.ref.t <- kid.ref[kid.ref$type != "Filler",]#
-kid.ref.t$type <- kid.ref.t$type[drop= TRUE]#
-kid.ref.t$cond <- kid.ref.t$cond[drop= TRUE]#
-kid.ref.t <- kid.ref.t[!is.na(kid.ref.t$cond),]#
-#
-Groups = read.delim("./EyeData/SubjNames.txt", header = T)
-anon(Groups$Subj)
-summary()
-Groups = read.delim("./EyeData/WriteNames-Times.txt", header = T)
-anon(Groups$Subj)
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))#
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Before")))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Before")))
+summary(lmer(SacTarg~LabelCond+ (1+ LabelCond |Subj), data = subset(Sac.sum, Start == "Before")))
+summary(lmer(SacTarg~LabelCond+ (1+ LabelCond |Subj), data = subset(Sac.sum, Start == "Preview")))
+summary(lmer(SacDist1~LabelCond+ (1+ LabelCond |Subj), data = subset(Sac.sum, Start == "Preview")))
+summary(lmer(SacDist2~LabelCond+ (1+ LabelCond |Subj), data = subset(Sac.sum, Start == "Preview")))
+subset(kid.sac, SacSwitch == 1)[1:10,]
+subset(kid.sac, SacSwitch == 1 & SacEnd != ".")[1:10,]
+subset(kid.sac, SacSwitch == 1 & SacEnd != "." & SacStart != ".")[1:10,]
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data =  subset(kid.sac, SacSwitch == 1 & SacEnd != "." & SacStart != ".")[1:10,]#
+, keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+1/8
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg + SacDist1 + SacDist2 ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean,sd)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = kid.sac, keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg + SacDist1 + SacDist2 ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = subset(kid.sac, SacSwitch ==1), keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg + SacDist1 + SacDist2 ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean)))
+32+32+27
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = subset(kid.sac, SacSwitch ==1 & SacStart != "." & SacEnd != "."), keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg + SacDist1 + SacDist2 ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))
+54*16
+subset(kid.sac, SacSwitch ==1 & SacStart != "." & SacEnd != ".")[1:20,]
+subset(kid.sac, SacSwitch ==1 & SacStart != "." & SacEnd != ".")[1:40,]
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = subset(kid.sac, SacSwitch ==1 & SacStart != "." & SacEnd != "." & SacEndTime < 4500), keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg + SacDist1 + SacDist2 ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = subset(kid.sac, SacSwitch ==1 & SacStart != "." & SacEnd != "." ), keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg + SacDist1 + SacDist2 ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean)))
+summaryBy(SacDist1+SacDist2+SacFromTarg+SacToTarg +SacTarg ~Subj+trialnum+LabelCond+Start, data = subset(kid.sac, SacSwitch ==1 & SacStart != "." & SacEnd != "." & SacEndTime < 4500), keep.names = T) -> Sac.sum#
+na.omit(summaryBy(SacTarg + SacDist1 + SacDist2 ~Start+LabelCond, data = Sac.sum, keep.names = T, FUN = c(mean)))
+summary(lmer(SacTarg~LabelCond+ (1|Subj), data = subset(Sac.sum, Start == "Preview")))

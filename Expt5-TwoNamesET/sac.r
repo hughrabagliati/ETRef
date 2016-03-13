@@ -37,14 +37,14 @@ sac$CS_Trial <- ifelse(sac$CriticalSaccades > 0,1,0)
 #sac$PropSac[is.na(sac$PropSac)] <- 0
 
 
-sac$TargetLabelCond <- "Control"
-sac[sac$condition %in% "ambig" & sac$Targ %in% NA,]$TargetLabelCond <- NA
+sac$TargetLabelCond <- NA
+sac[sac$condition %in% "control" & sac$Targ %in% c(0,1),]$TargetLabelCond <- "Control"
 sac[sac$condition %in% "ambig" & sac$Targ %in% 1,]$TargetLabelCond <- "Ambig - Informative"
 sac[sac$condition %in% "ambig" & sac$Targ %in% 0,]$TargetLabelCond <- "Ambig - Uninformative"
 sac$TargetLabelCond <- ordered(sac$TargetLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))
 
-sac$FoilLabelCond <- "Control"
-sac[sac$condition %in% "ambig" & sac$Foil %in% NA,]$FoilLabelCond <- NA
+sac$FoilLabelCond <- NA
+sac[sac$condition %in% "control" & sac$Foil %in% c(0,1),]$FoilLabelCond <- "Control"
 sac[sac$condition %in% "ambig" & sac$Foil %in% 1,]$FoilLabelCond <- "Ambig - Informative"
 sac[sac$condition %in% "ambig" & sac$Foil %in% 0,]$FoilLabelCond <- "Ambig - Uninformative"
 sac$FoilLabelCond <- ordered(sac$FoilLabelCond, levels = c("Control", "Ambig - Uninformative", "Ambig - Informative"))
@@ -61,27 +61,23 @@ summary(glmer(Foil ~ condition*PropSac_c + (1+PropSac_c|participant) + (1|target
 
 
 
-na.omit(summaryBy(PropSac~phase+LabelCond+Subj, data = subset(sac, phase %in% ("start")), FUN = c(mean,sd), keep.names = T)) -> Sac.graph
-na.omit(summaryBy(PropSac.mean~Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
-Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Preview", "Before","After"),labels = c("Preview", "Before","After"), ordered = T)
-Sac.graph$SE = Sac.graph$PropSac.mean.sd/sqrt(length(unique(Sac.sum$Subj)))
+na.omit(summaryBy(PropSac~phase + condition + TargetLabelCond + participant, data = subset(sac, TotalSaccades >0 & phase == "start"), na.rm = T, FUN = c(mean), keep.names = T)) -> Sac.graph
+na.omit(summaryBy(PropSac~phase+TargetLabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
+Sac.graph$Start <- factor(Sac.graph$phase, levels = c("Preview"),labels = c("Preview"), ordered = T)
+Sac.graph$SE = Sac.graph$PropSac.sd/sqrt(length(unique(sac$participant)))
 
 Sac.graph$Time = "Pre-Naming"
-Sac.graph[Sac.graph$Start == "After" , ]$Time = "Post-Naming"
-Sac.graph[Sac.graph$Start == "Preview" , ]$Time = "Preview"
-Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post-Naming"),labels = c("Preview","Pre-Naming","Post-Naming"), ordered = T)
+Sac.graph$Time <- factor(Sac.graph$Time)
+tapply(Sac.graph$PropSac.mean, list(Sac.graph$Time,Sac.graph$TargetLabelCond), FUN = mean) -> o
+tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$TargetLabelCond), FUN = mean) -> se
 
-tapply(Sac.graph$PropSac.mean.mean, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> o
-tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> se
-
-barplot(o, beside =T , ylim = c(0,0.25),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
+barplot(o, beside =T , ylim = c(0,0.60),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("","Preview Period",""))
 legend(1.2,0.10, legend = c("Control Trials", "Uninformative Trials", "Informative Trials"), bty = "n", col = c("blue","grey","red"), pch = 20)
-points(c(1.5,6,10), o[,1], pch = 20, cex = 2, col = "blue")
-points(c(2.5,6.8,11), o[,2], pch = 20, cex = 2, col = "grey")
-points(c(3.5,7.6,12), o[,3], pch = 20, cex = 2, col = "red")
+points(c(2), o[1], pch = 20, cex = 2, col = "blue")
+points(c(3.2), o[2], pch = 20, cex = 2, col = "grey")
+points(c(4.5), o[3], pch = 20, cex = 2, col = "red")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs = TRUE)
-abline(v = c(4.5,8.5), col = "grey", lty = "dashed")
-arrows(c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) + c(se)+0.01), c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) - c(se)-0.01), code = 0)
+arrows(c(2,3.2,4.5), (c(o) + c(se)+0.01), c(2,3.2,4.5), (c(o) - c(se)-0.01), code = 0)
 
 
 

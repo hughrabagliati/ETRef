@@ -26,7 +26,9 @@ references:
 ---
 
 
-Children learning a language are not only required to master its structural features, such as phonology and syntax, but must also learn to communicate their message in effective ways. In particular, children must learn to produce utterances that are appropriately informative and unambiguous. If a child owns both a red hat and a blue hat and wants to wear the red one, then it is uninformative to demand "I want my hat" (not to mention a little domineering). A more informative request would, instead, specify the appropriate hat. It is well established that learning to generate these appropriately informative utterances is a difficult task for young children: Preschoolers, and even young school-age children, who take part in referential communication tasks (an experimental analogue of the situation described above) frequently produce descriptions that are decidedly ambiguous and uninformative [@nilsen2009relations; @sonnenschein1984developing; @glucksberg1966referential; @glucksberg1967people]. But while children's difficulty with reference is well-established, exactly why this difficulty exists -- and why it persists so late in development -- remains something of a mystery.   
+Children learning a language are not only required to master its structural features, such as phonology and syntax, but must also learn to communicate their message in effective ways. In particular, children must learn to produce utterances that are appropriately informative and unambiguous. If Little Jim owns both a red hat and a blue hat and wants to wear the red one, then it is uninformative for him to demand "I want my hat" (not to mention a little domineering). A more informative request would, instead, specify the appropriate hat. 
+
+It is well established that learning to generate these appropriately informative utterances is a difficult task for young children: Preschoolers, and even young school-age children, who take part in referential communication tasks (an experimental analogue of the situation described above) frequently produce descriptions that are decidedly ambiguous and uninformative [@nilsen2009relations; @sonnenschein1984developing; @glucksberg1966referential; @glucksberg1967people]. But while children's difficulty with reference is well-established, exactly why this difficulty exists -- and why it persists so late in development -- remains something of a mystery.   
 
 The most historically prominent explanation for children's difficulties with referential communication has focused on egocentricity: Children are assumed to be somewhat blind to the mental states of other people, and so they fail to take these states into account when communicating [@piaget1959language; @glucksberg1966referential; @krauss1969development]. But this idea has fallen out of favour, as study after study has demonstrated that children who are too young to communicate informatively are nevertheless surprisingly adept at reasoning about the mental states of others [@glucksberg1975development;  @wimmer_beliefs_1983; @onishi200515]. Consistent with this, recent work has shown that older children with ASD, who have difficulty taking the perspective of others, still show age-appropriate success in completing referential communication tasks [@fukumura2015development; see also @nadig2009adaptation].
 
@@ -150,7 +152,7 @@ Each trial (see Figure C) began with a Preview phase, in which three pictures we
 
 
 *Analyses*   
-We analyzed participants’ descriptions and their gaze behavior over the trial. We first coded whether participants provided referentially specific descriptions of the targets. We used a liberal coding scheme, coding any description as specific if it could not have been applied to the target’s foil. For instance, *small dog*, *dog on the left*, and *Chihuahua* counted as specific, but *dog* or *hound* did not. We analyzed responses using a mixed effects logistic regression; expressed using lmer syntax this regression had the form Label ~ 1 + Scene Type * Ambiguity Type + (1+Scene Type|Subject)+(1|Item)
+We analyzed participants’ descriptions and their gaze behavior over the trial. We first coded whether participants provided referentially specific descriptions of the targets. We used a liberal coding scheme, coding any description as specific if it could not have been applied to the target’s foil. For instance, *small dog*, *dog on the left*, *Chihuahua* or *dog... that is small* counted as specific, but *dog* or *hound* did not. We analyzed responses using a mixed effects logistic regression; expressed using lmer syntax this regression had the form Label ~ 1 + Scene Type * Ambiguity Type + (1+Scene Type|Subject)+(1|Item)
 
 Our eye movement analysis focused on saccades around the scene over the different trial phases. We defined regions of interest [ROIs, SIZE] around each of the three pictures, and analyzed saccades between the target picture and foil picture ROIs as a proportion of all saccades. We analyzed the proportion of saccades using a mixed effects regression model, of the form Proportion of Saccades ~ 1 + Scene Type * Ambiguity Type + (1+Scene Type|Subject)+(1|Item)
  
@@ -260,7 +262,7 @@ then when it was linguistic
 
 We followed up this interaction by separately testing for effects of scene type in the non-linguistic and linguistic ambiguity trials, confirming that there was a robust effect for non-linguistic ambiguities 
  `r format_coef(Expt1.Preview.Same, 2)` 
- but not for linguistic ambiguities 
+ but only a marginal effect for linguistic ambiguities 
  `r format_coef(Expt1.Preview.Ho, 2)`.   
  
 *Pre-Naming Phase*   
@@ -702,7 +704,7 @@ Experiment 2 was designed to assess whether children engage in, first, pro-activ
 
 Children also appeared to monitor their own utterances. When the visual scene was ambiguous, they tended to saccade to the matched foil after generating a description, a behavior that did not seem to vary based on what type of description they had provided (the same was true of the adults in Experiment 1). This result might be considered surprising, because comprehension-based monitoring is typically assumed to be complex (as it requires speakers to engage both the production and comprehension systems simultaneously). However, as discussed in the Introduction, this sort of monitoring may also serve a useful role as a learning mechanism: If children monitor the informativity of their utterances, they can begin to recognise those situations in which they tend to say uninformative or ambiguous things, and so develop strategies for avoiding ambiguity.
 
-Unfortunately however, Experiment 2's evidence for comprehension monitoring leaves us with a question: if children are monitoring what they say, then why did they still produce so few informative utterances? One possibility is that children did not correct because they were not truly motivated to, as each trial in Experiment 2 ended straight after they responded, and their utterance had no obvious adverse effects on an interlocutor. But another possibility is that these subsequent eye movements do not reflect any active monitoring processes at all, but are instead the result of passive priming: Saying *Dog* simply primes the speaker to look to the other dog, and does not reflect an understanding that the speaker has said something ambiguous. Experiment 3 distinguishes these accounts, by having children name two pictures from a visual scene that was either ambiguous or not. If children are learning from their mistakes, then they should be relatively more informative when naming the second picture if the scene is ambiguous.
+Unfortunately however, Experiment 2's evidence for comprehension monitoring still leaves us with a question: if children are monitoring what they say, then why did they rarely correct their utterances to make them more informative? One possibility is that children did not correct because they were not truly motivated to, as each trial in Experiment 2 ended straight after they responded, and their utterance had no obvious adverse effects on an interlocutor. But another possibility is that these subsequent eye movements do not reflect any active monitoring processes at all, but are instead the result of passive priming: Saying *Dog* simply primes the speaker to look to the other dog, and does not reflect an understanding that the speaker has said something ambiguous. Experiment 3 distinguishes these accounts, by having children name two pictures from a visual scene that was either ambiguous or not. If children are learning from their mistakes, then they should be relatively more informative when naming the second picture if the scene is ambiguous.
 
 #### Experiment 3
 Children in Experiment 3 were asked to name two out of three pictures from a scene. The task was similar to Experiment 2, except that having named the target picture (indicated as before by Elmo) children were then asked to name a foil picture,  indicated by the appearance of Peppa Pig. On half of the trials the target and foil depicted the same kind of thing, and on half of the trials they depicted different kinds of thing. If children use comprehension monitoring, as suggested by Experiment 2, then they should produce informative descriptions more often for foil pictures, but only when the scene is ambiguous. 
@@ -768,7 +770,7 @@ Children produced fewer ambiguous descriptions of the Target picture when the sc
  ), Mean<sub>unambiguous</sub>=
  `r round(subset(Labels.Expt3, condition == "control" & Response == "foil")$Label.mean,2) `
  (`r round(subset(Labels.Expt3, condition == "control" & Response == "foil")$Label.sd,2) `
- ). Our regression analysis showed that participants were reliably less likely to produce ambiguous descriptions when the trial was ambiguous `r format_coef(Expt3.Verbal.Fixed, 2)`, and that this interacted with the type of picture being labeled, such that the effect of trial type was reliably larger for the foil picture `r format_coef(Expt3.Verbal.Fixed, 4)`.
+ ). Our regression analysis showed that participants were reliably less likely to produce ambiguous descriptions when the trial was ambiguous `r format_coef(Expt3.Verbal.Fixed, 2)`, and that this interacted with the type of picture being labeled, such that the effect of trial type was reliably larger for the foil picture `r format_coef(Expt3.Verbal.Fixed, 4)`. Although this is not a large effect, it is consistent with production monitoring. 
  
 [FOOTNOTE: These effects also held when the data was analyzed using an ANOVA].
 
@@ -816,9 +818,29 @@ Expt3.Preview <- summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (
 
 ```
 *Preview Phase*
+```{r, echo=FALSE, results='hide',message=FALSE}
 
-As in Experiment 2, children only showed a reliably increased tendency to monitor for ambiguity on those trials in which they subsequently produce an informative expression. Oarticipants  were not reliably more likely to make critical saccades on ambiguous trials where they produced an uninformative description than on control trials
-(although this time, they were marginally more likely to make such saccades Mean<sub>uninformative</sub>=
+na.omit(summaryBy(PropSac~phase + condition + TargetLabelCond + participant, data = subset(sac, TotalSaccades >0 & phase == "start"), na.rm = T, FUN = c(mean), keep.names = T)) -> Sac.graph
+na.omit(summaryBy(PropSac~phase+TargetLabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
+Sac.graph$Start <- factor(Sac.graph$phase, levels = c("Preview"),labels = c("Preview"), ordered = T)
+Sac.graph$SE = Sac.graph$PropSac.sd/sqrt(length(unique(sac$participant)))
+
+Sac.graph$Time = "Pre-Naming"
+Sac.graph$Time <- factor(Sac.graph$Time)
+tapply(Sac.graph$PropSac.mean, list(Sac.graph$Time,Sac.graph$TargetLabelCond), FUN = mean) -> o
+tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$TargetLabelCond), FUN = mean) -> se
+
+# barplot(o, beside =T , ylim = c(0,0.60),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("","Preview Period",""))
+# legend(1.2,0.20, legend = c("Control Trials", "Uninformative Trials", "Informative Trials"), bty = "n", col = c("blue","grey","red"), pch = 20)
+# points(c(2), o[1], pch = 20, cex = 2, col = "blue")
+# points(c(3.2), o[2], pch = 20, cex = 2, col = "grey")
+# points(c(4.5), o[3], pch = 20, cex = 2, col = "red")
+# grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs = TRUE)
+# arrows(c(2,3.2,4.5), (c(o) + c(se)+0.01), c(2,3.2,4.5), (c(o) - c(se)-0.01), code = 0)
+```
+
+We first tried to replicate the finding that children show no evidence of pro-active monitoring on those trials where they subsequently produce uninformative expressions, but do show evidence of monitoring before they produce informative expressions. This effect did indeed replicate. Compared to control trials, participants were not reliably more likely to make critical saccades on those ambiguous trials where they subsequently produced uninformative descriptions 
+(although this time they were marginally more likely to make such saccades Mean<sub>uninformative</sub>=
 `r round(subset(Preview.Expt3, TargetLabelCond == "Ambig - Uninformative")$PropSac.mean,2) ` 
  (
  `r round(subset(Preview.Expt3, TargetLabelCond == "Ambig - Uninformative")$PropSac.sd,2) `
@@ -826,7 +848,7 @@ As in Experiment 2, children only showed a reliably increased tendency to monito
  `r round(subset(Preview.Expt3, TargetLabelCond == "Control")$PropSac.mean,2) `
  (`r round(subset(Preview.Expt3, TargetLabelCond == "Control")$PropSac.sd,2) `
  `r format_coef(Expt3.Preview, 2)`
-. By contrast, participants made reliably more critical saccades before they produced informative descriptions for ambiguous scenes
+ however participants did make reliably more critical saccades before they produced informative descriptions for ambiguous scenes
 (Mean<sub>informative</sub>=
 `r round(subset(Preview.Expt3, TargetLabelCond == "Ambig - Informative")$PropSac.mean,2) ` 
  (
@@ -840,7 +862,34 @@ Expt3.Foil <- summary(lmer(Foil ~  PropSac + (1|participant) + (1|target), data 
 Expt3.Ambig <- summary(lmer(PropSac ~  C(TargetLabelCond, contr.treatment) + (1|participant) , data = subset(sac, phase == "elmo" )))
 
 ```
-Finally, we tested whether children who provided greater evidence for production monitoring (i.e., made more critical saccades while Elmo was on-screen) were also more likely to produce informative descriptions of the foil. In fact, these was no relationship between children's critical saccades and their description of the foil `r format_coef(Expt3.Foil, 2)`. This was not because children failed to engage in production monitoring. Compared to the control condition, they were considerably more likely to make critical saccades after describing an ambiguous target, whether they had produced an informative `r format_coef(Expt3.Ambig,3)` or uninformative description `r format_coef(Expt3.Ambig,2)`. Rather....
+Finally, we tested whether children who seemed to be engaging in more production monitoring (i.e., who made more critical saccades to the foil after naming the target) were also more likely to produce informative descriptions of the foil. In fact, there was no relationship between the two `r format_coef(Expt3.Foil, 2)`. This was not because children failed to make the relevant eye movements.  Compared to the control condition, they were considerably more likely to make critical saccades after describing an ambiguous target, whether they had produced an informative description `r format_coef(Expt3.Ambig,3)` or an uninformative description `r format_coef(Expt3.Ambig,2)`. Instead, it seems that children almost invariably gazed toward the foil no matter whether they ultimately produced a more informative description.
+
+**Discussion**
+
+In Experiment 2, we had found that children's eye movements suggested they were engaging in production based monitoring, checking how their just-produced utterance matches to the world, although this data could also have been explained by passive priming. Experiment 3 tested these explanations and, in fact, found evidence for both. Children were more likely to produce an informative description after having first produced an uninformative description, which is consistent with production monitoring, although the size of this effect was small. However, the strength of the eye movement signal that we discovered in Experiment 2 was unrelated to whether children produced an informative description, suggesting that it was partially driven by passive priming. Experiment 3 additionally confirmed the major finding of Experiment 2, that children are more likely to have been explictly monitoring for ambiguity before they produce informative descriptions.
+
+#### General Discussion
+
+How, precisely, do adults ensure that they produce informative utterances, and how do children learn these skills? Here, we used eye tracking to confirm that adults proactively monitor for non-linguistic (but not linguistic) ambiguity, while also monitoring whether what they subsequently say describes the world informatively. Young children, by contrast, are limited in both of these skills. They frequently fail to take heed of any ambiguity in the world around them and, while they are able to monitor their own productions, they frequently do not use that information in the service of producing more informative utterances.
+
+Our data point towards a more mechanistic account of how children learn to successfully and informatively communicate; we begin by focusing on how children learn to monitor pro-actively. As Experiments 1 and 1a demonstrated, and following Ferreira et al (2005), adults automatically monitor the world for non-linguistic ambiguity (e.g., the presence of two different dogs) but not linguistic ambiguity (e.g., the presence of both kinds of bat) when they need to describe a visual scene. However, these monitoring processes are (to some degree) specific to speaking: adults did not monitor for any type of ambiguity when they only needed to communicate para-linguistic (i.e., through pointing). Pro-active monitoring therefore has two important characteristics. First, it appears to be automatically engaged when specifically describing the world, rather than being a general feature of how we perceive scenes. Second, scenes are only monitored at a non-linguistic level of representation, as indicated by the fact that adults failed to notice linguistic ambiguity (e.g., homophones) before they began speaking. The experiments reported here are unable to determine exactly what level of representation were monitoring to detect "non-linguistic" ambiguity. For instance, participants might be monitoring based on conceptual overlap between pictures (e.g., two different dogs are tokens of the same type) or based on simple visual similarity (dogs share many visual properties). However prior work [@rabagliati2013truth] provides evidence that adults are monitoring at a more abstract level than simple visual similarity: adults avoided ambiguity for distinguishable but related concepts with the same names (e.g., chicken meat versus chicken the animal), and this effect could not be explained by the visual similarity of the depictions. This suggests that adults proactively monitor for non-linguistic ambiguity at the level of lexical entries, and so children need to learn to do the same. The implication of this is that, before a child begins an utterance, they must recode the entirety of a visual scene in terms of its components' lexical entries. Learning to do this, and learning to appropriately monitor that recoded representation, will be an important part of the learning challenge.
+
+What might be the learning mechanism through which children master pro-active monitoring? Previous work has suggested that the development of referential communication skills is importantly linked to the development of executive function skills [@brown2009role; @nilsen2009relations; @nilsen2013communicative; @nilsen2015children], and an increase in inhibitory or planning skills might indeed boost children's ability to pro-actively monitor for ambiguity. However this cannot be the entire story, as executive skills alone cannot inform children about which level of representation must be monitored for ambiguity. For that, children need a signal that guides their learning, and some work has suggested that that signal might be provided by caregivers and community members [matthews2007toddlers]: If the caregiver indicates that the child's utterance is ambiguous, the child can learn from their mistake and adjust their language production algorithm. 
+
+However the current experiments suggest an additional mechanism by which children could learn, one that is self- rather than other-guided. In particular, if -- as suggested by Experiments 2 and 3 -- children are monitoring what they say, then they can derive an error signal by simply matching their utterance to the world and noting whether it is ultimately informative. Evidence from implicit measures such as eye gaze suggests that pre-school children can notice when another person says something ambiguous or uninformative [nilsen2008sensitivity; nilsen2012appreciation; plumert1996young;@beal1987repairing] (Markman1981 in Dickson book?), and so it is very plausible that they can do the same for their own utterances, although perhaps implictly. And indeed, our own Experiment 3 indicated that children were more likely to produce an informative utterance subsequently to producing an uninformative utterance. An error signal that is generated when children notice the inefficacy of their own utterances can be used to guide their exploration of what types of representations need to be monitored for ambiguity. One implication of this account is that children must explore different ways of representing and monitoring the visual scene; if not they could not change their strategy. Consistent with this, we found that on occasion children did seem to pro-actively notice ambiguity and then structure their utterances appropriately, providing an opportunity for them to eventually decide on an optimal monitoring strategy.
+
+That said, while data from children's utterances as well as their eye-movements does indicate that they are able to monitor their own utterances (such that an error signal can be generated), the effect of this monitoring for their own ambiguity avoidance was not large. In Experiment 3, when children named a an ambiguous foil picture after an ambiguous target picture, they only provided informative descriptions about 4 percentage points more often. Previous work with adults, using a similar design, found a 20 percentage point difference. There are multiple non-exclusive explanations for this. First, the error signal generated by noticing an uninformative utterance may not be very large. Consistent with this, children have difficulty with referential communications tasks up until the school years, suggesting that they only master its component skills very gradually. Second, some of the apparent evidence for production monitoring, from eye movements, might also reflect unrelated passive priming processes (saying *dog* primes looks to other dogs), and indeed we found that the eye movements that might be indicative of this monitoring did not predict whether children avoided ambiguity.
+
+The account described above is different in either focus or specificity from previous work on the development of referential communication. Under the account, improvements to referential communication skills are not importantly affected by changes to theory of mind skills or egocentricity, in keeping with the empirical evidence [fukumura2015development; glucksberg1975development]. The account is multi-componential, like Sonnenschein and Whitehurst's "hierarcy of skills" approach to referential communication [@sonnenschein1984developing], but is focused on multiple different moment-by-moment language production processes, rather than broader heuristics about how communication should proceed. Like other proposals, this account suggests that children might learn from feedback [matthews2007toddlers], but in this case the feedback is self-generated: By monitoring their own speech, children can recognise when they have said something uninformative, and can gradually adjust their production procedures to minimize these errors in the future. Finally, the account can admit a role for executive functions [@nilsen2009relations; @nilsen2013communicative; @nilsen2015children], for instance in inhibiting the child from impulsively producing an uninformative description before formulating an informative one, or in being mindful to scan for potential ambiguity before speaking. However, under this account, the development of referential skill involves the creation of domain-specific language production procedures (e.g., for encoding a scene in terms of its referents), and is not simply a result of domain-general improvements in executive functions.
+
+To summarise, we used eye tracking to assess some of the different mechanisms that adults and children use (or fail to use) when preparing descriptions in referential communications tasks. Adults explictly monitor for whether a scene contains potential non-linguistic ambiguity before they begin speaking (but not before pointing), and also monitor what they say in order to check that it is informative. Children also perform both of these processes, but much less frequently. They are more likely to succeed in producing an informative statement if they have monitored the world for ambiguity, or have noted that they themselves produced an uninformative statemnt,  but they are error-prone in using both of these skills. Based on the data collected, we have suggested that one way in which children might learn to pro-actively monitor for ambiguity in an adult-like fashion, is by attending to their own productions and recognizing when they are uninformative.
+
+These ideas can be tested in multiple different ways. For example, longer and longitudinal studies could assess the relationship between how children monitor their own productions and subsequent changes in how they pro-actively monitor for ambiguity before speaking. Work could also examine whether children can learn to monitor for different types of ambiguity: Since we have argued that children *learn* to monitor for ambiguity at the level of word meanings, this implies that they could also learn to monitor for ambiguity at different levels of representation, whether that be ambiguity created by similar visual forms or linguistic ambiguity caused by phonological overlap between names. 
+
+We end by noting some of the limitations of this study. First, our referential communication task was stripped down: while participants described pictures to the experimenter, they never received anything other than positive feedback on their utterances, and never had to interpret other people's utterances. While these characteristics do not impact on our major conclusions, it could be that children might have shown better performance in a more ecologically rich task (although note that Ferreira et al. 2005 found that adults were just as likely to produce informative descriptions without a partner, suggesting that informative communication is somewhat automatized). By contrast, our visual scenes were perhaps more ecologically valid than many tasks: non-linguistic ambiguities were created by pairing quite different instances of each kind (see Figure 1), while previous work has often used target-foil pairs that differ on only one or perhaps two dimensions (e.g., small and large versions of the same car). Under these more constrained conditions, it could be the case that children can monitor for such visually obvious ambiguity, and yet still not incorporate that information into their referential descriptions. 
+
+Nevertheless, despite these limitations, our studies suggest a number of concrete conclusions concerning children's and adult's referential communication. They conclusively show how adults pro-actively monitor for non-linguistic, but not linguistic, ambiguity. They demonstrate how children rarely perform this type of monitoring, yet demonstrate that, when they do, they tend to produce informative utterances. And they show how children re-interpret their own utterances and match them against the world, providing potential evidence for a self-guided learning mechanism through which children could master the skills necessary to produce informative utterances.
+
 
 <br>
 <br>
@@ -851,48 +900,4 @@ Finally, we tested whether children who provided greater evidence for production
    
    
    
-
-Our final two experiments followed up on these results. In Experiment 3 we asked why children fail to proactively monitor for ambiguity. In Experiment 4 we tested whether children can use production-based monitoring to reduce their use of uninformative descriptions.
-
-
-
-**This might have to go in the intro to the third experiment? ** Interestingly the second of these processes, production monitoring, could also potentially serve as a learning mechanism that, over time, improves children's referential communication skill. Current approaches assume that children learn referential skills by attending to explicit or implicit feedback from their conversational partners. But, if children are also constantly engaging in comprehension of their own utterances, they might potentially notice their own utterance's ambiguity (there is convincing evidence that children are sensitive to the ambiguity of utterances produced by other people, ref). This could, potentially, serve as an error signal (ref), and if children learn to produce utterances that minimize that error signal, then they will also learn to produce utterances that are appropriately informative.
-
-
-
-
-
-
-
-[if we start with current explns and then move on to Ferreira, can finish the first sectio by saying "production monitoring may also be important for another reason..."]
-[does the nilen review say anything about prodution]
-[need to look at Nilsen JCL paper]
-[also Gillis & Nilsen]
-[Also need to add a bunch of abbott-smith learning stuff]
-
-[Would another way to do this be to set the stage for a standard explanation -- kids need to learn to be informative, like adults -- but then switch to suggest that adults are perhaps not nearly as informative as we often give them credit for. In this paper, we suggest that understanding the ways in which adults fail to be informative can shed light on the developmental processes by which children become more informative.]
-
-#### Standard explanations for failure of referential communication.
-1. Egocentricity -- Piaget, Epley, etc.
-2. Developing knowledge about the rules of communication. <-- Might not want this...
-3. And both of these explanations might be mediated by failures of executive control.
-4. What about inhibitory accounts -- want to say the first word that comes to mind?
-
-#### However evidence from adult psycholinguistics suggests that the story is likely to be more complex than currently acknowledged by either of these approaches.
-* These approaches all assume that adults monitor for whether their utterance is informative (e.g., whether it is ambiguous) tout court.
-* But in fact, psycholinguistic evidence suggests that adults:
-    + Only monitor for whether their utterance is informative (i.e., ambiguous) in some ways but not others.
-    + Use multiple different strategies for monitoring for potential ambiguity, some of which are more effective, and some of which are less effective.
-    +Evidence for this comes from Ferreira's papers.
-
-  
-#### Ferreira's results suggest that there are multiple ways in which children could both fail and succeed at being informative. 
-* For example, children could fail to be informative because they neither proactively monitor for conceptual ambiguityproactively nor subsequently use produciton-based monitoring. 
-* Alternately, when children succeed at proactively monitoring they could also fail to use production-based monitoring, or vice versa.
-
-* This raises the possibility that 
-    + a) children must learn to monitor for utterance ambiguity *in particular ways*, rather than generally.
-    + b) children must learn multiple different strategies for monitoring for potential ambiguity.
-
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+**References**
