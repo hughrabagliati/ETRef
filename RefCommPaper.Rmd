@@ -5,7 +5,7 @@ output: html_document
 knitr::opts_chunk$set(cache=TRUE)
 ```
 ---
-title: "Awareness and Monitoring in Children's Referential Communication."
+title: "How do children learn to avoid referential ambiguity? Evidence from eye-tracking."
 author: "Hugh Rabagliati"
 date: "First Draft -- 1 December 2015"
 output:
@@ -18,13 +18,21 @@ output:
   word_document:
     reference: APA.docx
 csl: apa.csl
-abstract: Children have considerable difficulty producing informative and unambiguous referring expressions, a fact that still lacks a full explanation. Models from adult psycholinguistics suggest that speakers avoid ambiguity by pro-actively monitoring for potential ambiguity in any to-be-described scene, as well as subsequently monitoring their own descriptions to check if they are ambiguous. Here, we used eye tracking to  
+abstract: 
 bibliography: 
   - ETRefLibrary.bib
 references:
 
 ---
-
+### Abstract
+Children have considerable difficulty producing informative and unambiguous referring expressions, a fact that still lacks a full explanation. Models from adult psycholinguistics suggest that speakers avoid ambiguity by pro-actively monitoring for potential ambiguity in any to-be-described scene, as well as subsequently monitoring their own descriptions to check if they are ambiguous. Across three experiments, we show that eye tracking can be used to measure both pro-active and subsequent monitoring of ambiguity in adults, and then use that finding to assess the developing roles of these skills in children's referential communication. Our data suggest that children typically do not pro-actively monitor for potential ambiguity but, when they do show evidence of monitoring, that they tend to subsequently produce informative expressions. Meanwhile, we find consistent evidence that children can monitor their own descriptions and subsequently avoid producing the same ambiguous expression. We propose that the process of subsequent monitoring might act as a learning signal, that guides how children learn to monitor pro-actively. 
+<br>
+<br>
+Keywords: Referential communication, language production, development, eye tracking, ambiguity
+<br>
+<br>
+<br>
+<br>
 
 Children learning a language are not only required to master its structural features, such as phonology and syntax, but must also learn to communicate their messages in effective ways. In particular, children must learn to produce utterances that are appropriately informative and unambiguous. If Little Jim owns both a red hat and a blue hat and wants to wear the red one, then it is uninformative for him to demand "I want my hat" (not to mention a little domineering). A more informative request would, instead, specify which of the two hats he desires. It is well established that learning to generate these appropriately informative utterances is a difficult task for young children: Preschoolers, and even young school-age children, who take part in referential communication tasks (an experimental analogue of the situation described above) frequently produce descriptions that are decidedly ambiguous and uninformative [@nilsen2009relations; @sonnenschein1984developing; @glucksberg1966referential; @glucksberg1967people]. But while children's difficulty with reference is well-established, exactly why this difficulty exists -- and why it persists so late in development -- remains something of a mystery.   
 
@@ -124,18 +132,18 @@ ad.sac$Start <- "Preview"
 ad.sac[ad.sac$Period == "Naming",]$Start <- ifelse(ad.sac[ad.sac$Period == "Naming",]$SacTime < ad.sac[ad.sac$Period == "Naming",]$StartTime,"Before","After")
 ad.sac[ad.sac$Period == "Rew",]$Start <- "After"
 
-summaryBy(Label + SacDist1+SacDist2+SacTarg ~Subj+Item+cond+type+Start, data = ad.sac, keep.names = T) -> Sac.sum
+summaryBy(Label + SacDist1+SacDist2+SacTarg ~Subj+Item+cond+type+Start, data = ad.sac[ad.sac$SacSwitch==1,], keep.names = T) -> Sac.sum
 Sac.sum$SacOnTrial = ifelse(Sac.sum$SacTarg > 0,1,0)
 ```
 
 **Methods**  
 *Participants*   
-`r length(unique(Sac.sum$Subj))` undergraduates from the University of Edinburgh.
+`r length(unique(Sac.sum$Subj))` English-speaking undergraduates from the University of Edinburgh who were paid for participation.
 
 *Materials*   
 Target-foil pairs consisted of sets of pictures depicting either two different things drawn from the same category (non-linguistic ambiguity, e.g., two different cars) or two things drawn from different categories but sharing a name (linguistic ambiguity, e.g., a baseball bat and an animal bat). There were 16 pairs of each type. Target and foil pictures were counterbalanced between subjects (i.e., the same car was a target for half the subjects, and foil for remainder).
 
-Adults received X trials overall (8 ambiguous scenes, 8 unambiguous scenes, and X filler trials that were also unambiguous). Ambiguity type was varied between subjects, so that half of the adults saw non-linguistic ambiguities, and half saw linguistic ambiguities. Scene type (ambiguous/unambiguous) was varied within subjects, using a Latin square design. 
+Adults received **XX** trials overall (8 ambiguous scenes, 8 unambiguous scenes, and **XX** filler trials that were also unambiguous). Ambiguity type was varied between subjects, so that half of the adults saw non-linguistic ambiguities, and half saw linguistic ambiguities. Scene type (ambiguous/unambiguous) was varied within subjects, using a Latin square design. 
 
 
 *Procedure*   
@@ -179,7 +187,7 @@ format_coef <- function(lmer_model,row_no, SE = FALSE){
 Expt1.Verbal <- summary(glmer(Label~cond*type + (1+cond|Subj)+(1|Item), data = subset(Sac.sum,  Start == "Preview"), family = "binomial"))
 
 ```
-Participants were more likely to produce referentially specific descriptions for ambiguous scenes than unambiguous scenes, but  this effect was much smaller when the ambiguity was linguistic (Mean<sub>ambiguous</sub>=`r round(subset(Labels, type == "Homoph" & cond == "Ambig")$Label.mean,2) ` (SD=`r round(subset(Labels, type == "Homoph" & cond == "Ambig")$Label.sd,2) `), Mean<sub>unambiguous</sub>=`r round(subset(Labels, type == "Homoph" & cond == "Control")$Label.mean,2) `(`r round(subset(Labels, type == "Homoph" & cond == "Control")$Label.sd,2) `)) than when it was non-linguistic (Mean<sub>ambiguous</sub>=`r round(subset(Labels, type == "Same" & cond == "Ambig")$Label.mean,2) `(`r round(subset(Labels, type == "Same" & cond == "Ambig")$Label.sd,2) `), Mean<sub>unambiguous</sub>=`r round(subset(Labels, type == "Same" & cond == "Control")$Label.mean,2) `(`r round(subset(Labels, type == "Same" & cond == "Control")$Label.sd,2) `)). Our mixed effects model analysis confirmed that there was a significant effect of scene type `r format_coef(Expt1.Verbal, 2, SE = TRUE)` and no effect of ambiguity type `r format_coef(Expt1.Verbal, 3)`, but these were qualified by a reliable interaction between scene type and ambiguity type `r format_coef(Expt1.Verbal, 4)`:  Participants were reliably more likely to avoid non-linguistic ambiguity than linguistic ambiguity.
+Participants were more likely to produce referentially specific descriptions for ambiguous scenes than unambiguous scenes, but  this effect was much smaller when the ambiguity was linguistic (Mean<sub>ambiguous</sub>=`r round(subset(Labels, type == "Homoph" & cond == "Ambig")$Label.mean,2) ` (SD=`r round(subset(Labels, type == "Homoph" & cond == "Ambig")$Label.sd,2) `), Mean<sub>control</sub>=`r round(subset(Labels, type == "Homoph" & cond == "Control")$Label.mean,2) `(`r round(subset(Labels, type == "Homoph" & cond == "Control")$Label.sd,2) `)) than when it was non-linguistic (Mean<sub>ambiguous</sub>=`r round(subset(Labels, type == "Same" & cond == "Ambig")$Label.mean,2) `(`r round(subset(Labels, type == "Same" & cond == "Ambig")$Label.sd,2) `), Mean<sub>control</sub>=`r round(subset(Labels, type == "Same" & cond == "Control")$Label.mean,2) `(`r round(subset(Labels, type == "Same" & cond == "Control")$Label.sd,2) `)). Our mixed effects model analysis confirmed that there was a significant effect of scene type `r format_coef(Expt1.Verbal, 2, SE = TRUE)` and no effect of ambiguity type `r format_coef(Expt1.Verbal, 3)`, but these were qualified by a reliable interaction between scene type and ambiguity type `r format_coef(Expt1.Verbal, 4)`:  Participants were reliably more likely to avoid non-linguistic ambiguity than linguistic ambiguity.
 
 *Eye Movements*   
 We divided the trial into three phases: 1) A Preview phase (before the to-be named picture was known), 2) A Pre-Naming phase (after Elmo appeared, but before the participant responded), and 3) A Post-Naming phase (from the participant’s response to the trial’s end). The time at which participants responded was coded offline from the recordings of their answers. Figure X shows the proportion of saccades between target and foil across phases of the trial for the linguistic ambiguity condition, and Figure Y shows the same for the non-linguistic ambiguity condition. 
@@ -198,8 +206,8 @@ SacGraph <- function(Sac.graph){
   tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$cond,Sac.graph$Time), FUN = mean) -> o
   tapply(Sac.graph$SE, list(Sac.graph$cond,Sac.graph$Time), FUN = mean) -> se
   
-  barplot(o, beside =T , ylim = c(0,0.3),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
-  legend(1.2,0.10, legend = c("Control Scene", "Ambiguous Scene"), bty = "n", col = c("blue","red"), pch = 20)
+  barplot(o, beside =T , ylim = c(0,0.8),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
+  legend(1.2,0.22, legend = c("Control Scene", "Ambiguous Scene"), bty = "n", col = c("blue","red"), pch = 20)
   points(c(1.5,4.3,7.3), o[1,], pch = 20, cex = 2, col = "blue")
   points(c(2.5,5.5,8.5), o[2,], pch = 20, cex = 2, col = "red")
   grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs = TRUE)
@@ -213,18 +221,21 @@ SacGraph <- function(Sac.graph){
 SacGraph(na.omit(summaryBy(SacTarg~Start+cond+Subj, data = Sac.sum[ Sac.sum$type == "Homoph",], FUN = c(mean,sd), keep.names = T)))
 ```
    
-**Figure 2. Proportion of saccades between target picture and foil in the Linguistic Ambiguity condition, across time windows.***
+**Figure 2.** Mean proportion of saccades between target picture and foil in the Linguistic Ambiguity condition, across time windows. Bars indicate +/- 1 standard error.
+
 ```{r, echo=FALSE, results='hide',message=FALSE}
 # Same Cat
 SacGraph(na.omit(summaryBy(SacTarg~Start+cond+Subj, data = Sac.sum[ Sac.sum$type == "Same",], FUN = c(mean,sd), keep.names = T)))
+a <- c()
+
 ```
    
-**Figure 3. Proportion of saccades between target picture and foil in the Non-Linguistic Ambiguity condition, across time windows.***   
+**Figure 3.** Mean proportion of saccades between target picture and foil in the Non-Linguistic Ambiguity condition, across time windows. Bars indicate +/- 1 standard error.
 
 
 *Preview Phase*   
 ```{r, echo=FALSE, results='hide',message=FALSE}
-Preview <- summaryBy(SacTarg ~ trialnum+Subj + type + cond, data = subset(ad.sac, Start == "Preview"), keep.names = T,na.rm = T)
+Preview <- summaryBy(SacTarg ~ trialnum+Subj + type + cond, data = subset(ad.sac, Start == "Preview" & SacSwitch == 1), keep.names = T,na.rm = T)
 Preview <- summaryBy(SacTarg ~ Subj + type + cond, data = Preview, keep.names = T,na.rm = T)
 Preview <- summaryBy(SacTarg ~ type + cond, data = Preview, FUN = c(mean,sd),na.rm = T)
 
@@ -238,7 +249,7 @@ Adults' eye movements during the Preview phase suggested that they were proactiv
 `r round(subset(Preview, type == "Same" & cond == "Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Preview, type == "Same" & cond == "Ambig")$SacTarg.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Preview, type == "Same" & cond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Preview, type == "Same" & cond == "Control")$SacTarg.sd,2) `
  ))
@@ -247,7 +258,7 @@ then when it was linguistic
 `r round(subset(Preview, type == "Homoph" & cond == "Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Preview, type == "Homoph" & cond == "Ambig")$SacTarg.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Preview, type == "Homoph" & cond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Preview, type == "Homoph" & cond == "Control")$SacTarg.sd,2) `
  )).
@@ -278,7 +289,7 @@ We expected that, for ambiguous scenes, participants would also produce more cri
 `r round(subset(Pre_N, type == "Same" & cond == "Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Pre_N, type == "Same" & cond == "Ambig")$SacTarg.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Pre_N, type == "Same" & cond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Pre_N, type == "Same" & cond == "Control")$SacTarg.sd,2) `
  ))
@@ -287,7 +298,7 @@ We expected that, for ambiguous scenes, participants would also produce more cri
 `r round(subset(Pre_N, type == "Homoph" & cond == "Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Pre_N, type == "Homoph" & cond == "Ambig")$SacTarg.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Pre_N, type == "Homoph" & cond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Pre_N, type == "Homoph" & cond == "Control")$SacTarg.sd,2) `
  )). 
@@ -316,7 +327,7 @@ Finally, we looked to see if participants monitored what they were saying aloud 
 `r round(subset(Post_N, type == "Same" & cond == "Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Post_N, type == "Same" & cond == "Ambig")$SacTarg.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Post_N, type == "Same" & cond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Post_N, type == "Same" & cond == "Control")$SacTarg.sd,2) `
  ))
@@ -325,7 +336,7 @@ than the linguistic ambiguity condition
 `r round(subset(Post_N, type == "Homoph" & cond == "Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Post_N, type == "Homoph" & cond == "Ambig")$SacTarg.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Post_N, type == "Homoph" & cond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Post_N, type == "Homoph" & cond == "Control")$SacTarg.sd,2) `
  ))
@@ -342,7 +353,7 @@ Surprised by this null result, we looked closer at the data to see if a focus on
 `r round(subset(Post_N, type == "Same" & cond == "Ambig")$SacOnTrial.mean,2) ` 
  (
  `r round(subset(Post_N, type == "Same" & cond == "Ambig")$SacOnTrial.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Post_N, type == "Same" & cond == "Control")$SacOnTrial.mean,2) `
  (`r round(subset(Post_N, type == "Same" & cond == "Control")$SacOnTrial.sd,2) `
  ))
@@ -351,7 +362,7 @@ Surprised by this null result, we looked closer at the data to see if a focus on
 `r round(subset(Post_N, type == "Homoph" & cond == "Ambig")$SacOnTrial.mean,2) ` 
  (
  `r round(subset(Post_N, type == "Homoph" & cond == "Ambig")$SacOnTrial.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Post_N, type == "Homoph" & cond == "Control")$SacOnTrial.mean,2) `
  (`r round(subset(Post_N, type == "Homoph" & cond == "Control")$SacOnTrial.sd,2) `
  ))
@@ -372,7 +383,7 @@ However, the main result of Experiment 1 – direct evidence that participants e
 **Experiment 1a**   
 **Methods**   
 *Participants*   
-12 undergraduates from the University of Edinburgh (X female).
+12 English-speaking undergraduates from the University of Edinburgh who were paid for participation.
 
 *Materials and Procedure*   
 We used the exact same materials and procedure as in the nonlinguistic ambiguity condition of Experiment 1, except that we replaced the instruction phrase with XXXX. 
@@ -450,7 +461,7 @@ If participants’ eye movements during the Preview phase of Experiment 1 were d
 `r round(subset(Preview.1a,  cond == "Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Preview.1a, cond == "Ambig")$SacTarg.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Preview.1a,  cond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Preview.1a, cond == "Control")$SacTarg.sd,2) `
  ), 
@@ -477,7 +488,7 @@ We used the same 16 test trials (8 ambiguous scenes, 8 unambiguous) from the non
 We used the same EyeLink 1000 Eyetracker as Experiment 1. Older subjects (4;6-5;6) completed a six point calibration routine, and younger subjects (3;6-4;6) completed a shorter three point calibration. The procedure was otherwise identical to Experiment 1, except that the experimenter offered frequent positive reinforcement.
 
 *Analysis*   
-We coded and analyzed children’s descriptions in the same way as Experiment 1, using a mixed effects model of the form Label~Trial Type + (1|Subject). However our eye movement analysis was importantly different from Experiment 1. We again focused on critical saccades between the target and foil pictures, but this time we compared Control trials (i.e., unambiguous scenes) to ambiguous scenes on which participants provided a non-specific description of the target (Uninformative trials), and to ambiguous scenes on which participants provided a referentially specific description (Informative trials), using a regression with the form Proportion of Saccades ~ Trial Type + (1|Subject)
+We coded and analyzed children’s descriptions in the same way as Experiment 1, using a mixed effects model of the form Label~Trial Type + (1|Subject). However our eye movement analysis was importantly different from Experiment 1. We again focused on critical saccades between the target and foil pictures, but this time we compared Control trials (i.e., unambiguous scenes) to ambiguous scenes on which participants provided a non-specific description of the target (Uninformative trials), and to ambiguous scenes on which participants provided a referentially specific description (Informative trials), using a regression with the form Proportion of Saccades ~ Trial Type + (1|Subject). The trial type factor was dummy coded, with the unambiguous control condition set as the reference level.
 
 **Results**   
 ```{r, echo=FALSE, results='hide',message=FALSE}
@@ -587,7 +598,7 @@ Children produced reliably fewer ambiguous descriptions when the scene was ambig
 `r round(subset(Labels.Expt2, cond == "Ambig")$Label.mean,2) ` 
  (
  `r round(subset(Labels.Expt2, cond == "Ambig")$Label.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Labels.Expt2, cond == "Control")$Label.mean,2) `
  (`r round(subset(Labels.Expt2, cond == "Control")$Label.sd,2) `
  ) `r format_coef(Expt2.Verbal.Intercept, 2)`.   
@@ -596,7 +607,7 @@ Children produced reliably fewer ambiguous descriptions when the scene was ambig
 *Eye movements*   
 ```{r, echo=FALSE, results='hide',message=FALSE}
 
-na.omit(summaryBy(SacTarg~Start+LabelCond+Subj, data = Sac.sum, FUN = c(mean,sd), keep.names = T)) -> Sac.graph
+summaryBy(SacTarg~Start+LabelCond+Subj, data = Sac.sum, FUN = c(mean,sd), keep.names = T) -> Sac.graph
 na.omit(summaryBy(SacTarg.mean~Start+LabelCond, data = Sac.graph, FUN = c(mean,sd))) -> Sac.graph
 Sac.graph$Start <- factor(Sac.graph$Start, levels = c("Preview", "Before","After"),labels = c("Preview", "Before","After"), ordered = T)
 Sac.graph$SE = Sac.graph$SacTarg.mean.sd/sqrt(length(unique(Sac.sum$Subj)))
@@ -609,8 +620,8 @@ Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post
 tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> o
 tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> se
 
-barplot(o, beside =T , ylim = c(0,0.25),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
-legend(1.2,0.10, legend = c("Control Trials", "Uninformative Trials", "Informative Trials"), bty = "n", col = c("blue","grey","red"), pch = 20)
+barplot(o, beside =T , ylim = c(0,0.7),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
+legend(1.2,0.23, legend = c("Control Trials", "Uninformative Trials", "Informative Trials"), bty = "n", col = c("blue","grey","red"), pch = 20)
 points(c(1.5,6,10), o[,1], pch = 20, cex = 2, col = "blue")
 points(c(2.5,6.8,11), o[,2], pch = 20, cex = 2, col = "grey")
 points(c(3.5,7.6,12), o[,3], pch = 20, cex = 2, col = "red")
@@ -618,6 +629,9 @@ grid(nx = NA, ny = NULL, col = "gray", lty = "dotted",lwd = par("lwd"), equilogs
 abline(v = c(4.5,8.5), col = "grey", lty = "dashed")
 arrows(c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) + c(se)+0.01), c(1.5,6,10,2.5,6.8,11,3.5,7.6,12), (c(o) - c(se)-0.01), code = 0)
 ```
+
+**Figure 4.** Mean proportion of saccades between target picture and foil in Experiment 2, across time windows. Bars indicate +/- 1 standard error.   
+<br>
 
 *Preview Phase*   
 ```{r, echo=FALSE, results='hide',message=FALSE}
@@ -633,7 +647,7 @@ The Preview phase provided evidence that children’s frequent failure to provid
 `r round(subset(Preview.Expt2, LabelCond == "Test-Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Preview.Expt2, LabelCond == "Test-Ambig")$SacTarg.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Preview.Expt2, LabelCond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Preview.Expt2, LabelCond == "Control")$SacTarg.sd,2) `
  `r format_coef(Expt2.Preview, 2)`
@@ -646,7 +660,7 @@ The Preview phase provided evidence that children’s frequent failure to provid
 
 *Pre-Naming Phase*   
 ```{r, echo=FALSE, results='hide',message=FALSE}
-Pre_N.Expt2 <- summaryBy(SacTarg ~ trialnum+Subj + LabelCond, data = subset(kid.sac, Start == "Before"), keep.names = T,na.rm = T)
+Pre_N.Expt2 <- summaryBy(SacTarg ~ trialnum+Subj + LabelCond, data = subset(kid.sac, Start == "Before" & SacSwitch ==1), keep.names = T,na.rm = T)
 Pre_N.Expt2 <- summaryBy(SacTarg ~ Subj + LabelCond, data = Pre_N.Expt2, keep.names = T,na.rm = T)
 Pre_N.Expt2 <- summaryBy(SacTarg ~ LabelCond, data = Pre_N.Expt2, FUN = c(mean,sd),na.rm = T)
 
@@ -658,7 +672,7 @@ We found a similar pattern during the Pre-Naming Phase. Again, there was no evid
 `r round(subset(Pre_N.Expt2, LabelCond == "Test-Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Pre_N.Expt2, LabelCond == "Test-Ambig")$SacTarg.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Pre_N.Expt2, LabelCond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Pre_N.Expt2, LabelCond == "Control")$SacTarg.sd,2) `
  `r format_coef(Expt2.Pre_N, 2)`
@@ -672,7 +686,7 @@ However, children did make more critical saccades before producing informative d
 
 *Post-Naming Phase*   
 ```{r, echo=FALSE, results='hide',message=FALSE}
-Post_N.Expt2 <- summaryBy(SacTarg ~ trialnum+Subj + LabelCond, data = subset(kid.sac, Start == "After"), keep.names = T,na.rm = T)
+Post_N.Expt2 <- summaryBy(SacTarg ~ trialnum+Subj + LabelCond, data = subset(kid.sac, Start == "After" & SacSwitch ==1), keep.names = T,na.rm = T)
 Post_N.Expt2 <- summaryBy(SacTarg ~ Subj + LabelCond, data = Post_N.Expt2, keep.names = T,na.rm = T)
 Post_N.Expt2 <- summaryBy(SacTarg ~ LabelCond, data = Post_N.Expt2, FUN = c(mean,sd),na.rm = T)
 
@@ -684,7 +698,7 @@ Finally, we looked to see whether children noticed the ambiguity once they had s
 `r round(subset(Post_N.Expt2, LabelCond == "Test-Ambig")$SacTarg.mean,2) ` 
  (
  `r round(subset(Post_N.Expt2, LabelCond == "Test-Ambig")$SacTarg.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Post_N.Expt2, LabelCond == "Control")$SacTarg.mean,2) `
  (`r round(subset(Post_N.Expt2, LabelCond == "Control")$SacTarg.sd,2) `
  `r format_coef(Expt2.Post_N, 2)`
@@ -748,12 +762,12 @@ Expt3.Verbal.Fixed <- summary(glmer(Informative ~ condition * Response + (1+cond
 ```
 *Descriptions*   
 
-Children produced more referentiall specific descriptions of the Target picture when the scene was ambiguous than when it was unambiguous
+Children produced more referentially specific descriptions of the Target picture when the scene was ambiguous than when it was unambiguous
 (Mean<sub>ambiguous</sub>=
 `r round(subset(Labels.Expt3, condition == "ambiguous" & Response == "target")$Label.mean,2) ` 
  (
  `r round(subset(Labels.Expt3, condition == "ambiguous" & Response == "target")$Label.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Labels.Expt3, condition == "control" & Response == "target")$Label.mean,2) `
  (`r round(subset(Labels.Expt3, condition == "control" & Response == "target")$Label.sd,2) `
  ),
@@ -762,7 +776,7 @@ Children produced more referentiall specific descriptions of the Target picture 
 `r round(subset(Labels.Expt3, condition == "ambiguous" & Response == "foil")$Label.mean,2) ` 
  (
  `r round(subset(Labels.Expt3, condition == "ambiguous" & Response == "foil")$Label.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Labels.Expt3, condition == "control" & Response == "foil")$Label.mean,2) `
  (`r round(subset(Labels.Expt3, condition == "control" & Response == "foil")$Label.sd,2) `
  ). Our regression analysis showed that participants were reliably more likely to produce specific descriptions when the trial was ambiguous `r format_coef(Expt3.Verbal.Fixed, 2)`, and that this interacted with the type of picture being labeled, such that the effect of trial type was reliably larger for the foil picture than the target picture `r format_coef(Expt3.Verbal.Fixed, 4)`. Although this was not a large effect, it is consistent with production monitoring. 
@@ -839,7 +853,7 @@ We first tried to replicate the finding that children show no evidence of pro-ac
 `r round(subset(Preview.Expt3, TargetLabelCond == "Ambig - Uninformative")$PropSac.mean,2) ` 
  (
  `r round(subset(Preview.Expt3, TargetLabelCond == "Ambig - Uninformative")$PropSac.sd,2) `
- ), Mean<sub>unambiguous</sub>=
+ ), Mean<sub>control</sub>=
  `r round(subset(Preview.Expt3, TargetLabelCond == "Control")$PropSac.mean,2) `
  (`r round(subset(Preview.Expt3, TargetLabelCond == "Control")$PropSac.sd,2) `
  `r format_coef(Expt3.Preview, 2)`
@@ -875,7 +889,7 @@ However the current experiments suggest an additional mechanism by which childre
 
 That said, while data from children's utterances as well as their eye-movements does indicate that they are able to monitor their own utterances (such that an error signal can be generated), the effect of this after-the-fact monitoring was not large. In Experiment 3, when children named a an ambiguous foil picture after an ambiguous target picture, they only provided informative descriptions about 4 percentage points more often while [revious work with adults, using a similar design, found a 20 percentage point difference [@ferreira_how_2005]. There are multiple non-exclusive explanations for why children's production monitoring may be more limited than adults'. First, the error signal generated by noticing an uninformative utterance may not be very large, and consistent with this, children have difficulty with referential communications tasks up until the school years, suggesting that they only learn from their errors very gradually. Second, Experiment 3 found that eye movement evidence for children's production monitoring was probably partially driven by passive priming processes (saying *dog* primes looks to other dogs). That is to say, while children consistently produced eye movements that were indicative of production monitoring, some of those eye movements were probably the result of passive priming, meaning that children did not consistently monitor their utterances for ambiguity.
 
-The account described above is different in either focus or specificity from previous work on the development of referential communication. Under the account, improvements to referential communication skills are not importantly affected by changes to theory of mind skills or egocentricity, in keeping with the empirical evidence [@fukumura2015development; @glucksberg1975development]. The account is multi-componential, like Sonnenschein and Whitehurst's "hierarcy of skills" approach to referential communication [@sonnenschein1984developing], but is focused on multiple different moment-by-moment language production processes, rather than broader heuristics about how communication should proceed. Like other proposals, this account suggests that children might learn from feedback [@matthews2007toddlers], but in this case the feedback is self-generated: By monitoring their own speech, children can recognise when they have said something uninformative, and can gradually adjust their production procedures to minimize these errors in the future. Finally, the account can admit a role for executive functions [@nilsen2009relations; @nilsen2013communicative; @nilsen2015children], for instance in inhibiting the child from impulsively producing an uninformative description before formulating an informative one, or in being mindful to scan for potential ambiguity before speaking. However the account also assumes that the development of referential skill involves the creation of domain-specific language production procedures (e.g., for encoding a scene in terms of its component lexical entries), and is not simply a result of domain-general improvements in executive functions.
+The account described above differs from previous work on the development of referential communication in terms of focus and specificity. Under the account, improvements to referential communication skills are not importantly affected by changes to theory of mind skills or egocentricity, in keeping with the empirical evidence [@fukumura2015development; @glucksberg1975development]. The account is multi-componential, like Sonnenschein and Whitehurst's "hierarcy of skills" approach to referential communication [@sonnenschein1984developing], but is focused on multiple different moment-by-moment language production processes, rather than broader heuristics about how communication should proceed. Like other proposals, this account suggests that children might learn from feedback [@matthews2007toddlers], but in this case the feedback is self-generated: By monitoring their own speech, children can recognise when they have said something uninformative, and can gradually adjust their production procedures to minimize these errors in the future. Finally, the account can admit a role for executive functions [@nilsen2009relations; @nilsen2013communicative; @nilsen2015children], for instance in inhibiting the child from impulsively producing an uninformative description before formulating an informative one, or in being mindful to scan for potential ambiguity before speaking. However the account also assumes that the development of referential skill involves the creation of domain-specific language production procedures (e.g., for encoding a scene in terms of its component lexical entries), and is not simply a result of domain-general improvements in executive functions.
 
 To summarise, we used eye tracking to assess some of the different mechanisms that adults and children use (or fail to use) when preparing descriptions in referential communications tasks. Adults explictly monitor for whether a scene contains potential non-linguistic ambiguity before they begin speaking (but not before pointing), and also monitor what they say in order to check that it is informative. Children also perform both of these processes, but much less frequently. They are more likely to succeed in producing an informative statement if they have monitored the world for ambiguity, or have noted that they themselves produced an uninformative statemnt,  but they are error-prone in using both of these skills. Based on the data collected, we have suggested that one way in which children might learn to pro-actively monitor for ambiguity in an adult-like fashion, is by attending to their own productions and recognizing when they are uninformative.
 
