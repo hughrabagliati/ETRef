@@ -1,0 +1,1220 @@
+length(c)
+length(b)
+length(a)
+38*2
+cbind(a,b,c)
+d = c(rep(c("Co","Exp"),38), rep(c("Co","Exp"),40))
+length(d)
+cbind(a,b,c,d)
+cbind(a,b,c,d) -> k
+libraru(ez)
+library(ez)
+rnorm(3)
+cbind(a,b,c,d, rnorm(156)) -> k
+k[,3]
+ezANOVA(k,dv = k[,5], wid = k[,3], within = k[,2], between = .(k[,1],k[,4]))
+k <- data.frame(k)
+summary(k)
+ezANOVA(k,dv = V5, wid = c, within = b, between = .(a,d))
+k$V5 <- as.numeric(as.character(k$V5))
+ezANOVA(k,dv = V5, wid = c, within = b, between = .(a,d))
+length(k$c)
+length(k$V5)
+length(k$d)
+length(k$e)
+length(k$d)
+summary(k)
+ezANOVA(k,dv = V5, wid = c, within = b, between = .(a,d))
+ezANOVA(k,dv = k$V5, wid = k$c, within = k$b, between = .(k$a,k$d))
+ezANOVA(k,dv = V5, wid = c, within = b, between = .(a,d), type = 3)
+?ezANOVA
+k[1:40]
+k[1:40,]
+ezANOVA(k,dv = V5, wid = c, within = b, between = .(a), type = 3)
+ezANOVA(k,dv = V5, wid = c, between = .(a), type = 3)
+ezANOVA(k,dv = V5, wid = c, within = .(b), type = 3)
+ezANOVA(k,dv = V5, wid = c, within = .(b), between = .(a),type = 3)
+options(contrasts=c("contr.sum","contr.poly"))
+ezANOVA(k,dv = V5, wid = c, within = .(b), between = .(a),type = 3)
+library(arm)
+logit(0.99)
+logit(0.9)
+library(jsonlite)#
+#
+# This script is used to read in all the csv files in a folder.#
+#
+library(doBy)#
+#
+Catch_Import= function(path_name){#
+library(jsonlite)#
+#
+list.files(path = path_name,full.names = T, pattern = ".txt") -> file_list#
+comp = c()#
+for (x in file_list){#
+	file_name = x#
+	df <- fromJSON(file_name)#
+	d <- df$data[4]$trialdata[1:2,]   ##df$data[4]$trialdata$key_press %in% c(71,32),]#
+	d$Subj <- unique(df$data[4]$trialdata[df$data[4]$trialdata$Screen == "Real-Response",]$Subj)[2]#
+	output <- cbind(key = d$key_press,Subj = d$Subj)#
+	comp = rbind(comp,output)#
+	print(x)#
+	}#
+	return(comp)#
+}#
+Comp_Import = function(path_name){#
+library(jsonlite)#
+#
+list.files(path = path_name,full.names = T, pattern = ".txt") -> file_list#
+comp = c()#
+for (x in file_list){#
+	file_name = x#
+	df <- fromJSON(file_name)#
+	d <- df$data[4]$trialdata[df$data[4]$trialdata$Screen == "Real-Response",]#
+	d <- d[ grep("match",d$stims$Cond, ignore.case = TRUE),]#
+	#d <- d[d$stims$Cond %in% c("Mismatch-Mask-List","Mismatch-List","Mismatch-Mask-Adj", "Mismatch-Color", "Mismatch-Noun" ,"Match-Mask-List","Match-List","Match-Mask-Adj", "Match-Adj", "Mismatch-Disjunc", "Match-Noun", "Match-Color"),]#
+	#d <- d[d$stims$Cond %in% c("Match-Mask-List","Match-List","Match-Mask-Adj", "Match-Adj" ),]#
+	d$Cond <- as.factor(d$stims$Cond)#
+	d$Type <- as.factor(d$stims$Type)#
+	d$Phrase <- as.factor(d$stims$Phrase)#
+	d$Length <- as.factor(d$stims$Length)#
+	d$Task <- "Phrase"#
+	d$Task <- as.factor(d$Task)#
+	d$Stim <- "Striped Boat"#
+	d[d$Length == "1",]$Stim <- "Boat"#
+	d[d$Length == "3",]$Stim <- "Big Striped Boat"#
+	d$Stim <- ordered(d$Stim, levels = c("Big Striped Boat", "Striped Boat", "Boat"))#
+	d$PicType <- "Striped"#
+	d[grep("spotted",d$stims$Pic, ignore.case = TRUE),]$PicType <- "Spotted"#
+	d$Match <- "Match"#
+	d[grep("mismatch",d$Cond, ignore.case = TRUE),]$Match <- "MisMatch"#
+	d$Block = rep(c(1,2), each = 150)#
+	d$Match <- as.factor(d$Match)#
+	output <- data.frame(rt = as.numeric(as.character(d$rt)), key_press = d$key_press, Subj = d$Subj, Cond = d$Cond, Type = d$Type, Task = d$Task, Stim = d$Stim, Pic = d$stims$Pic, Phrase = d$Phrase, Match = d$Match, PicType = d$PicType, Block = d$Block)#
+	#print(summary(d))#
+	output$rt <- as.numeric(as.character(output$rt))#
+	comp = rbind(comp,output)#
+	print(x)#
+	}#
+	return(comp)#
+}#
+#
+# Function for plotting data#
+Comp_Graph = function(DV.mean, DV.se, IV1, IV2, Subj, title,ylimit){#
+DV.se <- DV.se/(sqrt(length(unique(Subj))))#
+comp.graph.mean <- tapply(DV.mean,list(IV1, IV2), mean)#
+comp.graph.se <- tapply(DV.se,list(IV1, IV2), mean)#
+barplot(comp.graph.mean, beside = T, ylim = ylimit, ylab = "msec", main = title, legend = T, xpd = FALSE)#
+arrows(c(1.5,2.5,3.5,5.5,6.5,7.5), (c(comp.graph.mean) + c(comp.graph.se)+0.01), c(1.5,2.5,3.5,5.5,6.5,7.5), (c(comp.graph.mean) - c(comp.graph.se)-0.01), code = 0)#
+}#
+#
+library(lme4)#
+library(ez)#
+catch <- Catch_Import("./data")#
+print(catch)#
+comp <- Comp_Import("./data")#
+#contrasts(comp$Stim) <- c(-0.5,0.5)#
+#contrasts(comp$Task) <- c(-0.5,0.5)#
+#
+comp$Acc <- 0#
+comp[comp$key_press == 77 & comp$Match == "Match",]$Acc <- 1#
+comp[comp$key_press == 90 & comp$Match == "MisMatch",]$Acc <- 1#
+comp$Task <- factor(comp$Task, levels(comp$Task)[c(2,1)])#
+#summaryBy(Acc + AccAdj~  Subj, , data = comp, FUN = c(mean), na.rm = T , keep.names = T) -> a#
+#comp <- comp[comp$Subj %in% a[a$Acc >= 0.8,]$Subj,]#
+comp <- comp[comp$rt > 300 & comp$rt <1500,]#
+comp <- comp[comp$Block ==1,]#
+comp$rtAdj <- NA#
+comp$AccAdj <- NA#
+for (i in unique(comp$Subj)){#
+	comp[comp$Subj == i,]$rtAdj <- ((comp[comp$Subj == i,]$rt - mean(comp[comp$Subj == i,]$rt, na.rm = T)) + mean(comp$rt, na.rm = T))#
+	comp[comp$Subj == i,]$AccAdj <- ((comp[comp$Subj == i,]$Acc - mean(comp[comp$Subj == i,]$Acc, na.rm = T)) + mean(comp$Acc, na.rm = T))#
+	}#
+#summary(lmer(rt ~ Stim*Task + (1+ Stim*Task|Subj), data = subset(comp, Acc ==1 & Match == "Match")))#
+ezANOVA(subset(comp, Acc ==1 & Match == "Match" ), rt, wid = .(Subj), within = .(Stim), between = .(Type))$ANOVA#
+ezANOVA(subset(comp, Acc ==1 & Match == "Match" & Type == "Adj" ), rt, wid = .(Subj), within = .(Stim))$ANOVA#
+ezANOVA(subset(comp, Acc ==1 & Match == "Match" & Type == "Adv"), rt, wid = .(Subj), within = .(Stim))$ANOVA#
+#summary(glmer(Acc ~ Stim*Task + (1+ Stim*Task|Subj), data = comp, family = "binomial"))#
+#
+comp.rt <- summaryBy(rt + rtAdj ~ Type + Stim + Subj, , data = subset(comp, Acc ==1 & Match == "Match"), FUN = c(mean), na.rm = T , keep.names = T)#
+comp.rt <- summaryBy(rt + rtAdj ~ Type + Stim , data = comp.rt, FUN = c(mean,sd), na.rm = T )#
+print(comp.rt)#
+Comp_Graph(comp.rt$rt.mean,comp.rt$rtAdj.sd, comp.rt$Stim, comp.rt$Type, comp$Subj, "Reaction Time", c(600,1000))#
+#
+comp.Acc <- summaryBy(Acc + AccAdj~  Type + Stim  +Subj, , data = comp, FUN = c(mean), na.rm = T , keep.names = T)#
+comp.Acc <- summaryBy(Acc + AccAdj~  Type + Stim   , data = comp.Acc, FUN = c(mean,sd), na.rm = T )#
+print(comp.Acc)#
+Comp_Graph(comp.Acc$Acc.mean,comp.Acc$AccAdj.sd, comp.Acc$Stim, comp.Acc$Type, comp$Subj, "Accuracy", c(0.5,1))
+?optimize
+?loss
+hist(rbeta(10000,5,5))
+hist(rbeta(10000,2,5))
+hist(rbeta(10000,1,5))
+?dlnorm
+sigma = 0.6#
+mu = 2#
+x = seq(-10, 60, length.out = 500)#
+Z = dlnorm(x, mu, sigma)#
+plot(x, Z, type = "l")
+?dlnorm
+x
+Z
+sum(Z)
+rlnorm(10,2,0.6)
+sigma = 0.5#
+mu = 2#
+x = seq(-10, 60, length.out = 500)#
+Z = dlnorm(x, mu, sigma)#
+plot(x, Z, type = "l")
+sigma = 1#
+mu = 2#
+x = seq(-10, 60, length.out = 500)#
+Z = dlnorm(x, mu, sigma)#
+plot(x, Z, type = "l")
+sd(Z)
+a <- rlnorm(1000,2,1)
+sd(a)
+?t.test
+p <- rep(NA,1000)#
+for (i in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,1))#
+	subj_c2[i] <- mean(rlnorm(30,2,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,1))#
+	subj_c2[i] <- mean(rlnorm(30,2,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+hist(p)
+length(abs(p) > 1.96)
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,1))#
+	subj_c2[i] <- mean(rlnorm(30,2,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,2))#
+	subj_c2[i] <- mean(rlnorm(30,2,2))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,3))#
+	subj_c2[i] <- mean(rlnorm(30,2,3))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,2,0.5))#
+	subj_c2[i] <- mean(rlnorm(30,2,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+50/1000
+rlnorm(20,2,0.5)
+(rlnorm(20,2,0.5))
+mean(rlnorm(20,2,0.5))
+median(rlnorm(20,2,0.5))
+hist(rlnorm(1000,2,0.5))
+hist(rlnorm(1000,0.3,0.5))
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,30)#
+subj_c2 = rep(NA,30)#
+for (i in 1:30){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(30,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,12)#
+subj_c2 = rep(NA,12)#
+for (i in 1:12){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(30,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(30,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,10)#
+subj_c2 = rep(NA,10)#
+for (i in 1:10){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,10)#
+subj_c2 = rep(NA,10)#
+for (i in 1:10){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.3,0.5))#
+	subj_c2[i] <- mean(rlnorm(60,0.3,0.5))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+a <- rlnorm(1000,0.3,0.5)
+?qqplot
+qqnorm(a)
+a <- rlnorm(100000,0.3,0.5)
+qqnorm(a)
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.1,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 1.96])
+length(p[abs(p) > 2])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) > 2])
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0.01,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- media(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- median(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- median(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- median(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- median(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- median(rlnorm(30,0,1))#
+	subj_c2[i] <- median(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(rlnorm(30,0,1))#
+	subj_c2[i] <- mean(rlnorm(30,0,1))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+length(p[abs(p) >= 1.96])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$statistic#
+}
+p
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean(log(rlnorm(30,0,1)))#
+	subj_c2[i] <- mean(log(rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+hist(rlnorm(20,0,1))
+hist(rlnorm(30,0,1))
+hist(rlnorm(30,0,1.2))
+hist(rlnorm(30,0,1.02))
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1.02)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1.02)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(30,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+p <- rep(NA,100000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:20){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = F, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])
+length(p[abs(p) <= 0.05])/100000
+p <- rep(NA,10000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(20,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(20,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/10000
+p <- rep(NA,10000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(30,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(30,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/10000
+length(p[abs(p) > 0.05])/10000
+p <- rep(NA,10000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(5,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(5,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/10000
+p <- rep(NA,10000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(1,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(1,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/10000
+p <- rep(NA,10000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(100,0,1.2)))#
+	subj_c2[i] <- mean((rlnorm(100,0,1.2)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/10000
+subj_c1
+subj_c2
+?rlnorm
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(30,0,0.5)))#
+	subj_c2[i] <- mean((rlnorm(30,0,0,5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(30,0,0.5)))#
+	subj_c2[i] <- mean((rlnorm(30,0,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/1000
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(30,0,0.5)))#
+	subj_c2[i] <- mean((rlnorm(30,0,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/1000
+hist(subj_c1)
+hist(subj_c2)
+p[j]
+t.test(subj_c1,subj_c2, paired = T, var.equal = T)
+t.test(subj_c1,subj_c2, paired = F, var.equal = F)
+hist(rlnorm(100,1,0.5))
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(100,1,0.5)))#
+	subj_c2[i] <- mean((rlnorm(100,1,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) > 0.05])/1000
+length(p[abs(p) <= 0.05])/1000
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
+	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/1000
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
+	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/1000
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
+	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/1000
+p <- rep(NA,1000)#
+for (j in 1:length(p)){ #
+subj_c1 = rep(NA,20)#
+subj_c2 = rep(NA,20)#
+for (i in 1:30){#
+	subj_c1[i] <- mean((rlnorm(25,1,0.5)))#
+	subj_c2[i] <- mean((rlnorm(25,1,0.5)))#
+}#
+p[j] <- t.test(subj_c1,subj_c2, paired = T, var.equal = T)$p.value#
+}
+length(p[abs(p) <= 0.05])/1000
+# NOTE THAT FOR THESE ANALYSES YOU TYPICALLY NEED TO INCLUDE THE LONG RT TAIL. I recommend rt >0 & rt <16000#
+library(retimes)#
+library(doBy)#
+library(ez)#
+#
+ads <- read.csv("Adult_R.csv")#
+fives <- read.csv("5yo_R.csv")#
+threes <- read.csv("3yo_R.csv")#
+#
+ads$Age <- "Adult"#
+fives$Age <- "Five"#
+threes$Age <- "Three"#
+#
+tt <- rbind(ads,fives,threes)#
+tt$Age <- as.factor(tt$Age)#
+tt$Subject <- paste(tt$Age,tt$Subject, sep = "")#
+#
+#tt<- subset(tt, Incorrect == 0)#
+d = data.frame(Subject = rep(NA, times = length(unique(tt$Subject))*4), Pred = NA, Match = NA, Age = NA, Mu = NA, Sigma = NA, Tau = NA)#
+index = 1#
+for (k in unique(tt$Pred)){#
+	for (j in unique(subset(tt, Pred == k)$Subj)){#
+		for (i in unique(subset(tt, Pred == k & Subject == j)$Match)){#
+			a = timefit(subset(tt, Pred == k & Subject == j & Match == i )$RTms)#
+			d$Age[index] <- as.character(unique(subset(tt, Pred == k & Subject == j & Match == i )$Age)[1])#
+			d$Subject[index] <- j#
+			d$Pred[index] <- k#
+			d$Match[index] <- i#
+			d$Mu[index] <- a@par[1]#
+			d$Sigma[index] <- a@par[2]#
+			d$Tau[index] <- a@par[3]#
+			index <- index + 1#
+#
+			}#
+		}#
+	}#
+re.summary <- summaryBy(Mu + Sigma+ Tau ~ Age+Pred + Match, data = d, FUN = c(mean))#
+#
+ezANOVA(d, dv = Mu, wid = Subject, within = .(Pred,Match), between = .(Age))#
+ezANOVA(d, dv = Sigma, wid = Subject, within = .(Pred,Match), between = .(Age))#
+ezANOVA(d, dv = Tau, wid = Subject, within = .(Pred,Match), between = .(Age))#
+#
+re.summary.gg <- melt(re.summary,id.vars = c("Age","Pred","Match"), variable.name = "Parameter",value.name = "Value")#
+ggplot(data = re.summary.gg, aes(x = Pred, y = Value)) +#
+  geom_bar(stat = "identity", position = "dodge", aes(fill = Match)) +#
+  facet_wrap(~Parameter+Age)
+# NOTE THAT FOR THESE ANALYSES YOU TYPICALLY NEED TO INCLUDE THE LONG RT TAIL. I recommend rt >0 & rt <16000#
+library(retimes)#
+library(doBy)#
+library(ez)#
+library(plyr)#
+ads <- read.csv("Adult_R.csv")#
+fives <- read.csv("5yo_R.csv")#
+threes <- read.csv("3yo_R.csv")#
+#
+ads$Age <- "Adult"#
+fives$Age <- "Five"#
+threes$Age <- "Three"#
+#
+tt <- rbind(ads,fives,threes)#
+tt$Age <- as.factor(tt$Age)#
+tt$Subject <- paste(tt$Age,tt$Subject, sep = "")#
+#
+#tt<- subset(tt, Incorrect == 0)#
+d = data.frame(Subject = rep(NA, times = length(unique(tt$Subject))*4), Pred = NA, Match = NA, Age = NA, Mu = NA, Sigma = NA, Tau = NA)#
+index = 1#
+for (k in unique(tt$Pred)){#
+	for (j in unique(subset(tt, Pred == k)$Subj)){#
+		for (i in unique(subset(tt, Pred == k & Subject == j)$Match)){#
+			a = timefit(subset(tt, Pred == k & Subject == j & Match == i )$RTms)#
+			d$Age[index] <- as.character(unique(subset(tt, Pred == k & Subject == j & Match == i )$Age)[1])#
+			d$Subject[index] <- j#
+			d$Pred[index] <- k#
+			d$Match[index] <- i#
+			d$Mu[index] <- a@par[1]#
+			d$Sigma[index] <- a@par[2]#
+			d$Tau[index] <- a@par[3]#
+			index <- index + 1#
+#
+			}#
+		}#
+	}#
+re.summary <- summaryBy(Mu + Sigma+ Tau ~ Age+Pred + Match, data = d, FUN = c(mean))#
+#
+ezANOVA(d, dv = Mu, wid = Subject, within = .(Pred,Match), between = .(Age))#
+ezANOVA(d, dv = Sigma, wid = Subject, within = .(Pred,Match), between = .(Age))#
+ezANOVA(d, dv = Tau, wid = Subject, within = .(Pred,Match), between = .(Age))#
+#
+re.summary.gg <- melt(re.summary,id.vars = c("Age","Pred","Match"), variable.name = "Parameter",value.name = "Value")#
+ggplot(data = re.summary.gg, aes(x = Pred, y = Value)) +#
+  geom_bar(stat = "identity", position = "dodge", aes(fill = Match)) +#
+  facet_wrap(~Parameter+Age)
+?melt
+library(reshape2)
+re.summary.gg <- melt(re.summary,id.vars = c("Age","Pred","Match"), variable.name = "Parameter",value.name = "Value")#
+ggplot(data = re.summary.gg, aes(x = Pred, y = Value)) +#
+  geom_bar(stat = "identity", position = "dodge", aes(fill = Match)) +#
+  facet_wrap(~Parameter+Age)
+library(ggplot2)
+re.summary.gg <- melt(re.summary,id.vars = c("Age","Pred","Match"), variable.name = "Parameter",value.name = "Value")#
+ggplot(data = re.summary.gg, aes(x = Pred, y = Value)) +#
+  geom_bar(stat = "identity", position = "dodge", aes(fill = Match)) +#
+  facet_wrap(~Parameter+Age)
+# NOTE THAT FOR THESE ANALYSES YOU TYPICALLY NEED TO INCLUDE THE LONG RT TAIL. I recommend rt >0 & rt <16000#
+library(retimes)#
+library(doBy)#
+library(ez)#
+library(plyr)#
+ads <- read.csv("Adult_R.csv")#
+fives <- read.csv("5yo_R.csv")#
+threes <- read.csv("3yo_R.csv")#
+#
+ads$Age <- "Adult"#
+fives$Age <- "Five"#
+threes$Age <- "Three"#
+#
+tt <- rbind(ads,fives,threes)#
+tt$Age <- as.factor(tt$Age)#
+tt$Subject <- paste(tt$Age,tt$Subject, sep = "")#
+#
+#tt<- subset(tt, Incorrect == 0)#
+d = data.frame(Age = rep(NA, times = length(unique(tt$Age))*4), Pred = NA, Match = NA, Age = NA, Mu = NA, Sigma = NA, Tau = NA)#
+index = 1#
+for (k in unique(tt$Pred)){#
+	for (j in unique(subset(tt, Pred == k)$Age)){#
+		for (i in unique(subset(tt, Pred == k & Age == j)$Match)){#
+			a = timefit(subset(tt, Pred == k & Age == j & Match == i )$RTms)#
+			d$Age[index] <- as.character(unique(subset(tt, Pred == k & Age == j & Match == i )$Age)[1])#
+			d$Subject[index] <- j#
+			d$Pred[index] <- k#
+			d$Match[index] <- i#
+			d$Mu[index] <- a@par[1]#
+			d$Sigma[index] <- a@par[2]#
+			d$Tau[index] <- a@par[3]#
+			index <- index + 1#
+#
+			}#
+		}#
+	}#
+re.summary <- summaryBy(Mu + Sigma+ Tau ~ Age+Pred + Match, data = d, FUN = c(mean))#
+#
+ezANOVA(d, dv = Mu, wid = Subject, within = .(Pred,Match), between = .(Age))#
+ezANOVA(d, dv = Sigma, wid = Subject, within = .(Pred,Match), between = .(Age))#
+ezANOVA(d, dv = Tau, wid = Subject, within = .(Pred,Match), between = .(Age))#
+#
+re.summary.gg <- melt(re.summary,id.vars = c("Age","Pred","Match"), variable.name = "Parameter",value.name = "Value")#
+ggplot(data = re.summary.gg, aes(x = Pred, y = Value)) +#
+  geom_bar(stat = "identity", position = "dodge", aes(fill = Match)) +#
+  facet_wrap(~Parameter+Age)
+re.summary
+summary(tt)
+# NOTE THAT FOR THESE ANALYSES YOU TYPICALLY NEED TO INCLUDE THE LONG RT TAIL. I recommend rt >0 & rt <16000#
+library(ggplot2)#
+library(reshape2)#
+library(retimes)#
+library(doBy)#
+library(ez)#
+library(plyr)#
+ads <- read.csv("Adult_R.csv")#
+fives <- read.csv("5yo_R.csv")#
+threes <- read.csv("3yo_R.csv")#
+#
+ads$Age <- "Adult"#
+fives$Age <- "Five"#
+threes$Age <- "Three"#
+#
+tt <- rbind(ads,fives,threes)#
+tt$Age <- as.factor(tt$Age)#
+tt$Subject <- paste(tt$Age,tt$Subject, sep = "")#
+#
+#tt<- subset(tt, Incorrect == 0)#
+d = data.frame(Subject = rep(NA, times = length(unique(tt$Subject))*4), Pred = NA, Match = NA, Age = NA, Mu = NA, Sigma = NA, Tau = NA)#
+index = 1#
+for (k in unique(tt$Pred)){#
+	for (j in unique(subset(tt, Pred == k)$Subj)){#
+		for (i in unique(subset(tt, Pred == k & Subject == j)$Match)){#
+			a = timefit(subset(tt, Pred == k & Subject == j & Match == i )$RTms)#
+			d$Age[index] <- as.character(unique(subset(tt, Pred == k & Subject == j & Match == i )$Age)[1])#
+			d$Subject[index] <- j#
+			d$Pred[index] <- k#
+			d$Match[index] <- i#
+			d$Mu[index] <- a@par[1]#
+			d$Sigma[index] <- a@par[2]#
+			d$Tau[index] <- a@par[3]#
+			index <- index + 1#
+#
+			}#
+		}#
+	}#
+re.summary <- summaryBy(Mu + Sigma+ Tau ~ Age+Pred + Match, data = d, FUN = c(mean))#
+#
+ezANOVA(d, dv = Mu, wid = Subject, within = .(Pred,Match), between = .(Age))#
+ezANOVA(d, dv = Sigma, wid = Subject, within = .(Pred,Match), between = .(Age))#
+ezANOVA(d, dv = Tau, wid = Subject, within = .(Pred,Match), between = .(Age))#
+#
+re.summary.gg <- melt(re.summary,id.vars = c("Age","Pred","Match"), variable.name = "Parameter",value.name = "Value")#
+ggplot(data = re.summary.gg, aes(x = Pred, y = Value)) +#
+  geom_bar(stat = "identity", position = "dodge", aes(fill = Match)) +#
+  facet_wrap(~Parameter+Age)
+summary(tt)
+re.summary
