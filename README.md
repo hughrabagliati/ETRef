@@ -5,7 +5,7 @@ Eye tracking studies of referential communication tasks, with 3-5yr old children
 
 Repository contains anonymized coded data (i.e., no audio files, no names).
 
-For all studies, except Experiment 3 which is not reported in the paper, the analysis scripts are embedded in the R Markdown Document "RefCommPaper.md". Other analysis scripts within each folder are out-dated.
+For all studies, except Experiment 3 which is not reported in the paper, the analysis scripts are embedded in the R Markdown Document "RefCommPaper.md". Other analysis scripts within each folder are out of date.
 
 **Experiment 1** assesses adults' utterances and eye movements while completing a referential
 communication task, in which ambiguity is created by either semantic or phonological overlap.
