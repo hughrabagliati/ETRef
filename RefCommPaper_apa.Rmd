@@ -234,7 +234,14 @@ title(ylab = "Prop. Critical Saccades",outer = TRUE, line = 3, cex.lab = 0.7)
    
 **Figure 2.** Mean proportion of saccades between target picture and foil in the Linguistic Ambiguity condition, across time windows. Bars indicate +/- 1 standard error.
 
+```{r, echo=FALSE, results='hide',message=FALSE}
+# Same Cat
+SacGraph(na.omit(summaryBy(SacTarg~Start+cond+Subj, data = Sac.sum[ Sac.sum$type == "Same",], FUN = c(mean,sd), keep.names = T)))
+d <- c()
 
+```
+   
+**Figure 3.** Mean proportion of saccades between target picture and foil in the Non-Linguistic Ambiguity condition, across time windows. Bars indicate +/- 1 standard error.
 
 *Eye movements*
 
@@ -628,9 +635,9 @@ Sac.graph$Time <- factor(Sac.graph$Time, levels = c("Preview","Pre-Naming","Post
 
 tapply(Sac.graph$SacTarg.mean.mean, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> o
 tapply(Sac.graph$SE, list(Sac.graph$Time,Sac.graph$LabelCond), FUN = mean) -> se
-sss = c()
-barplot(o, beside =T , ylim = c(0,0.7),col = "white",  border = NA, ylab = "Prop. Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"),cex.axis = 0.7, cex.names = 0.7)
-legend(1.2,0.23, legend = c("Control Trials", "Uninformative Trials", "Informative Trials"), bty = "n", col = c("blue","grey","red"), pch = 20, cex = 0.7)
+
+barplot(o, beside =T , ylim = c(0,0.7),col = "white",  border = NA, ylab = "Proportion Critical Saccades", names.arg = c("Preview", "Pre-Naming","Post-Naming"))
+legend(1.2,0.23, legend = c("Control Trials", "Uninformative Trials", "Informative Trials"), bty = "n", col = c("blue","grey","red"), pch = 20)
 points(c(1.5,6,10), o[,1], pch = 20, cex = 2, col = "blue")
 points(c(2.5,6.8,11), o[,2], pch = 20, cex = 2, col = "grey")
 points(c(3.5,7.6,12), o[,3], pch = 20, cex = 2, col = "red")
