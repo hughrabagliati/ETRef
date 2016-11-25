@@ -13,6 +13,6 @@ communication task, in which ambiguity is created by either semantic or phonolog
 **Experiment 2** assesses 4-to-5-year-olds' utterances and eye movements while completing a referential
 communication task, in which ambiguity is created by semantic overlap.
 
-**Experiment 3** is not yet added, but assesses 4-to-5-year-olds' performance and eye movements on an explicit ambiguity detection task.
+**Experiment 3** is not yet added, but assesses 4-to-5-year-olds' performance and eye movements on an explicit ambiguity detection task. The task is not reported in the paper (but the kids were pretty good at it).
 
 **Experiment 4**  assesses 4-to-5-year-olds' performance on a referential ambiguity task where they must name both ambiguous items. It therefore tests whether young children use production based monitoring.
